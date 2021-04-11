@@ -1,3 +1,7 @@
+MY Canvas LMS OWN SCRIPTS
+======
+UPDATE_ENCRYPTION_KEY_HASH=1 RAILS_ENV=production bundle exec rake canvas:compile_assets
+
 Canvas LMS
 ======
 
