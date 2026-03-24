@@ -1,0 +1,4 @@
+production:
+  workers:
+    - workers: 2
+      queue: canvas_queue

@@ -1,0 +1,4 @@
+production:
+  servers:
+    - redis://redis:6379
+  database: 1

@@ -1,0 +1,9 @@
+production:
+  adapter: postgresql
+  encoding: utf8
+  database: <%= ENV.fetch('CANVAS_DATABASE_PRODUCTION', 'canvas_production') %>
+  host: <%= ENV.fetch('CANVAS_DATABASE_HOST', 'postgres') %>
+  username: <%= ENV.fetch('CANVAS_DATABASE_USERNAME', 'canvas') %>
+  password: <%= ENV.fetch('CANVAS_DATABASE_PASSWORD', '') %>
+  timeout: 5000
+  pool: 25

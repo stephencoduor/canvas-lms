@@ -1,0 +1,10 @@
+production:
+  config:
+    canvas:
+      canvas:
+        encryption-secret: <%= ENV.fetch('ENCRYPTION_KEY', '') %>
+        signing-secret: <%= ENV.fetch('SECRET_KEY_BASE', '') %>
+      rich-content-service:
+        app-host: ""
+    datadog-rum:
+      sample_rate: 0.0

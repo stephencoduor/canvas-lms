@@ -1,0 +1,5 @@
+production:
+  address: localhost
+  port: 25
+  domain: lms.k8s-gke.us
+  default_name: Canvas LMS
