@@ -24,6 +24,14 @@ services:
       - canvas_uploads:/usr/src/app/tmp/files
       - canvas_log:/usr/src/app/log
       - canvas_brandable:/usr/src/app/public/dist/brandable_css
+      - ../config/redis.yml:/usr/src/app/config/redis.yml:ro
+      - ../config/database.yml:/usr/src/app/config/database.yml:ro
+      - ../config/domain.yml:/usr/src/app/config/domain.yml:ro
+      - ../config/cache_store.yml:/usr/src/app/config/cache_store.yml:ro
+      - ../config/security.yml:/usr/src/app/config/security.yml:ro
+      - ../config/dynamic_settings.yml:/usr/src/app/config/dynamic_settings.yml:ro
+      - ../config/outgoing_mail.yml:/usr/src/app/config/outgoing_mail.yml:ro
+      - ../config/delayed_jobs.yml:/usr/src/app/config/delayed_jobs.yml:ro
     depends_on:
       postgres:
         condition: service_healthy
@@ -61,6 +69,14 @@ services:
     volumes:
       - canvas_uploads:/usr/src/app/tmp/files
       - canvas_log:/usr/src/app/log
+      - ../config/redis.yml:/usr/src/app/config/redis.yml:ro
+      - ../config/database.yml:/usr/src/app/config/database.yml:ro
+      - ../config/domain.yml:/usr/src/app/config/domain.yml:ro
+      - ../config/cache_store.yml:/usr/src/app/config/cache_store.yml:ro
+      - ../config/security.yml:/usr/src/app/config/security.yml:ro
+      - ../config/dynamic_settings.yml:/usr/src/app/config/dynamic_settings.yml:ro
+      - ../config/outgoing_mail.yml:/usr/src/app/config/outgoing_mail.yml:ro
+      - ../config/delayed_jobs.yml:/usr/src/app/config/delayed_jobs.yml:ro
     depends_on:
       postgres:
         condition: service_healthy
