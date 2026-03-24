@@ -28,7 +28,7 @@ const EMPTY_OBJ = {}
 // Override the fontFamily to include "Lato Extended", which we prefer
 // to load over plain Lato (see LS-1559)
 const typographyBase =
-  'LatoWeb, "Lato Extended", Lato, "Helvetica Neue", Helvetica, Arial, sans-serif'
+  'Inter, Poppins, LatoWeb, "Lato Extended", Lato, "Helvetica Neue", Helvetica, Arial, sans-serif'
 const typography = {
   fontFamily: ENV.use_dyslexic_font ? `OpenDyslexic, ${typographyBase}` : typographyBase,
 }

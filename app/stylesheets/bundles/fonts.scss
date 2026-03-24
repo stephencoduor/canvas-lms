@@ -41,6 +41,13 @@ $fonts: (
       (italic 700): 'open_dyslexic/OpenDyslexic-BoldItalic',
     )),
   'OpenDyslexicMono': ("faces": ((normal 400): 'open_dyslexic/OpenDyslexicMono-Regular',
+    )),
+  'Poppins': ("faces": (
+      (normal 400): 'poppins/Poppins-Regular',
+      (normal 500): 'poppins/Poppins-Medium',
+      (normal 600): 'poppins/Poppins-SemiBold',
+      (normal 700): 'poppins/Poppins-Bold',
+      (normal 800): 'poppins/Poppins-ExtraBold',
     ))
 );
 
@@ -66,6 +73,15 @@ $faces: map-get($familyDef, "faces");
     }
   }
 }
+}
+
+/* ReDefiners: Inter variable font (supports weights 300-700) */
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/inter/Inter-Variable.woff2") format("woff2-variations");
+  font-weight: 300 700;
+  font-style: normal;
+  font-display: swap;
 }
 
 /*

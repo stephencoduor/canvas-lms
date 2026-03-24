@@ -49,13 +49,13 @@
 //====================================
 // Abstract Color Variables
 //====================================
-$electric: #2B7ABC; // blue
+$electric: #2DB88A; // ReDefiners accent green (was blue #2B7ABC)
 
 @if $use_high_contrast {
   $electric: #2B7ABC;
 }
 
-$shamrock: #03893D; // green
+$shamrock: #2DB88A; // ReDefiners accent green (was #03893D)
 
 @if $use_high_contrast {
   $shamrock: #02672D;
@@ -73,7 +73,7 @@ $crimson: #E62429; // red
   $crimson: #AE1B1F;
 }
 
-$fire: #F06E26; // orange
+$fire: #FF6B35; // ReDefiners CTA orange (was #F06E26)
 
 @if $use_high_contrast {
   $fire: #CF4A00;
@@ -91,8 +91,8 @@ $ic-color-alert: $fire;
 // Gray-ish Scale
 //====================================
 
-$ic-color-dark: #273540; // licorice
-$ic-color-medium-darker: #334451; // oxford
+$ic-color-dark: #163B32; // ReDefiners primary-800 (was #273540)
+$ic-color-medium-darker: #1E4D42; // ReDefiners primary-700 (was #334451)
 $ic-color-medium: #6A7883; // slate
 
 @if $use_high_contrast {
@@ -197,9 +197,9 @@ $left_side_width: 175px;
 $min_main_width: 510px;
 $max_main_width: 1100px;
 $ic-sp: 12px;
-$ic-border-radius: math.div($ic-sp, 2);
+$ic-border-radius: 12px; // ReDefiners rounded corners (was 6px)
 $spacing-width: 20px; // TODO - would be nice to phase this one out for $ic-sp
-$borderRadius: 4px;
+$borderRadius: 8px; // ReDefiners (was 4px)
 $contentBoxPadding: 8px;
 
 //============================
@@ -210,10 +210,10 @@ $contentBoxPadding: 8px;
 // Once all of those have been adjusted to use the new variable we can get rid of this
 $ic-line-height: 1.5;
 
-$ic-font-family: "Lato Extended", "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$ic-font-family: "Inter", "Poppins", "Lato Extended", "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
 
 @if $use_dyslexic_font {
-  $ic-font-family: OpenDyslexic, "Lato Extended", "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  $ic-font-family: OpenDyslexic, "Inter", "Poppins", "Lato Extended", "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 $ic-font-family-monospace: Monaco, Menlo, Consolas, "Courier New", monospace;
@@ -240,17 +240,17 @@ $h3-font-size: 19px;
 //============================
 // Layout Functional Variables
 //============================
-$ic-body-background-color: lighten($ic-color-neutral, 4);
+$ic-body-background-color: #D4EFE6; // ReDefiners soft mint (was lighten neutral)
 $ic-content-background-color: $ic-color-light;
 $ic-content-padding: 15px;
-$ic-header-background: #34444f;
-$ic-header-primary-width: 84px;
+$ic-header-background: #163B32; // ReDefiners primary-800 (was #34444f)
+$ic-header-primary-width: 100px; // ReDefiners wider sidebar (was 84px)
 
 @if $use_dyslexic_font {
-  $ic-header-primary-width: 104px;
+  $ic-header-primary-width: 120px;
 }
 
-$ic-header-primary-expanded-width: $ic-sp*15;
+$ic-header-primary-expanded-width: $ic-sp*20; // 240px ReDefiners sidebar (was $ic-sp*15 = 180px)
 $ic-right-side-width: $ic-sp*24;
 $ic-breadcrumbs-height: 4.5rem;
 

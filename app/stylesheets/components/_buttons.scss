@@ -431,3 +431,46 @@ input[type="button"] {
   white-space: nowrap;
   border-radius: 4px;
 }
+
+// ═══════════════════════════════════════════
+// ReDefiners: Rounded buttons, teal primary
+// ═══════════════════════════════════════════
+
+.Button {
+  border-radius: 12px;
+  transition: all 0.2s ease;
+  font-family: "Inter", "Poppins", sans-serif;
+}
+
+.Button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.Button:active {
+  transform: translateY(0);
+}
+
+.Button--primary {
+  background-color: #163B32;
+  border-color: #163B32;
+
+  &:hover {
+    background-color: #0F2922;
+    border-color: #0F2922;
+  }
+}
+
+.Button--success {
+  background-color: #2DB88A;
+  border-color: #2DB88A;
+
+  &:hover {
+    background-color: #25A07A;
+  }
+}
+
+.Button:focus-visible {
+  outline: 2px solid #2DB88A;
+  outline-offset: 2px;
+}

@@ -1,0 +1,52 @@
+/*
+ * ReDefiners Sidebar Navigation Overrides
+ *
+ * Gradient background, rounded nav items, accent green active state.
+ * Imported by _SideNav.scss.
+ */
+
+// Gradient sidebar background
+.ic-app-header {
+  background: linear-gradient(180deg, #163B32 0%, #0F2922 100%);
+}
+
+// Rounded nav items with hover/active states
+#instui-sidenav {
+  [role="menuitem"],
+  [role="link"] {
+    border-radius: 12px;
+    margin: 2px 6px;
+    transition: background 0.2s ease-out;
+
+    &:hover,
+    &:focus {
+      background-color: rgba(255, 255, 255, 0.08);
+    }
+
+    &[data-selected="true"] {
+      background-color: rgba(45, 184, 138, 0.2);
+
+      &:hover,
+      &:focus {
+        background-color: rgba(45, 184, 138, 0.25);
+      }
+    }
+  }
+
+  // Avatar green border
+  .ic-avatar {
+    border: 2px solid #2DB88A;
+  }
+}
+
+// Old sidebar (non-InstUI) gradient
+.left-sidebar,
+.menu-bar {
+  background: linear-gradient(180deg, #163B32 0%, #0F2922 100%);
+}
+
+// Active menu item green gradient
+.ic-app-header__menu-list-item--active .ic-app-header__menu-list-link {
+  background: rgba(45, 184, 138, 0.2);
+  border-radius: 12px;
+}

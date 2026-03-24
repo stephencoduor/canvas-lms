@@ -275,3 +275,33 @@ $ic-DashboardCard-icon-color: $ic-icon-link-color;
   margin-#{direction(right)}: $ic-sp;
   font-size: $ic-font-size--large;
 }
+
+// ═══════════════════════════════════════════
+// ReDefiners: Rounded cards with soft shadows
+// ═══════════════════════════════════════════
+
+.ic-DashboardCard {
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  border: 1px solid #E5E7EB;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  }
+}
+
+.ic-DashboardCard__header,
+.ic-DashboardCard__header_hero {
+  border-radius: 16px 16px 0 0;
+}
+
+.ic-DashboardCard__action-container {
+  border-top: 1px solid #E5E7EB;
+}
+
+.ic-DashboardCard__action:hover {
+  background-color: #D4EFE6;
+}

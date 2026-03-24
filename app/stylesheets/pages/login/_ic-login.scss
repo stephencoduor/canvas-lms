@@ -411,3 +411,54 @@ body.body--login-confirmation {
   vertical-align: middle;
   margin-#{direction(right)}: $ic-sp;
 }
+
+// ═══════════════════════════════════════════
+// ReDefiners: Rounded login form, gradient button
+// ═══════════════════════════════════════════
+
+.ic-Login__content {
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  max-width: 480px;
+}
+
+.ic-Login__innerContent {
+  border-radius: 16px;
+}
+
+.Button--login,
+.ic-Login__content .Button--primary {
+  background: linear-gradient(135deg, #2DB88A 0%, #25A07A 100%);
+  border-color: #2DB88A;
+  color: #FFFFFF;
+  border-radius: 9999px;
+  font-weight: 700;
+  padding: 12px 32px;
+  box-shadow: 0 4px 12px rgba(45, 184, 138, 0.3);
+
+  &:hover {
+    box-shadow: 0 6px 20px rgba(45, 184, 138, 0.4);
+    transform: translateY(-1px);
+  }
+}
+
+.ic-Login__content input[type="text"],
+.ic-Login__content input[type="password"],
+.ic-Login__content input[type="email"] {
+  border-radius: 12px;
+  border: 1px solid #E5E7EB;
+
+  &:focus {
+    border-color: #2DB88A;
+    box-shadow: 0 0 0 3px rgba(45, 184, 138, 0.15);
+  }
+}
+
+// Custom message branding panel
+.ic-Login__body__custom-message {
+  background: linear-gradient(135deg, #163B32 0%, #0F2922 100%);
+  color: #FFFFFF;
+  padding: 32px;
+  border-radius: 20px;
+  margin-bottom: 24px;
+}

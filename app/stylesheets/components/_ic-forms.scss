@@ -1057,3 +1057,22 @@ form.ic-Form-group { margin: 0; }
   width: 100%;
   line-height: 1.5;
 }
+
+// ═══════════════════════════════════════════
+// ReDefiners: Rounded inputs, green focus ring
+// ═══════════════════════════════════════════
+
+.ic-Input {
+  border-radius: 8px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+  &:focus {
+    border-color: #2DB88A;
+    box-shadow: 0 0 0 2px rgba(45, 184, 138, 0.2);
+    outline: none;
+  }
+}
+
+.ic-Label {
+  font-weight: 600;
+}

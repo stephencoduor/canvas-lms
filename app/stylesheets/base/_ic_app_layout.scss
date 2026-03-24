@@ -431,3 +431,16 @@ body.full-width .right-of-crumbs.bp-sync-button-exists {
   align-items: center;
   box-sizing: border-box;
 }
+
+// ═══════════════════════════════════════════
+// ReDefiners: Soft mint page background
+// ═══════════════════════════════════════════
+
+.ic-Layout-contentMain,
+.ic-app-main-content {
+  background-color: #D4EFE6;
+}
+
+.ic-app-main-content__secondary {
+  background-color: #D4EFE6;
+}
