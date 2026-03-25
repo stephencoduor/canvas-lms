@@ -36,7 +36,7 @@ import {up as activateCourseMenuToggler} from '@canvas/common/activateCourseMenu
 // eslint-disable-next-line import/no-nodejs-modules
 import {Buffer} from 'buffer'
 import {loadCareerTheme} from '@canvas/instui-bindings/react/career-theme-loader'
-import {getRedefinersThemeOverrides} from '@canvas/redefiners-theme'
+import {getRedefinersThemeOverrides, getRedefinersComponentOverrides} from '@canvas/redefiners-theme'
 
 window.Buffer = Buffer
 
@@ -120,7 +120,11 @@ if (ENV.use_high_contrast || hasHighContrastQueryParam) {
   }
 
   const redefinersOverrides = getRedefinersThemeOverrides()
-  canvasBaseTheme.use({overrides: {...transitionOverride, ...brandvars, ...redefinersOverrides, typography: {...typography, ...redefinersOverrides.typography}}})
+  const redefinersComponentOverrides = getRedefinersComponentOverrides()
+  canvasBaseTheme.use({
+    overrides: {...transitionOverride, ...brandvars, ...redefinersOverrides, typography: {...typography, ...redefinersOverrides.typography}},
+    componentOverrides: redefinersComponentOverrides,
+  })
 }
 
 if (hasCareerQueryParam) {

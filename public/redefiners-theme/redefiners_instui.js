@@ -23,7 +23,7 @@
   brandVars['ic-link-color'] = '#3B82F6';
   brandVars['ic-brand-button--primary-bgd'] = '#163B32';
   brandVars['ic-brand-button--primary-text'] = '#FFFFFF';
-  brandVars['ic-brand-button--secondary-bgd'] = '#FF6B35';
+  brandVars['ic-brand-button--secondary-bgd'] = '#2DB88A';
   brandVars['ic-brand-button--secondary-text'] = '#FFFFFF';
   brandVars['ic-brand-global-nav-bgd'] = '#0F2922';
 
@@ -38,4 +38,40 @@
       'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap';
     document.head.appendChild(fontLink);
   }
+  // ── Dashboard Welcome Section ──
+  // Injects a branded welcome banner above dashboard cards
+  document.addEventListener('DOMContentLoaded', function () {
+    var isDashboard =
+      window.location.pathname === '/' ||
+      window.location.pathname === '/dashboard' ||
+      window.location.pathname.match(/^\/\?/);
+
+    if (!isDashboard) return;
+
+    var target =
+      document.getElementById('dashboard_header_container') ||
+      document.getElementById('dashboard-planner') ||
+      document.querySelector('.ic-Dashboard-header') ||
+      document.getElementById('dashboard');
+
+    if (!target || document.querySelector('.redefiners-welcome')) return;
+
+    var userName = (window.ENV && window.ENV.current_user && window.ENV.current_user.display_name) || 'Student';
+    var now = new Date();
+    var hour = now.getHours();
+    var greeting = hour < 12 ? 'Good morning' : hour < 17 ? 'Good afternoon' : 'Good evening';
+
+    var welcome = document.createElement('div');
+    welcome.className = 'redefiners-welcome';
+    welcome.innerHTML =
+      '<div>' +
+        '<h2>' + greeting + ', ' + userName + '</h2>' +
+        '<p>Stay focused and keep up the great work on your learning journey.</p>' +
+      '</div>' +
+      '<div class="streak-badge">' +
+        '<i class="icon-check-plus" style="margin-right:6px"></i>Keep your streak going!' +
+      '</div>';
+
+    target.parentNode.insertBefore(welcome, target);
+  });
 })();

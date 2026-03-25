@@ -10,7 +10,7 @@
    1. Google Fonts — Inter & Poppins
    ================================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap');
+/* Font import removed — loaded via _head.html.erb with preconnect for better performance */
 
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -1957,6 +1957,560 @@ textarea:focus-visible {
 .ic-DashboardCard:nth-child(6) { animation-delay: 0.3s; }
 .ic-DashboardCard:nth-child(7) { animation-delay: 0.35s; }
 .ic-DashboardCard:nth-child(8) { animation-delay: 0.4s; }
+
+/* ================================================================
+   34. Login Page — Split Layout (ReDefiners Design)
+   ================================================================ */
+
+/* New login page: create split layout with left branding panel */
+body.body--login-confirmation,
+body[class*="login"] #application,
+#new_login_safe_to_mount {
+  background: #D4EFE6;
+}
+
+/* Login content card styling */
+[class*="contentLayout__content"] {
+  background: #FFFFFF !important;
+  border-radius: 20px !important;
+  box-shadow: 0 8px 32px rgba(15, 41, 34, 0.12) !important;
+}
+
+[class*="contentLayout--tablet"] {
+  padding-top: 3rem !important;
+  padding-bottom: 4rem !important;
+}
+
+/* Login background — teal gradient */
+[class*="contentLayout__background"] {
+  background: linear-gradient(135deg, #0F2922 0%, #163B32 30%, #1E4D42 60%, #2A6355 100%) !important;
+}
+
+/* Style login form inputs */
+#new_login_safe_to_mount input[type="text"],
+#new_login_safe_to_mount input[type="password"],
+#new_login_safe_to_mount input[type="email"] {
+  border-radius: 8px !important;
+  border: 1px solid #C4CDD5 !important;
+  padding: 0.75rem 1rem !important;
+  font-family: 'Inter', sans-serif !important;
+  transition: border-color 0.2s ease !important;
+}
+
+#new_login_safe_to_mount input:focus {
+  border-color: #2DB88A !important;
+  box-shadow: 0 0 0 2px rgba(45, 184, 138, 0.2) !important;
+}
+
+/* Login primary button */
+#new_login_safe_to_mount button[type="submit"],
+#new_login_safe_to_mount [class*="Button--primary"] {
+  background: #163B32 !important;
+  border-radius: 9999px !important;
+  font-family: 'Poppins', sans-serif !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.02em !important;
+  transition: background 0.2s ease, transform 0.15s ease !important;
+}
+
+#new_login_safe_to_mount button[type="submit"]:hover {
+  background: #1E4D42 !important;
+  transform: translateY(-1px) !important;
+}
+
+/* Login links */
+#new_login_safe_to_mount a {
+  color: #3B82F6 !important;
+}
+
+/* Login logo area */
+#new_login_safe_to_mount [class*="LoginLogo"] img,
+#new_login_safe_to_mount img[alt*="logo" i] {
+  max-height: 48px;
+}
+
+/* Legacy login page styling */
+.ic-Login {
+  background: linear-gradient(135deg, #0F2922 0%, #163B32 50%, #1E4D42 100%);
+}
+
+.ic-Login__body {
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.ic-Login__content {
+  background: #FFFFFF;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(15, 41, 34, 0.15);
+  padding: 3rem;
+  max-width: 480px;
+  width: 100%;
+}
+
+/* ================================================================
+   35. Account & Course Settings Pages
+   ================================================================ */
+
+/* Settings page tabs */
+.ui-tabs .ui-tabs-nav,
+#course_details_tabs .ui-tabs-nav {
+  background: transparent;
+  border-bottom: 2px solid #E5E7EB;
+}
+
+.ui-tabs .ui-tabs-nav .ui-tabs-anchor {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  color: #6B7280;
+  padding: 0.75rem 1.25rem;
+  border-radius: 8px 8px 0 0;
+  transition: color 0.2s ease;
+}
+
+.ui-tabs .ui-tabs-nav .ui-state-active .ui-tabs-anchor {
+  color: #163B32;
+  border-bottom: 2px solid #2DB88A;
+}
+
+/* Settings form groups */
+.ic-Form-group {
+  background: #FFFFFF;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.ic-Form-group__header {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  color: #163B32;
+}
+
+/* Toggle switches in settings */
+.ic-Super-toggle__input:checked + .ic-Super-toggle__container {
+  background: #2DB88A;
+}
+
+/* ================================================================
+   36. Admin Dashboard & Account Pages
+   ================================================================ */
+
+/* Admin tools cards */
+.admin-tools .ic-Action-header {
+  background: #FFFFFF;
+  border-radius: 12px;
+  padding: 1.25rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+/* Account statistics cards */
+.ic-statistics-card,
+.report_header {
+  background: #FFFFFF;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(15, 41, 34, 0.08);
+}
+
+/* Admin nav breadcrumbs */
+.ic-app-crumbs a {
+  color: #4A8B7A;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8125rem;
+}
+
+.ic-app-crumbs a:hover {
+  color: #2DB88A;
+}
+
+/* ================================================================
+   37. Analytics & Reports Pages
+   ================================================================ */
+
+.analytics-page .analytics-summary {
+  display: grid;
+  gap: 1rem;
+}
+
+.analytics-page .analytics-summary .stat-card {
+  background: #FFFFFF;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+/* Report cards */
+.report-card,
+.reports-page .report-item {
+  background: #FFFFFF;
+  border-radius: 12px;
+  padding: 1.25rem;
+  margin-bottom: 0.75rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  transition: box-shadow 0.2s ease;
+}
+
+.report-card:hover,
+.reports-page .report-item:hover {
+  box-shadow: 0 4px 12px rgba(15, 41, 34, 0.1);
+}
+
+/* ================================================================
+   38. Peer Review & Submissions
+   ================================================================ */
+
+.rubric_container .rubric_table {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.rubric_container .rubric_table th {
+  background: #163B32;
+  color: #FFFFFF;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  padding: 0.75rem 1rem;
+}
+
+.rubric_container .rubric_table td {
+  padding: 0.75rem 1rem;
+  border-color: #E5E7EB;
+  font-family: 'Inter', sans-serif;
+}
+
+.rubric_container .rubric_table tr:nth-child(even) td {
+  background: #F9FAFB;
+}
+
+/* Submission detail */
+.submission_details .content_box,
+.submission-details-frame {
+  background: #FFFFFF;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  padding: 1.5rem;
+}
+
+/* Peer review assignments */
+.peer-review-item {
+  background: #FFFFFF;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+  border-left: 3px solid #2DB88A;
+}
+
+/* ================================================================
+   39. Blueprint Courses
+   ================================================================ */
+
+.bcs__wrapper .bcs__content-lock {
+  background: #FFFFFF;
+  border-radius: 8px;
+  padding: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.bcs__wrapper .bcs__row {
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  transition: background 0.2s ease;
+}
+
+.bcs__wrapper .bcs__row:hover {
+  background: #F0FAF5;
+}
+
+/* Sync button */
+.bcs__wrapper .bcs__sync-btn {
+  background: #163B32 !important;
+  border-radius: 9999px !important;
+  color: #FFFFFF !important;
+}
+
+/* ================================================================
+   40. Content Migrations & Imports
+   ================================================================ */
+
+.migrationProgressItem {
+  background: #FFFFFF;
+  border-radius: 12px;
+  padding: 1.25rem;
+  margin-bottom: 0.75rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.migrationProgressItem .progressStatus {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+}
+
+/* File upload dropzone */
+.FileUpload,
+.ic-DragDrop {
+  border: 2px dashed #4A8B7A;
+  border-radius: 12px;
+  background: rgba(45, 184, 138, 0.04);
+  padding: 2rem;
+  text-align: center;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.FileUpload:hover,
+.ic-DragDrop:hover,
+.FileUpload.highlight,
+.ic-DragDrop.highlight {
+  border-color: #2DB88A;
+  background: rgba(45, 184, 138, 0.08);
+}
+
+/* ================================================================
+   41. LTI / External Tools
+   ================================================================ */
+
+.ic-external-tool-item,
+.ExternalToolsTableRow {
+  background: #FFFFFF;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  transition: box-shadow 0.2s ease;
+}
+
+.ic-external-tool-item:hover,
+.ExternalToolsTableRow:hover {
+  box-shadow: 0 2px 8px rgba(15, 41, 34, 0.08);
+}
+
+/* ================================================================
+   42. User Profile & ePortfolio
+   ================================================================ */
+
+.profile-header,
+.profile_pic_link {
+  border-radius: 16px;
+}
+
+.profile_pic_link img,
+.avatar {
+  border-radius: 50%;
+  border: 3px solid #2DB88A;
+}
+
+/* Profile info card */
+.ic-user-profile-header {
+  background: #FFFFFF;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 2px 8px rgba(15, 41, 34, 0.08);
+  margin-bottom: 1.5rem;
+}
+
+/* ePortfolio */
+.eportfolio-section,
+.section_list li {
+  background: #FFFFFF;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.eportfolio-section:hover,
+.section_list li:hover {
+  background: #F0FAF5;
+}
+
+/* ================================================================
+   43. Wiki Pages Editor
+   ================================================================ */
+
+.edit-page-form {
+  background: #FFFFFF;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+/* RCE (Rich Content Editor) container */
+.ic-RichContentEditor .tox.tox-tinymce {
+  border-radius: 8px !important;
+  border-color: #C4CDD5 !important;
+}
+
+.ic-RichContentEditor .tox .tox-toolbar__primary {
+  background: #F9FAFB !important;
+  border-bottom: 1px solid #E5E7EB !important;
+}
+
+/* ================================================================
+   44. Speed Grader Enhancements
+   ================================================================ */
+
+#speed_grader_header {
+  background: #0F2922 !important;
+}
+
+#speed_grader_header a {
+  color: #7CB5A4 !important;
+}
+
+#speed_grader_header a:hover {
+  color: #FFFFFF !important;
+}
+
+/* Speed Grader grade input */
+#grading-box-extended {
+  border-radius: 8px;
+  border: 2px solid #C4CDD5;
+  font-family: 'Inter', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  text-align: center;
+  transition: border-color 0.2s ease;
+}
+
+#grading-box-extended:focus {
+  border-color: #2DB88A;
+  box-shadow: 0 0 0 2px rgba(45, 184, 138, 0.2);
+}
+
+/* Speed Grader student selector */
+#combo_box_container select,
+.ui-selectmenu-button {
+  border-radius: 8px !important;
+  border: 1px solid #C4CDD5 !important;
+  font-family: 'Inter', sans-serif !important;
+}
+
+/* ================================================================
+   45. Outcomes & Mastery
+   ================================================================ */
+
+.outcome-group,
+.learning_outcome {
+  background: #FFFFFF;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+  border-left: 3px solid #2DB88A;
+}
+
+.mastery-indicator {
+  border-radius: 4px;
+  padding: 0.25rem 0.75rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 0.75rem;
+}
+
+/* ================================================================
+   46. Course Paces
+   ================================================================ */
+
+.course-paces-module-table {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.course-paces-module-table th {
+  background: #163B32;
+  color: #FFFFFF;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* ================================================================
+   47. K-5 Elementary Pages
+   ================================================================ */
+
+.ic-Dashboard-header--k5 {
+  background: linear-gradient(135deg, #0F2922, #1E4D42);
+  border-radius: 16px;
+  padding: 2rem;
+  color: #FFFFFF;
+}
+
+.ic-Dashboard-header--k5 h1 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+}
+
+/* K-5 subject cards */
+[class*="SubjectCard"] {
+  border-radius: 16px !important;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(15, 41, 34, 0.08) !important;
+}
+
+/* ================================================================
+   48. Global Scrollbar Styling
+   ================================================================ */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F0FAF5;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #4A8B7A;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2DB88A;
+}
+
+/* ================================================================
+   49. Dashboard Welcome Section (injected by JS)
+   ================================================================ */
+
+.redefiners-welcome {
+  background: linear-gradient(135deg, #163B32, #1E4D42);
+  border-radius: 16px;
+  padding: 2rem 2.5rem;
+  margin-bottom: 1.5rem;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.redefiners-welcome h2 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  margin: 0;
+  color: #FFFFFF;
+}
+
+.redefiners-welcome p {
+  color: #B8DDD0;
+  font-family: 'Inter', sans-serif;
+  margin: 0.25rem 0 0;
+  font-size: 0.875rem;
+}
+
+.redefiners-welcome .streak-badge {
+  background: #FF6B35;
+  color: #FFFFFF;
+  border-radius: 9999px;
+  padding: 0.5rem 1.25rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 0.875rem;
+  white-space: nowrap;
+}
 
 /* Reduced motion — respect user preference */
 @media (prefers-reduced-motion: reduce) {
