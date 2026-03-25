@@ -24,14 +24,6 @@ services:
       - canvas_uploads:/usr/src/app/tmp/files
       - canvas_log:/usr/src/app/log
       - canvas_brandable:/usr/src/app/public/dist/brandable_css
-      - ../config/redis.yml:/usr/src/app/config/redis.yml:ro
-      - ../config/database.yml:/usr/src/app/config/database.yml:ro
-      - ../config/domain.yml:/usr/src/app/config/domain.yml:ro
-      - ../config/cache_store.yml:/usr/src/app/config/cache_store.yml:ro
-      - ../config/security.yml:/usr/src/app/config/security.yml:ro
-      - ../config/dynamic_settings.yml:/usr/src/app/config/dynamic_settings.yml:ro
-      - ../config/outgoing_mail.yml:/usr/src/app/config/outgoing_mail.yml:ro
-      - ../config/delayed_jobs.yml:/usr/src/app/config/delayed_jobs.yml:ro
     depends_on:
       postgres:
         condition: service_healthy
@@ -69,14 +61,6 @@ services:
     volumes:
       - canvas_uploads:/usr/src/app/tmp/files
       - canvas_log:/usr/src/app/log
-      - ../config/redis.yml:/usr/src/app/config/redis.yml:ro
-      - ../config/database.yml:/usr/src/app/config/database.yml:ro
-      - ../config/domain.yml:/usr/src/app/config/domain.yml:ro
-      - ../config/cache_store.yml:/usr/src/app/config/cache_store.yml:ro
-      - ../config/security.yml:/usr/src/app/config/security.yml:ro
-      - ../config/dynamic_settings.yml:/usr/src/app/config/dynamic_settings.yml:ro
-      - ../config/outgoing_mail.yml:/usr/src/app/config/outgoing_mail.yml:ro
-      - ../config/delayed_jobs.yml:/usr/src/app/config/delayed_jobs.yml:ro
     depends_on:
       postgres:
         condition: service_healthy
@@ -110,9 +94,9 @@ services:
       -c max_locks_per_transaction=640
       -c max_stack_depth=5MB
       -c random_page_cost=1.0
-      -c shared_buffers=256MB
-      -c work_mem=8MB
-      -c effective_cache_size=1GB
+      -c shared_buffers=512MB
+      -c work_mem=16MB
+      -c effective_cache_size=2GB
     deploy:
       resources:
         limits:
@@ -148,18 +132,20 @@ services:
       - "443:443"
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
-      - /etc/letsencrypt:/etc/letsencrypt:ro
+      - certbot_etc:/etc/letsencrypt:ro
+      - certbot_var:/var/lib/letsencrypt
       - certbot_www:/var/www/certbot:ro
     depends_on:
       - web
 
   # ═══════════════════════════════════════
-  # Certbot (Let's Encrypt SSL renewal)
+  # Certbot (Let's Encrypt SSL)
   # ═══════════════════════════════════════
   certbot:
     image: certbot/certbot
     volumes:
-      - /etc/letsencrypt:/etc/letsencrypt
+      - certbot_etc:/etc/letsencrypt
+      - certbot_var:/var/lib/letsencrypt
       - certbot_www:/var/www/certbot
     entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done'"
 
@@ -173,6 +159,10 @@ volumes:
   canvas_log:
     driver: local
   canvas_brandable:
+    driver: local
+  certbot_etc:
+    driver: local
+  certbot_var:
     driver: local
   certbot_www:
     driver: local

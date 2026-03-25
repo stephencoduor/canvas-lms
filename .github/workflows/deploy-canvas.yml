@@ -9,19 +9,16 @@ env:
   SERVER_HOST: 148.230.111.247
   SERVER_USER: root
   DEPLOY_DIR: /opt/canvas-lms
-  CANVAS_DOMAIN: fineract.us
 
 jobs:
   deploy:
     name: Deploy to Production
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 45
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 1
 
       - name: Setup SSH
         run: |
@@ -32,26 +29,16 @@ jobs:
 
       - name: Deploy to server
         run: |
-          SSH_CMD="ssh -o StrictHostKeyChecking=no -i ~/.ssh/deploy_key ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }}"
+          ssh -o StrictHostKeyChecking=no -i ~/.ssh/deploy_key \
+            ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} << 'DEPLOY_SCRIPT'
 
-          # Ensure deploy directory exists and is a git repo
-          $SSH_CMD << 'INIT_SCRIPT'
-          DEPLOY_DIR="/opt/canvas-lms"
-          if [ ! -d "$DEPLOY_DIR/.git" ]; then
-            echo "=== Cloning repository ==="
-            git clone --depth 1 --branch master https://github.com/stephencoduor/canvas-lms.git $DEPLOY_DIR
-          fi
-          INIT_SCRIPT
-
-          # Pull latest code and deploy
-          $SSH_CMD << 'DEPLOY_SCRIPT'
           set -e
           DEPLOY_DIR="/opt/canvas-lms"
           CONF_DIR="$DEPLOY_DIR/deploy"
 
           echo "=== Pulling latest code ==="
           cd $DEPLOY_DIR
-          git fetch origin master --depth 1
+          git fetch origin master
           git reset --hard origin/master
 
           echo "=== Copying config files ==="
@@ -64,62 +51,30 @@ jobs:
           cp deploy/config/delayed_jobs.yml config/delayed_jobs.yml
           cp deploy/config/dynamic_settings.yml config/dynamic_settings.yml
 
-          echo "=== Setting up SSL certs ==="
-          # Copy existing Let's Encrypt certs to docker volume path
-          CERT_SRC="/etc/letsencrypt"
-          if [ -d "$CERT_SRC/live/fineract.us" ]; then
-            echo "Found existing SSL certs for fineract.us"
-          else
-            echo "No SSL certs found, will generate with certbot"
-          fi
-
           echo "=== Rebuilding Docker image ==="
           cd $CONF_DIR
+          docker compose -f docker-compose.production.yml --env-file .env.production build web
 
-          # Clean up old images to free space
-          docker image prune -f 2>/dev/null || true
-
-          docker compose -f docker-compose.production.yml --env-file .env.production build --no-cache web
-
-          echo "=== Starting database first ==="
-          docker compose -f docker-compose.production.yml --env-file .env.production up -d postgres redis
-          echo "Waiting for database to be ready..."
-          sleep 15
-
-          echo "=== Initializing database ==="
-          docker compose -f docker-compose.production.yml --env-file .env.production run --rm web \
-            bundle exec rake db:create 2>/dev/null || echo "Database already exists"
-
-          docker compose -f docker-compose.production.yml --env-file .env.production run --rm web \
-            bundle exec rake db:initial_setup 2>/dev/null || \
+          echo "=== Running migrations ==="
           docker compose -f docker-compose.production.yml --env-file .env.production run --rm web \
             bundle exec rake db:migrate || true
 
-          echo "=== Starting all services ==="
+          echo "=== Restarting services ==="
           docker compose -f docker-compose.production.yml --env-file .env.production up -d
 
-          echo "=== Waiting for Canvas to start ==="
-          for i in $(seq 1 12); do
-            if curl -sf http://localhost:80/health_check > /dev/null 2>&1; then
-              echo "Canvas is healthy!"
-              break
-            fi
-            echo "Waiting... ($i/12)"
-            sleep 15
-          done
-
-          echo "=== Service status ==="
-          docker compose -f docker-compose.production.yml --env-file .env.production ps
+          echo "=== Waiting for health check ==="
+          sleep 30
+          curl -sf http://localhost:80/health_check || echo "Health check pending (Canvas may still be starting)"
 
           echo "=== Deployment complete ==="
           DEPLOY_SCRIPT
 
       - name: Verify deployment
         run: |
-          sleep 15
-          STATUS=$(curl -s -o /dev/null -w "%{http_code}" --max-time 30 "https://${{ env.CANVAS_DOMAIN }}" 2>/dev/null || echo "000")
+          sleep 10
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" "https://lms.k8s-gke.us" || echo "000")
           if [ "$STATUS" = "200" ] || [ "$STATUS" = "302" ]; then
             echo "Deployment verified: HTTP $STATUS"
           else
-            echo "Warning: HTTP $STATUS - Canvas may still be starting up (can take 2-3 minutes)"
+            echo "Warning: HTTP $STATUS - Canvas may still be starting up"
           fi

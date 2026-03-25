@@ -1,0 +1,1981 @@
+/*
+ * ReDefiners Theme — CSS Overrides for Canvas LMS
+ * Upload via Theme Editor > CSS file field
+ *
+ * Prerequisite: Account must have global_includes enabled
+ * This file is loaded AFTER all base Canvas styles.
+ */
+
+/* ================================================================
+   1. Google Fonts — Inter & Poppins
+   ================================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap');
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6,
+.ic-Dashboard-header__title,
+.ic-DashboardCard__header-title {
+  font-family: 'Poppins', 'Inter', sans-serif;
+}
+
+/* ================================================================
+   2. Page Background — Soft Mint
+   ================================================================ */
+
+body {
+  background-color: #D4EFE6;
+}
+
+.ic-Layout-contentMain,
+.ic-Layout-contentWrapper,
+#content,
+.ic-app-main-content {
+  background-color: #D4EFE6;
+}
+
+/* Ensure the right sidebar also gets the mint background */
+.ic-app-main-content__secondary {
+  background-color: #D4EFE6;
+}
+
+/* ================================================================
+   3. Dashboard Cards — Rounded, Soft Shadows
+   ================================================================ */
+
+.ic-DashboardCard {
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+  border: 1px solid #E5E7EB;
+}
+
+.ic-DashboardCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.ic-DashboardCard__header {
+  border-radius: 16px 16px 0 0;
+}
+
+.ic-DashboardCard__header_hero {
+  border-radius: 16px 16px 0 0;
+}
+
+/* Action icons at bottom of card */
+.ic-DashboardCard__action-container {
+  border-top: 1px solid #E5E7EB;
+}
+
+.ic-DashboardCard__action:hover {
+  background-color: #D4EFE6;
+}
+
+/* ================================================================
+   4. Navigation Sidebar Enhancement
+   ================================================================ */
+
+/* Main sidebar background is set via BrandConfig variable
+   (ic-brand-global-nav-bgd: #0F2922). These are visual enhancements. */
+
+.ic-app-header {
+  background: linear-gradient(180deg, #163B32 0%, #0F2922 100%);
+}
+
+/* Menu items — rounded hover states */
+.ic-app-header__menu-list-link {
+  border-radius: 12px;
+  margin: 2px 6px;
+  transition: background 0.2s ease-out;
+}
+
+.ic-app-header__menu-list-link:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Active menu item — green gradient */
+.ic-app-header__menu-list-item--active .ic-app-header__menu-list-link {
+  background: linear-gradient(135deg, #2DB88A 0%, #25A07A 100%);
+  border-radius: 12px;
+}
+
+/* Notification badges */
+.menu-item__badge {
+  background-color: #FF6B35;
+  color: #FFFFFF;
+  border-radius: 9999px;
+  font-weight: 600;
+}
+
+/* Logo area */
+.ic-app-header__logomark-container {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Avatar ring */
+.ic-avatar {
+  border: 2px solid #2DB88A;
+  border-radius: 9999px;
+}
+
+/* ================================================================
+   5. Buttons — Pill Shape, ReDefiners Colors
+   ================================================================ */
+
+/* Base button */
+.Button,
+.btn {
+  border-radius: 9999px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  transition: all 0.2s ease-out;
+}
+
+.Button:hover,
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.Button:active,
+.btn:active {
+  transform: translateY(0);
+}
+
+/* Primary button — dark teal */
+.Button--primary,
+.btn-primary {
+  background-color: #163B32;
+  border-color: #163B32;
+  color: #FFFFFF;
+  border-radius: 9999px;
+}
+
+.Button--primary:hover,
+.btn-primary:hover {
+  background-color: #1E4D42;
+  border-color: #1E4D42;
+  box-shadow: 0 4px 12px rgba(22, 59, 50, 0.3);
+}
+
+/* Secondary button — orange gradient CTA */
+.Button--secondary {
+  background: linear-gradient(135deg, #FF6B35 0%, #FF8C5A 100%);
+  border-color: transparent;
+  color: #FFFFFF;
+  border-radius: 9999px;
+}
+
+.Button--secondary:hover {
+  box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+}
+
+/* Success button — accent green */
+.Button--success,
+.btn-success {
+  background-color: #2DB88A;
+  border-color: #2DB88A;
+  color: #FFFFFF;
+  border-radius: 9999px;
+}
+
+.Button--success:hover,
+.btn-success:hover {
+  background-color: #25A07A;
+  box-shadow: 0 4px 12px rgba(45, 184, 138, 0.3);
+}
+
+/* Danger button */
+.Button--danger,
+.btn-danger {
+  border-radius: 9999px;
+}
+
+/* Link-styled button */
+.Button--link {
+  color: #3B82F6;
+  border-radius: 9999px;
+}
+
+.Button--link:hover {
+  color: #2563EB;
+  box-shadow: none;
+  transform: none;
+}
+
+/* Focus ring for all buttons */
+.Button:focus-visible,
+.btn:focus-visible {
+  outline: 2px solid #2DB88A;
+  outline-offset: 2px;
+}
+
+/* ================================================================
+   6. Form Inputs — Rounded, Green Focus
+   ================================================================ */
+
+.ic-Input,
+.ic-Form-control input,
+.ic-Form-control select,
+.ic-Form-control textarea,
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="url"],
+input[type="number"],
+select,
+textarea {
+  border-radius: 12px;
+  border: 1px solid #E5E7EB;
+  transition: border-color 0.2s ease-out, box-shadow 0.2s ease-out;
+  font-family: 'Inter', sans-serif;
+}
+
+.ic-Input:focus,
+.ic-Form-control input:focus,
+.ic-Form-control select:focus,
+.ic-Form-control textarea:focus,
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+select:focus,
+textarea:focus {
+  border-color: #2DB88A;
+  box-shadow: 0 0 0 3px rgba(45, 184, 138, 0.15);
+  outline: none;
+}
+
+/* Error state */
+.ic-Input--has-error,
+.ic-Form-control--has-error .ic-Input {
+  border-color: #EF4444;
+}
+
+.ic-Input--has-error:focus,
+.ic-Form-control--has-error .ic-Input:focus {
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15);
+}
+
+/* Labels */
+.ic-Label {
+  font-weight: 600;
+  color: #1B1B1B;
+}
+
+/* ================================================================
+   7. Search Bar — Pill Shape
+   ================================================================ */
+
+#searchTerm,
+input[type="search"] {
+  border-radius: 9999px;
+  border: 1px solid #E5E7EB;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+#searchTerm:focus,
+input[type="search"]:focus {
+  border-color: #2DB88A;
+  box-shadow: 0 0 0 3px rgba(45, 184, 138, 0.15);
+  outline: none;
+}
+
+/* ================================================================
+   8. Tables — Rounded Rows, Subtle Stripes
+   ================================================================ */
+
+.ic-Table {
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid #E5E7EB;
+}
+
+.ic-Table th {
+  background-color: #F3F4F6;
+  font-weight: 600;
+  color: #1B1B1B;
+  border-bottom: 2px solid #E5E7EB;
+}
+
+.ic-Table--striped tbody tr:nth-child(even) {
+  background-color: #F9FAFB;
+}
+
+.ic-Table--hover-row tbody tr:hover {
+  background-color: #D4EFE6;
+}
+
+/* Status row backgrounds */
+.ic-Table__row--bg-success {
+  background-color: #D1FAE5;
+}
+
+.ic-Table__row--bg-alert {
+  background-color: #FEF3C7;
+}
+
+.ic-Table__row--bg-danger {
+  background-color: #FEE2E2;
+}
+
+/* ================================================================
+   9. Progress Bars — Rounded, Green Gradient
+   ================================================================ */
+
+.progress {
+  border-radius: 9999px;
+  background-color: #E5E7EB;
+  overflow: hidden;
+  height: 10px;
+}
+
+.progress-bar {
+  border-radius: 9999px;
+  background: linear-gradient(90deg, #2DB88A 0%, #4ECBA0 100%);
+}
+
+/* ================================================================
+   10. Breadcrumbs — Teal Links
+   ================================================================ */
+
+.ic-app-crumbs a {
+  color: #2DB88A;
+  font-weight: 500;
+}
+
+.ic-app-crumbs a:hover {
+  color: #25A07A;
+}
+
+/* ================================================================
+   11. Content Cards & Panels — Rounded
+   ================================================================ */
+
+/* General card-like containers */
+.ic-Layout-contentMain .ig-list,
+.ic-Layout-contentMain .item-group-container {
+  border-radius: 16px;
+  border: 1px solid #E5E7EB;
+  overflow: hidden;
+}
+
+/* Right sidebar logo area */
+.ic-Layout-watermark {
+  opacity: 0.1;
+}
+
+/* ================================================================
+   12. Course Menu Sidebar — Enhanced
+   ================================================================ */
+
+.ic-app-course-menu {
+  background-color: #FFFFFF;
+  border-radius: 16px;
+  border: 1px solid #E5E7EB;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  margin-top: 8px;
+}
+
+/* ================================================================
+   13. Footer — Subtle
+   ================================================================ */
+
+.ic-app-footer {
+  background-color: transparent;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.ic-app-footer__links a {
+  color: #6B7280;
+}
+
+.ic-app-footer__links a:hover {
+  color: #2DB88A;
+}
+
+/* ================================================================
+   14. Login Page — Teal Panel & Rounded Form
+   ================================================================ */
+
+/* Login body background set via BrandConfig variable */
+
+.ic-Login {
+  font-family: 'Inter', sans-serif;
+}
+
+.ic-Login__content {
+  border-radius: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  max-width: 480px;
+}
+
+/* Login button — green accent */
+.Button--login,
+.ic-Login__content .Button--primary {
+  background: linear-gradient(135deg, #2DB88A 0%, #25A07A 100%);
+  border-color: #2DB88A;
+  color: #FFFFFF;
+  border-radius: 9999px;
+  font-weight: 700;
+  padding: 12px 32px;
+  box-shadow: 0 4px 12px rgba(45, 184, 138, 0.3);
+}
+
+.Button--login:hover,
+.ic-Login__content .Button--primary:hover {
+  box-shadow: 0 6px 20px rgba(45, 184, 138, 0.4);
+  transform: translateY(-1px);
+}
+
+/* Login inputs */
+.ic-Login__content input[type="text"],
+.ic-Login__content input[type="password"],
+.ic-Login__content input[type="email"] {
+  border-radius: 12px;
+  border: 1px solid #E5E7EB;
+}
+
+.ic-Login__content input:focus {
+  border-color: #2DB88A;
+  box-shadow: 0 0 0 3px rgba(45, 184, 138, 0.15);
+}
+
+/* Custom message area (branding panel) */
+.ic-Login__body__custom-message {
+  background: linear-gradient(135deg, #163B32 0%, #0F2922 100%);
+  color: #FFFFFF;
+  padding: 32px;
+  border-radius: 20px;
+  margin-bottom: 24px;
+}
+
+/* ================================================================
+   15. Flash Messages / Alerts — Rounded
+   ================================================================ */
+
+.ic-flash-info,
+.ic-flash-success,
+.ic-flash-warning,
+.ic-flash-error {
+  border-radius: 12px;
+}
+
+/* ================================================================
+   16. Modal / Dialog — Rounded
+   ================================================================ */
+
+.ReactModal__Content,
+[role="dialog"] {
+  border-radius: 20px;
+}
+
+/* ================================================================
+   17. Tooltips — Rounded
+   ================================================================ */
+
+[role="tooltip"] {
+  border-radius: 8px;
+}
+
+/* ================================================================
+   18. Focus Ring — Global Accessibility Override
+   ================================================================ */
+
+*:focus-visible {
+  outline: 2px solid #2DB88A;
+  outline-offset: 2px;
+}
+
+/* ================================================================
+   19. Selection Color
+   ================================================================ */
+
+::selection {
+  background-color: rgba(45, 184, 138, 0.2);
+  color: #1B1B1B;
+}
+
+/* ================================================================
+   20. Scrollbar Styling (Webkit)
+   ================================================================ */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F3F4F6;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #C4CDD5;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #9CA3AF;
+}
+
+/* ================================================================
+   21. Course Page Layouts
+   ================================================================ */
+
+.ic-app-course-menu li a {
+  border-radius: 8px;
+  margin: 2px 8px;
+  padding: 8px 12px;
+  transition: background-color 0.2s ease-out, color 0.2s ease-out;
+  color: #1B1B1B;
+}
+
+.ic-app-course-menu li a:hover {
+  background-color: #D4EFE6;
+  color: #163B32;
+}
+
+.ic-app-course-menu li a.active,
+.ic-app-course-menu li a[aria-current="page"] {
+  background: linear-gradient(135deg, #2DB88A 0%, #25A07A 100%);
+  color: #FFFFFF;
+  font-weight: 600;
+}
+
+.context_module {
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  border: 1px solid #E5E7EB;
+  margin-bottom: 16px;
+  overflow: hidden;
+  background: #FFFFFF;
+}
+
+.context_module_header {
+  background: linear-gradient(135deg, #163B32 0%, #1E4D42 100%);
+  color: #FFFFFF;
+  padding: 12px 16px;
+}
+
+.context_module_header .ig-header-title {
+  color: #FFFFFF;
+  font-family: 'Poppins', 'Inter', sans-serif;
+  font-weight: 700;
+}
+
+.context_module_header .ig-header-title a {
+  color: #FFFFFF;
+}
+
+.context_module_item {
+  border-bottom: 1px solid #F3F4F6;
+  transition: background-color 0.15s ease-out;
+}
+
+.context_module_item:hover {
+  background-color: #F0FAF6;
+}
+
+.context_module_item:last-child {
+  border-bottom: none;
+}
+
+/* ================================================================
+   22. Assignment List
+   ================================================================ */
+
+.ig-list .ig-row {
+  border-radius: 12px;
+  border: 1px solid #E5E7EB;
+  margin-bottom: 8px;
+  background: #FFFFFF;
+  transition: box-shadow 0.2s ease-out, transform 0.15s ease-out;
+}
+
+.ig-list .ig-row:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transform: translateY(-1px);
+}
+
+.ig-header {
+  font-family: 'Poppins', 'Inter', sans-serif;
+  font-weight: 700;
+  color: #163B32;
+  font-size: 1.1em;
+}
+
+.ig-header .name {
+  font-family: 'Poppins', 'Inter', sans-serif;
+  font-weight: 700;
+}
+
+.assignment-date-due {
+  font-size: 0.85em;
+  color: #6B7280;
+  font-weight: 400;
+}
+
+.ig-details {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ig-details .ig-info {
+  display: flex;
+  align-items: center;
+}
+
+/* ================================================================
+   23. Discussion Topics
+   ================================================================ */
+
+.discussion-topic {
+  border-radius: 16px;
+  border: 1px solid #E5E7EB;
+  background: #FFFFFF;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  margin-bottom: 16px;
+  overflow: hidden;
+}
+
+.discussionTopicIndexList .discussion-topic {
+  border-radius: 12px;
+  margin-bottom: 8px;
+  padding: 12px 16px;
+  transition: box-shadow 0.2s ease-out;
+}
+
+.discussionTopicIndexList .discussion-topic:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.discussion-entry {
+  border-radius: 12px;
+  border: 1px solid #F3F4F6;
+  padding: 12px 16px;
+  margin-bottom: 8px;
+  margin-left: 24px;
+  background: #FAFBFC;
+}
+
+.discussion-entry .discussion-entry {
+  margin-left: 24px;
+  background: #F3F4F6;
+}
+
+.discussion-reply-box {
+  border-radius: 12px;
+  border: 1px solid #E5E7EB;
+  overflow: hidden;
+}
+
+.discussion-reply-box textarea {
+  border-radius: 12px;
+  border: 1px solid #E5E7EB;
+}
+
+.discussion-header,
+.discussion-title {
+  font-family: 'Poppins', 'Inter', sans-serif;
+  font-weight: 700;
+  color: #163B32;
+}
+
+.discussion-header-right {
+  color: #6B7280;
+  font-size: 0.9em;
+}
+
+/* ================================================================
+   24. Gradebook
+   ================================================================ */
+
+.slick-header-column {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #F3F4F6;
+  font-family: 'Poppins', 'Inter', sans-serif;
+  font-weight: 600;
+  color: #163B32;
+  border-bottom: 2px solid #E5E7EB;
+  font-size: 0.85em;
+}
+
+.slick-cell {
+  border-right: 1px solid #F3F4F6;
+  border-bottom: 1px solid #F3F4F6;
+  font-family: 'Inter', sans-serif;
+  transition: background-color 0.15s ease-out;
+}
+
+.slick-cell:hover {
+  background-color: #F0FAF6;
+}
+
+.total-column,
+.total_grade {
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+}
+
+.total_grade .grade {
+  font-weight: 700;
+}
+
+.gradebook-header,
+#gradebook-grid-wrapper .slick-header {
+  font-family: 'Poppins', 'Inter', sans-serif;
+  font-weight: 700;
+}
+
+#gradebook_wrapper {
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid #E5E7EB;
+}
+
+/* Passing grade highlight */
+.grayed-out .grade,
+.Student__DueDate--passed .grade {
+  color: #2DB88A;
+  font-weight: 700;
+}
+
+/* ================================================================
+   25. Calendar (FullCalendar)
+   ================================================================ */
+
+.fc {
+  font-family: 'Inter', sans-serif;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.fc-toolbar {
+  padding: 12px 16px;
+}
+
+.fc-toolbar .fc-button {
+  border-radius: 9999px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  transition: all 0.2s ease-out;
+  border: 1px solid #E5E7EB;
+  background: #FFFFFF;
+  color: #163B32;
+  padding: 6px 16px;
+}
+
+.fc-toolbar .fc-button:hover {
+  background-color: #D4EFE6;
+  border-color: #2DB88A;
+}
+
+.fc-toolbar .fc-button-active,
+.fc-toolbar .fc-button.fc-state-active {
+  background: linear-gradient(135deg, #2DB88A 0%, #25A07A 100%);
+  color: #FFFFFF;
+  border-color: #2DB88A;
+}
+
+.fc-toolbar h2 {
+  font-family: 'Poppins', 'Inter', sans-serif;
+  font-weight: 700;
+  color: #163B32;
+}
+
+.fc-event {
+  border-radius: 8px;
+  border: none;
+  padding: 2px 6px;
+  font-size: 0.85em;
+  font-weight: 500;
+  transition: transform 0.15s ease-out;
+}
+
+.fc-event:hover {
+  transform: scale(1.02);
+}
+
+.fc-day-header,
+.fc th {
+  font-family: 'Poppins', 'Inter', sans-serif;
+  font-weight: 600;
+  color: #163B32;
+  padding: 10px 4px;
+  text-transform: uppercase;
+  font-size: 0.8em;
+  letter-spacing: 0.05em;
+}
+
+.fc-day-number {
+  border-radius: 9999px;
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.15s ease-out;
+}
+
+.fc-day-number:hover {
+  background-color: #D4EFE6;
+}
+
+.fc-today .fc-day-number {
+  background: #2DB88A;
+  color: #FFFFFF;
+  font-weight: 700;
+}
+
+.fc-today {
+  background-color: #F0FAF6;
+}
+
+/* ================================================================
+   26. Files Page
+   ================================================================ */
+
+.ef-directory {
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid #E5E7EB;
+  background: #FFFFFF;
+}
+
+.ef-item-row {
+  border-bottom: 1px solid #F3F4F6;
+  transition: background-color 0.15s ease-out;
+  padding: 8px 16px;
+}
+
+.ef-item-row:hover {
+  background-color: #F0FAF6;
+}
+
+.ef-item-row:last-child {
+  border-bottom: none;
+}
+
+.ef-file-preview {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #E5E7EB;
+}
+
+.ef-file-preview-stretch {
+  border-radius: 12px;
+}
+
+.ef-folder .ef-big-icon {
+  color: #FF6B35;
+}
+
+.ef-folder .ef-big-icon--folder {
+  color: #FF6B35;
+}
+
+.ef-item-row .ef-big-icon--file {
+  color: #2DB88A;
+}
+
+.ef-header {
+  font-family: 'Poppins', 'Inter', sans-serif;
+  font-weight: 700;
+  color: #163B32;
+}
+
+.ef-name-col a {
+  color: #163B32;
+  font-weight: 500;
+}
+
+.ef-name-col a:hover {
+  color: #2DB88A;
+}
+
+/* ================================================================
+   27. Quizzes
+   ================================================================ */
+
+.quiz-header,
+#quiz_show .quiz-header {
+  border-radius: 16px;
+  background: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  padding: 20px 24px;
+  margin-bottom: 16px;
+  overflow: hidden;
+}
+
+.quiz-header h1 {
+  font-family: 'Poppins', 'Inter', sans-serif;
+  font-weight: 700;
+  color: #163B32;
+}
+
+.quiz_summary,
+table.quiz_summary {
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid #E5E7EB;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.quiz_summary th {
+  background-color: #F3F4F6;
+  font-weight: 600;
+  color: #163B32;
+}
+
+.quiz_summary td {
+  border-bottom: 1px solid #F3F4F6;
+}
+
+.question,
+#questions .question {
+  border-radius: 16px;
+  border: 1px solid #E5E7EB;
+  background: #FFFFFF;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  margin-bottom: 16px;
+  overflow: hidden;
+  padding: 20px 24px;
+}
+
+.question .header {
+  font-family: 'Poppins', 'Inter', sans-serif;
+  font-weight: 700;
+  color: #163B32;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #F3F4F6;
+  margin-bottom: 16px;
+}
+
+.question .question_name {
+  font-family: 'Poppins', 'Inter', sans-serif;
+  font-weight: 600;
+}
+
+.answer {
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 6px;
+  transition: background-color 0.15s ease-out;
+}
+
+.answer:hover {
+  background-color: #F0FAF6;
+}
+
+.answer.selected_answer {
+  background-color: #D4EFE6;
+  border: 1px solid #2DB88A;
+}
+
+.answer.correct_answer {
+  background-color: #D1FAE5;
+  border: 1px solid #2DB88A;
+}
+
+.answer.wrong_answer {
+  background-color: #FEE2E2;
+  border: 1px solid #EF4444;
+}
+
+/* Custom radio/checkbox styling */
+.question input[type="radio"],
+.question input[type="checkbox"] {
+  accent-color: #2DB88A;
+}
+
+.quiz_score_bar,
+.quiz-submission .score_value {
+  background: linear-gradient(90deg, #2DB88A 0%, #4ECBA0 100%);
+  border-radius: 9999px;
+  height: 10px;
+}
+
+/* ================================================================
+   28. Speed Grader
+   ================================================================ */
+
+#speed_grader_assessment_audit_tray {
+  border-radius: 16px;
+  border: 1px solid #E5E7EB;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+#speed_grader_assessment_audit_tray .tray-header {
+  background: linear-gradient(135deg, #163B32 0%, #1E4D42 100%);
+  color: #FFFFFF;
+}
+
+.speed-grader-header,
+#speed_grader_header {
+  background: linear-gradient(135deg, #163B32 0%, #1E4D42 100%);
+}
+
+.speed-grader-header h2,
+#speed_grader_header h2 {
+  font-family: 'Poppins', 'Inter', sans-serif;
+  color: #FFFFFF;
+}
+
+.grade-container,
+#grade_container {
+  border-radius: 12px;
+  background: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  padding: 8px 12px;
+}
+
+.grade-container input,
+#grade_container input {
+  border-radius: 8px;
+  border: 1px solid #E5E7EB;
+  font-weight: 700;
+  font-size: 1.1em;
+  text-align: center;
+}
+
+.grade-container input:focus,
+#grade_container input:focus {
+  border-color: #2DB88A;
+  box-shadow: 0 0 0 3px rgba(45, 184, 138, 0.15);
+}
+
+.comments-container .comment,
+#comments .comment {
+  border-radius: 12px;
+  padding: 10px 14px;
+  margin-bottom: 8px;
+  max-width: 80%;
+  position: relative;
+}
+
+.comments-container .comment.student,
+#comments .comment:not(.teacher_comment) {
+  background-color: #F3F4F6;
+  border: 1px solid #E5E7EB;
+  margin-right: auto;
+  border-bottom-left-radius: 4px;
+}
+
+.comments-container .comment.teacher,
+#comments .comment.teacher_comment {
+  background: linear-gradient(135deg, #D4EFE6 0%, #E8F5F0 100%);
+  border: 1px solid #B8DFD1;
+  margin-left: auto;
+  border-bottom-right-radius: 4px;
+}
+
+/* ================================================================
+   29. People / Roster
+   ================================================================ */
+
+.rosterUser,
+.roster .rosterUser {
+  border-radius: 16px;
+  border: 1px solid #E5E7EB;
+  background: #FFFFFF;
+  padding: 16px;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  transition: box-shadow 0.2s ease-out, transform 0.15s ease-out;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.rosterUser:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transform: translateY(-1px);
+}
+
+.roster-user-name,
+.rosterUser .roster-user-name {
+  font-family: 'Poppins', 'Inter', sans-serif;
+  font-weight: 700;
+  color: #163B32;
+  font-size: 1.05em;
+}
+
+.roster-user-name a {
+  color: #163B32;
+}
+
+.roster-user-name a:hover {
+  color: #2DB88A;
+}
+
+.roster-user-avatar,
+.rosterUser .avatar {
+  border: 3px solid #2DB88A;
+  border-radius: 9999px;
+  box-shadow: 0 0 0 2px #FFFFFF;
+}
+
+.roster .ic-Table tbody tr:hover {
+  background-color: #F0FAF6;
+}
+
+/* ================================================================
+   30. Announcements
+   ================================================================ */
+
+.announcementWrapper,
+.announcement-wrapper {
+  border-radius: 16px;
+  border: 1px solid #E5E7EB;
+  background: #FFFFFF;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.ic-announcement-row,
+.announcementWrapper .ic-announcement-row {
+  border-bottom: 1px solid #F3F4F6;
+  padding: 16px 20px;
+  transition: background-color 0.15s ease-out;
+}
+
+.ic-announcement-row:hover {
+  background-color: #F0FAF6;
+}
+
+.ic-announcement-row:last-child {
+  border-bottom: none;
+}
+
+.ic-announcement-row .ic-announcement-row__content h3 {
+  font-family: 'Poppins', 'Inter', sans-serif;
+  font-weight: 700;
+  color: #163B32;
+}
+
+.ic-announcement-row .ic-announcement-row__content h3 a {
+  color: #163B32;
+}
+
+.ic-announcement-row .ic-announcement-row__content h3 a:hover {
+  color: #2DB88A;
+}
+
+/* ================================================================
+   31. Modules (Extended)
+   ================================================================ */
+
+.context_module {
+  background: #FFFFFF;
+  border-radius: 16px;
+  border: 1px solid #E5E7EB;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  margin-bottom: 16px;
+  overflow: hidden;
+}
+
+.context_module .ig-header-title,
+.context_module .ig-header-title a {
+  font-family: 'Poppins', 'Inter', sans-serif;
+  font-weight: 700;
+  color: #163B32;
+}
+
+.context_module .ig-header {
+  background: #F9FAFB;
+  border-bottom: 1px solid #E5E7EB;
+  padding: 12px 16px;
+}
+
+.module-item-status-icon .icon-check {
+  color: #2DB88A;
+}
+
+.module-item-status-icon .icon-lock {
+  color: #FF6B35;
+}
+
+.module-item-status-icon .icon-minimize {
+  color: #6B7280;
+}
+
+.context_module_item .ig-row {
+  padding: 10px 16px;
+}
+
+.context_module_item .ig-info .module-item-title .title {
+  color: #1B1B1B;
+  font-weight: 500;
+}
+
+.context_module_item .ig-info .module-item-title .title:hover {
+  color: #2DB88A;
+}
+
+/* ================================================================
+   32. Rich Content Editor (TinyMCE)
+   ================================================================ */
+
+.tox,
+.tox.tox-tinymce {
+  border-radius: 12px;
+  border: 1px solid #E5E7EB;
+  overflow: hidden;
+}
+
+.tox .tox-toolbar,
+.tox .tox-toolbar__overflow,
+.tox .tox-toolbar__primary {
+  border-radius: 12px 12px 0 0;
+  background: #F9FAFB;
+  border-bottom: 1px solid #E5E7EB;
+}
+
+.tox .tox-toolbar .tox-tbtn {
+  border-radius: 6px;
+  transition: background-color 0.15s ease-out;
+}
+
+.tox .tox-toolbar .tox-tbtn:hover {
+  background-color: #D4EFE6;
+}
+
+.tox .tox-edit-area,
+.tox .tox-edit-area__iframe {
+  border-radius: 0 0 12px 12px;
+}
+
+.tox .tox-statusbar {
+  border-radius: 0 0 12px 12px;
+  background: #F9FAFB;
+  border-top: 1px solid #E5E7EB;
+}
+
+.tox .tox-menu {
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  border: 1px solid #E5E7EB;
+}
+
+.tox .tox-collection__item {
+  border-radius: 4px;
+}
+
+.tox .tox-collection__item--active {
+  background-color: #D4EFE6;
+}
+
+/* ================================================================
+   33. Inbox / Conversations
+   ================================================================ */
+
+.conversations .message-header,
+#inbox .message-header {
+  border-radius: 12px 12px 0 0;
+  background: #F9FAFB;
+  border-bottom: 1px solid #E5E7EB;
+  padding: 12px 16px;
+}
+
+.conversations .message-content,
+#inbox .message-content {
+  border-radius: 0 0 12px 12px;
+  background: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  border-top: none;
+  padding: 16px;
+  margin-bottom: 12px;
+}
+
+.conversations .message-item-view,
+#inbox .message-item-view {
+  border-radius: 12px;
+  border: 1px solid #E5E7EB;
+  margin-bottom: 8px;
+  transition: box-shadow 0.15s ease-out;
+}
+
+.conversations .message-item-view:hover,
+#inbox .message-item-view:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.conversations .message-item-view.active,
+#inbox .message-item-view.active {
+  border-color: #2DB88A;
+  background-color: #F0FAF6;
+}
+
+.conversations .compose-message,
+#inbox .compose-message-dialog {
+  border-radius: 16px;
+  border: 1px solid #E5E7EB;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.conversations .compose-message input,
+.conversations .compose-message textarea {
+  border-radius: 8px;
+}
+
+.conversations .compose-message .btn-primary {
+  background: linear-gradient(135deg, #2DB88A 0%, #25A07A 100%);
+  border-color: #2DB88A;
+}
+
+/* ================================================================
+   34. User Profile
+   ================================================================ */
+
+.profile-header,
+.profile_header {
+  border-radius: 20px;
+  background: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  padding: 24px;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.profile-header h2,
+.profile_header h2 {
+  font-family: 'Poppins', 'Inter', sans-serif;
+  font-weight: 700;
+  color: #163B32;
+}
+
+.profile_links ul li,
+.profile-link {
+  border-radius: 10px;
+  padding: 8px 12px;
+  transition: background-color 0.15s ease-out;
+}
+
+.profile_links ul li:hover,
+.profile-link:hover {
+  background-color: #F0FAF6;
+}
+
+.profile_links ul li a {
+  color: #163B32;
+  font-weight: 500;
+}
+
+.profile_links ul li a:hover {
+  color: #2DB88A;
+}
+
+.avatar-preview,
+.profile-header .avatar,
+.profile_header .avatar {
+  border: 4px solid #2DB88A;
+  border-radius: 9999px;
+  box-shadow: 0 0 0 3px #FFFFFF, 0 0 0 5px rgba(45, 184, 138, 0.2);
+  width: 96px;
+  height: 96px;
+  object-fit: cover;
+}
+
+/* ================================================================
+   35. Admin Pages
+   ================================================================ */
+
+.ic-Admin-setting-group {
+  border-radius: 16px;
+  background: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.ic-Admin-setting-group h3 {
+  font-family: 'Poppins', 'Inter', sans-serif;
+  font-weight: 700;
+  color: #163B32;
+}
+
+.ic-Admin-header,
+.ic-Admin-header__title-area {
+  background: linear-gradient(135deg, #163B32 0%, #1E4D42 100%);
+  color: #FFFFFF;
+  border-radius: 16px;
+  padding: 20px 24px;
+  margin-bottom: 20px;
+}
+
+.ic-Admin-header h1,
+.ic-Admin-header h2 {
+  color: #FFFFFF;
+  font-family: 'Poppins', 'Inter', sans-serif;
+}
+
+.ic-permissions-role-header {
+  border-radius: 12px;
+  background: #F9FAFB;
+  border: 1px solid #E5E7EB;
+  padding: 12px 16px;
+  margin-bottom: 8px;
+}
+
+.ic-permissions-role-header h3 {
+  font-family: 'Poppins', 'Inter', sans-serif;
+  font-weight: 700;
+  color: #163B32;
+}
+
+.ic-permissions__permission-group-holder {
+  border-radius: 8px;
+  border: 1px solid #E5E7EB;
+  margin-bottom: 4px;
+}
+
+/* ================================================================
+   36. Sidebar Enhancements
+   ================================================================ */
+
+.ic-app-main-content {
+  background-color: #D4EFE6;
+}
+
+.right-side-list li,
+.right-side-list .right-side-list-item {
+  border-radius: 10px;
+  padding: 8px 12px;
+  margin-bottom: 4px;
+  transition: background-color 0.15s ease-out;
+}
+
+.right-side-list li:hover,
+.right-side-list .right-side-list-item:hover {
+  background-color: #E8F5F0;
+}
+
+.right-side-list li a {
+  color: #163B32;
+  font-weight: 500;
+}
+
+.right-side-list li a:hover {
+  color: #2DB88A;
+}
+
+.todo-list .todo-list-item {
+  border-radius: 10px;
+  padding: 10px 12px;
+  margin-bottom: 6px;
+  border: 1px solid #E5E7EB;
+  background: #FFFFFF;
+  transition: box-shadow 0.15s ease-out, transform 0.15s ease-out;
+}
+
+.todo-list .todo-list-item:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  transform: translateY(-1px);
+}
+
+.todo-list .todo-list-item a {
+  color: #163B32;
+  font-weight: 500;
+}
+
+.todo-list .todo-list-item a:hover {
+  color: #2DB88A;
+}
+
+.coming_up {
+  border-radius: 16px;
+  background: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  padding: 16px;
+  overflow: hidden;
+}
+
+.coming_up h3 {
+  font-family: 'Poppins', 'Inter', sans-serif;
+  font-weight: 700;
+  color: #163B32;
+  margin-bottom: 12px;
+}
+
+/* ================================================================
+   37. Planner / To-Do
+   ================================================================ */
+
+.planner-item,
+[class*="PlannerItem"] {
+  border-radius: 12px;
+  background: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  margin-bottom: 8px;
+  overflow: hidden;
+  border-left: 4px solid #2DB88A;
+  transition: box-shadow 0.2s ease-out, transform 0.15s ease-out;
+}
+
+.planner-item:hover,
+[class*="PlannerItem"]:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transform: translateY(-1px);
+}
+
+/* Course-color left borders via nth-child for variety */
+.planner-item:nth-child(4n+2) {
+  border-left-color: #3B82F6;
+}
+
+.planner-item:nth-child(4n+3) {
+  border-left-color: #FF6B35;
+}
+
+.planner-item:nth-child(4n+4) {
+  border-left-color: #8B5CF6;
+}
+
+.planner-header,
+[class*="PlannerHeader"] h2 {
+  font-family: 'Poppins', 'Inter', sans-serif;
+  font-weight: 700;
+  color: #163B32;
+  font-size: 1.15em;
+}
+
+.planner-grouping,
+[class*="Grouping-root"],
+[class*="PlannerGrouping"] {
+  margin-bottom: 20px;
+}
+
+.planner-grouping .planner-date-header,
+[class*="Grouping-root"] [class*="Day-root"] {
+  font-family: 'Poppins', 'Inter', sans-serif;
+  font-weight: 600;
+  color: #6B7280;
+  text-transform: uppercase;
+  font-size: 0.85em;
+  letter-spacing: 0.05em;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #E5E7EB;
+  margin-bottom: 12px;
+}
+
+/* ================================================================
+   38. Loading States
+   ================================================================ */
+
+.loading-indicator,
+.ic-LoadingIndicator {
+  color: #2DB88A;
+}
+
+.ic-Spinner,
+.spinner,
+.loading-indicator::after {
+  border-color: #E5E7EB;
+  border-top-color: #2DB88A;
+}
+
+/* Skeleton loading patterns */
+@keyframes redefiners-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.ic-Skeleton,
+[class*="skeleton"],
+[class*="Skeleton"] {
+  background: linear-gradient(90deg, #F3F4F6 25%, #E5E7EB 50%, #F3F4F6 75%);
+  background-size: 200% 100%;
+  animation: redefiners-shimmer 1.5s ease-out infinite;
+  border-radius: 8px;
+}
+
+/* ================================================================
+   39. Accessibility Enhancements
+   ================================================================ */
+
+/* High contrast compatibility */
+@media (forced-colors: active) {
+  .Button--primary,
+  .btn-primary {
+    border: 2px solid ButtonText;
+  }
+
+  .ic-DashboardCard {
+    border: 2px solid ButtonText;
+  }
+
+  *:focus-visible {
+    outline: 3px solid Highlight;
+    outline-offset: 2px;
+  }
+
+  .context_module_header {
+    border: 2px solid ButtonText;
+  }
+
+  .ig-list .ig-row {
+    border: 2px solid ButtonText;
+  }
+}
+
+/* Focus indicators — green ring everywhere */
+a:focus-visible,
+button:focus-visible,
+[role="button"]:focus-visible,
+[role="link"]:focus-visible,
+[role="tab"]:focus-visible,
+[role="menuitem"]:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid #2DB88A;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: none;
+  border-color: #2DB88A;
+  box-shadow: 0 0 0 3px rgba(45, 184, 138, 0.15);
+}
+
+/* Skip navigation styling */
+.skip-to-content,
+#skip_navigation_link,
+.screenreader-only:focus {
+  background: #163B32;
+  color: #FFFFFF;
+  border-radius: 0 0 8px 8px;
+  padding: 8px 16px;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  z-index: 10000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* ================================================================
+   40. Print Styles
+   ================================================================ */
+
+@media print {
+  body {
+    background-color: #FFFFFF;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  .ic-app-header,
+  .ic-app-header__menu-list,
+  .ic-app-footer,
+  .ic-app-course-menu,
+  .ic-app-main-content__secondary,
+  #breadcrumbs,
+  .right-side-list,
+  .ic-Layout-watermark {
+    display: none !important;
+  }
+
+  .ic-Layout-contentMain,
+  .ic-Layout-contentWrapper,
+  #content,
+  .ic-app-main-content {
+    background-color: #FFFFFF;
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .ic-DashboardCard,
+  .context_module,
+  .question,
+  .discussion-topic,
+  .announcementWrapper {
+    box-shadow: none;
+    border: 1px solid #CCCCCC;
+    page-break-inside: avoid;
+  }
+
+  .Button,
+  .btn {
+    border: 1px solid #333333;
+    box-shadow: none;
+  }
+
+  a {
+    color: #163B32;
+    text-decoration: underline;
+  }
+
+  .ic-Table {
+    border: 1px solid #CCCCCC;
+  }
+
+  .ic-Table th {
+    background-color: #F3F4F6;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: #163B32;
+    page-break-after: avoid;
+  }
+
+  .progress-bar {
+    background: #2DB88A;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
+
+/* ================================================================
+   41. Responsive Overrides
+   ================================================================ */
+
+@media screen and (max-width: 768px) {
+  /* Sidebar collapse on mobile */
+  .ic-app-header {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+
+  .ic-app-header__menu-list {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .ic-app-header__menu-list-link {
+    padding: 8px 12px;
+    margin: 4px;
+  }
+
+  /* Touch-friendly targets — minimum 44px */
+  .Button,
+  .btn,
+  .ic-app-header__menu-list-link,
+  .ic-app-course-menu li a,
+  .todo-list .todo-list-item a,
+  .right-side-list li a {
+    min-height: 44px;
+    min-width: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  /* Dashboard cards — single column */
+  .ic-DashboardCard {
+    border-radius: 12px;
+    margin-bottom: 12px;
+  }
+
+  .ic-DashboardCard__header_hero {
+    border-radius: 12px 12px 0 0;
+  }
+
+  /* Course menu — full width on mobile */
+  .ic-app-course-menu {
+    border-radius: 12px;
+    margin: 8px;
+  }
+
+  /* Modules — reduce padding */
+  .context_module {
+    border-radius: 12px;
+    margin-bottom: 12px;
+  }
+
+  .context_module_header {
+    padding: 10px 12px;
+  }
+
+  .context_module_item .ig-row {
+    padding: 10px 12px;
+  }
+
+  /* Quiz questions — reduce padding */
+  .question,
+  #questions .question {
+    border-radius: 12px;
+    padding: 14px 16px;
+  }
+
+  /* Profile avatar — smaller on mobile */
+  .avatar-preview,
+  .profile-header .avatar,
+  .profile_header .avatar {
+    width: 72px;
+    height: 72px;
+  }
+
+  /* Calendar — simplify on mobile */
+  .fc-toolbar {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .fc-toolbar .fc-button {
+    padding: 6px 12px;
+    font-size: 0.9em;
+  }
+
+  /* Speed Grader — full width comments */
+  .comments-container .comment,
+  #comments .comment {
+    max-width: 95%;
+  }
+
+  /* Planner items — reduce border-left width */
+  .planner-item,
+  [class*="PlannerItem"] {
+    border-left-width: 3px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  /* Extra small — further simplifications */
+  .ic-DashboardCard {
+    border-radius: 8px;
+  }
+
+  .context_module {
+    border-radius: 8px;
+  }
+
+  .question {
+    border-radius: 8px;
+    padding: 12px;
+  }
+
+  .profile-header,
+  .profile_header {
+    border-radius: 12px;
+    padding: 16px;
+  }
+
+  .ig-list .ig-row {
+    border-radius: 8px;
+  }
+}
+
+/* ================================================================
+   42. Animations & Transitions
+   ================================================================ */
+
+/* Consistent easing for all interactive elements */
+.ic-DashboardCard,
+.ig-list .ig-row,
+.discussion-topic,
+.discussionTopicIndexList .discussion-topic,
+.context_module_item,
+.ef-item-row,
+.planner-item,
+[class*="PlannerItem"],
+.todo-list .todo-list-item,
+.rosterUser,
+.ic-announcement-row,
+.conversations .message-item-view,
+.Button,
+.btn,
+.fc-event {
+  transition: all 0.2s ease-out;
+}
+
+/* Hover transforms — subtle lift */
+.ic-DashboardCard:hover,
+.ig-list .ig-row:hover,
+.rosterUser:hover,
+.todo-list .todo-list-item:hover,
+.planner-item:hover,
+[class*="PlannerItem"]:hover {
+  transform: translateY(-2px);
+}
+
+/* Page transition fade-in */
+@keyframes redefiners-fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#content,
+.ic-Layout-contentMain {
+  animation: redefiners-fadeIn 0.3s ease-out;
+}
+
+/* Card entrance animation */
+@keyframes redefiners-slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ic-DashboardCard {
+  animation: redefiners-slideUp 0.4s ease-out backwards;
+}
+
+.ic-DashboardCard:nth-child(1) { animation-delay: 0.05s; }
+.ic-DashboardCard:nth-child(2) { animation-delay: 0.1s; }
+.ic-DashboardCard:nth-child(3) { animation-delay: 0.15s; }
+.ic-DashboardCard:nth-child(4) { animation-delay: 0.2s; }
+.ic-DashboardCard:nth-child(5) { animation-delay: 0.25s; }
+.ic-DashboardCard:nth-child(6) { animation-delay: 0.3s; }
+.ic-DashboardCard:nth-child(7) { animation-delay: 0.35s; }
+.ic-DashboardCard:nth-child(8) { animation-delay: 0.4s; }
+
+/* Reduced motion — respect user preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .ic-DashboardCard:hover,
+  .ig-list .ig-row:hover,
+  .rosterUser:hover,
+  .todo-list .todo-list-item:hover,
+  .planner-item:hover,
+  [class*="PlannerItem"]:hover,
+  .Button:hover,
+  .btn:hover {
+    transform: none;
+  }
+}

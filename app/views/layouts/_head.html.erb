@@ -34,6 +34,12 @@
   <%= preload_link_tag(font_path("/fonts/lato/extended/Lato-Italic.woff2"), { as: "font", type: "font/woff2", crossorigin: 'anonymous' }) %>
   <%= stylesheet_link_tag(css_url_for('fonts')) %>
   <%= stylesheet_link_tag(active_brand_config_url('css'), media: "all") %>
+  <%# ReDefiners Theme: Google Fonts (Inter & Poppins) %>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <%# ReDefiners Theme: CSS Overrides %>
+  <%= stylesheet_link_tag('/redefiners-theme/redefiners_overrides.css', media: "all") %>
   <% if @js_env && @js_env[:ONETRUST_CONSENT_SCRIPT_ID].present? %>
   <script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js"  type="text/javascript" charset="UTF-8" data-domain-script="<%= @js_env[:ONETRUST_CONSENT_SCRIPT_ID] %>" ></script>
   <script type="text/javascript">
@@ -71,6 +77,8 @@
     BRANDABLE_CSS_HANDLEBARS_INDEX = <%= benchmark("rendering BRANDABLE_CSS_HANDLEBARS_INDEX") { raw(BrandableCSS.handlebars_index_json) } %>
       REMOTES = <%= benchmark("rendering REMOTES") { raw(remote_env.to_json) } %>;
   </script>
+  <%# ReDefiners Theme: JS brand variable overrides (must load before InstUI bootstrap) %>
+  <script src="/redefiners-theme/redefiners_instui.js"></script>
   <%= benchmark("include_head_js") { include_head_js } %>
   <% @xhrs_to_prefetch_from_controller&.each do |(args, kwargs)| -%>
     <%= prefetch_xhr(*args, **kwargs) %>
