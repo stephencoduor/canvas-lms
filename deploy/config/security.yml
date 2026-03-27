@@ -1,2 +1,5 @@
 production:
   encryption_key: <%= ENV.fetch('ENCRYPTION_KEY', '') %>
+  jwt_encryption_keys:
+    - <%= ENV.fetch('ENCRYPTION_KEY', '') %>
+  lti_iss: 'https://fineract.us'
