@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	<title>ReDefiners - Outcome Results</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+	<script src="https://cdn.tailwindcss.com"></script>
+	<script src="css/tailwind-config.js?v=3"></script>
+	<script src="https://kit.fontawesome.com/7a13c96681.js" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/tokens.css?v=3">
+	<link rel="stylesheet" type="text/css" href="css/shadcn.css?v=3">
+	<link rel="stylesheet" type="text/css" href="styles.css?v=3">
+</head>
+<body>
+	<div class="tw-flex tw-min-h-screen tw-font-poppins">
+		<aside class="left-sidebar tw-fixed tw-inset-y-0 tw-left-0 tw-w-[240px] tw-z-50 tw--translate-x-full lg:tw-translate-x-0 tw-transition-transform tw-duration-300 tw-overflow-y-auto shadcn-scrollbar">
+			<div class="menu-bar">
+				<section class="logo-section">
+					<i class="fa fa-times theme-color menu-hide"></i>
+					<img src="Images/logo.PNG" class="res-hide" alt="logo">
+					<div class="nav-input res-show-flex tw-mt-5">
+						<button class="tw-border tw-border-primary-400 tw-border-r-0 tw-bg-transparent tw-px-2"><i class="fa fa-search"></i></button>
+						<input class="tw-border tw-border-primary-400 tw-border-l-0 tw-w-[85%] tw-bg-transparent tw-px-2 tw-py-1 tw-outline-none" type="text" name="search" placeholder="Search">
+					</div>
+				</section>
+				<section class="menu-links">
+					<div class="menu-link"><a href="dashboard.html"><i class="fa fa-th-large"></i><span> Dashboard</span></a></div>
+					<div class="menu-link"><a href="courses.html"><i class="fa fa-clipboard-list"></i><span> Courses</span></a></div>
+					<div class="menu-link"><a href="calendar.html"><i class="fa fa-calendar-alt"></i><span> Calendar</span></a></div>
+					<div class="menu-link"><a href="announcement.html"><i class="fa fa-bullhorn"></i><span> Announcements</span></a></div>
+					<div class="menu-link"><a href="inbox.html"><i class="fa fa-comments"></i><span> Messages</span></a></div>
+					<div class="menu-link"><a href="assignments.html"><i class="fa fa-file-lines"></i><span> Assignments</span></a></div>
+					<div class="menu-link"><a href="grades.html"><i class="fa fa-chart-bar"></i><span> Grades</span></a></div>
+					<div class="menu-link"><a href="modules.html"><i class="fa fa-layer-group"></i><span> Modules</span></a></div>
+					<div class="menu-link"><a href="discussions.html"><i class="fa fa-comments-alt"></i><span> Discussions</span></a></div>
+					<div class="menu-link"><a href="quizzes.html"><i class="fa fa-question-circle"></i><span> Quizzes</span></a></div>
+					<div class="menu-link"><a href="pages.html"><i class="fa fa-file-alt"></i><span> Pages</span></a></div>
+					<div class="menu-link"><a href="files.html"><i class="fa fa-folder"></i><span> Files</span></a></div>
+					<div class="menu-link"><a href="people.html"><i class="fa fa-users"></i><span> People</span></a></div>
+					<div class="menu-link"><a href="outcomes.html" class="active-menu"><i class="fa fa-bullseye"></i><span> Outcomes</span></a></div>
+					<div class="menu-link"><a href="rubrics.html"><i class="fa fa-th"></i><span> Rubrics</span></a></div>
+					<div class="menu-link"><a href="groups.html"><i class="fa fa-user-friends"></i><span> Groups</span></a></div>
+					<div class="menu-link"><a href="conferences.html"><i class="fa fa-video"></i><span> Conferences</span></a></div>
+					<div class="menu-link"><a href="collaborations.html"><i class="fa fa-handshake"></i><span> Collaborations</span></a></div>
+					<div class="menu-link"><a href="account-settings.html"><i class="fa fa-cog"></i><span> Settings</span></a></div>
+				</section>
+			</div>
+		</aside>
+		<div class="sidebar-overlay" id="sidebarOverlay"></div>
+		<main class="middle-part tw-flex-1 lg:tw-ml-[240px] tw-min-h-screen tw-px-4 md:tw-px-6 lg:tw-px-10 tw-pb-8">
+			<div class="tw-flex tw-items-center tw-justify-between tw-py-4 tw-gap-3 tw-flex-wrap">
+				<div class="tw-flex tw-items-center tw-gap-3">
+					<i class="fa fa-bars tw-text-primary-400 tw-cursor-pointer tw-text-xl lg:tw-hidden menu-icon" id="menuToggle"></i>
+					<div class="shadcn-search tw-hidden sm:tw-flex tw-w-64"><i class="fa fa-search"></i><input type="text" placeholder="Search courses, assignments..."></div>
+				</div>
+				<div class="tw-flex tw-items-center tw-gap-3">
+					<button class="shadcn-btn shadcn-btn-ghost shadcn-btn-icon tw-relative"><i class="fa fa-bell tw-text-primary-400"></i></button>
+					<div class="shadcn-avatar shadcn-avatar-md tw-cursor-pointer profile-click"><img src="Images/profile.png" alt="Profile"></div>
+				</div>
+			</div>
+
+			<!-- Header -->
+			<div class="tw-flex tw-flex-col sm:tw-flex-row tw-items-start sm:tw-items-center tw-justify-between tw-py-6 tw-gap-4">
+				<div>
+					<nav class="tw-text-sm tw-text-gray-500 tw-mb-2">
+						<a href="courses.html" class="theme-color tw-no-underline">Biology 101</a>
+						<i class="fa fa-chevron-right tw-text-xs tw-mx-1"></i>
+						<a href="outcomes.html" class="theme-color tw-no-underline">Outcomes</a>
+						<i class="fa fa-chevron-right tw-text-xs tw-mx-1"></i>
+						<span class="tw-text-gray-400">Student Results</span>
+					</nav>
+					<h3 class="second-color">Outcome Mastery Results: Emily Chen</h3>
+					<p class="tw-text-gray-500 tw-text-sm tw-mt-1">Mastery tracking across all assessed learning outcomes</p>
+				</div>
+				<button class="shadcn-btn shadcn-btn-outline tw-text-sm"><i class="fa fa-download tw-mr-1"></i> Export Report</button>
+			</div>
+
+			<!-- Overall Mastery Summary -->
+			<div class="tw-grid tw-grid-cols-2 lg:tw-grid-cols-4 tw-gap-4 tw-mb-6">
+				<div class="shadcn-card tw-p-4 tw-text-center tw-border-t-4 tw-border-t-green-500">
+					<p class="tw-text-2xl tw-font-bold tw-text-green-600">5</p>
+					<p class="tw-text-xs tw-text-gray-500">Exceeded Mastery</p>
+				</div>
+				<div class="shadcn-card tw-p-4 tw-text-center tw-border-t-4 tw-border-t-blue-500">
+					<p class="tw-text-2xl tw-font-bold tw-text-blue-600">8</p>
+					<p class="tw-text-xs tw-text-gray-500">Met Mastery</p>
+				</div>
+				<div class="shadcn-card tw-p-4 tw-text-center tw-border-t-4 tw-border-t-yellow-500">
+					<p class="tw-text-2xl tw-font-bold tw-text-yellow-600">3</p>
+					<p class="tw-text-xs tw-text-gray-500">Near Mastery</p>
+				</div>
+				<div class="shadcn-card tw-p-4 tw-text-center tw-border-t-4 tw-border-t-red-500">
+					<p class="tw-text-2xl tw-font-bold tw-text-red-600">1</p>
+					<p class="tw-text-xs tw-text-gray-500">Below Mastery</p>
+				</div>
+			</div>
+
+			<!-- Outcome Group: Scientific Inquiry -->
+			<div class="shadcn-card tw-mb-6">
+				<div class="tw-p-4 tw-border-b tw-bg-gray-50">
+					<div class="tw-flex tw-items-center tw-justify-between">
+						<h5 class="second-color tw-font-semibold"><i class="fa fa-flask tw-mr-2"></i>Scientific Inquiry &amp; Process</h5>
+						<span class="tw-text-sm tw-text-gray-500">4 outcomes</span>
+					</div>
+				</div>
+				<div class="tw-divide-y">
+					<div class="tw-p-4">
+						<div class="tw-flex tw-flex-wrap tw-items-center tw-justify-between tw-gap-3">
+							<div class="tw-flex-1 tw-min-w-[200px]">
+								<p class="tw-text-sm tw-font-medium second-color">Formulate testable hypotheses based on observations</p>
+								<p class="tw-text-xs tw-text-gray-400 tw-mt-1">Assessed 3 times &middot; Last: Mar 18, 2025</p>
+							</div>
+							<div class="tw-flex tw-items-center tw-gap-3">
+								<span class="tw-bg-green-100 tw-text-green-700 tw-px-3 tw-py-1 tw-rounded-full tw-text-xs tw-font-semibold">Exceeded</span>
+								<div class="tw-flex tw-items-center tw-gap-1 tw-text-green-600">
+									<i class="fa fa-arrow-up tw-text-xs"></i>
+									<span class="tw-text-xs tw-font-medium">Improving</span>
+								</div>
+								<a href="#" class="tw-text-xs theme-color tw-no-underline"><i class="fa fa-external-link-alt tw-mr-1"></i>View Artifacts</a>
+							</div>
+						</div>
+					</div>
+					<div class="tw-p-4">
+						<div class="tw-flex tw-flex-wrap tw-items-center tw-justify-between tw-gap-3">
+							<div class="tw-flex-1 tw-min-w-[200px]">
+								<p class="tw-text-sm tw-font-medium second-color">Design and conduct controlled experiments</p>
+								<p class="tw-text-xs tw-text-gray-400 tw-mt-1">Assessed 2 times &middot; Last: Mar 10, 2025</p>
+							</div>
+							<div class="tw-flex tw-items-center tw-gap-3">
+								<span class="tw-bg-blue-100 tw-text-blue-700 tw-px-3 tw-py-1 tw-rounded-full tw-text-xs tw-font-semibold">Met</span>
+								<div class="tw-flex tw-items-center tw-gap-1 tw-text-gray-400">
+									<i class="fa fa-minus tw-text-xs"></i>
+									<span class="tw-text-xs tw-font-medium">Stable</span>
+								</div>
+								<a href="#" class="tw-text-xs theme-color tw-no-underline"><i class="fa fa-external-link-alt tw-mr-1"></i>View Artifacts</a>
+							</div>
+						</div>
+					</div>
+					<div class="tw-p-4">
+						<div class="tw-flex tw-flex-wrap tw-items-center tw-justify-between tw-gap-3">
+							<div class="tw-flex-1 tw-min-w-[200px]">
+								<p class="tw-text-sm tw-font-medium second-color">Analyze data using statistical methods</p>
+								<p class="tw-text-xs tw-text-gray-400 tw-mt-1">Assessed 4 times &middot; Last: Mar 20, 2025</p>
+							</div>
+							<div class="tw-flex tw-items-center tw-gap-3">
+								<span class="tw-bg-blue-100 tw-text-blue-700 tw-px-3 tw-py-1 tw-rounded-full tw-text-xs tw-font-semibold">Met</span>
+								<div class="tw-flex tw-items-center tw-gap-1 tw-text-green-600">
+									<i class="fa fa-arrow-up tw-text-xs"></i>
+									<span class="tw-text-xs tw-font-medium">Improving</span>
+								</div>
+								<a href="#" class="tw-text-xs theme-color tw-no-underline"><i class="fa fa-external-link-alt tw-mr-1"></i>View Artifacts</a>
+							</div>
+						</div>
+					</div>
+					<div class="tw-p-4">
+						<div class="tw-flex tw-flex-wrap tw-items-center tw-justify-between tw-gap-3">
+							<div class="tw-flex-1 tw-min-w-[200px]">
+								<p class="tw-text-sm tw-font-medium second-color">Draw evidence-based conclusions</p>
+								<p class="tw-text-xs tw-text-gray-400 tw-mt-1">Assessed 3 times &middot; Last: Mar 15, 2025</p>
+							</div>
+							<div class="tw-flex tw-items-center tw-gap-3">
+								<span class="tw-bg-green-100 tw-text-green-700 tw-px-3 tw-py-1 tw-rounded-full tw-text-xs tw-font-semibold">Exceeded</span>
+								<div class="tw-flex tw-items-center tw-gap-1 tw-text-green-600">
+									<i class="fa fa-arrow-up tw-text-xs"></i>
+									<span class="tw-text-xs tw-font-medium">Improving</span>
+								</div>
+								<a href="#" class="tw-text-xs theme-color tw-no-underline"><i class="fa fa-external-link-alt tw-mr-1"></i>View Artifacts</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Outcome Group: Cell Biology -->
+			<div class="shadcn-card tw-mb-6">
+				<div class="tw-p-4 tw-border-b tw-bg-gray-50">
+					<div class="tw-flex tw-items-center tw-justify-between">
+						<h5 class="second-color tw-font-semibold"><i class="fa fa-microscope tw-mr-2"></i>Cell Biology &amp; Structure</h5>
+						<span class="tw-text-sm tw-text-gray-500">5 outcomes</span>
+					</div>
+				</div>
+				<div class="tw-divide-y">
+					<div class="tw-p-4">
+						<div class="tw-flex tw-flex-wrap tw-items-center tw-justify-between tw-gap-3">
+							<div class="tw-flex-1 tw-min-w-[200px]">
+								<p class="tw-text-sm tw-font-medium second-color">Identify and describe cell organelles and their functions</p>
+								<p class="tw-text-xs tw-text-gray-400 tw-mt-1">Assessed 3 times &middot; Last: Mar 12, 2025</p>
+							</div>
+							<div class="tw-flex tw-items-center tw-gap-3">
+								<span class="tw-bg-green-100 tw-text-green-700 tw-px-3 tw-py-1 tw-rounded-full tw-text-xs tw-font-semibold">Exceeded</span>
+								<div class="tw-flex tw-items-center tw-gap-1 tw-text-gray-400">
+									<i class="fa fa-minus tw-text-xs"></i>
+									<span class="tw-text-xs tw-font-medium">Stable</span>
+								</div>
+								<a href="#" class="tw-text-xs theme-color tw-no-underline"><i class="fa fa-external-link-alt tw-mr-1"></i>View Artifacts</a>
+							</div>
+						</div>
+					</div>
+					<div class="tw-p-4">
+						<div class="tw-flex tw-flex-wrap tw-items-center tw-justify-between tw-gap-3">
+							<div class="tw-flex-1 tw-min-w-[200px]">
+								<p class="tw-text-sm tw-font-medium second-color">Compare prokaryotic and eukaryotic cell structures</p>
+								<p class="tw-text-xs tw-text-gray-400 tw-mt-1">Assessed 2 times &middot; Last: Feb 28, 2025</p>
+							</div>
+							<div class="tw-flex tw-items-center tw-gap-3">
+								<span class="tw-bg-blue-100 tw-text-blue-700 tw-px-3 tw-py-1 tw-rounded-full tw-text-xs tw-font-semibold">Met</span>
+								<div class="tw-flex tw-items-center tw-gap-1 tw-text-green-600">
+									<i class="fa fa-arrow-up tw-text-xs"></i>
+									<span class="tw-text-xs tw-font-medium">Improving</span>
+								</div>
+								<a href="#" class="tw-text-xs theme-color tw-no-underline"><i class="fa fa-external-link-alt tw-mr-1"></i>View Artifacts</a>
+							</div>
+						</div>
+					</div>
+					<div class="tw-p-4">
+						<div class="tw-flex tw-flex-wrap tw-items-center tw-justify-between tw-gap-3">
+							<div class="tw-flex-1 tw-min-w-[200px]">
+								<p class="tw-text-sm tw-font-medium second-color">Explain the process of cellular respiration</p>
+								<p class="tw-text-xs tw-text-gray-400 tw-mt-1">Assessed 2 times &middot; Last: Mar 5, 2025</p>
+							</div>
+							<div class="tw-flex tw-items-center tw-gap-3">
+								<span class="tw-bg-yellow-100 tw-text-yellow-700 tw-px-3 tw-py-1 tw-rounded-full tw-text-xs tw-font-semibold">Near Mastery</span>
+								<div class="tw-flex tw-items-center tw-gap-1 tw-text-green-600">
+									<i class="fa fa-arrow-up tw-text-xs"></i>
+									<span class="tw-text-xs tw-font-medium">Improving</span>
+								</div>
+								<a href="#" class="tw-text-xs theme-color tw-no-underline"><i class="fa fa-external-link-alt tw-mr-1"></i>View Artifacts</a>
+							</div>
+						</div>
+					</div>
+					<div class="tw-p-4">
+						<div class="tw-flex tw-flex-wrap tw-items-center tw-justify-between tw-gap-3">
+							<div class="tw-flex-1 tw-min-w-[200px]">
+								<p class="tw-text-sm tw-font-medium second-color">Describe the stages of mitosis and meiosis</p>
+								<p class="tw-text-xs tw-text-gray-400 tw-mt-1">Assessed 1 time &middot; Last: Mar 22, 2025</p>
+							</div>
+							<div class="tw-flex tw-items-center tw-gap-3">
+								<span class="tw-bg-yellow-100 tw-text-yellow-700 tw-px-3 tw-py-1 tw-rounded-full tw-text-xs tw-font-semibold">Near Mastery</span>
+								<div class="tw-flex tw-items-center tw-gap-1 tw-text-gray-400">
+									<i class="fa fa-minus tw-text-xs"></i>
+									<span class="tw-text-xs tw-font-medium">New</span>
+								</div>
+								<a href="#" class="tw-text-xs theme-color tw-no-underline"><i class="fa fa-external-link-alt tw-mr-1"></i>View Artifacts</a>
+							</div>
+						</div>
+					</div>
+					<div class="tw-p-4">
+						<div class="tw-flex tw-flex-wrap tw-items-center tw-justify-between tw-gap-3">
+							<div class="tw-flex-1 tw-min-w-[200px]">
+								<p class="tw-text-sm tw-font-medium second-color">Explain membrane transport mechanisms</p>
+								<p class="tw-text-xs tw-text-gray-400 tw-mt-1">Assessed 2 times &middot; Last: Feb 20, 2025</p>
+							</div>
+							<div class="tw-flex tw-items-center tw-gap-3">
+								<span class="tw-bg-red-100 tw-text-red-700 tw-px-3 tw-py-1 tw-rounded-full tw-text-xs tw-font-semibold">Below Mastery</span>
+								<div class="tw-flex tw-items-center tw-gap-1 tw-text-red-600">
+									<i class="fa fa-arrow-down tw-text-xs"></i>
+									<span class="tw-text-xs tw-font-medium">Declining</span>
+								</div>
+								<a href="#" class="tw-text-xs theme-color tw-no-underline"><i class="fa fa-external-link-alt tw-mr-1"></i>View Artifacts</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Outcome Group: Genetics -->
+			<div class="shadcn-card tw-mb-6">
+				<div class="tw-p-4 tw-border-b tw-bg-gray-50">
+					<div class="tw-flex tw-items-center tw-justify-between">
+						<h5 class="second-color tw-font-semibold"><i class="fa fa-dna tw-mr-2"></i>Genetics &amp; Heredity</h5>
+						<span class="tw-text-sm tw-text-gray-500">4 outcomes</span>
+					</div>
+				</div>
+				<div class="tw-divide-y">
+					<div class="tw-p-4">
+						<div class="tw-flex tw-flex-wrap tw-items-center tw-justify-between tw-gap-3">
+							<div class="tw-flex-1 tw-min-w-[200px]">
+								<p class="tw-text-sm tw-font-medium second-color">Describe DNA structure and replication</p>
+								<p class="tw-text-xs tw-text-gray-400 tw-mt-1">Assessed 3 times &middot; Last: Mar 18, 2025</p>
+							</div>
+							<div class="tw-flex tw-items-center tw-gap-3">
+								<span class="tw-bg-blue-100 tw-text-blue-700 tw-px-3 tw-py-1 tw-rounded-full tw-text-xs tw-font-semibold">Met</span>
+								<div class="tw-flex tw-items-center tw-gap-1 tw-text-green-600">
+									<i class="fa fa-arrow-up tw-text-xs"></i>
+									<span class="tw-text-xs tw-font-medium">Improving</span>
+								</div>
+								<a href="#" class="tw-text-xs theme-color tw-no-underline"><i class="fa fa-external-link-alt tw-mr-1"></i>View Artifacts</a>
+							</div>
+						</div>
+					</div>
+					<div class="tw-p-4">
+						<div class="tw-flex tw-flex-wrap tw-items-center tw-justify-between tw-gap-3">
+							<div class="tw-flex-1 tw-min-w-[200px]">
+								<p class="tw-text-sm tw-font-medium second-color">Solve genetics problems using Punnett squares</p>
+								<p class="tw-text-xs tw-text-gray-400 tw-mt-1">Assessed 2 times &middot; Last: Mar 14, 2025</p>
+							</div>
+							<div class="tw-flex tw-items-center tw-gap-3">
+								<span class="tw-bg-green-100 tw-text-green-700 tw-px-3 tw-py-1 tw-rounded-full tw-text-xs tw-font-semibold">Exceeded</span>
+								<div class="tw-flex tw-items-center tw-gap-1 tw-text-green-600">
+									<i class="fa fa-arrow-up tw-text-xs"></i>
+									<span class="tw-text-xs tw-font-medium">Improving</span>
+								</div>
+								<a href="#" class="tw-text-xs theme-color tw-no-underline"><i class="fa fa-external-link-alt tw-mr-1"></i>View Artifacts</a>
+							</div>
+						</div>
+					</div>
+					<div class="tw-p-4">
+						<div class="tw-flex tw-flex-wrap tw-items-center tw-justify-between tw-gap-3">
+							<div class="tw-flex-1 tw-min-w-[200px]">
+								<p class="tw-text-sm tw-font-medium second-color">Explain gene expression and protein synthesis</p>
+								<p class="tw-text-xs tw-text-gray-400 tw-mt-1">Assessed 2 times &middot; Last: Mar 20, 2025</p>
+							</div>
+							<div class="tw-flex tw-items-center tw-gap-3">
+								<span class="tw-bg-blue-100 tw-text-blue-700 tw-px-3 tw-py-1 tw-rounded-full tw-text-xs tw-font-semibold">Met</span>
+								<div class="tw-flex tw-items-center tw-gap-1 tw-text-gray-400">
+									<i class="fa fa-minus tw-text-xs"></i>
+									<span class="tw-text-xs tw-font-medium">Stable</span>
+								</div>
+								<a href="#" class="tw-text-xs theme-color tw-no-underline"><i class="fa fa-external-link-alt tw-mr-1"></i>View Artifacts</a>
+							</div>
+						</div>
+					</div>
+					<div class="tw-p-4">
+						<div class="tw-flex tw-flex-wrap tw-items-center tw-justify-between tw-gap-3">
+							<div class="tw-flex-1 tw-min-w-[200px]">
+								<p class="tw-text-sm tw-font-medium second-color">Analyze the ethical implications of genetic technologies</p>
+								<p class="tw-text-xs tw-text-gray-400 tw-mt-1">Assessed 1 time &middot; Last: Mar 22, 2025</p>
+							</div>
+							<div class="tw-flex tw-items-center tw-gap-3">
+								<span class="tw-bg-yellow-100 tw-text-yellow-700 tw-px-3 tw-py-1 tw-rounded-full tw-text-xs tw-font-semibold">Near Mastery</span>
+								<div class="tw-flex tw-items-center tw-gap-1 tw-text-gray-400">
+									<i class="fa fa-minus tw-text-xs"></i>
+									<span class="tw-text-xs tw-font-medium">New</span>
+								</div>
+								<a href="#" class="tw-text-xs theme-color tw-no-underline"><i class="fa fa-external-link-alt tw-mr-1"></i>View Artifacts</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Mastery Legend -->
+			<div class="shadcn-card tw-p-4">
+				<h6 class="tw-text-sm tw-font-semibold second-color tw-mb-3">Mastery Scale Legend</h6>
+				<div class="tw-flex tw-flex-wrap tw-gap-4">
+					<div class="tw-flex tw-items-center tw-gap-2">
+						<span class="tw-w-3 tw-h-3 tw-rounded-full tw-bg-green-500"></span>
+						<span class="tw-text-xs tw-text-gray-600"><strong>Exceeded (4)</strong> - Demonstrates advanced understanding</span>
+					</div>
+					<div class="tw-flex tw-items-center tw-gap-2">
+						<span class="tw-w-3 tw-h-3 tw-rounded-full tw-bg-blue-500"></span>
+						<span class="tw-text-xs tw-text-gray-600"><strong>Met (3)</strong> - Meets expected proficiency</span>
+					</div>
+					<div class="tw-flex tw-items-center tw-gap-2">
+						<span class="tw-w-3 tw-h-3 tw-rounded-full tw-bg-yellow-500"></span>
+						<span class="tw-text-xs tw-text-gray-600"><strong>Near (2)</strong> - Approaching mastery</span>
+					</div>
+					<div class="tw-flex tw-items-center tw-gap-2">
+						<span class="tw-w-3 tw-h-3 tw-rounded-full tw-bg-red-500"></span>
+						<span class="tw-text-xs tw-text-gray-600"><strong>Below (1)</strong> - Not yet demonstrating mastery</span>
+					</div>
+				</div>
+			</div>
+		</main>
+	</div>
+	<script src="js/sidebar.js"></script>
+<script src="js/router.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/api.js"></script>
+<script src="js/render.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

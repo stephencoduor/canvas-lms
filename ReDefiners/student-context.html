@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	<title>ReDefiners</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+	<script src="https://cdn.tailwindcss.com"></script>
+	<script src="css/tailwind-config.js?v=3"></script>
+	<script src="https://kit.fontawesome.com/7a13c96681.js" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/tokens.css?v=3">
+	<link rel="stylesheet" type="text/css" href="css/shadcn.css?v=3">
+	<link rel="stylesheet" type="text/css" href="styles.css?v=3">
+	<style>
+		.grade-bar { height: 8px; background: var(--color-neutral-200, #e5e7eb); border-radius: 8px; overflow: hidden; }
+		.grade-bar-fill { height: 100%; border-radius: 8px; }
+		.submission-row { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--color-neutral-100, #f3f4f6); }
+		.submission-row:last-child { border-bottom: none; }
+		.status-badge { font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 20px; }
+		.status-graded { background: #f0fdf4; color: #16a34a; }
+		.status-submitted { background: #eff6ff; color: #3B82F6; }
+		.status-late { background: #fff3e0; color: #FF6B35; }
+		.status-missing { background: #fef2f2; color: #dc2626; }
+		.interaction-item { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--color-neutral-100, #f3f4f6); }
+		.interaction-item:last-child { border-bottom: none; }
+		.grade-summary-item { display: flex; align-items: center; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--color-neutral-100, #f3f4f6); }
+		.grade-summary-item:last-child { border-bottom: none; }
+	</style>
+</head>
+<body>
+<div class="tw-flex tw-min-h-screen tw-font-poppins">
+	<aside class="left-sidebar tw-fixed tw-inset-y-0 tw-left-0 tw-w-[240px] tw-z-50 tw--translate-x-full lg:tw-translate-x-0 tw-transition-transform tw-duration-300 tw-overflow-y-auto shadcn-scrollbar">
+		<div class="menu-bar">
+			<section class="logo-section">
+				<i class="fa fa-times theme-color menu-hide"></i>
+				<img src="Images/logo.PNG" class="res-hide" alt="logo">
+				<div class="nav-input res-show-flex tw-mt-5">
+					<button class="tw-border tw-border-primary-400 tw-border-r-0 tw-bg-transparent tw-px-2"><i class="fa fa-search"></i></button>
+					<input class="tw-border tw-border-primary-400 tw-border-l-0 tw-w-[85%] tw-bg-transparent tw-px-2 tw-py-1 tw-outline-none" type="text" name="search" placeholder="Search">
+				</div>
+			</section>
+			<section class="menu-links">
+				<div class="menu-link"><a href="dashboard.html"><i class="fa fa-th-large"></i><span> Dashboard</span></a></div>
+				<div class="menu-link"><a href="courses.html"><i class="fa fa-clipboard-list"></i><span> Courses</span></a></div>
+				<div class="menu-link"><a href="calendar.html"><i class="fa fa-calendar-alt"></i><span> Calendar</span></a></div>
+				<div class="menu-link"><a href="announcement.html"><i class="fa fa-bullhorn"></i><span> Announcements</span></a></div>
+				<div class="menu-link"><a href="inbox.html"><i class="fa fa-comments"></i><span> Messages</span></a></div>
+				<div class="menu-link"><a href="assignments.html"><i class="fa fa-file-lines"></i><span> Assignments</span></a></div>
+				<div class="menu-link"><a href="grades.html"><i class="fa fa-chart-bar"></i><span> Grades</span></a></div>
+				<div class="menu-link"><a href="modules.html"><i class="fa fa-layer-group"></i><span> Modules</span></a></div>
+				<div class="menu-link"><a href="discussions.html"><i class="fa fa-comments-alt"></i><span> Discussions</span></a></div>
+				<div class="menu-link"><a href="quizzes.html"><i class="fa fa-question-circle"></i><span> Quizzes</span></a></div>
+				<div class="menu-link"><a href="pages.html"><i class="fa fa-file-alt"></i><span> Pages</span></a></div>
+				<div class="menu-link"><a href="files.html"><i class="fa fa-folder"></i><span> Files</span></a></div>
+				<div class="menu-link"><a href="people.html" class="active-menu"><i class="fa fa-users"></i><span> People</span></a></div>
+				<div class="menu-link"><a href="outcomes.html"><i class="fa fa-bullseye"></i><span> Outcomes</span></a></div>
+				<div class="menu-link"><a href="rubrics.html"><i class="fa fa-th"></i><span> Rubrics</span></a></div>
+				<div class="menu-link"><a href="groups.html"><i class="fa fa-user-friends"></i><span> Groups</span></a></div>
+				<div class="menu-link"><a href="conferences.html"><i class="fa fa-video"></i><span> Conferences</span></a></div>
+				<div class="menu-link"><a href="collaborations.html"><i class="fa fa-handshake"></i><span> Collaborations</span></a></div>
+				<div class="menu-link"><a href="account-settings.html"><i class="fa fa-cog"></i><span> Settings</span></a></div>
+			</section>
+		</div>
+	</aside>
+	<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+	<main class="middle-part tw-flex-1 lg:tw-ml-[240px] tw-min-h-screen tw-px-4 md:tw-px-6 lg:tw-px-10 tw-pb-8">
+		<!-- Nav Bar -->
+		<div class="tw-flex tw-items-center tw-justify-between tw-py-4 tw-gap-3 tw-flex-wrap">
+			<div class="tw-flex tw-items-center tw-gap-3">
+				<i class="fa fa-bars tw-text-primary-400 tw-cursor-pointer tw-text-xl lg:tw-hidden menu-icon" id="menuToggle"></i>
+				<div class="shadcn-search tw-hidden sm:tw-flex tw-w-64">
+					<i class="fa fa-search"></i>
+					<input type="text" placeholder="Search courses, assignments...">
+				</div>
+			</div>
+			<div class="tw-flex tw-items-center tw-gap-3">
+				<button class="shadcn-btn shadcn-btn-ghost shadcn-btn-icon tw-relative">
+					<i class="fa fa-bell tw-text-primary-400"></i>
+				</button>
+				<div class="shadcn-avatar shadcn-avatar-md tw-cursor-pointer profile-click">
+					<img src="Images/profile.png" alt="Profile">
+				</div>
+			</div>
+		</div>
+
+		<!-- Breadcrumbs -->
+		<div class="breadcrumbs tw-mt-2">
+			<a href="dashboard.html">Home</a>
+			<span class="breadcrumbs__separator">/</span>
+			<a href="courses.html">Spanish 201</a>
+			<span class="breadcrumbs__separator">/</span>
+			<a href="people.html">People</a>
+			<span class="breadcrumbs__separator">/</span>
+			<span class="breadcrumbs__current">Isabella Fernandez</span>
+		</div>
+
+		<!-- Student Profile Header -->
+		<div class="shadcn-card tw-p-6 tw-my-6">
+			<div class="tw-flex tw-flex-col md:tw-flex-row tw-items-start md:tw-items-center tw-gap-5">
+				<div style="width:80px;height:80px;border-radius:20px;overflow:hidden;flex-shrink:0;border:3px solid #D4EFE6;">
+					<img src="Images/student-1.png" alt="Isabella Fernandez" style="width:100%;height:100%;object-fit:cover;">
+				</div>
+				<div class="tw-flex-1">
+					<h3 class="second-color tw-font-bold tw-mb-1">Isabella Fernandez</h3>
+					<p class="tw-text-sm tw-mb-2" style="color: #668B91;">
+						<i class="fa fa-envelope tw-mr-1"></i> isabella.fernandez@redefiners.edu
+						<span class="tw-mx-2">|</span>
+						<i class="fa fa-id-badge tw-mr-1"></i> Student ID: RF-2024-0847
+					</p>
+					<div class="tw-flex tw-flex-wrap tw-gap-2">
+						<span class="tw-text-xs tw-font-medium tw-px-3 tw-py-1 tw-rounded-full" style="background: #D4EFE6; color: var(--color-primary-700);">
+							<i class="fa fa-users tw-mr-1"></i> Section A - MWF 9:00 AM
+						</span>
+						<span class="tw-text-xs tw-font-medium tw-px-3 tw-py-1 tw-rounded-full" style="background: #eff6ff; color: #3B82F6;">
+							<i class="fa fa-graduation-cap tw-mr-1"></i> Sophomore
+						</span>
+						<span class="tw-text-xs tw-font-medium tw-px-3 tw-py-1 tw-rounded-full" style="background: #f0fdf4; color: #16a34a;">
+							<i class="fa fa-clock tw-mr-1"></i> Last active: 2 hours ago
+						</span>
+					</div>
+				</div>
+				<div class="tw-flex tw-flex-wrap tw-gap-2">
+					<button class="shadcn-btn shadcn-btn-primary tw-text-sm">
+						<i class="fa fa-envelope tw-mr-1"></i> Message
+					</button>
+					<button class="shadcn-btn shadcn-btn-outline tw-text-sm">
+						<i class="fa fa-chart-bar tw-mr-1"></i> View Grades
+					</button>
+					<button class="shadcn-btn shadcn-btn-outline tw-text-sm">
+						<i class="fa fa-chart-line tw-mr-1"></i> Analytics
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="tw-grid tw-grid-cols-1 lg:tw-grid-cols-3 tw-gap-6">
+
+			<!-- LEFT: Grade Summary & Submissions -->
+			<div class="lg:tw-col-span-2">
+
+				<!-- Overall Grade -->
+				<div class="shadcn-card tw-p-6 tw-mb-6">
+					<h5 class="tw-font-bold tw-mb-4" style="color: var(--color-primary-700);">
+						<i class="fa fa-chart-bar tw-mr-2" style="color: #2DB88A;"></i>Grade Summary
+					</h5>
+
+					<!-- Overall grade display -->
+					<div class="tw-flex tw-items-center tw-gap-6 tw-mb-5 tw-p-4 tw-rounded-lg" style="background: linear-gradient(135deg, #D4EFE6, #f0fdf4);">
+						<div class="tw-text-center">
+							<div class="tw-text-4xl tw-font-bold" style="color: var(--color-primary-700);">88.5%</div>
+							<div class="tw-text-sm tw-font-semibold" style="color: #2DB88A;">B+</div>
+						</div>
+						<div class="tw-flex-1">
+							<div class="tw-flex tw-justify-between tw-text-xs tw-mb-1">
+								<span style="color: #668B91;">Overall Course Grade</span>
+								<span class="tw-font-semibold" style="color: var(--color-primary-700);">Rank: 8 of 28</span>
+							</div>
+							<div class="grade-bar">
+								<div class="grade-bar-fill" style="width: 88.5%; background: linear-gradient(90deg, #2DB88A, #16a34a);"></div>
+							</div>
+							<div class="tw-flex tw-justify-between tw-text-xs tw-mt-1">
+								<span style="color: #668B91;">Class average: 82.3%</span>
+								<span style="color: #2DB88A;">+6.2% above average</span>
+							</div>
+						</div>
+					</div>
+
+					<!-- Grade Breakdown by Category -->
+					<div class="grade-summary-item">
+						<div class="tw-flex tw-items-center tw-gap-3">
+							<i class="fa fa-file-lines tw-text-sm" style="color: #FF6B35;"></i>
+							<div>
+								<span class="tw-text-sm tw-font-medium" style="color: var(--color-primary-700);">Assignments</span>
+								<span class="tw-text-xs tw-block" style="color: #668B91;">40% weight &middot; 8 of 12 graded</span>
+							</div>
+						</div>
+						<div class="tw-text-right">
+							<span class="tw-text-sm tw-font-bold" style="color: var(--color-primary-700);">91.2%</span>
+							<div class="grade-bar tw-w-20 tw-mt-1">
+								<div class="grade-bar-fill" style="width: 91.2%; background: #2DB88A;"></div>
+							</div>
+						</div>
+					</div>
+					<div class="grade-summary-item">
+						<div class="tw-flex tw-items-center tw-gap-3">
+							<i class="fa fa-question-circle tw-text-sm" style="color: #8B5CF6;"></i>
+							<div>
+								<span class="tw-text-sm tw-font-medium" style="color: var(--color-primary-700);">Quizzes</span>
+								<span class="tw-text-xs tw-block" style="color: #668B91;">25% weight &middot; 5 of 8 graded</span>
+							</div>
+						</div>
+						<div class="tw-text-right">
+							<span class="tw-text-sm tw-font-bold" style="color: var(--color-primary-700);">84.0%</span>
+							<div class="grade-bar tw-w-20 tw-mt-1">
+								<div class="grade-bar-fill" style="width: 84%; background: #F59E0B;"></div>
+							</div>
+						</div>
+					</div>
+					<div class="grade-summary-item">
+						<div class="tw-flex tw-items-center tw-gap-3">
+							<i class="fa fa-comments-alt tw-text-sm" style="color: #3B82F6;"></i>
+							<div>
+								<span class="tw-text-sm tw-font-medium" style="color: var(--color-primary-700);">Discussions</span>
+								<span class="tw-text-xs tw-block" style="color: #668B91;">15% weight &middot; 4 of 6 graded</span>
+							</div>
+						</div>
+						<div class="tw-text-right">
+							<span class="tw-text-sm tw-font-bold" style="color: var(--color-primary-700);">95.0%</span>
+							<div class="grade-bar tw-w-20 tw-mt-1">
+								<div class="grade-bar-fill" style="width: 95%; background: #2DB88A;"></div>
+							</div>
+						</div>
+					</div>
+					<div class="grade-summary-item">
+						<div class="tw-flex tw-items-center tw-gap-3">
+							<i class="fa fa-users tw-text-sm" style="color: #06B6D4;"></i>
+							<div>
+								<span class="tw-text-sm tw-font-medium" style="color: var(--color-primary-700);">Participation</span>
+								<span class="tw-text-xs tw-block" style="color: #668B91;">10% weight &middot; Ongoing</span>
+							</div>
+						</div>
+						<div class="tw-text-right">
+							<span class="tw-text-sm tw-font-bold" style="color: var(--color-primary-700);">80.0%</span>
+							<div class="grade-bar tw-w-20 tw-mt-1">
+								<div class="grade-bar-fill" style="width: 80%; background: #F59E0B;"></div>
+							</div>
+						</div>
+					</div>
+					<div class="grade-summary-item">
+						<div class="tw-flex tw-items-center tw-gap-3">
+							<i class="fa fa-pen-fancy tw-text-sm" style="color: #EF4444;"></i>
+							<div>
+								<span class="tw-text-sm tw-font-medium" style="color: var(--color-primary-700);">Midterm Exam</span>
+								<span class="tw-text-xs tw-block" style="color: #668B91;">10% weight &middot; Graded</span>
+							</div>
+						</div>
+						<div class="tw-text-right">
+							<span class="tw-text-sm tw-font-bold" style="color: var(--color-primary-700);">86.0%</span>
+							<div class="grade-bar tw-w-20 tw-mt-1">
+								<div class="grade-bar-fill" style="width: 86%; background: #F59E0B;"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Recent Submissions -->
+				<div class="shadcn-card tw-p-6">
+					<div class="tw-flex tw-items-center tw-justify-between tw-mb-4">
+						<h5 class="tw-font-bold" style="color: var(--color-primary-700);">
+							<i class="fa fa-paper-plane tw-mr-2" style="color: #3B82F6;"></i>Recent Submissions
+						</h5>
+						<a href="#" class="tw-text-sm tw-font-medium tw-no-underline" style="color: var(--color-primary-400);">View All</a>
+					</div>
+
+					<div class="submission-row">
+						<div style="width:36px;height:36px;border-radius:8px;background:#fef3c7;color:#92400e;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;">
+							<i class="fa fa-file-lines"></i>
+						</div>
+						<div class="tw-flex-1">
+							<span class="tw-text-sm tw-font-medium tw-block" style="color: var(--color-primary-700);">Essay: Mi Ciudad Natal</span>
+							<span class="tw-text-xs" style="color: #668B91;">Submitted Mar 24, 2026 at 11:45 PM</span>
+						</div>
+						<div class="tw-text-right">
+							<span class="tw-text-sm tw-font-bold" style="color: #2DB88A;">47/50</span>
+							<span class="status-badge status-graded tw-block tw-mt-1">Graded</span>
+						</div>
+					</div>
+
+					<div class="submission-row">
+						<div style="width:36px;height:36px;border-radius:8px;background:#f3e8ff;color:#6b21a8;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;">
+							<i class="fa fa-question-circle"></i>
+						</div>
+						<div class="tw-flex-1">
+							<span class="tw-text-sm tw-font-medium tw-block" style="color: var(--color-primary-700);">Quiz: Vocabulary Unit 4</span>
+							<span class="tw-text-xs" style="color: #668B91;">Submitted Mar 22, 2026 at 9:15 AM</span>
+						</div>
+						<div class="tw-text-right">
+							<span class="tw-text-sm tw-font-bold" style="color: #2DB88A;">18/20</span>
+							<span class="status-badge status-graded tw-block tw-mt-1">Graded</span>
+						</div>
+					</div>
+
+					<div class="submission-row">
+						<div style="width:36px;height:36px;border-radius:8px;background:#dbeafe;color:#1e40af;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;">
+							<i class="fa fa-comments-alt"></i>
+						</div>
+						<div class="tw-flex-1">
+							<span class="tw-text-sm tw-font-medium tw-block" style="color: var(--color-primary-700);">Discussion: Cultural Identity in Film</span>
+							<span class="tw-text-xs" style="color: #668B91;">Submitted Mar 20, 2026 at 3:30 PM</span>
+						</div>
+						<div class="tw-text-right">
+							<span class="tw-text-sm tw-font-bold" style="color: #3B82F6;">--/25</span>
+							<span class="status-badge status-submitted tw-block tw-mt-1">Submitted</span>
+						</div>
+					</div>
+
+					<div class="submission-row">
+						<div style="width:36px;height:36px;border-radius:8px;background:#fef3c7;color:#92400e;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;">
+							<i class="fa fa-file-lines"></i>
+						</div>
+						<div class="tw-flex-1">
+							<span class="tw-text-sm tw-font-medium tw-block" style="color: var(--color-primary-700);">Oral Recording: Restaurant Dialogue</span>
+							<span class="tw-text-xs" style="color: #668B91;">Submitted Mar 18, 2026 at 8:00 PM <span style="color:#FF6B35;">(1 day late)</span></span>
+						</div>
+						<div class="tw-text-right">
+							<span class="tw-text-sm tw-font-bold" style="color: #FF6B35;">38/50</span>
+							<span class="status-badge status-late tw-block tw-mt-1">Late</span>
+						</div>
+					</div>
+
+					<div class="submission-row">
+						<div style="width:36px;height:36px;border-radius:8px;background:#fef2f2;color:#dc2626;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;">
+							<i class="fa fa-exclamation-triangle"></i>
+						</div>
+						<div class="tw-flex-1">
+							<span class="tw-text-sm tw-font-medium tw-block" style="color: var(--color-primary-700);">Workbook Exercises: Chapter 5</span>
+							<span class="tw-text-xs" style="color: #dc2626;">Due Mar 15, 2026 &middot; Not submitted</span>
+						</div>
+						<div class="tw-text-right">
+							<span class="tw-text-sm tw-font-bold" style="color: #dc2626;">0/30</span>
+							<span class="status-badge status-missing tw-block tw-mt-1">Missing</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- RIGHT: Activity & Interactions -->
+			<div>
+				<!-- Quick Stats -->
+				<div class="shadcn-card tw-p-5 tw-mb-6">
+					<h6 class="tw-font-bold tw-mb-4" style="color: var(--color-primary-700);">
+						<i class="fa fa-chart-pie tw-mr-2" style="color: #FF6B35;"></i>Activity Overview
+					</h6>
+					<div class="tw-space-y-3">
+						<div class="tw-flex tw-justify-between tw-items-center">
+							<span class="tw-text-sm" style="color: #668B91;">Total Page Views</span>
+							<span class="tw-text-sm tw-font-bold" style="color: var(--color-primary-700);">342</span>
+						</div>
+						<div class="tw-flex tw-justify-between tw-items-center">
+							<span class="tw-text-sm" style="color: #668B91;">Participations</span>
+							<span class="tw-text-sm tw-font-bold" style="color: var(--color-primary-700);">48</span>
+						</div>
+						<div class="tw-flex tw-justify-between tw-items-center">
+							<span class="tw-text-sm" style="color: #668B91;">On-Time Submissions</span>
+							<span class="tw-text-sm tw-font-bold" style="color: #2DB88A;">85%</span>
+						</div>
+						<div class="tw-flex tw-justify-between tw-items-center">
+							<span class="tw-text-sm" style="color: #668B91;">Missing Assignments</span>
+							<span class="tw-text-sm tw-font-bold" style="color: #dc2626;">1</span>
+						</div>
+						<div class="tw-flex tw-justify-between tw-items-center">
+							<span class="tw-text-sm" style="color: #668B91;">Avg. Time in Course</span>
+							<span class="tw-text-sm tw-font-bold" style="color: var(--color-primary-700);">4.2 hrs/wk</span>
+						</div>
+						<div class="tw-flex tw-justify-between tw-items-center">
+							<span class="tw-text-sm" style="color: #668B91;">Last Login</span>
+							<span class="tw-text-sm tw-font-bold" style="color: var(--color-primary-700);">2 hrs ago</span>
+						</div>
+					</div>
+				</div>
+
+				<!-- Interaction History -->
+				<div class="shadcn-card tw-p-5 tw-mb-6">
+					<h6 class="tw-font-bold tw-mb-4" style="color: var(--color-primary-700);">
+						<i class="fa fa-history tw-mr-2" style="color: #8B5CF6;"></i>Interaction History
+					</h6>
+
+					<div class="interaction-item">
+						<div style="width:30px;height:30px;border-radius:8px;background:#eff6ff;color:#3B82F6;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;">
+							<i class="fa fa-envelope"></i>
+						</div>
+						<div class="tw-flex-1">
+							<span class="tw-text-xs tw-font-medium tw-block" style="color: var(--color-primary-700);">Message sent about missing assignment</span>
+							<span class="tw-text-xs" style="color: #668B91;">Mar 20, 2026</span>
+						</div>
+					</div>
+					<div class="interaction-item">
+						<div style="width:30px;height:30px;border-radius:8px;background:#f0fdf4;color:#2DB88A;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;">
+							<i class="fa fa-comment"></i>
+						</div>
+						<div class="tw-flex-1">
+							<span class="tw-text-xs tw-font-medium tw-block" style="color: var(--color-primary-700);">Submission comment on Essay: Mi Ciudad</span>
+							<span class="tw-text-xs" style="color: #668B91;">Mar 18, 2026</span>
+						</div>
+					</div>
+					<div class="interaction-item">
+						<div style="width:30px;height:30px;border-radius:8px;background:#fff3e0;color:#FF6B35;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;">
+							<i class="fa fa-video"></i>
+						</div>
+						<div class="tw-flex-1">
+							<span class="tw-text-xs tw-font-medium tw-block" style="color: var(--color-primary-700);">Office hours meeting (15 min)</span>
+							<span class="tw-text-xs" style="color: #668B91;">Mar 12, 2026</span>
+						</div>
+					</div>
+					<div class="interaction-item">
+						<div style="width:30px;height:30px;border-radius:8px;background:#eff6ff;color:#3B82F6;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;">
+							<i class="fa fa-envelope"></i>
+						</div>
+						<div class="tw-flex-1">
+							<span class="tw-text-xs tw-font-medium tw-block" style="color: var(--color-primary-700);">Welcome message at start of semester</span>
+							<span class="tw-text-xs" style="color: #668B91;">Jan 13, 2026</span>
+						</div>
+					</div>
+				</div>
+
+				<!-- Action Buttons -->
+				<div class="shadcn-card tw-p-5">
+					<h6 class="tw-font-bold tw-mb-4" style="color: var(--color-primary-700);">
+						<i class="fa fa-bolt tw-mr-2" style="color: #F59E0B;"></i>Quick Actions
+					</h6>
+					<div class="tw-space-y-2">
+						<button class="shadcn-btn shadcn-btn-primary tw-w-full tw-text-sm tw-justify-start">
+							<i class="fa fa-envelope tw-mr-2"></i> Send Message
+						</button>
+						<button class="shadcn-btn shadcn-btn-outline tw-w-full tw-text-sm tw-justify-start">
+							<i class="fa fa-chart-bar tw-mr-2"></i> Full Grade Report
+						</button>
+						<button class="shadcn-btn shadcn-btn-outline tw-w-full tw-text-sm tw-justify-start">
+							<i class="fa fa-chart-line tw-mr-2"></i> Student Analytics
+						</button>
+						<button class="shadcn-btn shadcn-btn-outline tw-w-full tw-text-sm tw-justify-start">
+							<i class="fa fa-clock tw-mr-2"></i> Access Report
+						</button>
+						<button class="shadcn-btn shadcn-btn-outline tw-w-full tw-text-sm tw-justify-start">
+							<i class="fa fa-flag tw-mr-2"></i> Add Accommodation Note
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="tw-mt-6 tw-text-xs" style="color: #adb5bd;">
+			API: GET /api/v1/courses/:course_id/users/:user_id | GET /api/v1/courses/:course_id/analytics/users/:user_id
+		</div>
+
+	</main>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+<script>$(".button-collapse").sideNav();</script>
+<script src="js/router.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/api.js"></script>
+<script src="js/render.js"></script>
+<script src="js/sidebar.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

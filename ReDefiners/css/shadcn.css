@@ -1,0 +1,547 @@
+/* ================================================================
+   ReDefiners — shadcn-Inspired Component Layer
+   Pure CSS implementation of shadcn/ui design patterns.
+   No React required. Works with Tailwind utility classes.
+   ================================================================ */
+
+/* ─── Focus Ring (shadcn signature) ─── */
+.shadcn-focus:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px #FFFFFF, 0 0 0 4px #2DB88A;
+}
+.shadcn-focus-destructive:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px #FFFFFF, 0 0 0 4px #F45252;
+}
+
+/* ─── Card ─── */
+.shadcn-card {
+    background: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    transition: box-shadow 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+.shadcn-card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.shadcn-card-interactive:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border-color: #D1D5DB;
+    transform: translateY(-1px);
+}
+.shadcn-card-header {
+    padding: 20px 24px 0;
+}
+.shadcn-card-body {
+    padding: 16px 24px;
+}
+.shadcn-card-footer {
+    padding: 0 24px 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* ─── Input ─── */
+.shadcn-input {
+    display: flex;
+    height: 40px;
+    width: 100%;
+    border-radius: 12px;
+    border: 1px solid #E5E7EB;
+    background: transparent;
+    padding: 8px 12px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    color: #163B32;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    outline: none;
+}
+.shadcn-input::placeholder {
+    color: #9CA3AF;
+}
+.shadcn-input:focus {
+    border-color: #2DB88A;
+    box-shadow: 0 0 0 2px #FFFFFF, 0 0 0 4px rgba(0,196,140,0.2);
+}
+.shadcn-input:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+    background: #F3F4F6;
+}
+
+/* ─── Search Input (pill) ─── */
+.shadcn-search {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    border-radius: 20px;
+    border: 1px solid #E5E7EB;
+    background: #FFFFFF;
+    padding: 0 16px;
+    gap: 8px;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.shadcn-search:focus-within {
+    border-color: #2DB88A;
+    box-shadow: 0 0 0 2px #FFFFFF, 0 0 0 4px rgba(0,196,140,0.15);
+}
+.shadcn-search input {
+    border: none;
+    outline: none;
+    background: transparent;
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    color: #163B32;
+    flex: 1;
+    min-width: 0;
+}
+.shadcn-search input::placeholder { color: #9CA3AF; }
+.shadcn-search i { color: #6B7280; font-size: 14px; flex-shrink: 0; }
+
+/* ─── Textarea ─── */
+.shadcn-textarea {
+    display: flex;
+    width: 100%;
+    min-height: 80px;
+    border-radius: 12px;
+    border: 1px solid #E5E7EB;
+    background: transparent;
+    padding: 8px 12px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    color: #163B32;
+    resize: vertical;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    outline: none;
+}
+.shadcn-textarea:focus {
+    border-color: #2DB88A;
+    box-shadow: 0 0 0 2px #FFFFFF, 0 0 0 4px rgba(0,196,140,0.2);
+}
+
+/* ─── Select ─── */
+.shadcn-select {
+    display: flex;
+    height: 40px;
+    width: 100%;
+    border-radius: 12px;
+    border: 1px solid #E5E7EB;
+    background: #FFFFFF;
+    padding: 8px 12px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    color: #163B32;
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236B7280' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 32px;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    outline: none;
+}
+.shadcn-select:focus {
+    border-color: #2DB88A;
+    box-shadow: 0 0 0 2px #FFFFFF, 0 0 0 4px rgba(0,196,140,0.2);
+}
+
+/* ─── Buttons ─── */
+.shadcn-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    white-space: nowrap;
+    border-radius: 9999px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    text-decoration: none;
+    border: none;
+    line-height: 1.4;
+}
+.shadcn-btn:disabled {
+    pointer-events: none;
+    opacity: 0.5;
+}
+.shadcn-btn-sm {
+    height: 32px;
+    padding: 4px 12px;
+    font-size: 13px;
+    border-radius: 9999px;
+}
+.shadcn-btn-lg {
+    height: 44px;
+    padding: 10px 24px;
+    font-size: 15px;
+}
+.shadcn-btn-icon {
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border-radius: 9999px;
+}
+
+/* Primary */
+.shadcn-btn-primary {
+    background: #163B32;
+    color: #FFFFFF;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05);
+}
+.shadcn-btn-primary:hover {
+    background: #0F2922;
+}
+.shadcn-btn-primary:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px #FFFFFF, 0 0 0 4px #2DB88A;
+}
+
+/* Secondary (Outline) */
+.shadcn-btn-secondary {
+    background: #FFFFFF;
+    color: #163B32;
+    border: 1px solid #E5E7EB;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05);
+}
+.shadcn-btn-secondary:hover {
+    background: #F3F4F6;
+    border-color: #D1D5DB;
+}
+
+/* Ghost */
+.shadcn-btn-ghost {
+    background: transparent;
+    color: #163B32;
+}
+.shadcn-btn-ghost:hover {
+    background: #F3F4F6;
+}
+
+/* Destructive */
+.shadcn-btn-destructive {
+    background: #F45252;
+    color: #FFFFFF;
+}
+.shadcn-btn-destructive:hover {
+    background: #DC2626;
+}
+
+/* CTA (brand accent) */
+.shadcn-btn-cta {
+    background: linear-gradient(135deg, #FF6B35 0%, #FF8A5C 100%);
+    color: #FFFFFF;
+    font-weight: 600;
+    box-shadow: 0 3px 10px rgba(255,107,53,0.3);
+}
+.shadcn-btn-cta:hover {
+    box-shadow: 0 5px 15px rgba(255,107,53,0.4);
+    transform: translateY(-1px);
+}
+
+/* ─── Badge / Pill ─── */
+.shadcn-badge {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 100px;
+    padding: 2px 10px;
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 1.6;
+    white-space: nowrap;
+    transition: background 0.15s ease;
+}
+.shadcn-badge-default {
+    background: #F3F4F6;
+    color: #163B32;
+}
+.shadcn-badge-primary {
+    background: #0F2922;
+    color: #FFFFFF;
+}
+.shadcn-badge-success {
+    background: #D1FAE5;
+    color: #065F46;
+}
+.shadcn-badge-warning {
+    background: #FFD166;
+    color: #92400e;
+}
+.shadcn-badge-destructive {
+    background: #fef2f2;
+    color: #991b1b;
+}
+.shadcn-badge-outline {
+    background: transparent;
+    color: #163B32;
+    border: 1px solid #E5E7EB;
+}
+
+/* ─── Separator ─── */
+.shadcn-separator {
+    height: 1px;
+    width: 100%;
+    background: #E5E7EB;
+    border: none;
+    margin: 16px 0;
+    flex-shrink: 0;
+}
+.shadcn-separator-vertical {
+    width: 1px;
+    height: auto;
+    align-self: stretch;
+    margin: 0 16px;
+}
+
+/* ─── Table ─── */
+.shadcn-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+.shadcn-table thead tr {
+    border-bottom: 1px solid #E5E7EB;
+}
+.shadcn-table thead th {
+    padding: 10px 16px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #6B7280;
+    text-align: left;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    background: none;
+}
+.shadcn-table tbody tr {
+    border-bottom: 1px solid #F3F4F6;
+    transition: background 0.15s ease;
+}
+.shadcn-table tbody tr:hover {
+    background: #F9FAFB;
+}
+.shadcn-table tbody tr:last-child {
+    border-bottom: none;
+}
+.shadcn-table td {
+    padding: 12px 16px;
+    vertical-align: middle;
+    background: none;
+    border-radius: 0;
+    width: auto;
+    height: auto;
+    color: #163B32;
+    font-size: 14px;
+}
+
+/* ─── Avatar ─── */
+.shadcn-avatar {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    overflow: hidden;
+    flex-shrink: 0;
+    background: #D4EFE6;
+}
+.shadcn-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 100%;
+}
+.shadcn-avatar-sm { width: 32px; height: 32px; }
+.shadcn-avatar-md { width: 40px; height: 40px; }
+.shadcn-avatar-lg { width: 56px; height: 56px; }
+.shadcn-avatar-xl { width: 80px; height: 80px; }
+
+/* ─── Dialog / Modal ─── */
+.shadcn-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    display: none;
+    place-items: center;
+    animation: fadeIn 0.15s ease-out;
+}
+.shadcn-overlay.active {
+    display: grid;
+}
+.shadcn-dialog {
+    background: #FFFFFF;
+    border-radius: 16px;
+    border: 1px solid #E5E7EB;
+    box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1);
+    padding: 24px;
+    width: 100%;
+    max-width: 480px;
+    margin: 16px;
+    animation: slideInUp 0.2s ease-out;
+}
+
+/* ─── Dropdown Menu ─── */
+.shadcn-dropdown {
+    position: absolute;
+    z-index: 50;
+    min-width: 200px;
+    background: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    border-radius: 12px;
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1);
+    padding: 4px;
+    display: none;
+    animation: slideInUp 0.15s ease-out;
+}
+.shadcn-dropdown.active { display: block; }
+.shadcn-dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #163B32;
+    cursor: pointer;
+    transition: background 0.1s;
+    text-decoration: none;
+}
+.shadcn-dropdown-item:hover {
+    background: #D4EFE6;
+}
+.shadcn-dropdown-item i {
+    width: 16px;
+    color: #6B7280;
+    text-align: center;
+}
+.shadcn-dropdown-separator {
+    height: 1px;
+    background: #E5E7EB;
+    margin: 4px 0;
+}
+
+/* ─── Sidebar Nav Item (shadcn-styled) ─── */
+.shadcn-nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    transition: all 0.15s ease;
+    margin: 2px 8px;
+}
+.shadcn-nav-item:hover {
+    color: #FFFFFF;
+    background: rgba(255,255,255,0.1);
+}
+.shadcn-nav-item.active {
+    color: #FFFFFF;
+    background: linear-gradient(135deg, rgba(0,196,140,0.9) 0%, rgba(0,156,112,0.9) 100%);
+    font-weight: 500;
+    box-shadow: 0 4px 12px rgba(0,196,140,0.3);
+}
+.shadcn-nav-item i {
+    width: 20px;
+    text-align: center;
+    font-size: 15px;
+    flex-shrink: 0;
+}
+
+/* ─── Tooltip (shadcn-styled) ─── */
+.shadcn-tooltip {
+    position: relative;
+}
+.shadcn-tooltip::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: calc(100% + 6px);
+    left: 50%;
+    transform: translateX(-50%) translateY(4px);
+    padding: 6px 12px;
+    background: #0F2922;
+    color: white;
+    font-size: 12px;
+    border-radius: 8px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s, transform 0.15s;
+    z-index: 50;
+}
+.shadcn-tooltip:hover::after {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* ─── Sidebar Overlay (mobile) ─── */
+.sidebar-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 40;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+.sidebar-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* ─── Animations ─── */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+@keyframes slideInUp {
+    from { transform: translateY(10px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+@keyframes slideInLeft {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(0); }
+}
+
+/* ─── Scrollbar (shadcn-styled) ─── */
+.shadcn-scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+.shadcn-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+}
+.shadcn-scrollbar::-webkit-scrollbar-thumb {
+    background: #D1D5DB;
+    border-radius: 3px;
+}
+.shadcn-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #9CA3AF;
+}
+
+/* ─── Responsive Grid Helpers ─── */
+.shadcn-grid-responsive {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: 1fr;
+}
+@media (min-width: 640px) {
+    .shadcn-grid-responsive { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 1024px) {
+    .shadcn-grid-responsive { grid-template-columns: repeat(3, 1fr); }
+}
+@media (min-width: 1280px) {
+    .shadcn-grid-responsive { grid-template-columns: repeat(4, 1fr); gap: 20px; }
+}

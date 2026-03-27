@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	<title>Submission Comments - ReDefiners</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+	<script src="https://cdn.tailwindcss.com"></script>
+	<script src="css/tailwind-config.js?v=3"></script>
+	<script src="https://kit.fontawesome.com/7a13c96681.js" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/tokens.css?v=3">
+	<link rel="stylesheet" type="text/css" href="css/shadcn.css?v=3">
+	<link rel="stylesheet" type="text/css" href="styles.css?v=3">
+</head>
+<body>
+	<div class="tw-flex tw-min-h-screen tw-font-poppins">
+		<aside class="left-sidebar tw-fixed tw-inset-y-0 tw-left-0 tw-w-[240px] tw-z-50 tw--translate-x-full lg:tw-translate-x-0 tw-transition-transform tw-duration-300 tw-overflow-y-auto shadcn-scrollbar">
+			<div class="menu-bar">
+				<section class="logo-section">
+					<i class="fa fa-times theme-color menu-hide"></i>
+					<img src="Images/logo.PNG" class="res-hide" alt="logo">
+					<div class="nav-input res-show-flex tw-mt-5">
+						<button class="tw-border tw-border-primary-400 tw-border-r-0 tw-bg-transparent tw-px-2"><i class="fa fa-search"></i></button>
+						<input class="tw-border tw-border-primary-400 tw-border-l-0 tw-w-[85%] tw-bg-transparent tw-px-2 tw-py-1 tw-outline-none" type="text" name="search" placeholder="Search">
+					</div>
+				</section>
+				<section class="menu-links">
+					<div class="menu-link"><a href="dashboard.html"><i class="fa fa-th-large"></i><span> Dashboard</span></a></div>
+					<div class="menu-link"><a href="courses.html"><i class="fa fa-clipboard-list"></i><span> Courses</span></a></div>
+					<div class="menu-link"><a href="calendar.html"><i class="fa fa-calendar-alt"></i><span> Calendar</span></a></div>
+					<div class="menu-link"><a href="announcement.html"><i class="fa fa-bullhorn"></i><span> Announcements</span></a></div>
+					<div class="menu-link"><a href="inbox.html"><i class="fa fa-comments"></i><span> Messages</span></a></div>
+					<div class="menu-link"><a href="assignments.html" class="active-menu"><i class="fa fa-file-lines"></i><span> Assignments</span></a></div>
+					<div class="menu-link"><a href="grades.html"><i class="fa fa-chart-bar"></i><span> Grades</span></a></div>
+					<div class="menu-link"><a href="modules.html"><i class="fa fa-layer-group"></i><span> Modules</span></a></div>
+					<div class="menu-link"><a href="discussions.html"><i class="fa fa-comments-alt"></i><span> Discussions</span></a></div>
+					<div class="menu-link"><a href="quizzes.html"><i class="fa fa-question-circle"></i><span> Quizzes</span></a></div>
+					<div class="menu-link"><a href="pages.html"><i class="fa fa-file-alt"></i><span> Pages</span></a></div>
+					<div class="menu-link"><a href="files.html"><i class="fa fa-folder"></i><span> Files</span></a></div>
+					<div class="menu-link"><a href="people.html"><i class="fa fa-users"></i><span> People</span></a></div>
+					<div class="menu-link"><a href="outcomes.html"><i class="fa fa-bullseye"></i><span> Outcomes</span></a></div>
+					<div class="menu-link"><a href="rubrics.html"><i class="fa fa-th"></i><span> Rubrics</span></a></div>
+					<div class="menu-link"><a href="groups.html"><i class="fa fa-user-friends"></i><span> Groups</span></a></div>
+					<div class="menu-link"><a href="conferences.html"><i class="fa fa-video"></i><span> Conferences</span></a></div>
+					<div class="menu-link"><a href="collaborations.html"><i class="fa fa-handshake"></i><span> Collaborations</span></a></div>
+					<div class="menu-link"><a href="account-settings.html"><i class="fa fa-cog"></i><span> Settings</span></a></div>
+				</section>
+			</div>
+		</aside>
+		<div class="sidebar-overlay" id="sidebarOverlay"></div>
+		<main class="middle-part tw-flex-1 lg:tw-ml-[240px] tw-min-h-screen tw-px-4 md:tw-px-6 lg:tw-px-10 tw-pb-8">
+			<div class="tw-flex tw-items-center tw-justify-between tw-py-4 tw-gap-3 tw-flex-wrap">
+				<div class="tw-flex tw-items-center tw-gap-3">
+					<i class="fa fa-bars tw-text-primary-400 tw-cursor-pointer tw-text-xl lg:tw-hidden menu-icon" id="menuToggle"></i>
+					<div class="shadcn-search tw-hidden sm:tw-flex tw-w-64">
+						<i class="fa fa-search"></i>
+						<input type="text" placeholder="Search courses, assignments...">
+					</div>
+				</div>
+				<div class="tw-flex tw-items-center tw-gap-3">
+					<button class="shadcn-btn shadcn-btn-ghost shadcn-btn-icon tw-relative"><i class="fa fa-bell tw-text-primary-400"></i></button>
+					<div class="shadcn-avatar shadcn-avatar-md tw-cursor-pointer profile-click"><img src="Images/profile.png" alt="Profile"></div>
+				</div>
+			</div>
+
+			<!-- Header -->
+			<div class="tw-py-6">
+				<nav class="tw-text-sm tw-text-gray-500 tw-mb-2">
+					<a href="courses.html" class="theme-color tw-no-underline">Spanish 201</a>
+					<i class="fa fa-chevron-right tw-text-xs tw-mx-1"></i>
+					<a href="assignments.html" class="theme-color tw-no-underline">Assignments</a>
+					<i class="fa fa-chevron-right tw-text-xs tw-mx-1"></i>
+					<a href="submission.html" class="theme-color tw-no-underline">Cultural Essay</a>
+					<i class="fa fa-chevron-right tw-text-xs tw-mx-1"></i>
+					<span>Comments</span>
+				</nav>
+				<div class="tw-flex tw-flex-col sm:tw-flex-row tw-items-start sm:tw-items-center tw-justify-between tw-gap-4">
+					<div>
+						<h3 class="second-color"><i class="fa fa-comments tw-mr-2 theme-color"></i>Submission Comments</h3>
+						<p class="tw-text-sm tw-text-gray-500 tw-mt-1">Cultural Essay: Traditions of Latin America - Sofia Rodriguez</p>
+					</div>
+					<div class="tw-flex tw-items-center tw-gap-2">
+						<span class="tw-text-sm tw-text-gray-500">Score:</span>
+						<span class="tw-bg-green-100 tw-text-green-700 tw-px-3 tw-py-1 tw-rounded-full tw-font-semibold">42/50</span>
+					</div>
+				</div>
+			</div>
+
+			<div class="tw-grid tw-grid-cols-1 lg:tw-grid-cols-3 tw-gap-6">
+				<!-- Comments Thread -->
+				<div class="lg:tw-col-span-2">
+					<div class="tw-space-y-4 tw-mb-6">
+						<!-- Instructor Text Comment -->
+						<div class="shadcn-card tw-p-4">
+							<div class="tw-flex tw-gap-3">
+								<div class="shadcn-avatar shadcn-avatar-sm tw-flex-shrink-0">
+									<img src="Images/profile.png" alt="Instructor">
+								</div>
+								<div class="tw-flex-1">
+									<div class="tw-flex tw-items-center tw-justify-between tw-mb-2">
+										<div>
+											<span class="tw-text-sm tw-font-semibold second-color">Prof. Maria Santos</span>
+											<span class="tw-text-xs tw-bg-blue-100 tw-text-blue-700 tw-px-1.5 tw-py-0.5 tw-rounded tw-ml-2">Instructor</span>
+										</div>
+										<span class="tw-text-xs tw-text-gray-400">Mar 22, 2026 at 3:15 PM</span>
+									</div>
+									<p class="tw-text-sm tw-text-gray-700 tw-leading-relaxed">
+										Excellent work on your cultural essay, Sofia. Your analysis of Day of the Dead traditions showed genuine depth of understanding. The comparison between regional variations was particularly insightful. I appreciated how you connected historical context to modern celebrations. A few grammatical notes: watch your subjunctive usage in conditional clauses (see annotations on page 3). Overall, a strong submission that demonstrates meaningful engagement with the material.
+									</p>
+									<div class="tw-flex tw-items-center tw-gap-3 tw-mt-3">
+										<button class="tw-text-xs tw-text-gray-400 hover:tw-text-gray-600"><i class="fa fa-reply tw-mr-1"></i>Reply</button>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- Student Reply -->
+						<div class="shadcn-card tw-p-4 tw-ml-8 tw-border-l-4 tw-border-l-blue-300">
+							<div class="tw-flex tw-gap-3">
+								<div class="shadcn-avatar shadcn-avatar-sm tw-flex-shrink-0">
+									<img src="Images/profile.png" alt="Student">
+								</div>
+								<div class="tw-flex-1">
+									<div class="tw-flex tw-items-center tw-justify-between tw-mb-2">
+										<div>
+											<span class="tw-text-sm tw-font-semibold second-color">Sofia Rodriguez</span>
+											<span class="tw-text-xs tw-bg-green-100 tw-text-green-700 tw-px-1.5 tw-py-0.5 tw-rounded tw-ml-2">Student</span>
+										</div>
+										<span class="tw-text-xs tw-text-gray-400">Mar 22, 2026 at 5:42 PM</span>
+									</div>
+									<p class="tw-text-sm tw-text-gray-700 tw-leading-relaxed">
+										Thank you for the feedback, Prof. Santos! I reviewed the subjunctive notes on page 3 and I see where I made the errors. I tend to mix up the imperfect subjunctive with the conditional mood. Could I schedule office hours this week to go over a few more examples before the final essay?
+									</p>
+									<div class="tw-flex tw-items-center tw-gap-3 tw-mt-3">
+										<button class="tw-text-xs tw-text-gray-400 hover:tw-text-gray-600"><i class="fa fa-reply tw-mr-1"></i>Reply</button>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- Audio Comment -->
+						<div class="shadcn-card tw-p-4">
+							<div class="tw-flex tw-gap-3">
+								<div class="shadcn-avatar shadcn-avatar-sm tw-flex-shrink-0">
+									<img src="Images/profile.png" alt="Instructor">
+								</div>
+								<div class="tw-flex-1">
+									<div class="tw-flex tw-items-center tw-justify-between tw-mb-2">
+										<div>
+											<span class="tw-text-sm tw-font-semibold second-color">Prof. Maria Santos</span>
+											<span class="tw-text-xs tw-bg-blue-100 tw-text-blue-700 tw-px-1.5 tw-py-0.5 tw-rounded tw-ml-2">Instructor</span>
+										</div>
+										<span class="tw-text-xs tw-text-gray-400">Mar 23, 2026 at 9:10 AM</span>
+									</div>
+									<p class="tw-text-xs tw-text-gray-500 tw-mb-2"><i class="fa fa-microphone tw-mr-1"></i>Audio Comment</p>
+									<div class="tw-bg-gray-50 tw-rounded tw-p-3 tw-flex tw-items-center tw-gap-3">
+										<button class="tw-w-10 tw-h-10 tw-rounded-full tw-bg-blue-500 tw-text-white tw-flex tw-items-center tw-justify-center tw-flex-shrink-0 hover:tw-bg-blue-600">
+											<i class="fa fa-play tw-ml-0.5"></i>
+										</button>
+										<div class="tw-flex-1">
+											<div class="tw-w-full tw-bg-gray-300 tw-rounded-full tw-h-1.5">
+												<div class="tw-bg-blue-500 tw-h-1.5 tw-rounded-full" style="width: 0%"></div>
+											</div>
+											<div class="tw-flex tw-justify-between tw-text-xs tw-text-gray-400 tw-mt-1">
+												<span>0:00</span>
+												<span>1:24</span>
+											</div>
+										</div>
+										<button class="tw-text-gray-400 hover:tw-text-gray-600"><i class="fa fa-download"></i></button>
+									</div>
+									<div class="tw-flex tw-items-center tw-gap-3 tw-mt-3">
+										<button class="tw-text-xs tw-text-gray-400 hover:tw-text-gray-600"><i class="fa fa-reply tw-mr-1"></i>Reply</button>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- Video Comment -->
+						<div class="shadcn-card tw-p-4">
+							<div class="tw-flex tw-gap-3">
+								<div class="shadcn-avatar shadcn-avatar-sm tw-flex-shrink-0">
+									<img src="Images/profile.png" alt="Instructor">
+								</div>
+								<div class="tw-flex-1">
+									<div class="tw-flex tw-items-center tw-justify-between tw-mb-2">
+										<div>
+											<span class="tw-text-sm tw-font-semibold second-color">Prof. Maria Santos</span>
+											<span class="tw-text-xs tw-bg-blue-100 tw-text-blue-700 tw-px-1.5 tw-py-0.5 tw-rounded tw-ml-2">Instructor</span>
+										</div>
+										<span class="tw-text-xs tw-text-gray-400">Mar 23, 2026 at 9:15 AM</span>
+									</div>
+									<p class="tw-text-xs tw-text-gray-500 tw-mb-2"><i class="fa fa-video tw-mr-1"></i>Video Comment</p>
+									<div class="tw-bg-gray-900 tw-rounded tw-overflow-hidden tw-relative" style="aspect-ratio: 16/9; max-width: 400px;">
+										<div class="tw-absolute tw-inset-0 tw-flex tw-items-center tw-justify-center">
+											<button class="tw-w-14 tw-h-14 tw-rounded-full tw-bg-white/30 tw-backdrop-blur tw-text-white tw-flex tw-items-center tw-justify-center hover:tw-bg-white/40">
+												<i class="fa fa-play tw-text-xl tw-ml-1"></i>
+											</button>
+										</div>
+										<div class="tw-absolute tw-bottom-0 tw-left-0 tw-right-0 tw-bg-gradient-to-t tw-from-black/60 tw-p-2">
+											<span class="tw-text-white tw-text-xs">Subjunctive walkthrough - 2:38</span>
+										</div>
+									</div>
+									<div class="tw-flex tw-items-center tw-gap-3 tw-mt-3">
+										<button class="tw-text-xs tw-text-gray-400 hover:tw-text-gray-600"><i class="fa fa-reply tw-mr-1"></i>Reply</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Add Comment -->
+					<div class="shadcn-card tw-p-5">
+						<h6 class="second-color tw-mb-3">Add a Comment</h6>
+						<textarea class="shadcn-input tw-w-full tw-min-h-[100px] tw-resize-y tw-mb-3" placeholder="Write your comment here..."></textarea>
+						<div class="tw-flex tw-flex-wrap tw-items-center tw-justify-between tw-gap-3">
+							<div class="tw-flex tw-gap-2">
+								<button class="shadcn-btn shadcn-btn-ghost tw-text-xs" title="Record Audio">
+									<i class="fa fa-microphone tw-mr-1"></i> Audio
+								</button>
+								<button class="shadcn-btn shadcn-btn-ghost tw-text-xs" title="Record Video">
+									<i class="fa fa-video tw-mr-1"></i> Video
+								</button>
+								<button class="shadcn-btn shadcn-btn-ghost tw-text-xs" title="Attach File">
+									<i class="fa fa-paperclip tw-mr-1"></i> Attach
+								</button>
+							</div>
+							<button class="shadcn-btn shadcn-btn-primary tw-text-sm">
+								<i class="fa fa-paper-plane tw-mr-1"></i> Post Comment
+							</button>
+						</div>
+					</div>
+				</div>
+
+				<!-- Sidebar -->
+				<div>
+					<!-- Submission Info -->
+					<div class="shadcn-card tw-p-5 tw-mb-6">
+						<h6 class="second-color tw-mb-3"><i class="fa fa-file-alt tw-mr-2 theme-color"></i>Submission Info</h6>
+						<div class="tw-space-y-3 tw-text-sm">
+							<div class="tw-flex tw-justify-between">
+								<span class="tw-text-gray-500">Student</span>
+								<span class="tw-font-medium">Sofia Rodriguez</span>
+							</div>
+							<div class="tw-flex tw-justify-between">
+								<span class="tw-text-gray-500">Assignment</span>
+								<span class="tw-font-medium">Cultural Essay</span>
+							</div>
+							<div class="tw-flex tw-justify-between">
+								<span class="tw-text-gray-500">Submitted</span>
+								<span class="tw-font-medium">Mar 21, 11:42 PM</span>
+							</div>
+							<div class="tw-flex tw-justify-between">
+								<span class="tw-text-gray-500">Status</span>
+								<span class="tw-bg-green-100 tw-text-green-700 tw-text-xs tw-px-2 tw-py-0.5 tw-rounded-full">On Time</span>
+							</div>
+							<div class="tw-flex tw-justify-between">
+								<span class="tw-text-gray-500">Attempt</span>
+								<span class="tw-font-medium">1 of 1</span>
+							</div>
+						</div>
+						<div class="tw-mt-4 tw-pt-4 tw-border-t">
+							<a href="submission.html" class="shadcn-btn shadcn-btn-ghost tw-text-xs tw-w-full tw-no-underline">
+								<i class="fa fa-eye tw-mr-1"></i> View Full Submission
+							</a>
+						</div>
+					</div>
+
+					<!-- Media Recorder -->
+					<div class="shadcn-card tw-p-5">
+						<h6 class="second-color tw-mb-3"><i class="fa fa-circle tw-mr-2 tw-text-red-500"></i>Quick Record</h6>
+						<p class="tw-text-xs tw-text-gray-500 tw-mb-4">Record audio or video feedback directly</p>
+						<div class="tw-space-y-2">
+							<button class="shadcn-btn shadcn-btn-ghost tw-w-full tw-text-sm tw-justify-start">
+								<i class="fa fa-microphone tw-mr-2 tw-text-red-500"></i> Record Audio Comment
+							</button>
+							<button class="shadcn-btn shadcn-btn-ghost tw-w-full tw-text-sm tw-justify-start">
+								<i class="fa fa-video tw-mr-2 tw-text-red-500"></i> Record Video Comment
+							</button>
+							<button class="shadcn-btn shadcn-btn-ghost tw-w-full tw-text-sm tw-justify-start">
+								<i class="fa fa-desktop tw-mr-2 tw-text-blue-500"></i> Screen Recording
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</main>
+	</div>
+	<script src="js/sidebar.js"></script>
+<script src="js/router.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/api.js"></script>
+<script src="js/render.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

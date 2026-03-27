@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	<title>ReDefiners</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+	<script src="https://cdn.tailwindcss.com"></script>
+	<script src="css/tailwind-config.js?v=3"></script>
+	<script src="https://kit.fontawesome.com/7a13c96681.js" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/tokens.css?v=3">
+	<link rel="stylesheet" type="text/css" href="css/shadcn.css?v=3">
+	<link rel="stylesheet" type="text/css" href="styles.css?v=3">
+	<style>
+		.progress-bar-track { height: 10px; background: var(--color-neutral-200, #e5e7eb); border-radius: 10px; overflow: hidden; }
+		.progress-bar-fill { height: 100%; border-radius: 10px; transition: width 0.5s; }
+		.progress-bar-sm { height: 6px; }
+		.item-progress { display: flex; align-items: center; gap: 14px; padding: 14px 16px; border-radius: 10px; border: 1px solid var(--color-neutral-200, #e5e7eb); margin-bottom: 8px; transition: all 0.15s; }
+		.item-progress:hover { border-color: var(--color-primary-400); }
+		.item-progress.complete { border-color: #bbf7d0; background: #f0fdf4; }
+		.item-progress.in-progress { border-color: #bfdbfe; background: #eff6ff; }
+		.item-progress.queued { border-color: var(--color-neutral-200, #e5e7eb); background: var(--color-neutral-50, #f8fafb); }
+		.log-entry { display: flex; align-items: flex-start; gap: 12px; padding: 8px 0; font-size: 13px; }
+		.log-dot { width: 8px; height: 8px; border-radius: 50%; margin-top: 6px; flex-shrink: 0; }
+		.log-dot.success { background: #2DB88A; }
+		.log-dot.info { background: #3B82F6; }
+		.log-dot.warning { background: #FF6B35; }
+		.log-dot.error { background: #dc2626; }
+		.status-badge { font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 20px; }
+		.status-complete { background: #f0fdf4; color: #16a34a; }
+		.status-running { background: #eff6ff; color: #3B82F6; }
+		.status-queued { background: var(--color-neutral-100, #f3f4f6); color: #668B91; }
+		.status-warning { background: #fff3e0; color: #FF6B35; }
+	</style>
+</head>
+<body>
+<div class="tw-flex tw-min-h-screen tw-font-poppins">
+	<aside class="left-sidebar tw-fixed tw-inset-y-0 tw-left-0 tw-w-[240px] tw-z-50 tw--translate-x-full lg:tw-translate-x-0 tw-transition-transform tw-duration-300 tw-overflow-y-auto shadcn-scrollbar">
+		<div class="menu-bar">
+			<section class="logo-section">
+				<i class="fa fa-times theme-color menu-hide"></i>
+				<img src="Images/logo.PNG" class="res-hide" alt="logo">
+				<div class="nav-input res-show-flex tw-mt-5">
+					<button class="tw-border tw-border-primary-400 tw-border-r-0 tw-bg-transparent tw-px-2"><i class="fa fa-search"></i></button>
+					<input class="tw-border tw-border-primary-400 tw-border-l-0 tw-w-[85%] tw-bg-transparent tw-px-2 tw-py-1 tw-outline-none" type="text" name="search" placeholder="Search">
+				</div>
+			</section>
+			<section class="menu-links">
+				<div class="menu-link"><a href="dashboard.html"><i class="fa fa-th-large"></i><span> Dashboard</span></a></div>
+				<div class="menu-link"><a href="courses.html"><i class="fa fa-clipboard-list"></i><span> Courses</span></a></div>
+				<div class="menu-link"><a href="calendar.html"><i class="fa fa-calendar-alt"></i><span> Calendar</span></a></div>
+				<div class="menu-link"><a href="announcement.html"><i class="fa fa-bullhorn"></i><span> Announcements</span></a></div>
+				<div class="menu-link"><a href="inbox.html"><i class="fa fa-comments"></i><span> Messages</span></a></div>
+				<div class="menu-link"><a href="assignments.html"><i class="fa fa-file-lines"></i><span> Assignments</span></a></div>
+				<div class="menu-link"><a href="grades.html"><i class="fa fa-chart-bar"></i><span> Grades</span></a></div>
+				<div class="menu-link"><a href="modules.html"><i class="fa fa-layer-group"></i><span> Modules</span></a></div>
+				<div class="menu-link"><a href="discussions.html"><i class="fa fa-comments-alt"></i><span> Discussions</span></a></div>
+				<div class="menu-link"><a href="quizzes.html"><i class="fa fa-question-circle"></i><span> Quizzes</span></a></div>
+				<div class="menu-link"><a href="pages.html"><i class="fa fa-file-alt"></i><span> Pages</span></a></div>
+				<div class="menu-link"><a href="files.html"><i class="fa fa-folder"></i><span> Files</span></a></div>
+				<div class="menu-link"><a href="people.html"><i class="fa fa-users"></i><span> People</span></a></div>
+				<div class="menu-link"><a href="outcomes.html"><i class="fa fa-bullseye"></i><span> Outcomes</span></a></div>
+				<div class="menu-link"><a href="rubrics.html"><i class="fa fa-th"></i><span> Rubrics</span></a></div>
+				<div class="menu-link"><a href="groups.html"><i class="fa fa-user-friends"></i><span> Groups</span></a></div>
+				<div class="menu-link"><a href="conferences.html"><i class="fa fa-video"></i><span> Conferences</span></a></div>
+				<div class="menu-link"><a href="collaborations.html"><i class="fa fa-handshake"></i><span> Collaborations</span></a></div>
+				<div class="menu-link"><a href="account-settings.html" class="active-menu"><i class="fa fa-cog"></i><span> Settings</span></a></div>
+			</section>
+		</div>
+	</aside>
+	<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+	<main class="middle-part tw-flex-1 lg:tw-ml-[240px] tw-min-h-screen tw-px-4 md:tw-px-6 lg:tw-px-10 tw-pb-8">
+		<!-- Nav Bar -->
+		<div class="tw-flex tw-items-center tw-justify-between tw-py-4 tw-gap-3 tw-flex-wrap">
+			<div class="tw-flex tw-items-center tw-gap-3">
+				<i class="fa fa-bars tw-text-primary-400 tw-cursor-pointer tw-text-xl lg:tw-hidden menu-icon" id="menuToggle"></i>
+				<div class="shadcn-search tw-hidden sm:tw-flex tw-w-64">
+					<i class="fa fa-search"></i>
+					<input type="text" placeholder="Search courses, assignments...">
+				</div>
+			</div>
+			<div class="tw-flex tw-items-center tw-gap-3">
+				<button class="shadcn-btn shadcn-btn-ghost shadcn-btn-icon tw-relative">
+					<i class="fa fa-bell tw-text-primary-400"></i>
+				</button>
+				<div class="shadcn-avatar shadcn-avatar-md tw-cursor-pointer profile-click">
+					<img src="Images/profile.png" alt="Profile">
+				</div>
+			</div>
+		</div>
+
+		<!-- Breadcrumbs -->
+		<div class="breadcrumbs tw-mt-2">
+			<a href="dashboard.html">Home</a>
+			<span class="breadcrumbs__separator">/</span>
+			<a href="courses.html">Courses</a>
+			<span class="breadcrumbs__separator">/</span>
+			<a href="copy-course.html">Copy Course</a>
+			<span class="breadcrumbs__separator">/</span>
+			<span class="breadcrumbs__current">Migration Status</span>
+		</div>
+
+		<!-- Page Header -->
+		<div class="tw-flex tw-flex-col sm:tw-flex-row tw-items-start sm:tw-items-center tw-justify-between tw-gap-4 tw-my-6">
+			<div>
+				<h3 class="second-color tw-font-bold tw-mb-1">Course Copy Status</h3>
+				<p class="tw-text-sm tw-mb-0" style="color: #668B91;">Migration #CM-2026-0412 &middot; Started Mar 25, 2026 at 10:15 AM</p>
+			</div>
+			<div class="tw-flex tw-gap-2">
+				<button class="shadcn-btn shadcn-btn-outline tw-text-sm">
+					<i class="fa fa-sync-alt tw-mr-1"></i> Refresh
+				</button>
+				<button class="shadcn-btn shadcn-btn-outline tw-text-sm" style="color: #dc2626; border-color: #fecaca;">
+					<i class="fa fa-stop tw-mr-1"></i> Cancel
+				</button>
+			</div>
+		</div>
+
+		<!-- Migration Info Card -->
+		<div class="shadcn-card tw-p-5 tw-mb-6">
+			<div class="tw-flex tw-flex-col md:tw-flex-row tw-items-start md:tw-items-center tw-gap-4">
+				<div style="width:50px;height:50px;border-radius:14px;background:linear-gradient(135deg,#3B82F6,#1d4ed8);color:#fff;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;">
+					<i class="fa fa-copy"></i>
+				</div>
+				<div class="tw-flex-1">
+					<div class="tw-flex tw-items-center tw-gap-3 tw-mb-1">
+						<h5 class="tw-font-bold tw-mb-0" style="color: var(--color-primary-700);">Spanish 201 (Fall '25) → Spanish 201 (Spring '26)</h5>
+						<span class="status-badge status-running"><i class="fa fa-spinner fa-spin tw-mr-1"></i>In Progress</span>
+					</div>
+					<p class="tw-text-sm tw-mb-0" style="color: #668B91;">
+						Copying 6 content types with date shift (+140 days) &middot; Initiated by Prof. Garcia
+					</p>
+				</div>
+			</div>
+		</div>
+
+		<!-- Overall Progress -->
+		<div class="shadcn-card tw-p-6 tw-mb-6">
+			<div class="tw-flex tw-items-center tw-justify-between tw-mb-3">
+				<h5 class="tw-font-bold" style="color: var(--color-primary-700);">
+					<i class="fa fa-tasks tw-mr-2" style="color: #2DB88A;"></i>Overall Progress
+				</h5>
+				<div class="tw-text-right">
+					<span class="tw-text-2xl tw-font-bold" style="color: #2DB88A;">68%</span>
+					<span class="tw-text-sm tw-block" style="color: #668B91;">4 of 6 types complete</span>
+				</div>
+			</div>
+			<div class="progress-bar-track tw-mb-2">
+				<div class="progress-bar-fill" style="width: 68%; background: linear-gradient(90deg, #2DB88A, #16a34a);"></div>
+			</div>
+			<div class="tw-flex tw-justify-between tw-text-xs" style="color: #668B91;">
+				<span>Elapsed: 4 min 23 sec</span>
+				<span>Estimated remaining: ~2 min 10 sec</span>
+			</div>
+		</div>
+
+		<div class="tw-grid tw-grid-cols-1 lg:tw-grid-cols-3 tw-gap-6">
+
+			<!-- LEFT: Individual Item Progress -->
+			<div class="lg:tw-col-span-2">
+				<div class="shadcn-card tw-p-6">
+					<h5 class="tw-font-bold tw-mb-4" style="color: var(--color-primary-700);">
+						<i class="fa fa-list-check tw-mr-2" style="color: #3B82F6;"></i>Content Type Progress
+					</h5>
+
+					<!-- Assignments - Complete -->
+					<div class="item-progress complete">
+						<div style="width:40px;height:40px;border-radius:10px;background:#2DB88A;color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;">
+							<i class="fa fa-check"></i>
+						</div>
+						<div class="tw-flex-1">
+							<div class="tw-flex tw-items-center tw-justify-between tw-mb-1">
+								<span class="tw-text-sm tw-font-semibold" style="color: var(--color-primary-700);">Assignments</span>
+								<span class="tw-text-sm tw-font-bold" style="color: #2DB88A;">100%</span>
+							</div>
+							<div class="progress-bar-track progress-bar-sm tw-mb-1">
+								<div class="progress-bar-fill" style="width: 100%; background: #2DB88A;"></div>
+							</div>
+							<span class="tw-text-xs" style="color: #668B91;">12 of 12 assignments copied &middot; Completed in 48 sec</span>
+						</div>
+					</div>
+
+					<!-- Discussions - Complete -->
+					<div class="item-progress complete">
+						<div style="width:40px;height:40px;border-radius:10px;background:#2DB88A;color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;">
+							<i class="fa fa-check"></i>
+						</div>
+						<div class="tw-flex-1">
+							<div class="tw-flex tw-items-center tw-justify-between tw-mb-1">
+								<span class="tw-text-sm tw-font-semibold" style="color: var(--color-primary-700);">Discussions</span>
+								<span class="tw-text-sm tw-font-bold" style="color: #2DB88A;">100%</span>
+							</div>
+							<div class="progress-bar-track progress-bar-sm tw-mb-1">
+								<div class="progress-bar-fill" style="width: 100%; background: #2DB88A;"></div>
+							</div>
+							<span class="tw-text-xs" style="color: #668B91;">6 of 6 discussion topics copied &middot; Completed in 12 sec</span>
+						</div>
+					</div>
+
+					<!-- Quizzes - In Progress -->
+					<div class="item-progress in-progress">
+						<div style="width:40px;height:40px;border-radius:10px;background:#3B82F6;color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;">
+							<i class="fa fa-spinner fa-spin"></i>
+						</div>
+						<div class="tw-flex-1">
+							<div class="tw-flex tw-items-center tw-justify-between tw-mb-1">
+								<span class="tw-text-sm tw-font-semibold" style="color: var(--color-primary-700);">Quizzes</span>
+								<span class="tw-text-sm tw-font-bold" style="color: #3B82F6;">75%</span>
+							</div>
+							<div class="progress-bar-track progress-bar-sm tw-mb-1">
+								<div class="progress-bar-fill" style="width: 75%; background: #3B82F6;"></div>
+							</div>
+							<span class="tw-text-xs" style="color: #668B91;">6 of 8 quizzes copied &middot; Processing question banks (117 of 156 questions)...</span>
+						</div>
+					</div>
+
+					<!-- Modules - Complete -->
+					<div class="item-progress complete">
+						<div style="width:40px;height:40px;border-radius:10px;background:#2DB88A;color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;">
+							<i class="fa fa-check"></i>
+						</div>
+						<div class="tw-flex-1">
+							<div class="tw-flex tw-items-center tw-justify-between tw-mb-1">
+								<span class="tw-text-sm tw-font-semibold" style="color: var(--color-primary-700);">Modules</span>
+								<span class="tw-text-sm tw-font-bold" style="color: #2DB88A;">100%</span>
+							</div>
+							<div class="progress-bar-track progress-bar-sm tw-mb-1">
+								<div class="progress-bar-fill" style="width: 100%; background: #2DB88A;"></div>
+							</div>
+							<span class="tw-text-xs" style="color: #668B91;">16 of 16 modules copied &middot; Completed in 35 sec</span>
+						</div>
+					</div>
+
+					<!-- Files - In Progress -->
+					<div class="item-progress in-progress">
+						<div style="width:40px;height:40px;border-radius:10px;background:#3B82F6;color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;">
+							<i class="fa fa-spinner fa-spin"></i>
+						</div>
+						<div class="tw-flex-1">
+							<div class="tw-flex tw-items-center tw-justify-between tw-mb-1">
+								<span class="tw-text-sm tw-font-semibold" style="color: var(--color-primary-700);">Files</span>
+								<span class="tw-text-sm tw-font-bold" style="color: #3B82F6;">50%</span>
+							</div>
+							<div class="progress-bar-track progress-bar-sm tw-mb-1">
+								<div class="progress-bar-fill" style="width: 50%; background: #3B82F6;"></div>
+							</div>
+							<span class="tw-text-xs" style="color: #668B91;">21 of 42 files copied (64 MB of 128 MB) &middot; Uploading audio_lesson_07.mp3...</span>
+						</div>
+					</div>
+
+					<!-- Announcements - Queued -->
+					<div class="item-progress queued">
+						<div style="width:40px;height:40px;border-radius:10px;background:var(--color-neutral-300,#d1d5db);color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;">
+							<i class="fa fa-clock"></i>
+						</div>
+						<div class="tw-flex-1">
+							<div class="tw-flex tw-items-center tw-justify-between tw-mb-1">
+								<span class="tw-text-sm tw-font-semibold" style="color: var(--color-primary-700);">Announcements</span>
+								<span class="tw-text-sm tw-font-bold" style="color: #668B91;">0%</span>
+							</div>
+							<div class="progress-bar-track progress-bar-sm tw-mb-1">
+								<div class="progress-bar-fill" style="width: 0%; background: #d1d5db;"></div>
+							</div>
+							<span class="tw-text-xs" style="color: #668B91;">4 announcements queued &middot; Waiting for files to complete...</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- RIGHT: Estimates & Log -->
+			<div>
+				<!-- Completion Estimates -->
+				<div class="shadcn-card tw-p-5 tw-mb-6">
+					<h6 class="tw-font-bold tw-mb-4" style="color: var(--color-primary-700);">
+						<i class="fa fa-clock tw-mr-2" style="color: #06B6D4;"></i>Completion Estimates
+					</h6>
+					<div class="tw-space-y-3">
+						<div class="tw-flex tw-justify-between tw-items-center">
+							<span class="tw-text-sm" style="color: #668B91;">Assignments</span>
+							<span class="tw-text-xs tw-font-medium tw-px-2 tw-py-0.5 tw-rounded" style="background: #f0fdf4; color: #16a34a;">Done</span>
+						</div>
+						<div class="tw-flex tw-justify-between tw-items-center">
+							<span class="tw-text-sm" style="color: #668B91;">Discussions</span>
+							<span class="tw-text-xs tw-font-medium tw-px-2 tw-py-0.5 tw-rounded" style="background: #f0fdf4; color: #16a34a;">Done</span>
+						</div>
+						<div class="tw-flex tw-justify-between tw-items-center">
+							<span class="tw-text-sm" style="color: #668B91;">Quizzes</span>
+							<span class="tw-text-xs tw-font-medium tw-px-2 tw-py-0.5 tw-rounded" style="background: #eff6ff; color: #3B82F6;">~30 sec</span>
+						</div>
+						<div class="tw-flex tw-justify-between tw-items-center">
+							<span class="tw-text-sm" style="color: #668B91;">Modules</span>
+							<span class="tw-text-xs tw-font-medium tw-px-2 tw-py-0.5 tw-rounded" style="background: #f0fdf4; color: #16a34a;">Done</span>
+						</div>
+						<div class="tw-flex tw-justify-between tw-items-center">
+							<span class="tw-text-sm" style="color: #668B91;">Files</span>
+							<span class="tw-text-xs tw-font-medium tw-px-2 tw-py-0.5 tw-rounded" style="background: #eff6ff; color: #3B82F6;">~1 min 30 sec</span>
+						</div>
+						<div class="tw-flex tw-justify-between tw-items-center">
+							<span class="tw-text-sm" style="color: #668B91;">Announcements</span>
+							<span class="tw-text-xs tw-font-medium tw-px-2 tw-py-0.5 tw-rounded" style="background: var(--color-neutral-100, #f3f4f6); color: #668B91;">Queued</span>
+						</div>
+					</div>
+					<div class="tw-mt-4 tw-pt-3" style="border-top: 1px solid var(--color-neutral-200, #e5e7eb);">
+						<div class="tw-flex tw-justify-between tw-items-center">
+							<span class="tw-text-sm tw-font-semibold" style="color: var(--color-primary-700);">Total Estimated</span>
+							<span class="tw-text-sm tw-font-bold" style="color: #3B82F6;">~2 min 10 sec</span>
+						</div>
+					</div>
+				</div>
+
+				<!-- Migration Details -->
+				<div class="shadcn-card tw-p-5 tw-mb-6">
+					<h6 class="tw-font-bold tw-mb-3" style="color: var(--color-primary-700);">
+						<i class="fa fa-info-circle tw-mr-2" style="color: #8B5CF6;"></i>Migration Details
+					</h6>
+					<div class="tw-space-y-2 tw-text-sm">
+						<div class="tw-flex tw-justify-between">
+							<span style="color: #668B91;">Migration ID</span>
+							<span class="tw-font-medium" style="color: var(--color-primary-700);">CM-2026-0412</span>
+						</div>
+						<div class="tw-flex tw-justify-between">
+							<span style="color: #668B91;">Type</span>
+							<span class="tw-font-medium" style="color: var(--color-primary-700);">Course Copy</span>
+						</div>
+						<div class="tw-flex tw-justify-between">
+							<span style="color: #668B91;">Date Handling</span>
+							<span class="tw-font-medium" style="color: var(--color-primary-700);">Shift +140 days</span>
+						</div>
+						<div class="tw-flex tw-justify-between">
+							<span style="color: #668B91;">Total Items</span>
+							<span class="tw-font-medium" style="color: var(--color-primary-700);">88 objects</span>
+						</div>
+						<div class="tw-flex tw-justify-between">
+							<span style="color: #668B91;">Data Size</span>
+							<span class="tw-font-medium" style="color: var(--color-primary-700);">~134 MB</span>
+						</div>
+					</div>
+				</div>
+
+				<!-- Activity Log -->
+				<div class="shadcn-card tw-p-5">
+					<h6 class="tw-font-bold tw-mb-4" style="color: var(--color-primary-700);">
+						<i class="fa fa-list tw-mr-2" style="color: #F59E0B;"></i>Activity Log
+					</h6>
+
+					<div class="log-entry">
+						<div class="log-dot info"></div>
+						<div>
+							<span class="tw-font-medium" style="color: var(--color-primary-700);">Uploading audio_lesson_07.mp3</span>
+							<span class="tw-text-xs tw-block" style="color: #668B91;">10:19:23 AM</span>
+						</div>
+					</div>
+					<div class="log-entry">
+						<div class="log-dot success"></div>
+						<div>
+							<span class="tw-font-medium" style="color: var(--color-primary-700);">Quiz 6 copied with 22 questions</span>
+							<span class="tw-text-xs tw-block" style="color: #668B91;">10:19:10 AM</span>
+						</div>
+					</div>
+					<div class="log-entry">
+						<div class="log-dot warning"></div>
+						<div>
+							<span class="tw-font-medium" style="color: #FF6B35;">Quiz 5: 1 question had broken image link, skipped</span>
+							<span class="tw-text-xs tw-block" style="color: #668B91;">10:18:55 AM</span>
+						</div>
+					</div>
+					<div class="log-entry">
+						<div class="log-dot success"></div>
+						<div>
+							<span class="tw-font-medium" style="color: var(--color-primary-700);">20 files uploaded (62 MB)</span>
+							<span class="tw-text-xs tw-block" style="color: #668B91;">10:18:40 AM</span>
+						</div>
+					</div>
+					<div class="log-entry">
+						<div class="log-dot success"></div>
+						<div>
+							<span class="tw-font-medium" style="color: var(--color-primary-700);">All 16 modules created</span>
+							<span class="tw-text-xs tw-block" style="color: #668B91;">10:17:50 AM</span>
+						</div>
+					</div>
+					<div class="log-entry">
+						<div class="log-dot success"></div>
+						<div>
+							<span class="tw-font-medium" style="color: var(--color-primary-700);">All 6 discussion topics created</span>
+							<span class="tw-text-xs tw-block" style="color: #668B91;">10:16:45 AM</span>
+						</div>
+					</div>
+					<div class="log-entry">
+						<div class="log-dot success"></div>
+						<div>
+							<span class="tw-font-medium" style="color: var(--color-primary-700);">12 assignments with rubrics copied</span>
+							<span class="tw-text-xs tw-block" style="color: #668B91;">10:16:03 AM</span>
+						</div>
+					</div>
+					<div class="log-entry">
+						<div class="log-dot info"></div>
+						<div>
+							<span class="tw-font-medium" style="color: var(--color-primary-700);">Date shift applied: +140 days (Aug 25 → Jan 12)</span>
+							<span class="tw-text-xs tw-block" style="color: #668B91;">10:15:15 AM</span>
+						</div>
+					</div>
+					<div class="log-entry">
+						<div class="log-dot info"></div>
+						<div>
+							<span class="tw-font-medium" style="color: var(--color-primary-700);">Migration started by Prof. Garcia</span>
+							<span class="tw-text-xs tw-block" style="color: #668B91;">10:15:00 AM</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="tw-mt-6 tw-text-xs" style="color: #adb5bd;">
+			API: GET /api/v1/courses/:id/content_migrations/:migration_id | GET /api/v1/courses/:id/content_migrations/:migration_id/migration_issues
+		</div>
+
+	</main>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+<script>$(".button-collapse").sideNav();</script>
+<script src="js/router.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/api.js"></script>
+<script src="js/render.js"></script>
+<script src="js/sidebar.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

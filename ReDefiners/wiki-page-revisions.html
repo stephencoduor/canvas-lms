@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	<title>ReDefiners - Page Revision History</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+	<script src="https://cdn.tailwindcss.com"></script>
+	<script src="css/tailwind-config.js?v=3"></script>
+	<script src="https://kit.fontawesome.com/7a13c96681.js" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/tokens.css?v=3">
+	<link rel="stylesheet" type="text/css" href="css/shadcn.css?v=3">
+	<link rel="stylesheet" type="text/css" href="styles.css?v=3">
+</head>
+<body>
+	<div class="tw-flex tw-min-h-screen tw-font-poppins">
+		<aside class="left-sidebar tw-fixed tw-inset-y-0 tw-left-0 tw-w-[240px] tw-z-50 tw--translate-x-full lg:tw-translate-x-0 tw-transition-transform tw-duration-300 tw-overflow-y-auto shadcn-scrollbar">
+			<div class="menu-bar">
+				<section class="logo-section">
+					<i class="fa fa-times theme-color menu-hide"></i>
+					<img src="Images/logo.PNG" class="res-hide" alt="logo">
+					<div class="nav-input res-show-flex tw-mt-5">
+						<button class="tw-border tw-border-primary-400 tw-border-r-0 tw-bg-transparent tw-px-2"><i class="fa fa-search"></i></button>
+						<input class="tw-border tw-border-primary-400 tw-border-l-0 tw-w-[85%] tw-bg-transparent tw-px-2 tw-py-1 tw-outline-none" type="text" name="search" placeholder="Search">
+					</div>
+				</section>
+				<section class="menu-links">
+					<div class="menu-link"><a href="dashboard.html"><i class="fa fa-th-large"></i><span> Dashboard</span></a></div>
+					<div class="menu-link"><a href="courses.html"><i class="fa fa-clipboard-list"></i><span> Courses</span></a></div>
+					<div class="menu-link"><a href="calendar.html"><i class="fa fa-calendar-alt"></i><span> Calendar</span></a></div>
+					<div class="menu-link"><a href="announcement.html"><i class="fa fa-bullhorn"></i><span> Announcements</span></a></div>
+					<div class="menu-link"><a href="inbox.html"><i class="fa fa-comments"></i><span> Messages</span></a></div>
+					<div class="menu-link"><a href="assignments.html"><i class="fa fa-file-lines"></i><span> Assignments</span></a></div>
+					<div class="menu-link"><a href="grades.html"><i class="fa fa-chart-bar"></i><span> Grades</span></a></div>
+					<div class="menu-link"><a href="modules.html"><i class="fa fa-layer-group"></i><span> Modules</span></a></div>
+					<div class="menu-link"><a href="discussions.html"><i class="fa fa-comments-alt"></i><span> Discussions</span></a></div>
+					<div class="menu-link"><a href="quizzes.html"><i class="fa fa-question-circle"></i><span> Quizzes</span></a></div>
+					<div class="menu-link"><a href="pages.html" class="active-menu"><i class="fa fa-file-alt"></i><span> Pages</span></a></div>
+					<div class="menu-link"><a href="files.html"><i class="fa fa-folder"></i><span> Files</span></a></div>
+					<div class="menu-link"><a href="people.html"><i class="fa fa-users"></i><span> People</span></a></div>
+					<div class="menu-link"><a href="outcomes.html"><i class="fa fa-bullseye"></i><span> Outcomes</span></a></div>
+					<div class="menu-link"><a href="rubrics.html"><i class="fa fa-th"></i><span> Rubrics</span></a></div>
+					<div class="menu-link"><a href="groups.html"><i class="fa fa-user-friends"></i><span> Groups</span></a></div>
+					<div class="menu-link"><a href="conferences.html"><i class="fa fa-video"></i><span> Conferences</span></a></div>
+					<div class="menu-link"><a href="collaborations.html"><i class="fa fa-handshake"></i><span> Collaborations</span></a></div>
+					<div class="menu-link"><a href="account-settings.html"><i class="fa fa-cog"></i><span> Settings</span></a></div>
+				</section>
+			</div>
+		</aside>
+		<div class="sidebar-overlay" id="sidebarOverlay"></div>
+		<main class="middle-part tw-flex-1 lg:tw-ml-[240px] tw-min-h-screen tw-px-4 md:tw-px-6 lg:tw-px-10 tw-pb-8">
+			<div class="tw-flex tw-items-center tw-justify-between tw-py-4 tw-gap-3 tw-flex-wrap">
+				<div class="tw-flex tw-items-center tw-gap-3">
+					<i class="fa fa-bars tw-text-primary-400 tw-cursor-pointer tw-text-xl lg:tw-hidden menu-icon" id="menuToggle"></i>
+					<div class="shadcn-search tw-hidden sm:tw-flex tw-w-64"><i class="fa fa-search"></i><input type="text" placeholder="Search courses, assignments..."></div>
+				</div>
+				<div class="tw-flex tw-items-center tw-gap-3">
+					<button class="shadcn-btn shadcn-btn-ghost shadcn-btn-icon tw-relative"><i class="fa fa-bell tw-text-primary-400"></i></button>
+					<div class="shadcn-avatar shadcn-avatar-md tw-cursor-pointer profile-click"><img src="Images/profile.png" alt="Profile"></div>
+				</div>
+			</div>
+
+			<!-- Header -->
+			<div class="tw-flex tw-flex-col sm:tw-flex-row tw-items-start sm:tw-items-center tw-justify-between tw-py-6 tw-gap-4">
+				<div>
+					<nav class="tw-text-sm tw-text-gray-500 tw-mb-2">
+						<a href="courses.html" class="theme-color tw-no-underline">Courses</a>
+						<i class="fa fa-chevron-right tw-text-xs tw-mx-1"></i>
+						<a href="pages.html" class="theme-color tw-no-underline">Pages</a>
+						<i class="fa fa-chevron-right tw-text-xs tw-mx-1"></i>
+						<span class="tw-text-gray-400">Revision History</span>
+					</nav>
+					<h3 class="second-color">Revision History: Introduction to Cell Biology</h3>
+					<p class="tw-text-gray-500 tw-text-sm tw-mt-1">Compare revisions, view changes, and restore previous versions</p>
+				</div>
+				<a href="pages.html" class="shadcn-btn shadcn-btn-outline tw-text-sm tw-no-underline"><i class="fa fa-arrow-left tw-mr-1"></i> Back to Page</a>
+			</div>
+
+			<div class="tw-grid tw-grid-cols-1 lg:tw-grid-cols-3 tw-gap-6">
+				<!-- Revision List -->
+				<div class="lg:tw-col-span-1">
+					<div class="shadcn-card tw-overflow-hidden">
+						<div class="tw-p-4 tw-border-b">
+							<h5 class="second-color tw-font-semibold">Revisions (7)</h5>
+						</div>
+						<div class="tw-divide-y">
+							<div class="tw-p-3 tw-bg-blue-50 tw-border-l-4 tw-border-l-blue-500 tw-cursor-pointer">
+								<div class="tw-flex tw-items-center tw-justify-between">
+									<span class="tw-text-xs tw-font-semibold tw-text-blue-700">Current Version</span>
+									<span class="tw-text-xs tw-text-gray-400">Rev 7</span>
+								</div>
+								<p class="tw-text-sm tw-font-medium second-color tw-mt-1">Dr. Sarah Mitchell</p>
+								<p class="tw-text-xs tw-text-gray-500">Mar 20, 2025 at 3:45 PM</p>
+							</div>
+							<div class="tw-p-3 tw-cursor-pointer tw-hover:tw-bg-gray-50">
+								<div class="tw-flex tw-items-center tw-justify-between">
+									<span class="tw-text-xs tw-text-gray-400">Comparing</span>
+									<span class="tw-text-xs tw-text-gray-400">Rev 6</span>
+								</div>
+								<p class="tw-text-sm tw-font-medium second-color tw-mt-1">Dr. Sarah Mitchell</p>
+								<p class="tw-text-xs tw-text-gray-500">Mar 18, 2025 at 11:20 AM</p>
+							</div>
+							<div class="tw-p-3 tw-cursor-pointer tw-hover:tw-bg-gray-50">
+								<div class="tw-flex tw-items-center tw-justify-between">
+									<span class="tw-text-xs tw-text-gray-400"></span>
+									<span class="tw-text-xs tw-text-gray-400">Rev 5</span>
+								</div>
+								<p class="tw-text-sm tw-font-medium second-color tw-mt-1">James Torres (TA)</p>
+								<p class="tw-text-xs tw-text-gray-500">Mar 15, 2025 at 9:05 AM</p>
+							</div>
+							<div class="tw-p-3 tw-cursor-pointer tw-hover:tw-bg-gray-50">
+								<div class="tw-flex tw-items-center tw-justify-between">
+									<span class="tw-text-xs tw-text-gray-400"></span>
+									<span class="tw-text-xs tw-text-gray-400">Rev 4</span>
+								</div>
+								<p class="tw-text-sm tw-font-medium second-color tw-mt-1">Dr. Sarah Mitchell</p>
+								<p class="tw-text-xs tw-text-gray-500">Mar 10, 2025 at 2:30 PM</p>
+							</div>
+							<div class="tw-p-3 tw-cursor-pointer tw-hover:tw-bg-gray-50">
+								<div class="tw-flex tw-items-center tw-justify-between">
+									<span class="tw-text-xs tw-text-gray-400"></span>
+									<span class="tw-text-xs tw-text-gray-400">Rev 3</span>
+								</div>
+								<p class="tw-text-sm tw-font-medium second-color tw-mt-1">Dr. Sarah Mitchell</p>
+								<p class="tw-text-xs tw-text-gray-500">Mar 5, 2025 at 10:15 AM</p>
+							</div>
+							<div class="tw-p-3 tw-cursor-pointer tw-hover:tw-bg-gray-50">
+								<div class="tw-flex tw-items-center tw-justify-between">
+									<span class="tw-text-xs tw-text-gray-400"></span>
+									<span class="tw-text-xs tw-text-gray-400">Rev 2</span>
+								</div>
+								<p class="tw-text-sm tw-font-medium second-color tw-mt-1">James Torres (TA)</p>
+								<p class="tw-text-xs tw-text-gray-500">Feb 28, 2025 at 4:00 PM</p>
+							</div>
+							<div class="tw-p-3 tw-cursor-pointer tw-hover:tw-bg-gray-50">
+								<div class="tw-flex tw-items-center tw-justify-between">
+									<span class="tw-text-xs tw-text-gray-400">Original</span>
+									<span class="tw-text-xs tw-text-gray-400">Rev 1</span>
+								</div>
+								<p class="tw-text-sm tw-font-medium second-color tw-mt-1">Dr. Sarah Mitchell</p>
+								<p class="tw-text-xs tw-text-gray-500">Feb 20, 2025 at 8:30 AM</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Diff View -->
+				<div class="lg:tw-col-span-2">
+					<div class="shadcn-card tw-overflow-hidden tw-mb-4">
+						<div class="tw-p-4 tw-border-b tw-flex tw-items-center tw-justify-between">
+							<div>
+								<h5 class="second-color tw-font-semibold">Comparing Rev 6 to Rev 7</h5>
+								<p class="tw-text-xs tw-text-gray-500 tw-mt-1">
+									<span class="tw-text-green-600 tw-font-medium">+24 additions</span>
+									<span class="tw-mx-2 tw-text-gray-300">|</span>
+									<span class="tw-text-red-600 tw-font-medium">-8 deletions</span>
+								</p>
+							</div>
+							<div class="tw-flex tw-gap-2">
+								<button class="shadcn-btn shadcn-btn-outline tw-text-xs">
+									<i class="fa fa-undo tw-mr-1"></i> Restore Rev 6
+								</button>
+							</div>
+						</div>
+						<div class="tw-p-4 tw-font-mono tw-text-sm tw-space-y-0 tw-leading-relaxed">
+							<!-- Unchanged line -->
+							<div class="tw-py-1 tw-px-3 tw-text-gray-700">
+								<span class="tw-text-gray-400 tw-mr-3 tw-select-none">1</span>
+								# Introduction to Cell Biology
+							</div>
+							<div class="tw-py-1 tw-px-3 tw-text-gray-700">
+								<span class="tw-text-gray-400 tw-mr-3 tw-select-none">2</span>
+							</div>
+							<div class="tw-py-1 tw-px-3 tw-text-gray-700">
+								<span class="tw-text-gray-400 tw-mr-3 tw-select-none">3</span>
+								## Overview
+							</div>
+							<!-- Deletion -->
+							<div class="tw-py-1 tw-px-3 tw-bg-red-50 tw-text-red-800 tw-border-l-4 tw-border-red-400">
+								<span class="tw-text-red-400 tw-mr-3 tw-select-none">4</span>
+								<span class="tw-line-through">Cells are the basic unit of life. All living organisms are composed of cells.</span>
+							</div>
+							<!-- Addition -->
+							<div class="tw-py-1 tw-px-3 tw-bg-green-50 tw-text-green-800 tw-border-l-4 tw-border-green-400">
+								<span class="tw-text-green-400 tw-mr-3 tw-select-none">4</span>
+								Cells are the fundamental structural and functional units of all living organisms. Every living thing, from single-celled bacteria to complex multicellular humans, is composed of cells.
+							</div>
+							<div class="tw-py-1 tw-px-3 tw-text-gray-700">
+								<span class="tw-text-gray-400 tw-mr-3 tw-select-none">5</span>
+							</div>
+							<div class="tw-py-1 tw-px-3 tw-text-gray-700">
+								<span class="tw-text-gray-400 tw-mr-3 tw-select-none">6</span>
+								## Cell Types
+							</div>
+							<div class="tw-py-1 tw-px-3 tw-text-gray-700">
+								<span class="tw-text-gray-400 tw-mr-3 tw-select-none">7</span>
+								There are two main types of cells:
+							</div>
+							<div class="tw-py-1 tw-px-3 tw-text-gray-700">
+								<span class="tw-text-gray-400 tw-mr-3 tw-select-none">8</span>
+								- **Prokaryotic cells** - lack a membrane-bound nucleus
+							</div>
+							<!-- Deletion -->
+							<div class="tw-py-1 tw-px-3 tw-bg-red-50 tw-text-red-800 tw-border-l-4 tw-border-red-400">
+								<span class="tw-text-red-400 tw-mr-3 tw-select-none">9</span>
+								<span class="tw-line-through">- **Eukaryotic cells** - have a nucleus</span>
+							</div>
+							<!-- Addition -->
+							<div class="tw-py-1 tw-px-3 tw-bg-green-50 tw-text-green-800 tw-border-l-4 tw-border-green-400">
+								<span class="tw-text-green-400 tw-mr-3 tw-select-none">9</span>
+								- **Eukaryotic cells** - contain a well-defined, membrane-bound nucleus and organelles
+							</div>
+							<div class="tw-py-1 tw-px-3 tw-text-gray-700">
+								<span class="tw-text-gray-400 tw-mr-3 tw-select-none">10</span>
+							</div>
+							<!-- New section added -->
+							<div class="tw-py-1 tw-px-3 tw-bg-green-50 tw-text-green-800 tw-border-l-4 tw-border-green-400">
+								<span class="tw-text-green-400 tw-mr-3 tw-select-none">11</span>
+								## Cell Theory
+							</div>
+							<div class="tw-py-1 tw-px-3 tw-bg-green-50 tw-text-green-800 tw-border-l-4 tw-border-green-400">
+								<span class="tw-text-green-400 tw-mr-3 tw-select-none">12</span>
+								The modern cell theory includes three key principles:
+							</div>
+							<div class="tw-py-1 tw-px-3 tw-bg-green-50 tw-text-green-800 tw-border-l-4 tw-border-green-400">
+								<span class="tw-text-green-400 tw-mr-3 tw-select-none">13</span>
+								1. All living organisms are composed of one or more cells
+							</div>
+							<div class="tw-py-1 tw-px-3 tw-bg-green-50 tw-text-green-800 tw-border-l-4 tw-border-green-400">
+								<span class="tw-text-green-400 tw-mr-3 tw-select-none">14</span>
+								2. The cell is the basic unit of structure and organization
+							</div>
+							<div class="tw-py-1 tw-px-3 tw-bg-green-50 tw-text-green-800 tw-border-l-4 tw-border-green-400">
+								<span class="tw-text-green-400 tw-mr-3 tw-select-none">15</span>
+								3. All cells arise from pre-existing cells
+							</div>
+							<div class="tw-py-1 tw-px-3 tw-text-gray-700">
+								<span class="tw-text-gray-400 tw-mr-3 tw-select-none">16</span>
+							</div>
+							<div class="tw-py-1 tw-px-3 tw-text-gray-700">
+								<span class="tw-text-gray-400 tw-mr-3 tw-select-none">17</span>
+								## Key Organelles
+							</div>
+							<!-- Deletion -->
+							<div class="tw-py-1 tw-px-3 tw-bg-red-50 tw-text-red-800 tw-border-l-4 tw-border-red-400">
+								<span class="tw-text-red-400 tw-mr-3 tw-select-none">18</span>
+								<span class="tw-line-through">The nucleus contains DNA and controls cell activity.</span>
+							</div>
+							<!-- Addition -->
+							<div class="tw-py-1 tw-px-3 tw-bg-green-50 tw-text-green-800 tw-border-l-4 tw-border-green-400">
+								<span class="tw-text-green-400 tw-mr-3 tw-select-none">18</span>
+								The **nucleus** houses the cell's genetic material (DNA) and serves as the control center for cell growth, metabolism, and reproduction.
+							</div>
+							<div class="tw-py-1 tw-px-3 tw-text-gray-700">
+								<span class="tw-text-gray-400 tw-mr-3 tw-select-none">19</span>
+								The **mitochondria** are responsible for cellular respiration and ATP production.
+							</div>
+						</div>
+					</div>
+
+					<!-- Restore Confirmation -->
+					<div class="shadcn-card tw-p-4 tw-border-l-4 tw-border-l-yellow-500">
+						<div class="tw-flex tw-items-start tw-gap-3">
+							<i class="fa fa-info-circle tw-text-yellow-500 tw-mt-0.5"></i>
+							<div>
+								<p class="tw-text-sm tw-font-medium second-color">Restore a Previous Version</p>
+								<p class="tw-text-xs tw-text-gray-500 tw-mt-1">Select any revision from the list on the left and click "Restore" to revert the page content. A new revision will be created automatically so you can always undo this action.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+	</div>
+	<script src="js/sidebar.js"></script>
+<script src="js/router.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/api.js"></script>
+<script src="js/render.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	<title>ReDefiners - Sub-Accounts</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+	<script src="https://cdn.tailwindcss.com"></script>
+	<script src="css/tailwind-config.js?v=3"></script>
+	<script src="https://kit.fontawesome.com/7a13c96681.js" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/tokens.css?v=3">
+	<link rel="stylesheet" type="text/css" href="css/shadcn.css?v=3">
+	<link rel="stylesheet" type="text/css" href="styles.css?v=3">
+	<style>
+		.tree-node {
+			border-bottom: 1px solid var(--color-neutral-200);
+		}
+		.tree-node:last-child { border-bottom: none; }
+		.tree-header {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			padding: 14px 16px;
+			cursor: pointer;
+			transition: background 0.15s ease;
+		}
+		.tree-header:hover { background: var(--color-neutral-50); }
+		.tree-toggle {
+			width: 20px;
+			height: 20px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 10px;
+			color: var(--text-secondary);
+			flex-shrink: 0;
+			transition: transform 0.2s ease;
+		}
+		.tree-toggle.expanded { transform: rotate(90deg); }
+		.tree-icon {
+			width: 36px;
+			height: 36px;
+			border-radius: var(--radius-md);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 16px;
+			flex-shrink: 0;
+		}
+		.tree-icon.blue { background: #dbeafe; color: #2563eb; }
+		.tree-icon.green { background: #dcfce7; color: #16a34a; }
+		.tree-icon.purple { background: #ede9fe; color: #7c3aed; }
+		.tree-icon.orange { background: #ffedd5; color: #ea580c; }
+		.tree-icon.teal { background: #ccfbf1; color: #0d9488; }
+		.tree-meta {
+			flex: 1;
+			min-width: 0;
+		}
+		.tree-name {
+			font-size: 14px;
+			font-weight: 600;
+			color: var(--color-primary-900);
+		}
+		.tree-desc {
+			font-size: 11px;
+			color: var(--text-secondary);
+			margin-top: 1px;
+		}
+		.tree-badges {
+			display: flex;
+			align-items: center;
+			gap: 12px;
+			flex-shrink: 0;
+		}
+		.tree-badge {
+			font-size: 11px;
+			color: var(--text-secondary);
+			display: flex;
+			align-items: center;
+			gap: 4px;
+		}
+		.tree-badge strong {
+			color: var(--color-primary-800);
+			font-weight: 600;
+		}
+		.tree-actions {
+			display: flex;
+			gap: 4px;
+			flex-shrink: 0;
+		}
+		.tree-actions button {
+			background: none;
+			border: none;
+			padding: 6px 8px;
+			color: var(--text-secondary);
+			cursor: pointer;
+			border-radius: var(--radius-sm);
+			font-size: 12px;
+		}
+		.tree-actions button:hover {
+			background: var(--color-neutral-100);
+			color: var(--color-primary-800);
+		}
+		.tree-children {
+			padding-left: 46px;
+			border-top: 1px solid var(--color-neutral-100);
+			background: var(--color-neutral-50);
+		}
+		.child-node {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			padding: 10px 16px;
+			border-bottom: 1px solid var(--color-neutral-100);
+			font-size: 13px;
+		}
+		.child-node:last-child { border-bottom: none; }
+		.child-node:hover { background: rgba(0,0,0,0.02); }
+		.child-icon {
+			width: 28px;
+			height: 28px;
+			border-radius: var(--radius-sm);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 12px;
+			flex-shrink: 0;
+			background: white;
+			color: var(--text-secondary);
+			border: 1px solid var(--color-neutral-200);
+		}
+		.child-meta {
+			flex: 1;
+		}
+		.child-name {
+			font-weight: 500;
+			color: var(--color-primary-800);
+		}
+		.child-stats {
+			font-size: 11px;
+			color: var(--text-secondary);
+		}
+	</style>
+</head>
+<body>
+	<div class="tw-flex tw-min-h-screen tw-font-poppins">
+		<!-- Sidebar -->
+		<aside class="left-sidebar tw-fixed tw-inset-y-0 tw-left-0 tw-w-[240px] tw-z-50 tw--translate-x-full lg:tw-translate-x-0 tw-transition-transform tw-duration-300 tw-overflow-y-auto shadcn-scrollbar">
+			<div class="menu-bar">
+				<section class="logo-section">
+					<i class="fa fa-times theme-color menu-hide"></i>
+					<img src="Images/logo.PNG" class="res-hide" alt="logo">
+					<div class="nav-input res-show-flex tw-mt-5">
+						<button class="tw-border tw-border-primary-400 tw-border-r-0 tw-bg-transparent tw-px-2">
+							<i class="fa fa-search"></i>
+						</button>
+						<input class="tw-border tw-border-primary-400 tw-border-l-0 tw-w-[85%] tw-bg-transparent tw-px-2 tw-py-1 tw-outline-none" type="text" name="search" placeholder="Search">
+					</div>
+				</section>
+				<section class="menu-links">
+					<div class="menu-link"><a href="dashboard.html"><i class="fa fa-th-large"></i><span> Dashboard</span></a></div>
+					<div class="menu-link"><a href="courses.html"><i class="fa fa-clipboard-list"></i><span> Courses</span></a></div>
+					<div class="menu-link"><a href="calendar.html"><i class="fa fa-calendar-alt"></i><span> Calendar</span></a></div>
+					<div class="menu-link"><a href="announcement.html"><i class="fa fa-bullhorn"></i><span> Announcements</span></a></div>
+					<div class="menu-link"><a href="inbox.html"><i class="fa fa-comments"></i><span> Messages</span></a></div>
+					<div class="menu-link"><a href="assignments.html"><i class="fa fa-file-lines"></i><span> Assignments</span></a></div>
+					<div class="menu-link"><a href="grades.html"><i class="fa fa-chart-bar"></i><span> Grades</span></a></div>
+					<div class="menu-link"><a href="modules.html"><i class="fa fa-layer-group"></i><span> Modules</span></a></div>
+					<div class="menu-link"><a href="discussions.html"><i class="fa fa-comments-alt"></i><span> Discussions</span></a></div>
+					<div class="menu-link"><a href="quizzes.html"><i class="fa fa-question-circle"></i><span> Quizzes</span></a></div>
+					<div class="menu-link"><a href="pages.html"><i class="fa fa-file-alt"></i><span> Pages</span></a></div>
+					<div class="menu-link"><a href="files.html"><i class="fa fa-folder"></i><span> Files</span></a></div>
+					<div class="menu-link"><a href="people.html"><i class="fa fa-users"></i><span> People</span></a></div>
+					<div class="menu-link"><a href="outcomes.html"><i class="fa fa-bullseye"></i><span> Outcomes</span></a></div>
+					<div class="menu-link"><a href="rubrics.html"><i class="fa fa-th"></i><span> Rubrics</span></a></div>
+					<div class="menu-link"><a href="groups.html"><i class="fa fa-user-friends"></i><span> Groups</span></a></div>
+					<div class="menu-link"><a href="conferences.html"><i class="fa fa-video"></i><span> Conferences</span></a></div>
+					<div class="menu-link"><a href="collaborations.html"><i class="fa fa-handshake"></i><span> Collaborations</span></a></div>
+					<div class="menu-link"><a href="account-settings.html"><i class="fa fa-cog"></i><span> Settings</span></a></div>
+				</section>
+			</div>
+		</aside>
+		<div class="sidebar-overlay" id="sidebarOverlay"></div>
+		<main class="middle-part tw-flex-1 lg:tw-ml-[240px] tw-min-h-screen tw-px-4 md:tw-px-6 lg:tw-px-10 tw-pb-8">
+			<!-- Nav Bar -->
+			<div class="tw-flex tw-items-center tw-justify-between tw-py-4 tw-gap-3 tw-flex-wrap">
+				<div class="tw-flex tw-items-center tw-gap-3">
+					<i class="fa fa-bars tw-text-primary-400 tw-cursor-pointer tw-text-xl lg:tw-hidden menu-icon" id="menuToggle"></i>
+					<div class="shadcn-search tw-hidden sm:tw-flex tw-w-64">
+						<i class="fa fa-search"></i>
+						<input type="text" placeholder="Search courses, assignments...">
+					</div>
+				</div>
+				<div class="tw-flex tw-items-center tw-gap-3">
+					<button class="shadcn-btn shadcn-btn-ghost shadcn-btn-icon tw-relative">
+						<i class="fa fa-bell tw-text-primary-400"></i>
+					</button>
+					<div class="shadcn-avatar shadcn-avatar-md tw-cursor-pointer profile-click">
+						<img src="Images/profile.png" alt="Profile">
+					</div>
+				</div>
+			</div>
+
+			<!-- Page Header -->
+			<div class="tw-flex tw-items-center tw-justify-between tw-mb-6 tw-flex-wrap tw-gap-3">
+				<div>
+					<h1 class="tw-text-2xl tw-font-semibold tw-text-primary-900">Sub-Accounts</h1>
+					<p class="tw-text-sm tw-text-primary-400 tw-mt-1">Manage organizational units, departments, and their associated courses.</p>
+				</div>
+				<button class="shadcn-btn shadcn-btn-primary">
+					<i class="fa fa-plus tw-mr-2"></i> Add Sub-Account
+				</button>
+			</div>
+
+			<!-- Summary -->
+			<div class="tw-grid tw-grid-cols-2 md:tw-grid-cols-4 tw-gap-4 tw-mb-6">
+				<div class="shadcn-card tw-p-4 tw-text-center">
+					<div class="tw-text-2xl tw-font-bold tw-text-primary-900">5</div>
+					<div class="tw-text-xs tw-text-primary-400">Schools</div>
+				</div>
+				<div class="shadcn-card tw-p-4 tw-text-center">
+					<div class="tw-text-2xl tw-font-bold tw-text-accent-blue">18</div>
+					<div class="tw-text-xs tw-text-primary-400">Departments</div>
+				</div>
+				<div class="shadcn-card tw-p-4 tw-text-center">
+					<div class="tw-text-2xl tw-font-bold tw-text-accent-green">4,280</div>
+					<div class="tw-text-xs tw-text-primary-400">Total Students</div>
+				</div>
+				<div class="shadcn-card tw-p-4 tw-text-center">
+					<div class="tw-text-2xl tw-font-bold tw-text-accent-orange">312</div>
+					<div class="tw-text-xs tw-text-primary-400">Active Courses</div>
+				</div>
+			</div>
+
+			<!-- Search -->
+			<div class="tw-mb-4">
+				<div class="shadcn-search tw-w-full md:tw-w-80">
+					<i class="fa fa-search"></i>
+					<input type="text" placeholder="Search sub-accounts...">
+				</div>
+			</div>
+
+			<!-- Tree View -->
+			<div class="shadcn-card">
+				<!-- School of Engineering -->
+				<div class="tree-node">
+					<div class="tree-header">
+						<div class="tree-toggle expanded"><i class="fa fa-chevron-right"></i></div>
+						<div class="tree-icon blue"><i class="fa fa-cogs"></i></div>
+						<div class="tree-meta">
+							<div class="tree-name">School of Engineering</div>
+							<div class="tree-desc">Engineering and technology programs</div>
+						</div>
+						<div class="tree-badges tw-hidden md:tw-flex">
+							<div class="tree-badge"><i class="fa fa-users"></i> <strong>1,240</strong> students</div>
+							<div class="tree-badge"><i class="fa fa-book"></i> <strong>87</strong> courses</div>
+						</div>
+						<div class="tree-actions">
+							<button title="Edit"><i class="fa fa-pencil"></i></button>
+							<button title="More"><i class="fa fa-ellipsis-v"></i></button>
+						</div>
+					</div>
+					<div class="tree-children">
+						<div class="child-node">
+							<div class="child-icon"><i class="fa fa-microchip"></i></div>
+							<div class="child-meta">
+								<div class="child-name">Computer Science</div>
+								<div class="child-stats">485 students &middot; 32 courses</div>
+							</div>
+							<div class="tree-actions">
+								<button title="Edit"><i class="fa fa-pencil"></i></button>
+							</div>
+						</div>
+						<div class="child-node">
+							<div class="child-icon"><i class="fa fa-bolt"></i></div>
+							<div class="child-meta">
+								<div class="child-name">Electrical Engineering</div>
+								<div class="child-stats">310 students &middot; 24 courses</div>
+							</div>
+							<div class="tree-actions">
+								<button title="Edit"><i class="fa fa-pencil"></i></button>
+							</div>
+						</div>
+						<div class="child-node">
+							<div class="child-icon"><i class="fa fa-hard-hat"></i></div>
+							<div class="child-meta">
+								<div class="child-name">Civil Engineering</div>
+								<div class="child-stats">245 students &middot; 18 courses</div>
+							</div>
+							<div class="tree-actions">
+								<button title="Edit"><i class="fa fa-pencil"></i></button>
+							</div>
+						</div>
+						<div class="child-node">
+							<div class="child-icon"><i class="fa fa-robot"></i></div>
+							<div class="child-meta">
+								<div class="child-name">Mechanical Engineering</div>
+								<div class="child-stats">200 students &middot; 13 courses</div>
+							</div>
+							<div class="tree-actions">
+								<button title="Edit"><i class="fa fa-pencil"></i></button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- School of Arts & Humanities -->
+				<div class="tree-node">
+					<div class="tree-header">
+						<div class="tree-toggle expanded"><i class="fa fa-chevron-right"></i></div>
+						<div class="tree-icon purple"><i class="fa fa-palette"></i></div>
+						<div class="tree-meta">
+							<div class="tree-name">School of Arts &amp; Humanities</div>
+							<div class="tree-desc">Liberal arts, literature, and creative programs</div>
+						</div>
+						<div class="tree-badges tw-hidden md:tw-flex">
+							<div class="tree-badge"><i class="fa fa-users"></i> <strong>980</strong> students</div>
+							<div class="tree-badge"><i class="fa fa-book"></i> <strong>72</strong> courses</div>
+						</div>
+						<div class="tree-actions">
+							<button title="Edit"><i class="fa fa-pencil"></i></button>
+							<button title="More"><i class="fa fa-ellipsis-v"></i></button>
+						</div>
+					</div>
+					<div class="tree-children">
+						<div class="child-node">
+							<div class="child-icon"><i class="fa fa-book-open"></i></div>
+							<div class="child-meta">
+								<div class="child-name">English Literature</div>
+								<div class="child-stats">320 students &middot; 25 courses</div>
+							</div>
+							<div class="tree-actions">
+								<button title="Edit"><i class="fa fa-pencil"></i></button>
+							</div>
+						</div>
+						<div class="child-node">
+							<div class="child-icon"><i class="fa fa-landmark"></i></div>
+							<div class="child-meta">
+								<div class="child-name">History</div>
+								<div class="child-stats">280 students &middot; 21 courses</div>
+							</div>
+							<div class="tree-actions">
+								<button title="Edit"><i class="fa fa-pencil"></i></button>
+							</div>
+						</div>
+						<div class="child-node">
+							<div class="child-icon"><i class="fa fa-theater-masks"></i></div>
+							<div class="child-meta">
+								<div class="child-name">Performing Arts</div>
+								<div class="child-stats">190 students &middot; 14 courses</div>
+							</div>
+							<div class="tree-actions">
+								<button title="Edit"><i class="fa fa-pencil"></i></button>
+							</div>
+						</div>
+						<div class="child-node">
+							<div class="child-icon"><i class="fa fa-language"></i></div>
+							<div class="child-meta">
+								<div class="child-name">Modern Languages</div>
+								<div class="child-stats">190 students &middot; 12 courses</div>
+							</div>
+							<div class="tree-actions">
+								<button title="Edit"><i class="fa fa-pencil"></i></button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- School of Sciences -->
+				<div class="tree-node">
+					<div class="tree-header">
+						<div class="tree-toggle"><i class="fa fa-chevron-right"></i></div>
+						<div class="tree-icon green"><i class="fa fa-flask"></i></div>
+						<div class="tree-meta">
+							<div class="tree-name">School of Sciences</div>
+							<div class="tree-desc">Natural and applied sciences programs</div>
+						</div>
+						<div class="tree-badges tw-hidden md:tw-flex">
+							<div class="tree-badge"><i class="fa fa-users"></i> <strong>890</strong> students</div>
+							<div class="tree-badge"><i class="fa fa-book"></i> <strong>68</strong> courses</div>
+						</div>
+						<div class="tree-actions">
+							<button title="Edit"><i class="fa fa-pencil"></i></button>
+							<button title="More"><i class="fa fa-ellipsis-v"></i></button>
+						</div>
+					</div>
+				</div>
+
+				<!-- School of Business -->
+				<div class="tree-node">
+					<div class="tree-header">
+						<div class="tree-toggle"><i class="fa fa-chevron-right"></i></div>
+						<div class="tree-icon orange"><i class="fa fa-briefcase"></i></div>
+						<div class="tree-meta">
+							<div class="tree-name">School of Business</div>
+							<div class="tree-desc">Business administration, finance, and management</div>
+						</div>
+						<div class="tree-badges tw-hidden md:tw-flex">
+							<div class="tree-badge"><i class="fa fa-users"></i> <strong>720</strong> students</div>
+							<div class="tree-badge"><i class="fa fa-book"></i> <strong>52</strong> courses</div>
+						</div>
+						<div class="tree-actions">
+							<button title="Edit"><i class="fa fa-pencil"></i></button>
+							<button title="More"><i class="fa fa-ellipsis-v"></i></button>
+						</div>
+					</div>
+				</div>
+
+				<!-- School of Education -->
+				<div class="tree-node">
+					<div class="tree-header">
+						<div class="tree-toggle"><i class="fa fa-chevron-right"></i></div>
+						<div class="tree-icon teal"><i class="fa fa-graduation-cap"></i></div>
+						<div class="tree-meta">
+							<div class="tree-name">School of Education</div>
+							<div class="tree-desc">Teacher preparation and educational leadership</div>
+						</div>
+						<div class="tree-badges tw-hidden md:tw-flex">
+							<div class="tree-badge"><i class="fa fa-users"></i> <strong>450</strong> students</div>
+							<div class="tree-badge"><i class="fa fa-book"></i> <strong>33</strong> courses</div>
+						</div>
+						<div class="tree-actions">
+							<button title="Edit"><i class="fa fa-pencil"></i></button>
+							<button title="More"><i class="fa fa-ellipsis-v"></i></button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+	</div>
+	<script src="js/router.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/api.js"></script>
+<script src="js/render.js"></script>
+<script src="js/sidebar.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

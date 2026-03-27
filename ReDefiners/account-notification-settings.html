@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	<title>ReDefiners - Notification Settings</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+	<script src="https://cdn.tailwindcss.com"></script>
+	<script src="css/tailwind-config.js?v=3"></script>
+	<script src="https://kit.fontawesome.com/7a13c96681.js" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/tokens.css?v=3">
+	<link rel="stylesheet" type="text/css" href="css/shadcn.css?v=3">
+	<link rel="stylesheet" type="text/css" href="styles.css?v=3">
+	<style>
+		.notif-matrix { width: 100%; border-collapse: separate; border-spacing: 0; }
+		.notif-matrix th { font-size: 12px; font-weight: 600; color: #64748b; text-transform: uppercase; padding: 10px 12px; border-bottom: 2px solid #e5e7eb; text-align: center; }
+		.notif-matrix th:first-child { text-align: left; }
+		.notif-matrix td { padding: 12px; border-bottom: 1px solid #f0f0f0; text-align: center; vertical-align: middle; }
+		.notif-matrix td:first-child { text-align: left; }
+		.notif-matrix tr:hover { background: #f8fafb; }
+		.notif-category { font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--color-primary-400); padding: 14px 12px 6px !important; border-bottom: none !important; }
+		.freq-select { font-size: 12px; padding: 4px 8px; border: 1px solid #e5e7eb; border-radius: 6px; background: white; color: #334155; min-width: 100px; cursor: pointer; }
+		.freq-select:focus { outline: none; border-color: var(--color-primary-400); }
+		.channel-icon { width: 32px; height: 32px; border-radius: 8px; display: inline-flex; align-items: center; justify-content: center; font-size: 14px; }
+	</style>
+</head>
+<body>
+<div class="tw-flex tw-min-h-screen tw-font-poppins">
+	<aside class="left-sidebar tw-fixed tw-inset-y-0 tw-left-0 tw-w-[240px] tw-z-50 tw--translate-x-full lg:tw-translate-x-0 tw-transition-transform tw-duration-300 tw-overflow-y-auto shadcn-scrollbar">
+		<div class="menu-bar">
+			<section class="logo-section">
+				<i class="fa fa-times theme-color menu-hide"></i>
+				<img src="Images/logo.PNG" class="res-hide" alt="logo">
+				<div class="nav-input res-show-flex tw-mt-5">
+					<button class="tw-border tw-border-primary-400 tw-border-r-0 tw-bg-transparent tw-px-2"><i class="fa fa-search"></i></button>
+					<input class="tw-border tw-border-primary-400 tw-border-l-0 tw-w-[85%] tw-bg-transparent tw-px-2 tw-py-1 tw-outline-none" type="text" name="search" placeholder="Search">
+				</div>
+			</section>
+			<section class="menu-links">
+				<div class="menu-link"><a href="dashboard.html"><i class="fa fa-th-large"></i><span> Dashboard</span></a></div>
+				<div class="menu-link"><a href="courses.html"><i class="fa fa-clipboard-list"></i><span> Courses</span></a></div>
+				<div class="menu-link"><a href="calendar.html"><i class="fa fa-calendar-alt"></i><span> Calendar</span></a></div>
+				<div class="menu-link"><a href="announcement.html"><i class="fa fa-bullhorn"></i><span> Announcements</span></a></div>
+				<div class="menu-link"><a href="inbox.html"><i class="fa fa-comments"></i><span> Messages</span></a></div>
+				<div class="menu-link"><a href="assignments.html"><i class="fa fa-file-lines"></i><span> Assignments</span></a></div>
+				<div class="menu-link"><a href="grades.html"><i class="fa fa-chart-bar"></i><span> Grades</span></a></div>
+				<div class="menu-link"><a href="modules.html"><i class="fa fa-layer-group"></i><span> Modules</span></a></div>
+				<div class="menu-link"><a href="discussions.html"><i class="fa fa-comments-alt"></i><span> Discussions</span></a></div>
+				<div class="menu-link"><a href="quizzes.html"><i class="fa fa-question-circle"></i><span> Quizzes</span></a></div>
+				<div class="menu-link"><a href="pages.html"><i class="fa fa-file-alt"></i><span> Pages</span></a></div>
+				<div class="menu-link"><a href="files.html"><i class="fa fa-folder"></i><span> Files</span></a></div>
+				<div class="menu-link"><a href="people.html"><i class="fa fa-users"></i><span> People</span></a></div>
+				<div class="menu-link"><a href="outcomes.html"><i class="fa fa-bullseye"></i><span> Outcomes</span></a></div>
+				<div class="menu-link"><a href="rubrics.html"><i class="fa fa-th"></i><span> Rubrics</span></a></div>
+				<div class="menu-link"><a href="groups.html"><i class="fa fa-user-friends"></i><span> Groups</span></a></div>
+				<div class="menu-link"><a href="conferences.html"><i class="fa fa-video"></i><span> Conferences</span></a></div>
+				<div class="menu-link"><a href="collaborations.html"><i class="fa fa-handshake"></i><span> Collaborations</span></a></div>
+				<div class="menu-link"><a href="account-settings.html" class="active-menu"><i class="fa fa-cog"></i><span> Settings</span></a></div>
+			</section>
+		</div>
+	</aside>
+	<div class="sidebar-overlay" id="sidebarOverlay"></div>
+	<main class="middle-part tw-flex-1 lg:tw-ml-[240px] tw-min-h-screen tw-px-4 md:tw-px-6 lg:tw-px-10 tw-pb-8">
+		<!-- Nav Bar -->
+		<div class="tw-flex tw-items-center tw-justify-between tw-py-4 tw-gap-3 tw-flex-wrap">
+			<div class="tw-flex tw-items-center tw-gap-3">
+				<i class="fa fa-bars tw-text-primary-400 tw-cursor-pointer tw-text-xl lg:tw-hidden menu-icon" id="menuToggle"></i>
+				<div class="shadcn-search tw-hidden sm:tw-flex tw-w-64">
+					<i class="fa fa-search"></i>
+					<input type="text" placeholder="Search courses, assignments...">
+				</div>
+			</div>
+			<div class="tw-flex tw-items-center tw-gap-3">
+				<button class="shadcn-btn shadcn-btn-ghost shadcn-btn-icon tw-relative">
+					<i class="fa fa-bell tw-text-primary-400"></i>
+				</button>
+				<div class="shadcn-avatar shadcn-avatar-md tw-cursor-pointer profile-click">
+					<img src="Images/profile.png" alt="Profile">
+				</div>
+			</div>
+		</div>
+
+		<!-- Page Header -->
+		<div class="tw-flex tw-flex-col sm:tw-flex-row tw-items-start sm:tw-items-center tw-justify-between tw-py-6 tw-gap-4">
+			<div>
+				<h3 class="second-color">Notification Preferences</h3>
+				<p class="tw-text-sm tw-text-gray-500 tw-mt-1">Configure how and when you receive notifications</p>
+			</div>
+			<button class="shadcn-btn shadcn-btn-primary tw-text-xs"><i class="fa fa-save tw-mr-1"></i> Save Preferences</button>
+		</div>
+
+		<!-- Channel Headers -->
+		<div class="shadcn-card tw-p-4 tw-mb-4">
+			<div class="tw-flex tw-items-center tw-gap-4 tw-flex-wrap">
+				<span class="tw-text-sm tw-font-medium second-color tw-mr-4">Active Channels:</span>
+				<div class="tw-flex tw-items-center tw-gap-2 tw-px-3 tw-py-1.5 tw-bg-blue-50 tw-rounded-lg">
+					<div class="channel-icon" style="background:#e8f4fd;color:#3B82F6;"><i class="fa fa-envelope"></i></div>
+					<span class="tw-text-sm tw-font-medium tw-text-blue-700">Email</span>
+				</div>
+				<div class="tw-flex tw-items-center tw-gap-2 tw-px-3 tw-py-1.5 tw-bg-green-50 tw-rounded-lg">
+					<div class="channel-icon" style="background:#D4EFE6;color:#2DB88A;"><i class="fa fa-mobile-alt"></i></div>
+					<span class="tw-text-sm tw-font-medium tw-text-green-700">Push</span>
+				</div>
+				<div class="tw-flex tw-items-center tw-gap-2 tw-px-3 tw-py-1.5 tw-bg-purple-50 tw-rounded-lg">
+					<div class="channel-icon" style="background:#f3e8ff;color:#8B5CF6;"><i class="fa fa-sms"></i></div>
+					<span class="tw-text-sm tw-font-medium tw-text-purple-700">SMS</span>
+				</div>
+			</div>
+		</div>
+
+		<!-- Notification Matrix -->
+		<div class="shadcn-card tw-p-5 tw-overflow-x-auto">
+			<table class="notif-matrix">
+				<thead>
+					<tr>
+						<th style="min-width:250px;">Notification Type</th>
+						<th><i class="fa fa-envelope tw-mr-1"></i> Email</th>
+						<th><i class="fa fa-mobile-alt tw-mr-1"></i> Push</th>
+						<th><i class="fa fa-sms tw-mr-1"></i> SMS</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr><td colspan="4" class="notif-category"><i class="fa fa-bullhorn tw-mr-2"></i>Announcements</td></tr>
+					<tr>
+						<td class="tw-text-sm second-color">New course announcement</td>
+						<td><select class="freq-select"><option>Immediately</option><option selected>Daily</option><option>Weekly</option><option>Off</option></select></td>
+						<td><select class="freq-select"><option selected>Immediately</option><option>Daily</option><option>Weekly</option><option>Off</option></select></td>
+						<td><select class="freq-select"><option>Immediately</option><option>Daily</option><option>Weekly</option><option selected>Off</option></select></td>
+					</tr>
+					<tr>
+						<td class="tw-text-sm second-color">Account-level announcement</td>
+						<td><select class="freq-select"><option selected>Immediately</option><option>Daily</option><option>Weekly</option><option>Off</option></select></td>
+						<td><select class="freq-select"><option selected>Immediately</option><option>Daily</option><option>Weekly</option><option>Off</option></select></td>
+						<td><select class="freq-select"><option>Immediately</option><option>Daily</option><option>Weekly</option><option selected>Off</option></select></td>
+					</tr>
+					<tr><td colspan="4" class="notif-category"><i class="fa fa-file-lines tw-mr-2"></i>Submissions</td></tr>
+					<tr>
+						<td class="tw-text-sm second-color">Assignment submitted</td>
+						<td><select class="freq-select"><option selected>Immediately</option><option>Daily</option><option>Weekly</option><option>Off</option></select></td>
+						<td><select class="freq-select"><option selected>Immediately</option><option>Daily</option><option>Weekly</option><option>Off</option></select></td>
+						<td><select class="freq-select"><option>Immediately</option><option>Daily</option><option>Weekly</option><option selected>Off</option></select></td>
+					</tr>
+					<tr>
+						<td class="tw-text-sm second-color">Assignment resubmitted</td>
+						<td><select class="freq-select"><option>Immediately</option><option selected>Daily</option><option>Weekly</option><option>Off</option></select></td>
+						<td><select class="freq-select"><option>Immediately</option><option selected>Daily</option><option>Weekly</option><option>Off</option></select></td>
+						<td><select class="freq-select"><option>Immediately</option><option>Daily</option><option>Weekly</option><option selected>Off</option></select></td>
+					</tr>
+					<tr>
+						<td class="tw-text-sm second-color">Late submission</td>
+						<td><select class="freq-select"><option selected>Immediately</option><option>Daily</option><option>Weekly</option><option>Off</option></select></td>
+						<td><select class="freq-select"><option selected>Immediately</option><option>Daily</option><option>Weekly</option><option>Off</option></select></td>
+						<td><select class="freq-select"><option selected>Immediately</option><option>Daily</option><option>Weekly</option><option>Off</option></select></td>
+					</tr>
+					<tr><td colspan="4" class="notif-category"><i class="fa fa-chart-bar tw-mr-2"></i>Grading</td></tr>
+					<tr>
+						<td class="tw-text-sm second-color">Grade posted</td>
+						<td><select class="freq-select"><option selected>Immediately</option><option>Daily</option><option>Weekly</option><option>Off</option></select></td>
+						<td><select class="freq-select"><option selected>Immediately</option><option>Daily</option><option>Weekly</option><option>Off</option></select></td>
+						<td><select class="freq-select"><option>Immediately</option><option>Daily</option><option>Weekly</option><option selected>Off</option></select></td>
+					</tr>
+					<tr>
+						<td class="tw-text-sm second-color">Submission comment</td>
+						<td><select class="freq-select"><option selected>Immediately</option><option>Daily</option><option>Weekly</option><option>Off</option></select></td>
+						<td><select class="freq-select"><option>Immediately</option><option selected>Daily</option><option>Weekly</option><option>Off</option></select></td>
+						<td><select class="freq-select"><option>Immediately</option><option>Daily</option><option>Weekly</option><option selected>Off</option></select></td>
+					</tr>
+					<tr><td colspan="4" class="notif-category"><i class="fa fa-comments tw-mr-2"></i>Conversations</td></tr>
+					<tr>
+						<td class="tw-text-sm second-color">New message received</td>
+						<td><select class="freq-select"><option selected>Immediately</option><option>Daily</option><option>Weekly</option><option>Off</option></select></td>
+						<td><select class="freq-select"><option selected>Immediately</option><option>Daily</option><option>Weekly</option><option>Off</option></select></td>
+						<td><select class="freq-select"><option>Immediately</option><option>Daily</option><option>Weekly</option><option selected>Off</option></select></td>
+					</tr>
+					<tr><td colspan="4" class="notif-category"><i class="fa fa-calendar-alt tw-mr-2"></i>Calendar & Due Dates</td></tr>
+					<tr>
+						<td class="tw-text-sm second-color">Upcoming assignment due</td>
+						<td><select class="freq-select"><option>Immediately</option><option selected>Daily</option><option>Weekly</option><option>Off</option></select></td>
+						<td><select class="freq-select"><option selected>Immediately</option><option>Daily</option><option>Weekly</option><option>Off</option></select></td>
+						<td><select class="freq-select"><option>Immediately</option><option>Daily</option><option>Weekly</option><option selected>Off</option></select></td>
+					</tr>
+					<tr>
+						<td class="tw-text-sm second-color">Calendar event created</td>
+						<td><select class="freq-select"><option>Immediately</option><option selected>Daily</option><option>Weekly</option><option>Off</option></select></td>
+						<td><select class="freq-select"><option>Immediately</option><option>Daily</option><option>Weekly</option><option selected>Off</option></select></td>
+						<td><select class="freq-select"><option>Immediately</option><option>Daily</option><option>Weekly</option><option selected>Off</option></select></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</main>
+</div>
+<script src="js/sidebar.js"></script>
+<script src="js/router.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/api.js"></script>
+<script src="js/render.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	<title>ReDefiners - Page View Analytics</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+	<script src="https://cdn.tailwindcss.com"></script>
+	<script src="css/tailwind-config.js?v=3"></script>
+	<script src="https://kit.fontawesome.com/7a13c96681.js" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/tokens.css?v=3">
+	<link rel="stylesheet" type="text/css" href="css/shadcn.css?v=3">
+	<link rel="stylesheet" type="text/css" href="styles.css?v=3">
+</head>
+<body>
+	<div class="tw-flex tw-min-h-screen tw-font-poppins">
+		<aside class="left-sidebar tw-fixed tw-inset-y-0 tw-left-0 tw-w-[240px] tw-z-50 tw--translate-x-full lg:tw-translate-x-0 tw-transition-transform tw-duration-300 tw-overflow-y-auto shadcn-scrollbar">
+			<div class="menu-bar">
+				<section class="logo-section">
+					<i class="fa fa-times theme-color menu-hide"></i>
+					<img src="Images/logo.PNG" class="res-hide" alt="logo">
+					<div class="nav-input res-show-flex tw-mt-5">
+						<button class="tw-border tw-border-primary-400 tw-border-r-0 tw-bg-transparent tw-px-2"><i class="fa fa-search"></i></button>
+						<input class="tw-border tw-border-primary-400 tw-border-l-0 tw-w-[85%] tw-bg-transparent tw-px-2 tw-py-1 tw-outline-none" type="text" name="search" placeholder="Search">
+					</div>
+				</section>
+				<section class="menu-links">
+					<div class="menu-link"><a href="dashboard.html"><i class="fa fa-th-large"></i><span> Dashboard</span></a></div>
+					<div class="menu-link"><a href="courses.html"><i class="fa fa-clipboard-list"></i><span> Courses</span></a></div>
+					<div class="menu-link"><a href="calendar.html"><i class="fa fa-calendar-alt"></i><span> Calendar</span></a></div>
+					<div class="menu-link"><a href="announcement.html"><i class="fa fa-bullhorn"></i><span> Announcements</span></a></div>
+					<div class="menu-link"><a href="inbox.html"><i class="fa fa-comments"></i><span> Messages</span></a></div>
+					<div class="menu-link"><a href="assignments.html"><i class="fa fa-file-lines"></i><span> Assignments</span></a></div>
+					<div class="menu-link"><a href="grades.html"><i class="fa fa-chart-bar"></i><span> Grades</span></a></div>
+					<div class="menu-link"><a href="modules.html"><i class="fa fa-layer-group"></i><span> Modules</span></a></div>
+					<div class="menu-link"><a href="discussions.html"><i class="fa fa-comments-alt"></i><span> Discussions</span></a></div>
+					<div class="menu-link"><a href="quizzes.html"><i class="fa fa-question-circle"></i><span> Quizzes</span></a></div>
+					<div class="menu-link"><a href="pages.html"><i class="fa fa-file-alt"></i><span> Pages</span></a></div>
+					<div class="menu-link"><a href="files.html"><i class="fa fa-folder"></i><span> Files</span></a></div>
+					<div class="menu-link"><a href="people.html"><i class="fa fa-users"></i><span> People</span></a></div>
+					<div class="menu-link"><a href="outcomes.html"><i class="fa fa-bullseye"></i><span> Outcomes</span></a></div>
+					<div class="menu-link"><a href="rubrics.html"><i class="fa fa-th"></i><span> Rubrics</span></a></div>
+					<div class="menu-link"><a href="groups.html"><i class="fa fa-user-friends"></i><span> Groups</span></a></div>
+					<div class="menu-link"><a href="conferences.html"><i class="fa fa-video"></i><span> Conferences</span></a></div>
+					<div class="menu-link"><a href="collaborations.html"><i class="fa fa-handshake"></i><span> Collaborations</span></a></div>
+					<div class="menu-link"><a href="account-settings.html" class="active-menu"><i class="fa fa-cog"></i><span> Settings</span></a></div>
+				</section>
+			</div>
+		</aside>
+		<div class="sidebar-overlay" id="sidebarOverlay"></div>
+		<main class="middle-part tw-flex-1 lg:tw-ml-[240px] tw-min-h-screen tw-px-4 md:tw-px-6 lg:tw-px-10 tw-pb-8">
+			<div class="tw-flex tw-items-center tw-justify-between tw-py-4 tw-gap-3 tw-flex-wrap">
+				<div class="tw-flex tw-items-center tw-gap-3">
+					<i class="fa fa-bars tw-text-primary-400 tw-cursor-pointer tw-text-xl lg:tw-hidden menu-icon" id="menuToggle"></i>
+					<div class="shadcn-search tw-hidden sm:tw-flex tw-w-64"><i class="fa fa-search"></i><input type="text" placeholder="Search courses, assignments..."></div>
+				</div>
+				<div class="tw-flex tw-items-center tw-gap-3">
+					<button class="shadcn-btn shadcn-btn-ghost shadcn-btn-icon tw-relative"><i class="fa fa-bell tw-text-primary-400"></i></button>
+					<div class="shadcn-avatar shadcn-avatar-md tw-cursor-pointer profile-click"><img src="Images/profile.png" alt="Profile"></div>
+				</div>
+			</div>
+
+			<!-- Header -->
+			<div class="tw-flex tw-flex-col sm:tw-flex-row tw-items-start sm:tw-items-center tw-justify-between tw-py-6 tw-gap-4">
+				<div>
+					<nav class="tw-text-sm tw-text-gray-500 tw-mb-2">
+						<a href="admin-dashboard.html" class="theme-color tw-no-underline">Admin</a>
+						<i class="fa fa-chevron-right tw-text-xs tw-mx-1"></i>
+						<a href="people.html" class="theme-color tw-no-underline">Users</a>
+						<i class="fa fa-chevron-right tw-text-xs tw-mx-1"></i>
+						<span class="tw-text-gray-400">Page Views</span>
+					</nav>
+					<h3 class="second-color">Page View Analytics</h3>
+					<p class="tw-text-gray-500 tw-text-sm tw-mt-1">Traffic and engagement data for Emily Chen &middot; Last 30 days</p>
+				</div>
+				<div class="tw-flex tw-gap-2">
+					<select class="shadcn-input tw-text-sm tw-w-36">
+						<option>Last 7 days</option>
+						<option selected>Last 30 days</option>
+						<option>Last 90 days</option>
+						<option>This semester</option>
+					</select>
+					<button class="shadcn-btn shadcn-btn-outline tw-text-sm"><i class="fa fa-download tw-mr-1"></i> Export</button>
+				</div>
+			</div>
+
+			<!-- Summary Stats -->
+			<div class="tw-grid tw-grid-cols-2 lg:tw-grid-cols-4 tw-gap-4 tw-mb-6">
+				<div class="shadcn-card tw-p-4 tw-text-center">
+					<p class="tw-text-2xl tw-font-bold second-color">1,247</p>
+					<p class="tw-text-xs tw-text-gray-500">Total Page Views</p>
+				</div>
+				<div class="shadcn-card tw-p-4 tw-text-center">
+					<p class="tw-text-2xl tw-font-bold second-color">342</p>
+					<p class="tw-text-xs tw-text-gray-500">Unique Pages Visited</p>
+				</div>
+				<div class="shadcn-card tw-p-4 tw-text-center">
+					<p class="tw-text-2xl tw-font-bold second-color">4m 12s</p>
+					<p class="tw-text-xs tw-text-gray-500">Avg Time on Page</p>
+				</div>
+				<div class="shadcn-card tw-p-4 tw-text-center">
+					<p class="tw-text-2xl tw-font-bold second-color">41.5</p>
+					<p class="tw-text-xs tw-text-gray-500">Avg Views / Day</p>
+				</div>
+			</div>
+
+			<!-- Daily Views Chart -->
+			<div class="shadcn-card tw-p-5 tw-mb-6">
+				<h5 class="second-color tw-font-semibold tw-mb-4"><i class="fa fa-chart-line tw-mr-2"></i>Daily Page Views</h5>
+				<div class="tw-flex tw-items-end tw-gap-1 tw-h-40 tw-px-2 tw-overflow-x-auto">
+					<div class="tw-flex tw-flex-col tw-items-center tw-min-w-[20px] tw-flex-1">
+						<div class="tw-bg-blue-400 tw-w-full tw-rounded-t tw-min-w-[8px]" style="height: 45%"></div>
+						<span class="tw-text-[9px] tw-mt-1 tw-text-gray-400">Feb 25</span>
+					</div>
+					<div class="tw-flex tw-flex-col tw-items-center tw-min-w-[20px] tw-flex-1">
+						<div class="tw-bg-blue-400 tw-w-full tw-rounded-t tw-min-w-[8px]" style="height: 52%"></div>
+						<span class="tw-text-[9px] tw-mt-1 tw-text-gray-400">26</span>
+					</div>
+					<div class="tw-flex tw-flex-col tw-items-center tw-min-w-[20px] tw-flex-1">
+						<div class="tw-bg-blue-400 tw-w-full tw-rounded-t tw-min-w-[8px]" style="height: 38%"></div>
+						<span class="tw-text-[9px] tw-mt-1 tw-text-gray-400">27</span>
+					</div>
+					<div class="tw-flex tw-flex-col tw-items-center tw-min-w-[20px] tw-flex-1">
+						<div class="tw-bg-blue-300 tw-w-full tw-rounded-t tw-min-w-[8px]" style="height: 15%"></div>
+						<span class="tw-text-[9px] tw-mt-1 tw-text-gray-400">28</span>
+					</div>
+					<div class="tw-flex tw-flex-col tw-items-center tw-min-w-[20px] tw-flex-1">
+						<div class="tw-bg-blue-300 tw-w-full tw-rounded-t tw-min-w-[8px]" style="height: 10%"></div>
+						<span class="tw-text-[9px] tw-mt-1 tw-text-gray-400">Mar 1</span>
+					</div>
+					<div class="tw-flex tw-flex-col tw-items-center tw-min-w-[20px] tw-flex-1">
+						<div class="tw-bg-blue-400 tw-w-full tw-rounded-t tw-min-w-[8px]" style="height: 60%"></div>
+						<span class="tw-text-[9px] tw-mt-1 tw-text-gray-400">2</span>
+					</div>
+					<div class="tw-flex tw-flex-col tw-items-center tw-min-w-[20px] tw-flex-1">
+						<div class="tw-bg-blue-400 tw-w-full tw-rounded-t tw-min-w-[8px]" style="height: 55%"></div>
+						<span class="tw-text-[9px] tw-mt-1 tw-text-gray-400">3</span>
+					</div>
+					<div class="tw-flex tw-flex-col tw-items-center tw-min-w-[20px] tw-flex-1">
+						<div class="tw-bg-blue-400 tw-w-full tw-rounded-t tw-min-w-[8px]" style="height: 48%"></div>
+						<span class="tw-text-[9px] tw-mt-1 tw-text-gray-400">4</span>
+					</div>
+					<div class="tw-flex tw-flex-col tw-items-center tw-min-w-[20px] tw-flex-1">
+						<div class="tw-bg-blue-400 tw-w-full tw-rounded-t tw-min-w-[8px]" style="height: 42%"></div>
+						<span class="tw-text-[9px] tw-mt-1 tw-text-gray-400">5</span>
+					</div>
+					<div class="tw-flex tw-flex-col tw-items-center tw-min-w-[20px] tw-flex-1">
+						<div class="tw-bg-blue-500 tw-w-full tw-rounded-t tw-min-w-[8px]" style="height: 75%"></div>
+						<span class="tw-text-[9px] tw-mt-1 tw-text-gray-400">6</span>
+					</div>
+					<div class="tw-flex tw-flex-col tw-items-center tw-min-w-[20px] tw-flex-1">
+						<div class="tw-bg-blue-300 tw-w-full tw-rounded-t tw-min-w-[8px]" style="height: 18%"></div>
+						<span class="tw-text-[9px] tw-mt-1 tw-text-gray-400">7</span>
+					</div>
+					<div class="tw-flex tw-flex-col tw-items-center tw-min-w-[20px] tw-flex-1">
+						<div class="tw-bg-blue-300 tw-w-full tw-rounded-t tw-min-w-[8px]" style="height: 12%"></div>
+						<span class="tw-text-[9px] tw-mt-1 tw-text-gray-400">8</span>
+					</div>
+					<div class="tw-flex tw-flex-col tw-items-center tw-min-w-[20px] tw-flex-1">
+						<div class="tw-bg-blue-400 tw-w-full tw-rounded-t tw-min-w-[8px]" style="height: 50%"></div>
+						<span class="tw-text-[9px] tw-mt-1 tw-text-gray-400">9</span>
+					</div>
+					<div class="tw-flex tw-flex-col tw-items-center tw-min-w-[20px] tw-flex-1">
+						<div class="tw-bg-blue-500 tw-w-full tw-rounded-t tw-min-w-[8px]" style="height: 90%"></div>
+						<span class="tw-text-[9px] tw-mt-1 tw-text-gray-400">10</span>
+					</div>
+					<div class="tw-flex tw-flex-col tw-items-center tw-min-w-[20px] tw-flex-1">
+						<div class="tw-bg-blue-400 tw-w-full tw-rounded-t tw-min-w-[8px]" style="height: 65%"></div>
+						<span class="tw-text-[9px] tw-mt-1 tw-text-gray-400">11</span>
+					</div>
+					<div class="tw-flex tw-flex-col tw-items-center tw-min-w-[20px] tw-flex-1">
+						<div class="tw-bg-blue-400 tw-w-full tw-rounded-t tw-min-w-[8px]" style="height: 58%"></div>
+						<span class="tw-text-[9px] tw-mt-1 tw-text-gray-400">12</span>
+					</div>
+					<div class="tw-flex tw-flex-col tw-items-center tw-min-w-[20px] tw-flex-1">
+						<div class="tw-bg-blue-400 tw-w-full tw-rounded-t tw-min-w-[8px]" style="height: 40%"></div>
+						<span class="tw-text-[9px] tw-mt-1 tw-text-gray-400">13</span>
+					</div>
+					<div class="tw-flex tw-flex-col tw-items-center tw-min-w-[20px] tw-flex-1">
+						<div class="tw-bg-blue-300 tw-w-full tw-rounded-t tw-min-w-[8px]" style="height: 20%"></div>
+						<span class="tw-text-[9px] tw-mt-1 tw-text-gray-400">14</span>
+					</div>
+					<div class="tw-flex tw-flex-col tw-items-center tw-min-w-[20px] tw-flex-1">
+						<div class="tw-bg-blue-300 tw-w-full tw-rounded-t tw-min-w-[8px]" style="height: 8%"></div>
+						<span class="tw-text-[9px] tw-mt-1 tw-text-gray-400">15</span>
+					</div>
+					<div class="tw-flex tw-flex-col tw-items-center tw-min-w-[20px] tw-flex-1">
+						<div class="tw-bg-blue-500 tw-w-full tw-rounded-t tw-min-w-[8px]" style="height: 85%"></div>
+						<span class="tw-text-[9px] tw-mt-1 tw-text-gray-400">16</span>
+					</div>
+					<div class="tw-flex tw-flex-col tw-items-center tw-min-w-[20px] tw-flex-1">
+						<div class="tw-bg-blue-500 tw-w-full tw-rounded-t tw-min-w-[8px]" style="height: 100%"></div>
+						<span class="tw-text-[9px] tw-mt-1 tw-text-gray-400">17</span>
+					</div>
+				</div>
+				<p class="tw-text-xs tw-text-gray-400 tw-text-center tw-mt-2">Weekends typically show reduced activity. Peak on Mar 17 (quiz day): 82 views</p>
+			</div>
+
+			<!-- Page Views Table -->
+			<div class="shadcn-card tw-overflow-hidden">
+				<div class="tw-p-4 tw-border-b tw-flex tw-items-center tw-justify-between">
+					<h5 class="second-color tw-font-semibold">Most Visited Pages</h5>
+					<input type="text" class="shadcn-input tw-w-48 tw-text-sm" placeholder="Filter pages...">
+				</div>
+				<div class="tw-overflow-x-auto">
+					<table class="tw-w-full tw-text-sm">
+						<thead class="tw-bg-gray-50">
+							<tr>
+								<th class="tw-px-4 tw-py-3 tw-text-left tw-font-medium tw-text-gray-600">Page URL</th>
+								<th class="tw-px-4 tw-py-3 tw-text-right tw-font-medium tw-text-gray-600">Views</th>
+								<th class="tw-px-4 tw-py-3 tw-text-right tw-font-medium tw-text-gray-600">Unique Visitors</th>
+								<th class="tw-px-4 tw-py-3 tw-text-right tw-font-medium tw-text-gray-600">Avg Time on Page</th>
+								<th class="tw-px-4 tw-py-3 tw-text-right tw-font-medium tw-text-gray-600">Last Viewed</th>
+							</tr>
+						</thead>
+						<tbody class="tw-divide-y">
+							<tr class="tw-hover:tw-bg-gray-50">
+								<td class="tw-px-4 tw-py-3">
+									<p class="tw-font-medium second-color">/courses/bio101/assignments</p>
+									<p class="tw-text-xs tw-text-gray-400">Assignments Index</p>
+								</td>
+								<td class="tw-px-4 tw-py-3 tw-text-right tw-font-semibold">186</td>
+								<td class="tw-px-4 tw-py-3 tw-text-right">1</td>
+								<td class="tw-px-4 tw-py-3 tw-text-right">3m 24s</td>
+								<td class="tw-px-4 tw-py-3 tw-text-right tw-text-xs tw-text-gray-500">Today 9:15 AM</td>
+							</tr>
+							<tr class="tw-hover:tw-bg-gray-50">
+								<td class="tw-px-4 tw-py-3">
+									<p class="tw-font-medium second-color">/courses/bio101/modules</p>
+									<p class="tw-text-xs tw-text-gray-400">Modules Index</p>
+								</td>
+								<td class="tw-px-4 tw-py-3 tw-text-right tw-font-semibold">154</td>
+								<td class="tw-px-4 tw-py-3 tw-text-right">1</td>
+								<td class="tw-px-4 tw-py-3 tw-text-right">5m 48s</td>
+								<td class="tw-px-4 tw-py-3 tw-text-right tw-text-xs tw-text-gray-500">Today 9:10 AM</td>
+							</tr>
+							<tr class="tw-hover:tw-bg-gray-50">
+								<td class="tw-px-4 tw-py-3">
+									<p class="tw-font-medium second-color">/courses/bio101/grades</p>
+									<p class="tw-text-xs tw-text-gray-400">Grades</p>
+								</td>
+								<td class="tw-px-4 tw-py-3 tw-text-right tw-font-semibold">132</td>
+								<td class="tw-px-4 tw-py-3 tw-text-right">1</td>
+								<td class="tw-px-4 tw-py-3 tw-text-right">2m 15s</td>
+								<td class="tw-px-4 tw-py-3 tw-text-right tw-text-xs tw-text-gray-500">Yesterday 8:42 PM</td>
+							</tr>
+							<tr class="tw-hover:tw-bg-gray-50">
+								<td class="tw-px-4 tw-py-3">
+									<p class="tw-font-medium second-color">/courses/bio101/quizzes/midterm</p>
+									<p class="tw-text-xs tw-text-gray-400">Midterm Exam</p>
+								</td>
+								<td class="tw-px-4 tw-py-3 tw-text-right tw-font-semibold">98</td>
+								<td class="tw-px-4 tw-py-3 tw-text-right">1</td>
+								<td class="tw-px-4 tw-py-3 tw-text-right">12m 30s</td>
+								<td class="tw-px-4 tw-py-3 tw-text-right tw-text-xs tw-text-gray-500">Mar 17</td>
+							</tr>
+							<tr class="tw-hover:tw-bg-gray-50">
+								<td class="tw-px-4 tw-py-3">
+									<p class="tw-font-medium second-color">/courses/bio101/pages/cell-biology</p>
+									<p class="tw-text-xs tw-text-gray-400">Introduction to Cell Biology</p>
+								</td>
+								<td class="tw-px-4 tw-py-3 tw-text-right tw-font-semibold">87</td>
+								<td class="tw-px-4 tw-py-3 tw-text-right">1</td>
+								<td class="tw-px-4 tw-py-3 tw-text-right">8m 05s</td>
+								<td class="tw-px-4 tw-py-3 tw-text-right tw-text-xs tw-text-gray-500">Mar 20</td>
+							</tr>
+							<tr class="tw-hover:tw-bg-gray-50">
+								<td class="tw-px-4 tw-py-3">
+									<p class="tw-font-medium second-color">/courses/bio101/discussion_topics</p>
+									<p class="tw-text-xs tw-text-gray-400">Discussions Index</p>
+								</td>
+								<td class="tw-px-4 tw-py-3 tw-text-right tw-font-semibold">76</td>
+								<td class="tw-px-4 tw-py-3 tw-text-right">1</td>
+								<td class="tw-px-4 tw-py-3 tw-text-right">6m 42s</td>
+								<td class="tw-px-4 tw-py-3 tw-text-right tw-text-xs tw-text-gray-500">Mar 22</td>
+							</tr>
+							<tr class="tw-hover:tw-bg-gray-50">
+								<td class="tw-px-4 tw-py-3">
+									<p class="tw-font-medium second-color">/courses/bio101/files</p>
+									<p class="tw-text-xs tw-text-gray-400">Course Files</p>
+								</td>
+								<td class="tw-px-4 tw-py-3 tw-text-right tw-font-semibold">64</td>
+								<td class="tw-px-4 tw-py-3 tw-text-right">1</td>
+								<td class="tw-px-4 tw-py-3 tw-text-right">1m 55s</td>
+								<td class="tw-px-4 tw-py-3 tw-text-right tw-text-xs tw-text-gray-500">Mar 19</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="tw-p-4 tw-border-t tw-flex tw-items-center tw-justify-between">
+					<p class="tw-text-xs tw-text-gray-500">Showing top 7 of 342 unique pages</p>
+					<div class="tw-flex tw-gap-1">
+						<button class="shadcn-btn shadcn-btn-primary tw-text-xs tw-px-3 tw-py-1">1</button>
+						<button class="shadcn-btn shadcn-btn-outline tw-text-xs tw-px-3 tw-py-1">2</button>
+						<button class="shadcn-btn shadcn-btn-outline tw-text-xs tw-px-3 tw-py-1">3</button>
+						<button class="shadcn-btn shadcn-btn-outline tw-text-xs tw-px-3 tw-py-1">Next</button>
+					</div>
+				</div>
+			</div>
+		</main>
+	</div>
+	<script src="js/sidebar.js"></script>
+<script src="js/router.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/api.js"></script>
+<script src="js/render.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

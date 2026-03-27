@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>ReDefiners Style Guide</title>
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/7a13c96681.js" crossorigin="anonymous"></script>
+    <!-- Text Font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Design Tokens & Styles -->
+    <link rel="stylesheet" type="text/css" href="css/tokens.css?v=3">
+    <link rel="stylesheet" type="text/css" href="styles.css?v=3">
+    <style>
+        /* ── Style Guide Layout ── */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: var(--font-family);
+            color: var(--text-primary);
+            background: var(--color-neutral-50);
+            display: flex;
+            line-height: 1.6;
+        }
+
+        /* ── Sticky Table of Contents ── */
+        .sg-toc {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 240px;
+            height: 100vh;
+            overflow-y: auto;
+            background: var(--color-white);
+            border-right: 1px solid var(--color-neutral-200);
+            padding: 30px 20px;
+            z-index: 100;
+        }
+        .sg-toc h2 {
+            font-size: var(--font-size-h4);
+            font-weight: var(--font-weight-bold);
+            color: var(--color-primary-900);
+            margin-bottom: 16px;
+        }
+        .sg-toc a {
+            display: block;
+            padding: 5px 0;
+            font-size: var(--font-size-body-sm);
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color var(--transition-fast);
+        }
+        .sg-toc a:hover { color: var(--color-primary-700); }
+
+        /* ── Main Content ── */
+        .sg-main {
+            margin-left: 240px;
+            max-width: 1200px;
+            width: 100%;
+            padding: 40px 50px;
+        }
+
+        .sg-header {
+            margin-bottom: 50px;
+        }
+        .sg-header h1 {
+            font-size: var(--font-size-h1);
+            font-weight: var(--font-weight-bold);
+            color: var(--color-primary-900);
+        }
+        .sg-header p {
+            font-size: var(--font-size-body);
+            color: var(--text-secondary);
+            margin-top: 8px;
+        }
+
+        .sg-section {
+            padding: 40px 0;
+            border-bottom: 1px solid var(--color-neutral-200);
+        }
+        .sg-section:last-child { border-bottom: none; }
+
+        .sg-section h2 {
+            font-size: var(--font-size-h2);
+            font-weight: var(--font-weight-bold);
+            color: var(--color-primary-900);
+            margin-bottom: 8px;
+        }
+        .sg-section > p.sg-desc {
+            font-size: var(--font-size-body-sm);
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+        }
+
+        .sg-subsection {
+            margin-top: 24px;
+        }
+        .sg-subsection h3 {
+            font-size: var(--font-size-h4);
+            font-weight: var(--font-weight-semibold);
+            color: var(--text-primary);
+            margin-bottom: 12px;
+        }
+
+        /* ── Swatch Grid ── */
+        .sg-swatch-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        .sg-swatch {
+            text-align: center;
+        }
+        .sg-swatch__color {
+            width: 100%;
+            height: 70px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--color-neutral-200);
+        }
+        .sg-swatch__label {
+            font-size: var(--font-size-caption-sm);
+            color: var(--text-secondary);
+            margin-top: 6px;
+            font-weight: var(--font-weight-medium);
+        }
+        .sg-swatch__hex {
+            font-size: var(--font-size-caption-sm);
+            color: var(--text-muted);
+            font-family: monospace;
+        }
+
+        /* ── Typography Row ── */
+        .sg-type-row {
+            display: flex;
+            align-items: baseline;
+            gap: 20px;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--color-neutral-100);
+        }
+        .sg-type-meta {
+            flex-shrink: 0;
+            width: 180px;
+            font-size: var(--font-size-caption);
+            color: var(--text-muted);
+            font-family: monospace;
+        }
+
+        /* ── Component Row ── */
+        .sg-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        /* ── Elevation Boxes ── */
+        .sg-shadow-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 24px;
+        }
+        .sg-shadow-box {
+            background: var(--color-white);
+            border-radius: var(--radius-md);
+            height: 100px;
+            display: grid;
+            place-items: center;
+            font-size: var(--font-size-caption);
+            color: var(--text-secondary);
+            font-family: monospace;
+        }
+
+        /* ── Spacing Visual ── */
+        .sg-spacing-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 8px;
+        }
+        .sg-spacing-bar {
+            height: 20px;
+            background: var(--color-accent-blue-light);
+            border: 1px solid var(--color-accent-blue);
+            border-radius: var(--radius-xs);
+        }
+        .sg-spacing-label {
+            font-size: var(--font-size-caption);
+            color: var(--text-muted);
+            font-family: monospace;
+            flex-shrink: 0;
+            width: 100px;
+        }
+        .sg-spacing-value {
+            font-size: var(--font-size-caption);
+            color: var(--text-secondary);
+            font-family: monospace;
+        }
+
+        /* ── Radius Visual ── */
+        .sg-radius-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 20px;
+        }
+        .sg-radius-box {
+            width: 80px;
+            height: 80px;
+            background: var(--color-neutral-200);
+            border: 2px solid var(--color-primary-400);
+            margin: 0 auto 8px;
+        }
+        .sg-radius-item {
+            text-align: center;
+        }
+        .sg-radius-item span {
+            font-size: var(--font-size-caption-sm);
+            color: var(--text-muted);
+            font-family: monospace;
+        }
+
+        /* ── Card Examples ── */
+        .sg-card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .sg-demo-card {
+            background: var(--color-white);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-2);
+            padding: 24px;
+        }
+        .sg-demo-card h4 {
+            font-size: var(--font-size-h4);
+            font-weight: var(--font-weight-semibold);
+            margin-bottom: 8px;
+        }
+        .sg-demo-card p {
+            font-size: var(--font-size-body-sm);
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+
+        .sg-info-card {
+            background: var(--color-accent-blue-light);
+            border-left: 4px solid var(--color-accent-blue);
+        }
+        .sg-course-card {
+            border-top: 4px solid var(--color-accent-cyan);
+        }
+
+        /* ── Form Elements ── */
+        .sg-form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            max-width: 600px;
+        }
+        .sg-input {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1px solid var(--color-neutral-300);
+            border-radius: var(--radius-md);
+            font-family: var(--font-family);
+            font-size: var(--font-size-body);
+            color: var(--text-primary);
+            background: var(--color-white);
+            outline: none;
+            transition: border-color var(--transition-fast);
+        }
+        .sg-input:focus { border-color: var(--color-accent-blue); }
+        .sg-input--pill {
+            border-radius: 50px;
+            padding-left: 20px;
+        }
+        .sg-input--message {
+            border-radius: var(--radius-xl);
+            padding: 12px 18px;
+        }
+        .sg-checkbox-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: var(--font-size-body);
+            color: var(--text-primary);
+        }
+        .sg-checkbox-row input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--color-primary-700);
+        }
+        .sg-label {
+            display: block;
+            font-size: var(--font-size-caption);
+            color: var(--text-secondary);
+            margin-bottom: 4px;
+            font-weight: var(--font-weight-medium);
+        }
+
+        /* ── Toast Static ── */
+        .sg-toast {
+            position: relative;
+            transform: none;
+            width: 100%;
+            max-width: 360px;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-4);
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--color-white);
+            font-size: var(--font-size-body-sm);
+        }
+        .sg-toast--success { border-left: 4px solid var(--color-success); }
+        .sg-toast--error   { border-left: 4px solid var(--color-error); }
+        .sg-toast--warning { border-left: 4px solid var(--color-warning); }
+        .sg-toast--info    { border-left: 4px solid var(--color-info); }
+
+        .sg-toast__icon {
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            font-size: 12px;
+            color: var(--text-on-accent);
+        }
+        .sg-toast--success .sg-toast__icon { background: var(--color-success); }
+        .sg-toast--error   .sg-toast__icon { background: var(--color-error); }
+        .sg-toast--warning .sg-toast__icon { background: var(--color-warning); }
+        .sg-toast--info    .sg-toast__icon { background: var(--color-info); }
+
+        .sg-toast__close {
+            margin-left: auto;
+            color: var(--text-muted);
+            background: none;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        /* ── Modal Static ── */
+        .sg-modal-wrapper {
+            background: rgba(0, 48, 63, 0.15);
+            border-radius: var(--radius-xl);
+            padding: 40px;
+            display: grid;
+            place-items: center;
+        }
+
+        /* ── Progress Bars ── */
+        .sg-progress-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .sg-progress-row label {
+            flex-shrink: 0;
+            width: 140px;
+            font-size: var(--font-size-caption);
+            color: var(--text-secondary);
+        }
+        .sg-progress-row progress {
+            flex: 1;
+        }
+
+        /* ── Skeleton Container ── */
+        .sg-skeleton-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 24px;
+        }
+        .sg-skeleton-item {
+            text-align: center;
+        }
+        .sg-skeleton-item .skeleton {
+            margin: 0 auto 8px;
+        }
+        .sg-skeleton-item span {
+            font-size: var(--font-size-caption-sm);
+            color: var(--text-muted);
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ═══════ Table of Contents ═══════ -->
+    <nav class="sg-toc">
+        <h2>Style Guide</h2>
+        <a href="#colors">Color Palette</a>
+        <a href="#typography">Typography</a>
+        <a href="#buttons">Buttons</a>
+        <a href="#status-pills">Status Pills</a>
+        <a href="#progress-bars">Progress Bars</a>
+        <a href="#cards">Cards</a>
+        <a href="#form-elements">Form Elements</a>
+        <a href="#empty-state">Empty State</a>
+        <a href="#skeletons">Loading Skeletons</a>
+        <a href="#toasts">Toast Notifications</a>
+        <a href="#breadcrumbs">Breadcrumbs</a>
+        <a href="#dropzone">Drop Zone</a>
+        <a href="#modal">Modal</a>
+        <a href="#elevation">Elevation / Shadows</a>
+        <a href="#spacing">Spacing</a>
+        <a href="#border-radius">Border Radius</a>
+    </nav>
+
+    <!-- ═══════ Main Content ═══════ -->
+    <main class="sg-main">
+        <header class="sg-header">
+            <h1>ReDefiners Component Library</h1>
+            <p>Design tokens, components, and patterns from the ReDefiners Canvas LMS design system.</p>
+        </header>
+
+        <!-- ─── 1. Color Palette ─── -->
+        <section class="sg-section" id="colors">
+            <h2>Color Palette</h2>
+            <p class="sg-desc">All color tokens used across the design system.</p>
+
+            <div class="sg-subsection">
+                <h3>Primary Palette (Dark)</h3>
+                <div class="sg-swatch-grid">
+                    <div class="sg-swatch">
+                        <div class="sg-swatch__color" style="background:#0D0D0D"></div>
+                        <div class="sg-swatch__label">primary-900</div>
+                        <div class="sg-swatch__hex">#0D0D0D</div>
+                    </div>
+                    <div class="sg-swatch">
+                        <div class="sg-swatch__color" style="background:#1B1B1B"></div>
+                        <div class="sg-swatch__label">primary-800</div>
+                        <div class="sg-swatch__hex">#1B1B1B</div>
+                    </div>
+                    <div class="sg-swatch">
+                        <div class="sg-swatch__color" style="background:#0F4D61"></div>
+                        <div class="sg-swatch__label">primary-700</div>
+                        <div class="sg-swatch__hex">#0F4D61</div>
+                    </div>
+                    <div class="sg-swatch">
+                        <div class="sg-swatch__color" style="background:#1C5D71"></div>
+                        <div class="sg-swatch__label">primary-600</div>
+                        <div class="sg-swatch__hex">#1C5D71</div>
+                    </div>
+                    <div class="sg-swatch">
+                        <div class="sg-swatch__color" style="background:#668B91"></div>
+                        <div class="sg-swatch__label">primary-400</div>
+                        <div class="sg-swatch__hex">#668B91</div>
+                    </div>
+                    <div class="sg-swatch">
+                        <div class="sg-swatch__color" style="background:#8CA7AF"></div>
+                        <div class="sg-swatch__label">primary-200</div>
+                        <div class="sg-swatch__hex">#8CA7AF</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sg-subsection">
+                <h3>Neutral Palette</h3>
+                <div class="sg-swatch-grid">
+                    <div class="sg-swatch">
+                        <div class="sg-swatch__color" style="background:#FFFFFF; border: 1px solid #CCD6D9"></div>
+                        <div class="sg-swatch__label">white</div>
+                        <div class="sg-swatch__hex">#FFFFFF</div>
+                    </div>
+                    <div class="sg-swatch">
+                        <div class="sg-swatch__color" style="background:#F6F9FA"></div>
+                        <div class="sg-swatch__label">neutral-50</div>
+                        <div class="sg-swatch__hex">#F6F9FA</div>
+                    </div>
+                    <div class="sg-swatch">
+                        <div class="sg-swatch__color" style="background:#D4EFE6"></div>
+                        <div class="sg-swatch__label">neutral-100</div>
+                        <div class="sg-swatch__hex">#D4EFE6</div>
+                    </div>
+                    <div class="sg-swatch">
+                        <div class="sg-swatch__color" style="background:#EDF5F6"></div>
+                        <div class="sg-swatch__label">neutral-150</div>
+                        <div class="sg-swatch__hex">#EDF5F6</div>
+                    </div>
+                    <div class="sg-swatch">
+                        <div class="sg-swatch__color" style="background:#E9F2F4"></div>
+                        <div class="sg-swatch__label">neutral-200</div>
+                        <div class="sg-swatch__hex">#E9F2F4</div>
+                    </div>
+                    <div class="sg-swatch">
+                        <div class="sg-swatch__color" style="background:#E0E8EA"></div>
+                        <div class="sg-swatch__label">neutral-250</div>
+                        <div class="sg-swatch__hex">#E0E8EA</div>
+                    </div>
+                    <div class="sg-swatch">
+                        <div class="sg-swatch__color" style="background:#CCD6D9"></div>
+                        <div class="sg-swatch__label">neutral-300</div>
+                        <div class="sg-swatch__hex">#CCD6D9</div>
+                    </div>
+                    <div class="sg-swatch">
+                        <div class="sg-swatch__color" style="background:#B5C2C6"></div>
+                        <div class="sg-swatch__label">neutral-400</div>
+                        <div class="sg-swatch__hex">#B5C2C6</div>
+                    </div>
+                    <div class="sg-swatch">
+                        <div class="sg-swatch__color" style="background:#8CA7AF"></div>
+                        <div class="sg-swatch__label">neutral-500</div>
+                        <div class="sg-swatch__hex">#8CA7AF</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sg-subsection">
+                <h3>Accent Colors</h3>
+                <div class="sg-swatch-grid">
+                    <div class="sg-swatch">
+                        <div class="sg-swatch__color" style="background:#16D2DD"></div>
+                        <div class="sg-swatch__label">cyan</div>
+                        <div class="sg-swatch__hex">#16D2DD</div>
+                    </div>
+                    <div class="sg-swatch">
+                        <div class="sg-swatch__color" style="background:#2989CA"></div>
+                        <div class="sg-swatch__label">blue</div>
+                        <div class="sg-swatch__hex">#2989CA</div>
+                    </div>
+                    <div class="sg-swatch">
+                        <div class="sg-swatch__color" style="background:#DFEDF7"></div>
+                        <div class="sg-swatch__label">blue-light</div>
+                        <div class="sg-swatch__hex">#DFEDF7</div>
+                    </div>
+                    <div class="sg-swatch">
+                        <div class="sg-swatch__color" style="background:#5A99D8"></div>
+                        <div class="sg-swatch__label">blue-cell</div>
+                        <div class="sg-swatch__hex">#5A99D8</div>
+                    </div>
+                    <div class="sg-swatch">
+                        <div class="sg-swatch__color" style="background:#8828CD"></div>
+                        <div class="sg-swatch__label">purple</div>
+                        <div class="sg-swatch__hex">#8828CD</div>
+                    </div>
+                    <div class="sg-swatch">
+                        <div class="sg-swatch__color" style="background:#A766D7"></div>
+                        <div class="sg-swatch__label">purple-light</div>
+                        <div class="sg-swatch__hex">#A766D7</div>
+                    </div>
+                    <div class="sg-swatch">
+                        <div class="sg-swatch__color" style="background:#EEE1F8"></div>
+                        <div class="sg-swatch__label">purple-track</div>
+                        <div class="sg-swatch__hex">#EEE1F8</div>
+                    </div>
+                    <div class="sg-swatch">
+                        <div class="sg-swatch__color" style="background:#FF6B35"></div>
+                        <div class="sg-swatch__label">orange</div>
+                        <div class="sg-swatch__hex">#FF6B35</div>
+                    </div>
+                    <div class="sg-swatch">
+                        <div class="sg-swatch__color" style="background:#F5BE24"></div>
+                        <div class="sg-swatch__label">yellow</div>
+                        <div class="sg-swatch__hex">#F5BE24</div>
+                    </div>
+                    <div class="sg-swatch">
+                        <div class="sg-swatch__color" style="background:#FDF5DE"></div>
+                        <div class="sg-swatch__label">yellow-light</div>
+                        <div class="sg-swatch__hex">#FDF5DE</div>
+                    </div>
+                    <div class="sg-swatch">
+                        <div class="sg-swatch__color" style="background:#EEC960"></div>
+                        <div class="sg-swatch__label">yellow-cell</div>
+                        <div class="sg-swatch__hex">#EEC960</div>
+                    </div>
+                    <div class="sg-swatch">
+                        <div class="sg-swatch__color" style="background:#38AA51"></div>
+                        <div class="sg-swatch__label">green</div>
+                        <div class="sg-swatch__hex">#38AA51</div>
+                    </div>
+                    <div class="sg-swatch">
+                        <div class="sg-swatch__color" style="background:#4DCAC5"></div>
+                        <div class="sg-swatch__label">teal-cell</div>
+                        <div class="sg-swatch__hex">#4DCAC5</div>
+                    </div>
+                    <div class="sg-swatch">
+                        <div class="sg-swatch__color" style="background:#DA6E61"></div>
+                        <div class="sg-swatch__label">red</div>
+                        <div class="sg-swatch__hex">#DA6E61</div>
+                    </div>
+                    <div class="sg-swatch">
+                        <div class="sg-swatch__color" style="background:#F45252"></div>
+                        <div class="sg-swatch__label">red-bright</div>
+                        <div class="sg-swatch__hex">#F45252</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sg-subsection">
+                <h3>Semantic Colors</h3>
+                <div class="sg-swatch-grid">
+                    <div class="sg-swatch">
+                        <div class="sg-swatch__color" style="background:#38AA51"></div>
+                        <div class="sg-swatch__label">success</div>
+                        <div class="sg-swatch__hex">#38AA51</div>
+                    </div>
+                    <div class="sg-swatch">
+                        <div class="sg-swatch__color" style="background:#FF6B35"></div>
+                        <div class="sg-swatch__label">warning</div>
+                        <div class="sg-swatch__hex">#FF6B35</div>
+                    </div>
+                    <div class="sg-swatch">
+                        <div class="sg-swatch__color" style="background:#F45252"></div>
+                        <div class="sg-swatch__label">error</div>
+                        <div class="sg-swatch__hex">#F45252</div>
+                    </div>
+                    <div class="sg-swatch">
+                        <div class="sg-swatch__color" style="background:#2989CA"></div>
+                        <div class="sg-swatch__label">info</div>
+                        <div class="sg-swatch__hex">#2989CA</div>
+                    </div>
+                    <div class="sg-swatch">
+                        <div class="sg-swatch__color" style="background:#16D2DD"></div>
+                        <div class="sg-swatch__label">active</div>
+                        <div class="sg-swatch__hex">#16D2DD</div>
+                    </div>
+                    <div class="sg-swatch">
+                        <div class="sg-swatch__color" style="background:#8828CD"></div>
+                        <div class="sg-swatch__label">in-progress</div>
+                        <div class="sg-swatch__hex">#8828CD</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─── 2. Typography ─── -->
+        <section class="sg-section" id="typography">
+            <h2>Typography</h2>
+            <p class="sg-desc">Type scale based on Poppins. All sizes use the --font-size-* tokens.</p>
+
+            <div class="sg-type-row">
+                <div class="sg-type-meta">display-xl &middot; 5rem</div>
+                <div style="font-size:5rem; font-weight:700; line-height:1.1">Aa</div>
+            </div>
+            <div class="sg-type-row">
+                <div class="sg-type-meta">h1 &middot; 24px &middot; 700</div>
+                <div style="font-size:var(--font-size-h1); font-weight:var(--font-weight-bold)">Heading One</div>
+            </div>
+            <div class="sg-type-row">
+                <div class="sg-type-meta">h2 &middot; 20px &middot; 700</div>
+                <div style="font-size:var(--font-size-h2); font-weight:var(--font-weight-bold)">Heading Two</div>
+            </div>
+            <div class="sg-type-row">
+                <div class="sg-type-meta">h3 &middot; 18px &middot; 600</div>
+                <div style="font-size:var(--font-size-h3); font-weight:var(--font-weight-semibold)">Heading Three</div>
+            </div>
+            <div class="sg-type-row">
+                <div class="sg-type-meta">h4 &middot; 16px &middot; 600</div>
+                <div style="font-size:var(--font-size-h4); font-weight:var(--font-weight-semibold)">Heading Four</div>
+            </div>
+            <div class="sg-type-row">
+                <div class="sg-type-meta">body-lg &middot; 15px &middot; 400</div>
+                <div style="font-size:var(--font-size-body-lg); font-weight:var(--font-weight-regular)">Body large text for emphasis paragraphs</div>
+            </div>
+            <div class="sg-type-row">
+                <div class="sg-type-meta">body &middot; 14px &middot; 400</div>
+                <div style="font-size:var(--font-size-body); font-weight:var(--font-weight-regular)">Default body text used throughout the interface</div>
+            </div>
+            <div class="sg-type-row">
+                <div class="sg-type-meta">body-sm &middot; 13px &middot; 400</div>
+                <div style="font-size:var(--font-size-body-sm); font-weight:var(--font-weight-regular)">Smaller body text for secondary information</div>
+            </div>
+            <div class="sg-type-row">
+                <div class="sg-type-meta">caption &middot; 12px &middot; 500</div>
+                <div style="font-size:var(--font-size-caption); font-weight:var(--font-weight-medium)">Caption text for labels and metadata</div>
+            </div>
+            <div class="sg-type-row">
+                <div class="sg-type-meta">caption-sm &middot; 11px &middot; 500</div>
+                <div style="font-size:var(--font-size-caption-sm); font-weight:var(--font-weight-medium)">Small caption for pills and badges</div>
+            </div>
+        </section>
+
+        <!-- ─── 3. Buttons ─── -->
+        <section class="sg-section" id="buttons">
+            <h2>Buttons</h2>
+            <p class="sg-desc">Button variants and sizes from the design token system.</p>
+
+            <div class="sg-subsection">
+                <h3>Variants</h3>
+                <div class="sg-row">
+                    <button class="btn btn--primary">Primary</button>
+                    <button class="btn btn--cta">Call to Action</button>
+                    <button class="btn btn--secondary">Secondary</button>
+                    <button class="btn btn--ghost">Ghost</button>
+                    <button class="btn btn--danger">Danger</button>
+                </div>
+            </div>
+
+            <div class="sg-subsection">
+                <h3>Sizes</h3>
+                <div class="sg-row">
+                    <button class="btn btn--primary btn--sm">Small</button>
+                    <button class="btn btn--primary">Default</button>
+                    <button class="btn btn--primary btn--lg">Large</button>
+                </div>
+            </div>
+
+            <div class="sg-subsection">
+                <h3>Icon Button</h3>
+                <div class="sg-row">
+                    <button class="btn btn--primary btn--icon"><i class="fas fa-plus"></i></button>
+                    <button class="btn btn--secondary btn--icon"><i class="fas fa-ellipsis-v"></i></button>
+                    <button class="btn btn--ghost btn--icon"><i class="fas fa-times"></i></button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─── 4. Status Pills ─── -->
+        <section class="sg-section" id="status-pills">
+            <h2>Status Pills</h2>
+            <p class="sg-desc">Inline status indicators for assignments and content states.</p>
+
+            <div class="sg-row">
+                <span class="status-pill status-pill--submitted">Submitted</span>
+                <span class="status-pill status-pill--graded">Graded</span>
+                <span class="status-pill status-pill--missing">Missing</span>
+                <span class="status-pill status-pill--late">Late</span>
+                <span class="status-pill status-pill--excused">Excused</span>
+                <span class="status-pill status-pill--not-submitted">Not Submitted</span>
+                <span class="status-pill status-pill--published">Published</span>
+                <span class="status-pill status-pill--unpublished">Unpublished</span>
+            </div>
+        </section>
+
+        <!-- ─── 5. Progress Bars ─── -->
+        <section class="sg-section" id="progress-bars">
+            <h2>Progress Bars</h2>
+            <p class="sg-desc">Progress indicators using the existing progress-field classes.</p>
+
+            <div style="max-width:500px">
+                <div class="sg-progress-row">
+                    <label>Language Level (Blue)</label>
+                    <progress class="progress-field progress-field1" value="65" max="100"></progress>
+                </div>
+                <div class="sg-progress-row">
+                    <label>Points (Yellow)</label>
+                    <progress class="progress-field progress-field2" value="42" max="100"></progress>
+                </div>
+                <div class="sg-progress-row">
+                    <label>Class Points (Purple)</label>
+                    <progress class="progress-field progress-field3" value="80" max="100"></progress>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─── 6. Cards ─── -->
+        <section class="sg-section" id="cards">
+            <h2>Cards</h2>
+            <p class="sg-desc">Card patterns used for content containers.</p>
+
+            <div class="sg-card-grid">
+                <div class="sg-demo-card">
+                    <h4>Standard Card</h4>
+                    <p>Default container with rounded corners and subtle shadow for content grouping.</p>
+                    <button class="btn btn--primary btn--sm">Action</button>
+                </div>
+                <div class="sg-demo-card sg-info-card">
+                    <h4>Info Card</h4>
+                    <p>Used for informational callouts and highlighted content blocks.</p>
+                    <button class="btn btn--secondary btn--sm">Learn More</button>
+                </div>
+                <div class="sg-demo-card sg-course-card">
+                    <h4>Course Card</h4>
+                    <p>Displays course information with a colored top accent bar.</p>
+                    <div class="sg-row" style="margin-top:8px">
+                        <span class="status-pill status-pill--published">Published</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─── 7. Form Elements ─── -->
+        <section class="sg-section" id="form-elements">
+            <h2>Form Elements</h2>
+            <p class="sg-desc">Input fields, search bars, and form controls.</p>
+
+            <div class="sg-form-grid">
+                <div>
+                    <label class="sg-label">Text Input</label>
+                    <input class="sg-input" type="text" placeholder="Enter text...">
+                </div>
+                <div>
+                    <label class="sg-label">Search Input (Pill)</label>
+                    <input class="sg-input sg-input--pill" type="text" placeholder="Search...">
+                </div>
+                <div>
+                    <label class="sg-label">Message Input</label>
+                    <input class="sg-input sg-input--message" type="text" placeholder="Type a message...">
+                </div>
+                <div style="display:flex; flex-direction:column; justify-content:center;">
+                    <label class="sg-label">Checkbox</label>
+                    <div class="sg-checkbox-row">
+                        <input type="checkbox" id="sg-check1" checked>
+                        <label for="sg-check1">Checked option</label>
+                    </div>
+                    <div class="sg-checkbox-row" style="margin-top:6px">
+                        <input type="checkbox" id="sg-check2">
+                        <label for="sg-check2">Unchecked option</label>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─── 8. Empty State ─── -->
+        <section class="sg-section" id="empty-state">
+            <h2>Empty State</h2>
+            <p class="sg-desc">Shown when a content area has no data to display.</p>
+
+            <div style="background:var(--color-white); border-radius:var(--radius-xl); box-shadow:var(--shadow-2);">
+                <div class="empty-state">
+                    <div class="empty-state__icon"><i class="fas fa-inbox"></i></div>
+                    <div class="empty-state__heading">No assignments yet</div>
+                    <div class="empty-state__description">When your teacher posts assignments, they will appear here. Check back soon!</div>
+                    <button class="empty-state__cta">Browse Courses</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─── 9. Loading Skeletons ─── -->
+        <section class="sg-section" id="skeletons">
+            <h2>Loading Skeletons</h2>
+            <p class="sg-desc">Placeholder animations shown while content is loading.</p>
+
+            <div class="sg-skeleton-grid">
+                <div class="sg-skeleton-item">
+                    <div class="skeleton skeleton--text"></div>
+                    <div class="skeleton skeleton--text" style="width:60%"></div>
+                    <span>skeleton--text</span>
+                </div>
+                <div class="sg-skeleton-item">
+                    <div class="skeleton skeleton--title"></div>
+                    <span>skeleton--title</span>
+                </div>
+                <div class="sg-skeleton-item">
+                    <div class="skeleton skeleton--avatar"></div>
+                    <span>skeleton--avatar</span>
+                </div>
+                <div class="sg-skeleton-item">
+                    <div class="skeleton skeleton--card"></div>
+                    <span>skeleton--card</span>
+                </div>
+                <div class="sg-skeleton-item">
+                    <div class="skeleton skeleton--row"></div>
+                    <div class="skeleton skeleton--row"></div>
+                    <span>skeleton--row</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─── 10. Toast Notifications ─── -->
+        <section class="sg-section" id="toasts">
+            <h2>Toast Notifications</h2>
+            <p class="sg-desc">Feedback messages displayed at the bottom-right of the viewport. Shown here as static examples.</p>
+
+            <div style="display:grid; gap:12px; max-width:400px;">
+                <div class="sg-toast sg-toast--success">
+                    <div class="sg-toast__icon"><i class="fas fa-check"></i></div>
+                    <span>Assignment submitted successfully.</span>
+                    <button class="sg-toast__close"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="sg-toast sg-toast--error">
+                    <div class="sg-toast__icon"><i class="fas fa-exclamation"></i></div>
+                    <span>Failed to save changes. Please retry.</span>
+                    <button class="sg-toast__close"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="sg-toast sg-toast--warning">
+                    <div class="sg-toast__icon"><i class="fas fa-exclamation-triangle"></i></div>
+                    <span>Due date is approaching soon.</span>
+                    <button class="sg-toast__close"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="sg-toast sg-toast--info">
+                    <div class="sg-toast__icon"><i class="fas fa-info"></i></div>
+                    <span>New announcement posted by teacher.</span>
+                    <button class="sg-toast__close"><i class="fas fa-times"></i></button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─── 11. Breadcrumbs ─── -->
+        <section class="sg-section" id="breadcrumbs">
+            <h2>Breadcrumbs</h2>
+            <p class="sg-desc">Navigation path indicator for nested pages.</p>
+
+            <div class="breadcrumbs">
+                <a href="#">Dashboard</a>
+                <span class="breadcrumbs__separator">/</span>
+                <a href="#">Spanish 101</a>
+                <span class="breadcrumbs__separator">/</span>
+                <a href="#">Assignments</a>
+                <span class="breadcrumbs__separator">/</span>
+                <span class="breadcrumbs__current">Homework 3</span>
+            </div>
+        </section>
+
+        <!-- ─── 12. Drop Zone ─── -->
+        <section class="sg-section" id="dropzone">
+            <h2>Drop Zone</h2>
+            <p class="sg-desc">File upload target area with drag-and-drop support.</p>
+
+            <div class="dropzone" style="max-width:500px">
+                <div class="dropzone__icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                <div class="dropzone__text">Drag and drop files here, or click to browse</div>
+                <div class="dropzone__hint">Supports PDF, DOCX, PNG, JPG up to 25MB</div>
+            </div>
+        </section>
+
+        <!-- ─── 13. Modal ─── -->
+        <section class="sg-section" id="modal">
+            <h2>Modal</h2>
+            <p class="sg-desc">Confirmation dialog for destructive or important actions.</p>
+
+            <div class="sg-modal-wrapper">
+                <div class="modal" style="position:relative;">
+                    <div class="modal__title">Delete Assignment?</div>
+                    <div class="modal__body">Are you sure you want to delete "Homework 3"? This action cannot be undone and all student submissions will be permanently removed.</div>
+                    <div class="modal__actions">
+                        <button class="btn btn--secondary">Cancel</button>
+                        <button class="btn btn--danger">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─── 14. Elevation / Shadows ─── -->
+        <section class="sg-section" id="elevation">
+            <h2>Elevation / Shadows</h2>
+            <p class="sg-desc">Shadow tokens for controlling visual depth.</p>
+
+            <div class="sg-shadow-grid">
+                <div class="sg-shadow-box" style="box-shadow:var(--shadow-1)">shadow-1</div>
+                <div class="sg-shadow-box" style="box-shadow:var(--shadow-2)">shadow-2</div>
+                <div class="sg-shadow-box" style="box-shadow:var(--shadow-3)">shadow-3</div>
+                <div class="sg-shadow-box" style="box-shadow:var(--shadow-4)">shadow-4</div>
+                <div class="sg-shadow-box" style="box-shadow:var(--shadow-5)">shadow-5</div>
+                <div class="sg-shadow-box" style="box-shadow:var(--shadow-menu)">shadow-menu</div>
+            </div>
+        </section>
+
+        <!-- ─── 15. Spacing ─── -->
+        <section class="sg-section" id="spacing">
+            <h2>Spacing</h2>
+            <p class="sg-desc">Spacing scale from space-1 (2px) through space-11 (65px).</p>
+
+            <div class="sg-spacing-row">
+                <div class="sg-spacing-label">--space-1</div>
+                <div class="sg-spacing-bar" style="width:2px"></div>
+                <div class="sg-spacing-value">2px</div>
+            </div>
+            <div class="sg-spacing-row">
+                <div class="sg-spacing-label">--space-2</div>
+                <div class="sg-spacing-bar" style="width:5px"></div>
+                <div class="sg-spacing-value">5px</div>
+            </div>
+            <div class="sg-spacing-row">
+                <div class="sg-spacing-label">--space-3</div>
+                <div class="sg-spacing-bar" style="width:8px"></div>
+                <div class="sg-spacing-value">8px</div>
+            </div>
+            <div class="sg-spacing-row">
+                <div class="sg-spacing-label">--space-4</div>
+                <div class="sg-spacing-bar" style="width:10px"></div>
+                <div class="sg-spacing-value">10px</div>
+            </div>
+            <div class="sg-spacing-row">
+                <div class="sg-spacing-label">--space-5</div>
+                <div class="sg-spacing-bar" style="width:13px"></div>
+                <div class="sg-spacing-value">13px</div>
+            </div>
+            <div class="sg-spacing-row">
+                <div class="sg-spacing-label">--space-6</div>
+                <div class="sg-spacing-bar" style="width:15px"></div>
+                <div class="sg-spacing-value">15px</div>
+            </div>
+            <div class="sg-spacing-row">
+                <div class="sg-spacing-label">--space-7</div>
+                <div class="sg-spacing-bar" style="width:20px"></div>
+                <div class="sg-spacing-value">20px</div>
+            </div>
+            <div class="sg-spacing-row">
+                <div class="sg-spacing-label">--space-8</div>
+                <div class="sg-spacing-bar" style="width:30px"></div>
+                <div class="sg-spacing-value">30px</div>
+            </div>
+            <div class="sg-spacing-row">
+                <div class="sg-spacing-label">--space-9</div>
+                <div class="sg-spacing-bar" style="width:40px"></div>
+                <div class="sg-spacing-value">40px</div>
+            </div>
+            <div class="sg-spacing-row">
+                <div class="sg-spacing-label">--space-10</div>
+                <div class="sg-spacing-bar" style="width:50px"></div>
+                <div class="sg-spacing-value">50px</div>
+            </div>
+            <div class="sg-spacing-row">
+                <div class="sg-spacing-label">--space-11</div>
+                <div class="sg-spacing-bar" style="width:65px"></div>
+                <div class="sg-spacing-value">65px</div>
+            </div>
+        </section>
+
+        <!-- ─── 16. Border Radius ─── -->
+        <section class="sg-section" id="border-radius">
+            <h2>Border Radius</h2>
+            <p class="sg-desc">Radius tokens from sharp corners to fully circular.</p>
+
+            <div class="sg-radius-grid">
+                <div class="sg-radius-item">
+                    <div class="sg-radius-box" style="border-radius:var(--radius-xs)"></div>
+                    <span>radius-xs (3px)</span>
+                </div>
+                <div class="sg-radius-item">
+                    <div class="sg-radius-box" style="border-radius:var(--radius-sm)"></div>
+                    <span>radius-sm (6px)</span>
+                </div>
+                <div class="sg-radius-item">
+                    <div class="sg-radius-box" style="border-radius:var(--radius-md)"></div>
+                    <span>radius-md (10px)</span>
+                </div>
+                <div class="sg-radius-item">
+                    <div class="sg-radius-box" style="border-radius:var(--radius-lg)"></div>
+                    <span>radius-lg (15px)</span>
+                </div>
+                <div class="sg-radius-item">
+                    <div class="sg-radius-box" style="border-radius:var(--radius-xl)"></div>
+                    <span>radius-xl (20px)</span>
+                </div>
+                <div class="sg-radius-item">
+                    <div class="sg-radius-box" style="border-radius:var(--radius-2xl)"></div>
+                    <span>radius-2xl (30px)</span>
+                </div>
+                <div class="sg-radius-item">
+                    <div class="sg-radius-box" style="border-radius:var(--radius-full)"></div>
+                    <span>radius-full (100%)</span>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+</body>
+</html>

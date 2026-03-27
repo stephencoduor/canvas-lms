@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	<title>Course Navigation Settings - ReDefiners</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+	<script src="https://cdn.tailwindcss.com"></script>
+	<script src="css/tailwind-config.js?v=3"></script>
+	<script src="https://kit.fontawesome.com/7a13c96681.js" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/tokens.css?v=3">
+	<link rel="stylesheet" type="text/css" href="css/shadcn.css?v=3">
+	<link rel="stylesheet" type="text/css" href="styles.css?v=3">
+</head>
+<body>
+	<div class="tw-flex tw-min-h-screen tw-font-poppins">
+		<aside class="left-sidebar tw-fixed tw-inset-y-0 tw-left-0 tw-w-[240px] tw-z-50 tw--translate-x-full lg:tw-translate-x-0 tw-transition-transform tw-duration-300 tw-overflow-y-auto shadcn-scrollbar">
+			<div class="menu-bar">
+				<section class="logo-section">
+					<i class="fa fa-times theme-color menu-hide"></i>
+					<img src="Images/logo.PNG" class="res-hide" alt="logo">
+					<div class="nav-input res-show-flex tw-mt-5">
+						<button class="tw-border tw-border-primary-400 tw-border-r-0 tw-bg-transparent tw-px-2"><i class="fa fa-search"></i></button>
+						<input class="tw-border tw-border-primary-400 tw-border-l-0 tw-w-[85%] tw-bg-transparent tw-px-2 tw-py-1 tw-outline-none" type="text" name="search" placeholder="Search">
+					</div>
+				</section>
+				<section class="menu-links">
+					<div class="menu-link"><a href="dashboard.html"><i class="fa fa-th-large"></i><span> Dashboard</span></a></div>
+					<div class="menu-link"><a href="courses.html"><i class="fa fa-clipboard-list"></i><span> Courses</span></a></div>
+					<div class="menu-link"><a href="calendar.html"><i class="fa fa-calendar-alt"></i><span> Calendar</span></a></div>
+					<div class="menu-link"><a href="announcement.html"><i class="fa fa-bullhorn"></i><span> Announcements</span></a></div>
+					<div class="menu-link"><a href="inbox.html"><i class="fa fa-comments"></i><span> Messages</span></a></div>
+					<div class="menu-link"><a href="assignments.html"><i class="fa fa-file-lines"></i><span> Assignments</span></a></div>
+					<div class="menu-link"><a href="grades.html"><i class="fa fa-chart-bar"></i><span> Grades</span></a></div>
+					<div class="menu-link"><a href="modules.html"><i class="fa fa-layer-group"></i><span> Modules</span></a></div>
+					<div class="menu-link"><a href="discussions.html"><i class="fa fa-comments-alt"></i><span> Discussions</span></a></div>
+					<div class="menu-link"><a href="quizzes.html"><i class="fa fa-question-circle"></i><span> Quizzes</span></a></div>
+					<div class="menu-link"><a href="pages.html"><i class="fa fa-file-alt"></i><span> Pages</span></a></div>
+					<div class="menu-link"><a href="files.html"><i class="fa fa-folder"></i><span> Files</span></a></div>
+					<div class="menu-link"><a href="people.html"><i class="fa fa-users"></i><span> People</span></a></div>
+					<div class="menu-link"><a href="outcomes.html"><i class="fa fa-bullseye"></i><span> Outcomes</span></a></div>
+					<div class="menu-link"><a href="rubrics.html"><i class="fa fa-th"></i><span> Rubrics</span></a></div>
+					<div class="menu-link"><a href="groups.html"><i class="fa fa-user-friends"></i><span> Groups</span></a></div>
+					<div class="menu-link"><a href="conferences.html"><i class="fa fa-video"></i><span> Conferences</span></a></div>
+					<div class="menu-link"><a href="collaborations.html"><i class="fa fa-handshake"></i><span> Collaborations</span></a></div>
+					<div class="menu-link"><a href="account-settings.html"><i class="fa fa-cog"></i><span> Settings</span></a></div>
+				</section>
+			</div>
+		</aside>
+		<div class="sidebar-overlay" id="sidebarOverlay"></div>
+		<main class="middle-part tw-flex-1 lg:tw-ml-[240px] tw-min-h-screen tw-px-4 md:tw-px-6 lg:tw-px-10 tw-pb-8">
+			<div class="tw-flex tw-items-center tw-justify-between tw-py-4 tw-gap-3 tw-flex-wrap">
+				<div class="tw-flex tw-items-center tw-gap-3">
+					<i class="fa fa-bars tw-text-primary-400 tw-cursor-pointer tw-text-xl lg:tw-hidden menu-icon" id="menuToggle"></i>
+					<div class="shadcn-search tw-hidden sm:tw-flex tw-w-64">
+						<i class="fa fa-search"></i>
+						<input type="text" placeholder="Search courses, assignments...">
+					</div>
+				</div>
+				<div class="tw-flex tw-items-center tw-gap-3">
+					<button class="shadcn-btn shadcn-btn-ghost shadcn-btn-icon tw-relative"><i class="fa fa-bell tw-text-primary-400"></i></button>
+					<div class="shadcn-avatar shadcn-avatar-md tw-cursor-pointer profile-click"><img src="Images/profile.png" alt="Profile"></div>
+				</div>
+			</div>
+
+			<!-- Page Header -->
+			<div class="tw-flex tw-flex-col sm:tw-flex-row tw-items-start sm:tw-items-center tw-justify-between tw-py-6 tw-gap-4">
+				<div>
+					<nav class="tw-text-sm tw-text-gray-500 tw-mb-2">
+						<a href="course-settings.html" class="theme-color tw-no-underline">Course Settings</a>
+						<i class="fa fa-chevron-right tw-text-xs tw-mx-1"></i>
+						<span>Navigation</span>
+					</nav>
+					<h3 class="second-color"><i class="fa fa-bars tw-mr-2 theme-color"></i>Course Navigation</h3>
+					<p class="tw-text-sm tw-text-gray-500 tw-mt-1">Drag items to reorder and toggle visibility for students</p>
+				</div>
+				<div class="tw-flex tw-gap-2">
+					<button class="shadcn-btn shadcn-btn-ghost tw-text-sm">Cancel</button>
+					<button class="shadcn-btn shadcn-btn-primary tw-text-sm"><i class="fa fa-save tw-mr-1"></i> Save Order</button>
+				</div>
+			</div>
+
+			<!-- Navigation Items -->
+			<div class="tw-grid tw-grid-cols-1 lg:tw-grid-cols-2 tw-gap-6">
+				<!-- Visible Items -->
+				<div>
+					<h5 class="second-color tw-mb-3"><i class="fa fa-eye tw-mr-2 theme-color"></i>Visible to Students</h5>
+					<div class="tw-space-y-2">
+						<div class="shadcn-card tw-p-3 tw-flex tw-items-center tw-justify-between tw-cursor-grab hover:tw-shadow-md tw-transition-shadow">
+							<div class="tw-flex tw-items-center tw-gap-3">
+								<i class="fa fa-grip-vertical tw-text-gray-400"></i>
+								<i class="fa fa-home theme-color tw-w-5 tw-text-center"></i>
+								<span class="tw-font-medium">Home</span>
+							</div>
+							<div class="tw-flex tw-items-center tw-gap-3">
+								<span class="tw-text-xs tw-text-gray-400">Default landing page</span>
+								<label class="tw-relative tw-inline-flex tw-items-center tw-cursor-pointer">
+									<input type="checkbox" checked class="tw-sr-only tw-peer">
+									<div class="tw-w-9 tw-h-5 tw-bg-gray-200 peer-checked:tw-bg-green-500 tw-rounded-full tw-after:content-[''] tw-after:absolute tw-after:top-0.5 tw-after:left-[2px] peer-checked:tw-after:translate-x-full tw-after:bg-white tw-after:rounded-full tw-after:h-4 tw-after:w-4 tw-after:transition-all"></div>
+								</label>
+							</div>
+						</div>
+						<div class="shadcn-card tw-p-3 tw-flex tw-items-center tw-justify-between tw-cursor-grab hover:tw-shadow-md tw-transition-shadow">
+							<div class="tw-flex tw-items-center tw-gap-3">
+								<i class="fa fa-grip-vertical tw-text-gray-400"></i>
+								<i class="fa fa-bullhorn theme-color tw-w-5 tw-text-center"></i>
+								<span class="tw-font-medium">Announcements</span>
+							</div>
+							<label class="tw-relative tw-inline-flex tw-items-center tw-cursor-pointer">
+								<input type="checkbox" checked class="tw-sr-only tw-peer">
+								<div class="tw-w-9 tw-h-5 tw-bg-gray-200 peer-checked:tw-bg-green-500 tw-rounded-full tw-after:content-[''] tw-after:absolute tw-after:top-0.5 tw-after:left-[2px] peer-checked:tw-after:translate-x-full tw-after:bg-white tw-after:rounded-full tw-after:h-4 tw-after:w-4 tw-after:transition-all"></div>
+							</label>
+						</div>
+						<div class="shadcn-card tw-p-3 tw-flex tw-items-center tw-justify-between tw-cursor-grab hover:tw-shadow-md tw-transition-shadow">
+							<div class="tw-flex tw-items-center tw-gap-3">
+								<i class="fa fa-grip-vertical tw-text-gray-400"></i>
+								<i class="fa fa-layer-group theme-color tw-w-5 tw-text-center"></i>
+								<span class="tw-font-medium">Modules</span>
+							</div>
+							<label class="tw-relative tw-inline-flex tw-items-center tw-cursor-pointer">
+								<input type="checkbox" checked class="tw-sr-only tw-peer">
+								<div class="tw-w-9 tw-h-5 tw-bg-gray-200 peer-checked:tw-bg-green-500 tw-rounded-full tw-after:content-[''] tw-after:absolute tw-after:top-0.5 tw-after:left-[2px] peer-checked:tw-after:translate-x-full tw-after:bg-white tw-after:rounded-full tw-after:h-4 tw-after:w-4 tw-after:transition-all"></div>
+							</label>
+						</div>
+						<div class="shadcn-card tw-p-3 tw-flex tw-items-center tw-justify-between tw-cursor-grab hover:tw-shadow-md tw-transition-shadow">
+							<div class="tw-flex tw-items-center tw-gap-3">
+								<i class="fa fa-grip-vertical tw-text-gray-400"></i>
+								<i class="fa fa-file-lines theme-color tw-w-5 tw-text-center"></i>
+								<span class="tw-font-medium">Assignments</span>
+							</div>
+							<label class="tw-relative tw-inline-flex tw-items-center tw-cursor-pointer">
+								<input type="checkbox" checked class="tw-sr-only tw-peer">
+								<div class="tw-w-9 tw-h-5 tw-bg-gray-200 peer-checked:tw-bg-green-500 tw-rounded-full tw-after:content-[''] tw-after:absolute tw-after:top-0.5 tw-after:left-[2px] peer-checked:tw-after:translate-x-full tw-after:bg-white tw-after:rounded-full tw-after:h-4 tw-after:w-4 tw-after:transition-all"></div>
+							</label>
+						</div>
+						<div class="shadcn-card tw-p-3 tw-flex tw-items-center tw-justify-between tw-cursor-grab hover:tw-shadow-md tw-transition-shadow">
+							<div class="tw-flex tw-items-center tw-gap-3">
+								<i class="fa fa-grip-vertical tw-text-gray-400"></i>
+								<i class="fa fa-comments-alt theme-color tw-w-5 tw-text-center"></i>
+								<span class="tw-font-medium">Discussions</span>
+							</div>
+							<label class="tw-relative tw-inline-flex tw-items-center tw-cursor-pointer">
+								<input type="checkbox" checked class="tw-sr-only tw-peer">
+								<div class="tw-w-9 tw-h-5 tw-bg-gray-200 peer-checked:tw-bg-green-500 tw-rounded-full tw-after:content-[''] tw-after:absolute tw-after:top-0.5 tw-after:left-[2px] peer-checked:tw-after:translate-x-full tw-after:bg-white tw-after:rounded-full tw-after:h-4 tw-after:w-4 tw-after:transition-all"></div>
+							</label>
+						</div>
+						<div class="shadcn-card tw-p-3 tw-flex tw-items-center tw-justify-between tw-cursor-grab hover:tw-shadow-md tw-transition-shadow">
+							<div class="tw-flex tw-items-center tw-gap-3">
+								<i class="fa fa-grip-vertical tw-text-gray-400"></i>
+								<i class="fa fa-chart-bar theme-color tw-w-5 tw-text-center"></i>
+								<span class="tw-font-medium">Grades</span>
+							</div>
+							<label class="tw-relative tw-inline-flex tw-items-center tw-cursor-pointer">
+								<input type="checkbox" checked class="tw-sr-only tw-peer">
+								<div class="tw-w-9 tw-h-5 tw-bg-gray-200 peer-checked:tw-bg-green-500 tw-rounded-full tw-after:content-[''] tw-after:absolute tw-after:top-0.5 tw-after:left-[2px] peer-checked:tw-after:translate-x-full tw-after:bg-white tw-after:rounded-full tw-after:h-4 tw-after:w-4 tw-after:transition-all"></div>
+							</label>
+						</div>
+						<div class="shadcn-card tw-p-3 tw-flex tw-items-center tw-justify-between tw-cursor-grab hover:tw-shadow-md tw-transition-shadow">
+							<div class="tw-flex tw-items-center tw-gap-3">
+								<i class="fa fa-grip-vertical tw-text-gray-400"></i>
+								<i class="fa fa-users theme-color tw-w-5 tw-text-center"></i>
+								<span class="tw-font-medium">People</span>
+							</div>
+							<label class="tw-relative tw-inline-flex tw-items-center tw-cursor-pointer">
+								<input type="checkbox" checked class="tw-sr-only tw-peer">
+								<div class="tw-w-9 tw-h-5 tw-bg-gray-200 peer-checked:tw-bg-green-500 tw-rounded-full tw-after:content-[''] tw-after:absolute tw-after:top-0.5 tw-after:left-[2px] peer-checked:tw-after:translate-x-full tw-after:bg-white tw-after:rounded-full tw-after:h-4 tw-after:w-4 tw-after:transition-all"></div>
+							</label>
+						</div>
+						<div class="shadcn-card tw-p-3 tw-flex tw-items-center tw-justify-between tw-cursor-grab hover:tw-shadow-md tw-transition-shadow">
+							<div class="tw-flex tw-items-center tw-gap-3">
+								<i class="fa fa-grip-vertical tw-text-gray-400"></i>
+								<i class="fa fa-file-alt theme-color tw-w-5 tw-text-center"></i>
+								<span class="tw-font-medium">Pages</span>
+							</div>
+							<label class="tw-relative tw-inline-flex tw-items-center tw-cursor-pointer">
+								<input type="checkbox" checked class="tw-sr-only tw-peer">
+								<div class="tw-w-9 tw-h-5 tw-bg-gray-200 peer-checked:tw-bg-green-500 tw-rounded-full tw-after:content-[''] tw-after:absolute tw-after:top-0.5 tw-after:left-[2px] peer-checked:tw-after:translate-x-full tw-after:bg-white tw-after:rounded-full tw-after:h-4 tw-after:w-4 tw-after:transition-all"></div>
+							</label>
+						</div>
+						<div class="shadcn-card tw-p-3 tw-flex tw-items-center tw-justify-between tw-cursor-grab hover:tw-shadow-md tw-transition-shadow">
+							<div class="tw-flex tw-items-center tw-gap-3">
+								<i class="fa fa-grip-vertical tw-text-gray-400"></i>
+								<i class="fa fa-folder theme-color tw-w-5 tw-text-center"></i>
+								<span class="tw-font-medium">Files</span>
+							</div>
+							<label class="tw-relative tw-inline-flex tw-items-center tw-cursor-pointer">
+								<input type="checkbox" checked class="tw-sr-only tw-peer">
+								<div class="tw-w-9 tw-h-5 tw-bg-gray-200 peer-checked:tw-bg-green-500 tw-rounded-full tw-after:content-[''] tw-after:absolute tw-after:top-0.5 tw-after:left-[2px] peer-checked:tw-after:translate-x-full tw-after:bg-white tw-after:rounded-full tw-after:h-4 tw-after:w-4 tw-after:transition-all"></div>
+							</label>
+						</div>
+						<div class="shadcn-card tw-p-3 tw-flex tw-items-center tw-justify-between tw-cursor-grab hover:tw-shadow-md tw-transition-shadow">
+							<div class="tw-flex tw-items-center tw-gap-3">
+								<i class="fa fa-grip-vertical tw-text-gray-400"></i>
+								<i class="fa fa-book theme-color tw-w-5 tw-text-center"></i>
+								<span class="tw-font-medium">Syllabus</span>
+							</div>
+							<label class="tw-relative tw-inline-flex tw-items-center tw-cursor-pointer">
+								<input type="checkbox" checked class="tw-sr-only tw-peer">
+								<div class="tw-w-9 tw-h-5 tw-bg-gray-200 peer-checked:tw-bg-green-500 tw-rounded-full tw-after:content-[''] tw-after:absolute tw-after:top-0.5 tw-after:left-[2px] peer-checked:tw-after:translate-x-full tw-after:bg-white tw-after:rounded-full tw-after:h-4 tw-after:w-4 tw-after:transition-all"></div>
+							</label>
+						</div>
+						<div class="shadcn-card tw-p-3 tw-flex tw-items-center tw-justify-between tw-cursor-grab hover:tw-shadow-md tw-transition-shadow">
+							<div class="tw-flex tw-items-center tw-gap-3">
+								<i class="fa fa-grip-vertical tw-text-gray-400"></i>
+								<i class="fa fa-question-circle theme-color tw-w-5 tw-text-center"></i>
+								<span class="tw-font-medium">Quizzes</span>
+							</div>
+							<label class="tw-relative tw-inline-flex tw-items-center tw-cursor-pointer">
+								<input type="checkbox" checked class="tw-sr-only tw-peer">
+								<div class="tw-w-9 tw-h-5 tw-bg-gray-200 peer-checked:tw-bg-green-500 tw-rounded-full tw-after:content-[''] tw-after:absolute tw-after:top-0.5 tw-after:left-[2px] peer-checked:tw-after:translate-x-full tw-after:bg-white tw-after:rounded-full tw-after:h-4 tw-after:w-4 tw-after:transition-all"></div>
+							</label>
+						</div>
+					</div>
+				</div>
+
+				<!-- Hidden Items -->
+				<div>
+					<h5 class="second-color tw-mb-3"><i class="fa fa-eye-slash tw-mr-2 tw-text-gray-400"></i>Hidden from Students</h5>
+					<p class="tw-text-sm tw-text-gray-500 tw-mb-3">These items are only visible to instructors and course designers</p>
+					<div class="tw-space-y-2">
+						<div class="shadcn-card tw-p-3 tw-flex tw-items-center tw-justify-between tw-cursor-grab tw-opacity-60 hover:tw-opacity-100 tw-transition-opacity">
+							<div class="tw-flex tw-items-center tw-gap-3">
+								<i class="fa fa-grip-vertical tw-text-gray-400"></i>
+								<i class="fa fa-bullseye tw-text-gray-400 tw-w-5 tw-text-center"></i>
+								<span class="tw-font-medium tw-text-gray-500">Outcomes</span>
+							</div>
+							<label class="tw-relative tw-inline-flex tw-items-center tw-cursor-pointer">
+								<input type="checkbox" class="tw-sr-only tw-peer">
+								<div class="tw-w-9 tw-h-5 tw-bg-gray-200 peer-checked:tw-bg-green-500 tw-rounded-full tw-after:content-[''] tw-after:absolute tw-after:top-0.5 tw-after:left-[2px] peer-checked:tw-after:translate-x-full tw-after:bg-white tw-after:rounded-full tw-after:h-4 tw-after:w-4 tw-after:transition-all"></div>
+							</label>
+						</div>
+						<div class="shadcn-card tw-p-3 tw-flex tw-items-center tw-justify-between tw-cursor-grab tw-opacity-60 hover:tw-opacity-100 tw-transition-opacity">
+							<div class="tw-flex tw-items-center tw-gap-3">
+								<i class="fa fa-grip-vertical tw-text-gray-400"></i>
+								<i class="fa fa-th tw-text-gray-400 tw-w-5 tw-text-center"></i>
+								<span class="tw-font-medium tw-text-gray-500">Rubrics</span>
+							</div>
+							<label class="tw-relative tw-inline-flex tw-items-center tw-cursor-pointer">
+								<input type="checkbox" class="tw-sr-only tw-peer">
+								<div class="tw-w-9 tw-h-5 tw-bg-gray-200 peer-checked:tw-bg-green-500 tw-rounded-full tw-after:content-[''] tw-after:absolute tw-after:top-0.5 tw-after:left-[2px] peer-checked:tw-after:translate-x-full tw-after:bg-white tw-after:rounded-full tw-after:h-4 tw-after:w-4 tw-after:transition-all"></div>
+							</label>
+						</div>
+						<div class="shadcn-card tw-p-3 tw-flex tw-items-center tw-justify-between tw-cursor-grab tw-opacity-60 hover:tw-opacity-100 tw-transition-opacity">
+							<div class="tw-flex tw-items-center tw-gap-3">
+								<i class="fa fa-grip-vertical tw-text-gray-400"></i>
+								<i class="fa fa-handshake tw-text-gray-400 tw-w-5 tw-text-center"></i>
+								<span class="tw-font-medium tw-text-gray-500">Collaborations</span>
+							</div>
+							<label class="tw-relative tw-inline-flex tw-items-center tw-cursor-pointer">
+								<input type="checkbox" class="tw-sr-only tw-peer">
+								<div class="tw-w-9 tw-h-5 tw-bg-gray-200 peer-checked:tw-bg-green-500 tw-rounded-full tw-after:content-[''] tw-after:absolute tw-after:top-0.5 tw-after:left-[2px] peer-checked:tw-after:translate-x-full tw-after:bg-white tw-after:rounded-full tw-after:h-4 tw-after:w-4 tw-after:transition-all"></div>
+							</label>
+						</div>
+						<div class="shadcn-card tw-p-3 tw-flex tw-items-center tw-justify-between tw-cursor-grab tw-opacity-60 hover:tw-opacity-100 tw-transition-opacity">
+							<div class="tw-flex tw-items-center tw-gap-3">
+								<i class="fa fa-grip-vertical tw-text-gray-400"></i>
+								<i class="fa fa-video tw-text-gray-400 tw-w-5 tw-text-center"></i>
+								<span class="tw-font-medium tw-text-gray-500">Conferences</span>
+							</div>
+							<label class="tw-relative tw-inline-flex tw-items-center tw-cursor-pointer">
+								<input type="checkbox" class="tw-sr-only tw-peer">
+								<div class="tw-w-9 tw-h-5 tw-bg-gray-200 peer-checked:tw-bg-green-500 tw-rounded-full tw-after:content-[''] tw-after:absolute tw-after:top-0.5 tw-after:left-[2px] peer-checked:tw-after:translate-x-full tw-after:bg-white tw-after:rounded-full tw-after:h-4 tw-after:w-4 tw-after:transition-all"></div>
+							</label>
+						</div>
+						<div class="shadcn-card tw-p-3 tw-flex tw-items-center tw-justify-between tw-cursor-grab tw-opacity-60 hover:tw-opacity-100 tw-transition-opacity">
+							<div class="tw-flex tw-items-center tw-gap-3">
+								<i class="fa fa-grip-vertical tw-text-gray-400"></i>
+								<i class="fa fa-cog tw-text-gray-400 tw-w-5 tw-text-center"></i>
+								<span class="tw-font-medium tw-text-gray-500">Settings</span>
+							</div>
+							<label class="tw-relative tw-inline-flex tw-items-center tw-cursor-pointer">
+								<input type="checkbox" class="tw-sr-only tw-peer">
+								<div class="tw-w-9 tw-h-5 tw-bg-gray-200 peer-checked:tw-bg-green-500 tw-rounded-full tw-after:content-[''] tw-after:absolute tw-after:top-0.5 tw-after:left-[2px] peer-checked:tw-after:translate-x-full tw-after:bg-white tw-after:rounded-full tw-after:h-4 tw-after:w-4 tw-after:transition-all"></div>
+							</label>
+						</div>
+					</div>
+
+					<!-- Info Box -->
+					<div class="shadcn-card tw-p-4 tw-mt-4 tw-bg-blue-50 tw-border-blue-200">
+						<div class="tw-flex tw-gap-3">
+							<i class="fa fa-info-circle tw-text-blue-500 tw-mt-0.5"></i>
+							<div>
+								<p class="tw-text-sm tw-font-medium tw-text-blue-800">Navigation Tips</p>
+								<ul class="tw-text-xs tw-text-blue-700 tw-mt-1 tw-space-y-1">
+									<li>Drag items to reorder the course navigation menu</li>
+									<li>Toggle switches to show or hide items from students</li>
+									<li>Hidden items remain accessible to instructors</li>
+									<li>Home is always the first visible item</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</main>
+	</div>
+	<script src="js/sidebar.js"></script>
+<script src="js/router.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/api.js"></script>
+<script src="js/render.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

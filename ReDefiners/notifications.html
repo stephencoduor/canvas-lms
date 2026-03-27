@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	<title>ReDefiners - Notification Preferences</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+	<script src="https://cdn.tailwindcss.com"></script>
+	<script src="css/tailwind-config.js?v=3"></script>
+	<script src="https://kit.fontawesome.com/7a13c96681.js" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/tokens.css?v=3">
+	<link rel="stylesheet" type="text/css" href="css/shadcn.css?v=3">
+	<link rel="stylesheet" type="text/css" href="styles.css?v=3">
+	<style>
+		.notif-table {
+			width: 100%;
+			border-collapse: collapse;
+			font-size: 13px;
+		}
+		.notif-table thead th {
+			padding: 10px 12px;
+			font-size: 11px;
+			font-weight: 600;
+			color: var(--text-secondary);
+			text-align: center;
+			text-transform: uppercase;
+			letter-spacing: 0.04em;
+			border-bottom: 2px solid var(--color-neutral-200);
+			background: var(--color-neutral-50);
+			white-space: nowrap;
+		}
+		.notif-table thead th:first-child {
+			text-align: left;
+			min-width: 240px;
+		}
+		.notif-table tbody td {
+			padding: 12px;
+			text-align: center;
+			border-bottom: 1px solid var(--color-neutral-100);
+			vertical-align: middle;
+		}
+		.notif-table tbody td:first-child {
+			text-align: left;
+		}
+		.notif-table tbody tr:hover {
+			background: var(--color-neutral-50);
+		}
+		.notif-category {
+			font-weight: 600;
+			color: var(--color-primary-800);
+			font-size: 12px;
+			text-transform: uppercase;
+			letter-spacing: 0.04em;
+			padding: 14px 12px 6px;
+			background: var(--color-bg-page);
+			border-bottom: 1px solid var(--color-neutral-200);
+		}
+		.notif-radio {
+			appearance: none;
+			width: 18px;
+			height: 18px;
+			border: 2px solid var(--color-neutral-300);
+			border-radius: 50%;
+			cursor: pointer;
+			transition: all var(--transition-default);
+			position: relative;
+		}
+		.notif-radio:checked {
+			border-color: var(--color-accent-green);
+			background: var(--color-accent-green);
+		}
+		.notif-radio:checked::after {
+			content: '';
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 6px;
+			height: 6px;
+			border-radius: 50%;
+			background: white;
+		}
+		.notif-radio:hover {
+			border-color: var(--color-accent-green);
+		}
+		.channel-item {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			padding: 12px 16px;
+			border: 1px solid var(--color-neutral-200);
+			border-radius: var(--radius-md);
+			margin-bottom: 8px;
+		}
+	</style>
+</head>
+<body>
+<div class="tw-flex tw-min-h-screen tw-font-poppins">
+	<aside class="left-sidebar tw-fixed tw-inset-y-0 tw-left-0 tw-w-[240px] tw-z-50 tw--translate-x-full lg:tw-translate-x-0 tw-transition-transform tw-duration-300 tw-overflow-y-auto shadcn-scrollbar">
+		<div class="menu-bar">
+			<section class="logo-section">
+				<i class="fa fa-times theme-color menu-hide"></i>
+				<img src="Images/logo.PNG" class="res-hide" alt="logo">
+			</section>
+			<section class="menu-links">
+				<div class="menu-link"><a href="dashboard.html"><i class="fa fa-th-large"></i><span> Dashboard</span></a></div>
+				<div class="menu-link"><a href="courses.html"><i class="fa fa-clipboard-list"></i><span> Courses</span></a></div>
+				<div class="menu-link"><a href="calendar.html"><i class="fa fa-calendar-alt"></i><span> Calendar</span></a></div>
+				<div class="menu-link"><a href="announcement.html"><i class="fa fa-bullhorn"></i><span> Announcements</span></a></div>
+				<div class="menu-link"><a href="inbox.html"><i class="fa fa-comments"></i><span> Messages</span></a></div>
+				<div class="menu-link"><a href="assignments.html"><i class="fa fa-file-lines"></i><span> Assignments</span></a></div>
+				<div class="menu-link"><a href="grades.html"><i class="fa fa-chart-bar"></i><span> Grades</span></a></div>
+				<div class="menu-link"><a href="modules.html"><i class="fa fa-layer-group"></i><span> Modules</span></a></div>
+				<div class="menu-link"><a href="discussions.html"><i class="fa fa-comments-alt"></i><span> Discussions</span></a></div>
+				<div class="menu-link"><a href="quizzes.html"><i class="fa fa-question-circle"></i><span> Quizzes</span></a></div>
+				<div class="menu-link"><a href="pages.html"><i class="fa fa-file-alt"></i><span> Pages</span></a></div>
+				<div class="menu-link"><a href="files.html"><i class="fa fa-folder"></i><span> Files</span></a></div>
+				<div class="menu-link"><a href="people.html"><i class="fa fa-users"></i><span> People</span></a></div>
+				<div class="menu-link"><a href="outcomes.html"><i class="fa fa-bullseye"></i><span> Outcomes</span></a></div>
+				<div class="menu-link"><a href="rubrics.html"><i class="fa fa-th"></i><span> Rubrics</span></a></div>
+				<div class="menu-link"><a href="groups.html"><i class="fa fa-user-friends"></i><span> Groups</span></a></div>
+				<div class="menu-link"><a href="conferences.html"><i class="fa fa-video"></i><span> Conferences</span></a></div>
+				<div class="menu-link"><a href="collaborations.html"><i class="fa fa-handshake"></i><span> Collaborations</span></a></div>
+				<div class="menu-link active-menu"><a href="account-settings.html"><i class="fa fa-cog"></i><span> Settings</span></a></div>
+			</section>
+		</div>
+	</aside>
+	<div class="sidebar-overlay" id="sidebarOverlay"></div>
+	<main class="middle-part tw-flex-1 lg:tw-ml-[240px] tw-min-h-screen tw-px-4 md:tw-px-6 lg:tw-px-10 tw-pb-8">
+		<div class="tw-flex tw-items-center tw-justify-between tw-py-4 tw-gap-3 tw-flex-wrap">
+			<div class="tw-flex tw-items-center tw-gap-3">
+				<i class="fa fa-bars tw-text-primary-400 tw-cursor-pointer tw-text-xl lg:tw-hidden menu-icon" id="menuToggle"></i>
+				<div class="shadcn-search tw-hidden sm:tw-flex tw-w-64">
+					<i class="fa fa-search"></i>
+					<input type="text" placeholder="Search courses, assignments...">
+				</div>
+			</div>
+			<div class="tw-flex tw-items-center tw-gap-3">
+				<button class="shadcn-btn shadcn-btn-ghost shadcn-btn-icon tw-relative">
+					<i class="fa fa-bell tw-text-primary-400"></i>
+				</button>
+				<div class="shadcn-avatar shadcn-avatar-md tw-cursor-pointer">
+					<img src="Images/profile.png" alt="Profile">
+				</div>
+			</div>
+		</div>
+
+		<!-- Breadcrumbs -->
+		<nav class="tw-flex tw-items-center tw-gap-2 tw-text-sm tw-text-gray-500 tw-mb-6">
+			<a href="account-settings.html" class="hover:tw-text-primary-700">Settings</a>
+			<i class="fa fa-chevron-right tw-text-xs"></i>
+			<span class="tw-text-primary-800 tw-font-medium">Notifications</span>
+		</nav>
+
+		<h1 class="tw-text-2xl tw-font-bold tw-text-primary-800 tw-mb-6">Notification Preferences</h1>
+
+		<!-- Communication Channels -->
+		<div class="shadcn-card tw-p-5 tw-mb-6">
+			<h2 class="tw-text-sm tw-font-semibold tw-text-primary-800 tw-mb-4">
+				<i class="fa fa-broadcast-tower tw-mr-2 tw-text-accent-green"></i>Communication Channels
+			</h2>
+			<div class="channel-item">
+				<div class="tw-flex tw-items-center tw-gap-3">
+					<div class="tw-w-9 tw-h-9 tw-rounded-lg tw-bg-blue-50 tw-flex tw-items-center tw-justify-center">
+						<i class="fa fa-envelope tw-text-blue-500"></i>
+					</div>
+					<div>
+						<div class="tw-text-sm tw-font-medium tw-text-primary-800">alex.rivera@university.edu</div>
+						<div class="tw-text-xs tw-text-gray-400">Email &middot; Primary</div>
+					</div>
+				</div>
+				<span class="shadcn-badge shadcn-badge-success">Active</span>
+			</div>
+			<div class="channel-item">
+				<div class="tw-flex tw-items-center tw-gap-3">
+					<div class="tw-w-9 tw-h-9 tw-rounded-lg tw-bg-green-50 tw-flex tw-items-center tw-justify-center">
+						<i class="fa fa-mobile-alt tw-text-green-500"></i>
+					</div>
+					<div>
+						<div class="tw-text-sm tw-font-medium tw-text-primary-800">(555) 123-4567</div>
+						<div class="tw-text-xs tw-text-gray-400">SMS</div>
+					</div>
+				</div>
+				<span class="shadcn-badge shadcn-badge-success">Active</span>
+			</div>
+			<button class="shadcn-btn shadcn-btn-ghost shadcn-btn-sm tw-mt-2">
+				<i class="fa fa-plus tw-mr-1"></i> Add Channel
+			</button>
+		</div>
+
+		<!-- Notification Preferences Matrix -->
+		<div class="shadcn-card tw-mb-6">
+			<div class="tw-p-5 tw-pb-0">
+				<h2 class="tw-text-sm tw-font-semibold tw-text-primary-800 tw-mb-1">
+					<i class="fa fa-sliders-h tw-mr-2 tw-text-accent-purple"></i>Preferences
+				</h2>
+				<p class="tw-text-xs tw-text-gray-400 tw-mb-4">Choose how and when you receive notifications for each category.</p>
+			</div>
+			<div class="tw-overflow-x-auto">
+				<table class="notif-table">
+					<thead>
+						<tr>
+							<th>Notification Type</th>
+							<th>Notify Immediately</th>
+							<th>Daily Summary</th>
+							<th>Weekly Summary</th>
+							<th>Don't Send</th>
+						</tr>
+					</thead>
+					<tbody>
+						<!-- Course Activities -->
+						<tr><td colspan="5" class="notif-category">Course Activities</td></tr>
+						<tr>
+							<td><i class="fa fa-calendar-check tw-text-gray-400 tw-mr-2"></i>Due Date</td>
+							<td><input type="radio" name="due_date" class="notif-radio" checked></td>
+							<td><input type="radio" name="due_date" class="notif-radio"></td>
+							<td><input type="radio" name="due_date" class="notif-radio"></td>
+							<td><input type="radio" name="due_date" class="notif-radio"></td>
+						</tr>
+						<tr>
+							<td><i class="fa fa-star tw-text-gray-400 tw-mr-2"></i>Grading</td>
+							<td><input type="radio" name="grading" class="notif-radio" checked></td>
+							<td><input type="radio" name="grading" class="notif-radio"></td>
+							<td><input type="radio" name="grading" class="notif-radio"></td>
+							<td><input type="radio" name="grading" class="notif-radio"></td>
+						</tr>
+						<tr>
+							<td><i class="fa fa-file-alt tw-text-gray-400 tw-mr-2"></i>Grading Policies</td>
+							<td><input type="radio" name="grading_policies" class="notif-radio"></td>
+							<td><input type="radio" name="grading_policies" class="notif-radio" checked></td>
+							<td><input type="radio" name="grading_policies" class="notif-radio"></td>
+							<td><input type="radio" name="grading_policies" class="notif-radio"></td>
+						</tr>
+						<tr>
+							<td><i class="fa fa-clock tw-text-gray-400 tw-mr-2"></i>Late Grading</td>
+							<td><input type="radio" name="late_grading" class="notif-radio" checked></td>
+							<td><input type="radio" name="late_grading" class="notif-radio"></td>
+							<td><input type="radio" name="late_grading" class="notif-radio"></td>
+							<td><input type="radio" name="late_grading" class="notif-radio"></td>
+						</tr>
+						<tr>
+							<td><i class="fa fa-comment tw-text-gray-400 tw-mr-2"></i>Submission Comment</td>
+							<td><input type="radio" name="sub_comment" class="notif-radio" checked></td>
+							<td><input type="radio" name="sub_comment" class="notif-radio"></td>
+							<td><input type="radio" name="sub_comment" class="notif-radio"></td>
+							<td><input type="radio" name="sub_comment" class="notif-radio"></td>
+						</tr>
+
+						<!-- Discussions -->
+						<tr><td colspan="5" class="notif-category">Discussions</td></tr>
+						<tr>
+							<td><i class="fa fa-comments tw-text-gray-400 tw-mr-2"></i>Discussion</td>
+							<td><input type="radio" name="discussion" class="notif-radio"></td>
+							<td><input type="radio" name="discussion" class="notif-radio" checked></td>
+							<td><input type="radio" name="discussion" class="notif-radio"></td>
+							<td><input type="radio" name="discussion" class="notif-radio"></td>
+						</tr>
+						<tr>
+							<td><i class="fa fa-reply tw-text-gray-400 tw-mr-2"></i>Discussion Entry</td>
+							<td><input type="radio" name="disc_entry" class="notif-radio"></td>
+							<td><input type="radio" name="disc_entry" class="notif-radio" checked></td>
+							<td><input type="radio" name="disc_entry" class="notif-radio"></td>
+							<td><input type="radio" name="disc_entry" class="notif-radio"></td>
+						</tr>
+
+						<!-- Conversations -->
+						<tr><td colspan="5" class="notif-category">Conversations</td></tr>
+						<tr>
+							<td><i class="fa fa-inbox tw-text-gray-400 tw-mr-2"></i>Conversation Message</td>
+							<td><input type="radio" name="convo_msg" class="notif-radio" checked></td>
+							<td><input type="radio" name="convo_msg" class="notif-radio"></td>
+							<td><input type="radio" name="convo_msg" class="notif-radio"></td>
+							<td><input type="radio" name="convo_msg" class="notif-radio"></td>
+						</tr>
+						<tr>
+							<td><i class="fa fa-user-plus tw-text-gray-400 tw-mr-2"></i>Added to Conversation</td>
+							<td><input type="radio" name="convo_add" class="notif-radio" checked></td>
+							<td><input type="radio" name="convo_add" class="notif-radio"></td>
+							<td><input type="radio" name="convo_add" class="notif-radio"></td>
+							<td><input type="radio" name="convo_add" class="notif-radio"></td>
+						</tr>
+
+						<!-- Announcements -->
+						<tr><td colspan="5" class="notif-category">Announcements</td></tr>
+						<tr>
+							<td><i class="fa fa-bullhorn tw-text-gray-400 tw-mr-2"></i>Announcement</td>
+							<td><input type="radio" name="announce" class="notif-radio" checked></td>
+							<td><input type="radio" name="announce" class="notif-radio"></td>
+							<td><input type="radio" name="announce" class="notif-radio"></td>
+							<td><input type="radio" name="announce" class="notif-radio"></td>
+						</tr>
+						<tr>
+							<td><i class="fa fa-bullhorn tw-text-gray-400 tw-mr-2"></i>Announcement Created by You</td>
+							<td><input type="radio" name="announce_self" class="notif-radio"></td>
+							<td><input type="radio" name="announce_self" class="notif-radio"></td>
+							<td><input type="radio" name="announce_self" class="notif-radio"></td>
+							<td><input type="radio" name="announce_self" class="notif-radio" checked></td>
+						</tr>
+
+						<!-- Scheduling -->
+						<tr><td colspan="5" class="notif-category">Scheduling</td></tr>
+						<tr>
+							<td><i class="fa fa-calendar tw-text-gray-400 tw-mr-2"></i>Calendar Event</td>
+							<td><input type="radio" name="cal_event" class="notif-radio" checked></td>
+							<td><input type="radio" name="cal_event" class="notif-radio"></td>
+							<td><input type="radio" name="cal_event" class="notif-radio"></td>
+							<td><input type="radio" name="cal_event" class="notif-radio"></td>
+						</tr>
+						<tr>
+							<td><i class="fa fa-user-clock tw-text-gray-400 tw-mr-2"></i>Appointment Availability</td>
+							<td><input type="radio" name="appt_avail" class="notif-radio"></td>
+							<td><input type="radio" name="appt_avail" class="notif-radio" checked></td>
+							<td><input type="radio" name="appt_avail" class="notif-radio"></td>
+							<td><input type="radio" name="appt_avail" class="notif-radio"></td>
+						</tr>
+						<tr>
+							<td><i class="fa fa-calendar-check tw-text-gray-400 tw-mr-2"></i>Appointment Signups</td>
+							<td><input type="radio" name="appt_signup" class="notif-radio" checked></td>
+							<td><input type="radio" name="appt_signup" class="notif-radio"></td>
+							<td><input type="radio" name="appt_signup" class="notif-radio"></td>
+							<td><input type="radio" name="appt_signup" class="notif-radio"></td>
+						</tr>
+						<tr>
+							<td><i class="fa fa-calendar-times tw-text-gray-400 tw-mr-2"></i>Appointment Cancelations</td>
+							<td><input type="radio" name="appt_cancel" class="notif-radio" checked></td>
+							<td><input type="radio" name="appt_cancel" class="notif-radio"></td>
+							<td><input type="radio" name="appt_cancel" class="notif-radio"></td>
+							<td><input type="radio" name="appt_cancel" class="notif-radio"></td>
+						</tr>
+
+						<!-- Groups -->
+						<tr><td colspan="5" class="notif-category">Groups</td></tr>
+						<tr>
+							<td><i class="fa fa-users tw-text-gray-400 tw-mr-2"></i>Membership Update</td>
+							<td><input type="radio" name="membership" class="notif-radio"></td>
+							<td><input type="radio" name="membership" class="notif-radio" checked></td>
+							<td><input type="radio" name="membership" class="notif-radio"></td>
+							<td><input type="radio" name="membership" class="notif-radio"></td>
+						</tr>
+
+						<!-- Administrative -->
+						<tr><td colspan="5" class="notif-category">Administrative</td></tr>
+						<tr>
+							<td><i class="fa fa-user-cog tw-text-gray-400 tw-mr-2"></i>Course Content</td>
+							<td><input type="radio" name="course_content" class="notif-radio"></td>
+							<td><input type="radio" name="course_content" class="notif-radio"></td>
+							<td><input type="radio" name="course_content" class="notif-radio" checked></td>
+							<td><input type="radio" name="course_content" class="notif-radio"></td>
+						</tr>
+						<tr>
+							<td><i class="fa fa-file-upload tw-text-gray-400 tw-mr-2"></i>Files</td>
+							<td><input type="radio" name="files" class="notif-radio"></td>
+							<td><input type="radio" name="files" class="notif-radio"></td>
+							<td><input type="radio" name="files" class="notif-radio"></td>
+							<td><input type="radio" name="files" class="notif-radio" checked></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<!-- Save Button -->
+		<button class="shadcn-btn shadcn-btn-primary shadcn-btn-lg" style="background: var(--color-accent-green); color: #fff;">
+			<i class="fa fa-save tw-mr-2"></i> Save Preferences
+		</button>
+
+		<!-- API Reference -->
+		<div class="tw-mt-6 tw-text-xs tw-text-gray-400">
+			API: GET/PUT /api/v1/users/self/communication_channels, /api/v1/users/self/communication_channels/:id/notification_preferences
+		</div>
+
+</main></div><script src="js/router.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/api.js"></script>
+<script src="js/render.js"></script>
+<script src="js/sidebar.js"></script>
+<script src="js/app.js"></script></body></html>

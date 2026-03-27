@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	<title>ReDefiners - Question Banks</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+	<script src="https://cdn.tailwindcss.com"></script>
+	<script src="css/tailwind-config.js?v=3"></script>
+	<script src="https://kit.fontawesome.com/7a13c96681.js" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/tokens.css?v=3">
+	<link rel="stylesheet" type="text/css" href="css/shadcn.css?v=3">
+	<link rel="stylesheet" type="text/css" href="styles.css?v=3">
+	<style>
+		.bank-card {
+			display: flex;
+			align-items: center;
+			gap: 16px;
+			padding: 16px 20px;
+			border-bottom: 1px solid var(--color-neutral-200);
+			transition: background 0.15s ease;
+		}
+		.bank-card:last-child { border-bottom: none; }
+		.bank-card:hover { background: var(--color-neutral-50); }
+		.bank-icon {
+			width: 42px;
+			height: 42px;
+			border-radius: var(--radius-md);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 18px;
+			flex-shrink: 0;
+		}
+		.bank-icon.blue { background: #e6f3ff; color: #2563eb; }
+		.bank-icon.green { background: #ecfdf5; color: #16a34a; }
+		.bank-icon.purple { background: #f3e8ff; color: #7c3aed; }
+		.bank-icon.orange { background: #fff7ed; color: #ea580c; }
+		.bank-icon.pink { background: #fdf2f8; color: #db2777; }
+		.bank-icon.teal { background: #f0fdfa; color: #0d9488; }
+		.bank-meta {
+			flex: 1;
+			min-width: 0;
+		}
+		.bank-name {
+			font-size: 14px;
+			font-weight: 600;
+			color: var(--color-primary-900);
+		}
+		.bank-info {
+			font-size: 12px;
+			color: var(--text-secondary);
+			margin-top: 2px;
+		}
+		.bank-stats {
+			display: flex;
+			align-items: center;
+			gap: 16px;
+			flex-shrink: 0;
+		}
+		.bank-stat {
+			text-align: center;
+		}
+		.bank-stat-value {
+			font-size: 16px;
+			font-weight: 700;
+			color: var(--color-primary-900);
+		}
+		.bank-stat-label {
+			font-size: 10px;
+			color: var(--text-secondary);
+			text-transform: uppercase;
+			letter-spacing: 0.5px;
+		}
+		.bank-actions {
+			display: flex;
+			align-items: center;
+			gap: 4px;
+			flex-shrink: 0;
+		}
+		.bank-actions button {
+			background: none;
+			border: none;
+			padding: 6px 8px;
+			color: var(--text-secondary);
+			cursor: pointer;
+			border-radius: var(--radius-sm);
+			font-size: 13px;
+			transition: all 0.15s ease;
+		}
+		.bank-actions button:hover {
+			background: var(--color-neutral-100);
+			color: var(--color-primary-800);
+		}
+		.bank-actions button.delete:hover {
+			background: #fef2f2;
+			color: #dc2626;
+		}
+		.count-badge {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			min-width: 28px;
+			height: 22px;
+			padding: 0 8px;
+			border-radius: 9999px;
+			font-size: 11px;
+			font-weight: 600;
+		}
+		.count-badge.blue { background: #dbeafe; color: #1d4ed8; }
+		.count-badge.green { background: #dcfce7; color: #15803d; }
+		.count-badge.purple { background: #ede9fe; color: #6d28d9; }
+		.count-badge.orange { background: #ffedd5; color: #c2410c; }
+	</style>
+</head>
+<body>
+	<div class="tw-flex tw-min-h-screen tw-font-poppins">
+		<!-- Sidebar -->
+		<aside class="left-sidebar tw-fixed tw-inset-y-0 tw-left-0 tw-w-[240px] tw-z-50 tw--translate-x-full lg:tw-translate-x-0 tw-transition-transform tw-duration-300 tw-overflow-y-auto shadcn-scrollbar">
+			<div class="menu-bar">
+				<section class="logo-section">
+					<i class="fa fa-times theme-color menu-hide"></i>
+					<img src="Images/logo.PNG" class="res-hide" alt="logo">
+					<div class="nav-input res-show-flex tw-mt-5">
+						<button class="tw-border tw-border-primary-400 tw-border-r-0 tw-bg-transparent tw-px-2">
+							<i class="fa fa-search"></i>
+						</button>
+						<input class="tw-border tw-border-primary-400 tw-border-l-0 tw-w-[85%] tw-bg-transparent tw-px-2 tw-py-1 tw-outline-none" type="text" name="search" placeholder="Search">
+					</div>
+				</section>
+				<section class="menu-links">
+					<div class="menu-link"><a href="dashboard.html"><i class="fa fa-th-large"></i><span> Dashboard</span></a></div>
+					<div class="menu-link"><a href="courses.html"><i class="fa fa-clipboard-list"></i><span> Courses</span></a></div>
+					<div class="menu-link"><a href="calendar.html"><i class="fa fa-calendar-alt"></i><span> Calendar</span></a></div>
+					<div class="menu-link"><a href="announcement.html"><i class="fa fa-bullhorn"></i><span> Announcements</span></a></div>
+					<div class="menu-link"><a href="inbox.html"><i class="fa fa-comments"></i><span> Messages</span></a></div>
+					<div class="menu-link"><a href="assignments.html"><i class="fa fa-file-lines"></i><span> Assignments</span></a></div>
+					<div class="menu-link"><a href="grades.html"><i class="fa fa-chart-bar"></i><span> Grades</span></a></div>
+					<div class="menu-link"><a href="modules.html"><i class="fa fa-layer-group"></i><span> Modules</span></a></div>
+					<div class="menu-link"><a href="discussions.html"><i class="fa fa-comments-alt"></i><span> Discussions</span></a></div>
+					<div class="menu-link active"><a href="quizzes.html"><i class="fa fa-question-circle"></i><span> Quizzes</span></a></div>
+					<div class="menu-link"><a href="pages.html"><i class="fa fa-file-alt"></i><span> Pages</span></a></div>
+					<div class="menu-link"><a href="files.html"><i class="fa fa-folder"></i><span> Files</span></a></div>
+					<div class="menu-link"><a href="people.html"><i class="fa fa-users"></i><span> People</span></a></div>
+					<div class="menu-link"><a href="outcomes.html"><i class="fa fa-bullseye"></i><span> Outcomes</span></a></div>
+					<div class="menu-link"><a href="rubrics.html"><i class="fa fa-th"></i><span> Rubrics</span></a></div>
+					<div class="menu-link"><a href="groups.html"><i class="fa fa-user-friends"></i><span> Groups</span></a></div>
+					<div class="menu-link"><a href="conferences.html"><i class="fa fa-video"></i><span> Conferences</span></a></div>
+					<div class="menu-link"><a href="collaborations.html"><i class="fa fa-handshake"></i><span> Collaborations</span></a></div>
+					<div class="menu-link"><a href="account-settings.html"><i class="fa fa-cog"></i><span> Settings</span></a></div>
+				</section>
+			</div>
+		</aside>
+		<div class="sidebar-overlay" id="sidebarOverlay"></div>
+		<main class="middle-part tw-flex-1 lg:tw-ml-[240px] tw-min-h-screen tw-px-4 md:tw-px-6 lg:tw-px-10 tw-pb-8">
+			<!-- Nav Bar -->
+			<div class="tw-flex tw-items-center tw-justify-between tw-py-4 tw-gap-3 tw-flex-wrap">
+				<div class="tw-flex tw-items-center tw-gap-3">
+					<i class="fa fa-bars tw-text-primary-400 tw-cursor-pointer tw-text-xl lg:tw-hidden menu-icon" id="menuToggle"></i>
+					<div class="shadcn-search tw-hidden sm:tw-flex tw-w-64">
+						<i class="fa fa-search"></i>
+						<input type="text" placeholder="Search courses, assignments...">
+					</div>
+				</div>
+				<div class="tw-flex tw-items-center tw-gap-3">
+					<button class="shadcn-btn shadcn-btn-ghost shadcn-btn-icon tw-relative">
+						<i class="fa fa-bell tw-text-primary-400"></i>
+					</button>
+					<div class="shadcn-avatar shadcn-avatar-md tw-cursor-pointer profile-click">
+						<img src="Images/profile.png" alt="Profile">
+					</div>
+				</div>
+			</div>
+
+			<!-- Page Header -->
+			<div class="tw-flex tw-items-center tw-justify-between tw-mb-6 tw-flex-wrap tw-gap-3">
+				<div>
+					<div class="tw-flex tw-items-center tw-gap-2 tw-text-sm tw-text-primary-400 tw-mb-2">
+						<a href="quizzes.html" class="tw-text-primary-400 hover:tw-text-primary-800">Quizzes</a>
+						<i class="fa fa-chevron-right tw-text-xs"></i>
+						<span class="tw-text-primary-800 tw-font-medium">Question Banks</span>
+					</div>
+					<h1 class="tw-text-2xl tw-font-semibold tw-text-primary-900">Question Banks</h1>
+					<p class="tw-text-sm tw-text-primary-400 tw-mt-1">Organize and manage reusable pools of questions for quizzes and exams.</p>
+				</div>
+				<button class="shadcn-btn shadcn-btn-primary">
+					<i class="fa fa-plus tw-mr-2"></i> New Question Bank
+				</button>
+			</div>
+
+			<!-- Summary Stats -->
+			<div class="tw-grid tw-grid-cols-2 md:tw-grid-cols-4 tw-gap-4 tw-mb-6">
+				<div class="shadcn-card tw-p-4 tw-text-center">
+					<div class="tw-text-2xl tw-font-bold tw-text-primary-900">6</div>
+					<div class="tw-text-xs tw-text-primary-400">Total Banks</div>
+				</div>
+				<div class="shadcn-card tw-p-4 tw-text-center">
+					<div class="tw-text-2xl tw-font-bold tw-text-accent-blue">247</div>
+					<div class="tw-text-xs tw-text-primary-400">Total Questions</div>
+				</div>
+				<div class="shadcn-card tw-p-4 tw-text-center">
+					<div class="tw-text-2xl tw-font-bold tw-text-accent-green">12</div>
+					<div class="tw-text-xs tw-text-primary-400">Linked Quizzes</div>
+				</div>
+				<div class="shadcn-card tw-p-4 tw-text-center">
+					<div class="tw-text-2xl tw-font-bold tw-text-accent-orange">3</div>
+					<div class="tw-text-xs tw-text-primary-400">Shared Banks</div>
+				</div>
+			</div>
+
+			<!-- Search -->
+			<div class="tw-mb-4">
+				<div class="shadcn-search tw-w-full md:tw-w-80">
+					<i class="fa fa-search"></i>
+					<input type="text" placeholder="Search question banks...">
+				</div>
+			</div>
+
+			<!-- Banks List -->
+			<div class="shadcn-card">
+				<!-- General Knowledge -->
+				<div class="bank-card">
+					<div class="bank-icon blue"><i class="fa fa-globe"></i></div>
+					<div class="bank-meta">
+						<div class="bank-name">General Knowledge</div>
+						<div class="bank-info">Used in 3 quizzes &middot; Last updated Mar 18, 2026</div>
+					</div>
+					<div class="bank-stats tw-hidden md:tw-flex">
+						<div class="bank-stat">
+							<div class="bank-stat-value">54</div>
+							<div class="bank-stat-label">Questions</div>
+						</div>
+						<div class="bank-stat">
+							<div class="bank-stat-value">3</div>
+							<div class="bank-stat-label">Quizzes</div>
+						</div>
+					</div>
+					<span class="count-badge blue tw-flex md:tw-hidden">54</span>
+					<div class="bank-actions">
+						<button title="Add Questions"><i class="fa fa-plus"></i></button>
+						<button title="Edit"><i class="fa fa-pencil"></i></button>
+						<button title="Delete" class="delete"><i class="fa fa-trash"></i></button>
+					</div>
+				</div>
+
+				<!-- Math Fundamentals -->
+				<div class="bank-card">
+					<div class="bank-icon green"><i class="fa fa-calculator"></i></div>
+					<div class="bank-meta">
+						<div class="bank-name">Math Fundamentals</div>
+						<div class="bank-info">Used in 4 quizzes &middot; Last updated Mar 15, 2026</div>
+					</div>
+					<div class="bank-stats tw-hidden md:tw-flex">
+						<div class="bank-stat">
+							<div class="bank-stat-value">78</div>
+							<div class="bank-stat-label">Questions</div>
+						</div>
+						<div class="bank-stat">
+							<div class="bank-stat-value">4</div>
+							<div class="bank-stat-label">Quizzes</div>
+						</div>
+					</div>
+					<span class="count-badge green tw-flex md:tw-hidden">78</span>
+					<div class="bank-actions">
+						<button title="Add Questions"><i class="fa fa-plus"></i></button>
+						<button title="Edit"><i class="fa fa-pencil"></i></button>
+						<button title="Delete" class="delete"><i class="fa fa-trash"></i></button>
+					</div>
+				</div>
+
+				<!-- Science Quiz Pool -->
+				<div class="bank-card">
+					<div class="bank-icon purple"><i class="fa fa-flask"></i></div>
+					<div class="bank-meta">
+						<div class="bank-name">Science Quiz Pool</div>
+						<div class="bank-info">Used in 2 quizzes &middot; Last updated Mar 12, 2026 &middot; <span class="tw-text-accent-blue"><i class="fa fa-share-alt"></i> Shared</span></div>
+					</div>
+					<div class="bank-stats tw-hidden md:tw-flex">
+						<div class="bank-stat">
+							<div class="bank-stat-value">42</div>
+							<div class="bank-stat-label">Questions</div>
+						</div>
+						<div class="bank-stat">
+							<div class="bank-stat-value">2</div>
+							<div class="bank-stat-label">Quizzes</div>
+						</div>
+					</div>
+					<span class="count-badge purple tw-flex md:tw-hidden">42</span>
+					<div class="bank-actions">
+						<button title="Add Questions"><i class="fa fa-plus"></i></button>
+						<button title="Edit"><i class="fa fa-pencil"></i></button>
+						<button title="Delete" class="delete"><i class="fa fa-trash"></i></button>
+					</div>
+				</div>
+
+				<!-- English Literature -->
+				<div class="bank-card">
+					<div class="bank-icon orange"><i class="fa fa-book"></i></div>
+					<div class="bank-meta">
+						<div class="bank-name">English Literature Comprehension</div>
+						<div class="bank-info">Used in 1 quiz &middot; Last updated Mar 10, 2026</div>
+					</div>
+					<div class="bank-stats tw-hidden md:tw-flex">
+						<div class="bank-stat">
+							<div class="bank-stat-value">35</div>
+							<div class="bank-stat-label">Questions</div>
+						</div>
+						<div class="bank-stat">
+							<div class="bank-stat-value">1</div>
+							<div class="bank-stat-label">Quizzes</div>
+						</div>
+					</div>
+					<span class="count-badge orange tw-flex md:tw-hidden">35</span>
+					<div class="bank-actions">
+						<button title="Add Questions"><i class="fa fa-plus"></i></button>
+						<button title="Edit"><i class="fa fa-pencil"></i></button>
+						<button title="Delete" class="delete"><i class="fa fa-trash"></i></button>
+					</div>
+				</div>
+
+				<!-- History & Social Studies -->
+				<div class="bank-card">
+					<div class="bank-icon pink"><i class="fa fa-landmark"></i></div>
+					<div class="bank-meta">
+						<div class="bank-name">History &amp; Social Studies</div>
+						<div class="bank-info">Used in 1 quiz &middot; Last updated Mar 8, 2026 &middot; <span class="tw-text-accent-blue"><i class="fa fa-share-alt"></i> Shared</span></div>
+					</div>
+					<div class="bank-stats tw-hidden md:tw-flex">
+						<div class="bank-stat">
+							<div class="bank-stat-value">22</div>
+							<div class="bank-stat-label">Questions</div>
+						</div>
+						<div class="bank-stat">
+							<div class="bank-stat-value">1</div>
+							<div class="bank-stat-label">Quizzes</div>
+						</div>
+					</div>
+					<span class="count-badge orange tw-flex md:tw-hidden">22</span>
+					<div class="bank-actions">
+						<button title="Add Questions"><i class="fa fa-plus"></i></button>
+						<button title="Edit"><i class="fa fa-pencil"></i></button>
+						<button title="Delete" class="delete"><i class="fa fa-trash"></i></button>
+					</div>
+				</div>
+
+				<!-- Computer Science -->
+				<div class="bank-card">
+					<div class="bank-icon teal"><i class="fa fa-code"></i></div>
+					<div class="bank-meta">
+						<div class="bank-name">Computer Science Basics</div>
+						<div class="bank-info">Used in 1 quiz &middot; Last updated Mar 5, 2026 &middot; <span class="tw-text-accent-blue"><i class="fa fa-share-alt"></i> Shared</span></div>
+					</div>
+					<div class="bank-stats tw-hidden md:tw-flex">
+						<div class="bank-stat">
+							<div class="bank-stat-value">16</div>
+							<div class="bank-stat-label">Questions</div>
+						</div>
+						<div class="bank-stat">
+							<div class="bank-stat-value">1</div>
+							<div class="bank-stat-label">Quizzes</div>
+						</div>
+					</div>
+					<span class="count-badge green tw-flex md:tw-hidden">16</span>
+					<div class="bank-actions">
+						<button title="Add Questions"><i class="fa fa-plus"></i></button>
+						<button title="Edit"><i class="fa fa-pencil"></i></button>
+						<button title="Delete" class="delete"><i class="fa fa-trash"></i></button>
+					</div>
+				</div>
+			</div>
+		</main>
+	</div>
+	<script src="js/sidebar.js"></script>
+<script src="js/router.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/api.js"></script>
+<script src="js/render.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

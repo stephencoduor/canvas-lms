@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	<title>ReDefiners - My Planner</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+	<script src="https://cdn.tailwindcss.com"></script>
+	<script src="css/tailwind-config.js?v=3"></script>
+	<script src="https://kit.fontawesome.com/7a13c96681.js" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/tokens.css?v=3">
+	<link rel="stylesheet" type="text/css" href="css/shadcn.css?v=3">
+	<link rel="stylesheet" type="text/css" href="styles.css?v=3">
+	<style>
+		.planner-item { display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-bottom: 1px solid #f0f0f0; transition: background 0.15s; }
+		.planner-item:last-child { border-bottom: none; }
+		.planner-item:hover { background: #f8fafb; }
+		.planner-checkbox { width: 18px; height: 18px; border-radius: 4px; border: 2px solid #d1d5db; cursor: pointer; accent-color: var(--color-primary-400); flex-shrink: 0; }
+		.planner-checkbox:checked { border-color: var(--color-primary-400); }
+		.planner-checkbox:checked + .planner-content .planner-title { text-decoration: line-through; color: #9ca3af; }
+		.course-badge { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 4px; white-space: nowrap; text-transform: uppercase; letter-spacing: 0.3px; }
+		.course-badge.spanish { background: #fff3e0; color: #FF6B35; }
+		.course-badge.french { background: #e8f4fd; color: #3B82F6; }
+		.course-badge.japanese { background: #f3e8ff; color: #8B5CF6; }
+		.course-badge.arabic { background: #D4EFE6; color: #163B32; }
+		.course-badge.mandarin { background: #fef2f2; color: #ef4444; }
+		.type-icon-sm { width: 24px; height: 24px; border-radius: 5px; display: flex; align-items: center; justify-content: center; font-size: 11px; flex-shrink: 0; }
+		.type-icon-sm.assignment { background: #e8f4fd; color: #3B82F6; }
+		.type-icon-sm.quiz { background: #f3e8ff; color: #8B5CF6; }
+		.type-icon-sm.discussion { background: #fff3e0; color: #FF6B35; }
+		.type-icon-sm.page { background: #D4EFE6; color: #2DB88A; }
+		.day-header { font-size: 14px; font-weight: 700; color: var(--color-primary-700, #163B32); padding: 10px 16px; background: #f8fafb; border-bottom: 1px solid #e5e7eb; display: flex; align-items: center; justify-content: space-between; }
+		.day-header .item-count { font-size: 11px; font-weight: 500; color: #668B91; background: #e5e7eb; padding: 2px 8px; border-radius: 10px; }
+		.fab-button { position: fixed; bottom: 32px; right: 32px; width: 56px; height: 56px; border-radius: 50%; background: var(--color-primary-400, #2DB88A); color: white; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 24px; box-shadow: 0 4px 12px rgba(45,184,138,0.4); transition: all 0.2s; z-index: 10; }
+		.fab-button:hover { transform: scale(1.1); box-shadow: 0 6px 16px rgba(45,184,138,0.5); }
+		.opportunity-item { display: flex; align-items: center; gap: 10px; padding: 10px 0; border-bottom: 1px solid #f0f0f0; font-size: 13px; }
+		.opportunity-item:last-child { border-bottom: none; }
+		.opportunity-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+		.opportunity-dot.late { background: #ef4444; }
+		.opportunity-dot.missing { background: #FFB800; }
+		.date-nav { display: flex; align-items: center; gap: 8px; }
+		.date-nav button { width: 32px; height: 32px; border-radius: 6px; border: 1px solid #e5e7eb; background: white; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; color: #668B91; transition: all 0.15s; }
+		.date-nav button:hover { border-color: var(--color-primary-400); color: var(--color-primary-400); }
+	</style>
+</head>
+<body>
+<div class="tw-flex tw-min-h-screen tw-font-poppins">
+	<aside class="left-sidebar tw-fixed tw-inset-y-0 tw-left-0 tw-w-[240px] tw-z-50 tw--translate-x-full lg:tw-translate-x-0 tw-transition-transform tw-duration-300 tw-overflow-y-auto shadcn-scrollbar">
+		<div class="menu-bar">
+			<section class="logo-section">
+				<i class="fa fa-times theme-color menu-hide"></i>
+				<img src="Images/logo.PNG" class="res-hide" alt="logo">
+				<div class="nav-input res-show-flex tw-mt-5">
+					<button class="tw-border tw-border-primary-400 tw-border-r-0 tw-bg-transparent tw-px-2"><i class="fa fa-search"></i></button>
+					<input class="tw-border tw-border-primary-400 tw-border-l-0 tw-w-[85%] tw-bg-transparent tw-px-2 tw-py-1 tw-outline-none" type="text" name="search" placeholder="Search">
+				</div>
+			</section>
+			<section class="menu-links">
+				<div class="menu-link"><a href="dashboard.html" class="active-menu"><i class="fa fa-th-large"></i><span> Dashboard</span></a></div>
+				<div class="menu-link"><a href="courses.html"><i class="fa fa-clipboard-list"></i><span> Courses</span></a></div>
+				<div class="menu-link"><a href="calendar.html"><i class="fa fa-calendar-alt"></i><span> Calendar</span></a></div>
+				<div class="menu-link"><a href="announcement.html"><i class="fa fa-bullhorn"></i><span> Announcements</span></a></div>
+				<div class="menu-link"><a href="inbox.html"><i class="fa fa-comments"></i><span> Messages</span></a></div>
+				<div class="menu-link"><a href="assignments.html"><i class="fa fa-file-lines"></i><span> Assignments</span></a></div>
+				<div class="menu-link"><a href="grades.html"><i class="fa fa-chart-bar"></i><span> Grades</span></a></div>
+				<div class="menu-link"><a href="modules.html"><i class="fa fa-layer-group"></i><span> Modules</span></a></div>
+				<div class="menu-link"><a href="discussions.html"><i class="fa fa-comments-alt"></i><span> Discussions</span></a></div>
+				<div class="menu-link"><a href="quizzes.html"><i class="fa fa-question-circle"></i><span> Quizzes</span></a></div>
+				<div class="menu-link"><a href="pages.html"><i class="fa fa-file-alt"></i><span> Pages</span></a></div>
+				<div class="menu-link"><a href="files.html"><i class="fa fa-folder"></i><span> Files</span></a></div>
+				<div class="menu-link"><a href="people.html"><i class="fa fa-users"></i><span> People</span></a></div>
+				<div class="menu-link"><a href="outcomes.html"><i class="fa fa-bullseye"></i><span> Outcomes</span></a></div>
+				<div class="menu-link"><a href="rubrics.html"><i class="fa fa-th"></i><span> Rubrics</span></a></div>
+				<div class="menu-link"><a href="groups.html"><i class="fa fa-user-friends"></i><span> Groups</span></a></div>
+				<div class="menu-link"><a href="conferences.html"><i class="fa fa-video"></i><span> Conferences</span></a></div>
+				<div class="menu-link"><a href="collaborations.html"><i class="fa fa-handshake"></i><span> Collaborations</span></a></div>
+				<div class="menu-link"><a href="account-settings.html"><i class="fa fa-cog"></i><span> Settings</span></a></div>
+			</section>
+		</div>
+	</aside>
+	<div class="sidebar-overlay" id="sidebarOverlay"></div>
+	<main class="middle-part tw-flex-1 lg:tw-ml-[240px] tw-min-h-screen tw-px-4 md:tw-px-6 lg:tw-px-10 tw-pb-8">
+		<!-- Nav Bar -->
+		<div class="tw-flex tw-items-center tw-justify-between tw-py-4 tw-gap-3 tw-flex-wrap">
+			<div class="tw-flex tw-items-center tw-gap-3">
+				<i class="fa fa-bars tw-text-primary-400 tw-cursor-pointer tw-text-xl lg:tw-hidden menu-icon" id="menuToggle"></i>
+				<div class="shadcn-search tw-hidden sm:tw-flex tw-w-64">
+					<i class="fa fa-search"></i>
+					<input type="text" placeholder="Search courses, assignments...">
+				</div>
+			</div>
+			<div class="tw-flex tw-items-center tw-gap-3">
+				<div class="tw-hidden sm:tw-flex tw-items-center tw-gap-2 tw-bg-accent-orange tw-text-white tw-rounded-token-md tw-px-3 tw-py-1.5 tw-text-caption-sm">
+					<i class="fa fa-bullhorn tw-text-xs"></i>
+					<span>New announcements available</span>
+				</div>
+				<button class="shadcn-btn shadcn-btn-ghost shadcn-btn-icon tw-relative">
+					<i class="fa fa-bell tw-text-primary-400"></i>
+				</button>
+				<div class="shadcn-avatar shadcn-avatar-md tw-cursor-pointer profile-click">
+					<img src="Images/profile.png" alt="Profile">
+				</div>
+			</div>
+		</div>
+
+		<!-- Page Header with Date Navigation -->
+		<div class="tw-flex tw-flex-col sm:tw-flex-row tw-items-start sm:tw-items-center tw-justify-between tw-py-6 tw-gap-4">
+			<div>
+				<h3 class="second-color">My Planner</h3>
+				<p class="tw-text-sm tw-text-gray-500 tw-mt-1">Keep track of assignments, quizzes, and to-do items</p>
+			</div>
+			<div class="date-nav">
+				<button><i class="fa fa-chevron-left"></i></button>
+				<button class="shadcn-btn shadcn-btn-outline tw-text-xs tw-px-3">Today</button>
+				<button><i class="fa fa-chevron-right"></i></button>
+				<span class="tw-text-sm tw-font-semibold second-color tw-ml-2">Mar 24 - Mar 30, 2026</span>
+			</div>
+		</div>
+
+		<div class="tw-grid tw-grid-cols-1 lg:tw-grid-cols-3 tw-gap-5">
+			<!-- Main Planner -->
+			<div class="lg:tw-col-span-2">
+				<!-- Today -->
+				<div class="shadcn-card tw-mb-4 tw-overflow-hidden">
+					<div class="day-header">
+						<span>Today - Wednesday, March 25</span>
+						<span class="item-count">4 items</span>
+					</div>
+					<div class="planner-item">
+						<input type="checkbox" class="planner-checkbox">
+						<div class="planner-content tw-flex tw-items-center tw-gap-3 tw-flex-1 tw-flex-wrap">
+							<span class="course-badge spanish">SPA 201</span>
+							<div class="type-icon-sm assignment"><i class="fa fa-file-lines"></i></div>
+							<span class="planner-title tw-text-sm tw-font-medium second-color">Written Introduction Letter</span>
+						</div>
+						<span class="tw-text-xs tw-text-gray-400 tw-hidden sm:tw-inline">11:59 PM</span>
+						<span class="tw-text-xs tw-font-semibold tw-text-blue-500">15 pts</span>
+					</div>
+					<div class="planner-item">
+						<input type="checkbox" class="planner-checkbox">
+						<div class="planner-content tw-flex tw-items-center tw-gap-3 tw-flex-1 tw-flex-wrap">
+							<span class="course-badge french">FRE 102</span>
+							<div class="type-icon-sm quiz"><i class="fa fa-question-circle"></i></div>
+							<span class="planner-title tw-text-sm tw-font-medium second-color">Chapter 4 Vocabulary Quiz</span>
+						</div>
+						<span class="tw-text-xs tw-text-gray-400 tw-hidden sm:tw-inline">3:00 PM</span>
+						<span class="tw-text-xs tw-font-semibold tw-text-blue-500">20 pts</span>
+					</div>
+					<div class="planner-item">
+						<input type="checkbox" class="planner-checkbox" checked>
+						<div class="planner-content tw-flex tw-items-center tw-gap-3 tw-flex-1 tw-flex-wrap">
+							<span class="course-badge japanese">JPN 101</span>
+							<div class="type-icon-sm page"><i class="fa fa-file-alt"></i></div>
+							<span class="planner-title tw-text-sm second-color" style="text-decoration:line-through;color:#9ca3af;">Read: Hiragana Chart Overview</span>
+						</div>
+						<span class="tw-text-xs tw-text-gray-400 tw-hidden sm:tw-inline">--</span>
+						<span class="tw-text-xs tw-font-semibold tw-text-gray-400">0 pts</span>
+					</div>
+					<div class="planner-item">
+						<input type="checkbox" class="planner-checkbox">
+						<div class="planner-content tw-flex tw-items-center tw-gap-3 tw-flex-1 tw-flex-wrap">
+							<span class="course-badge arabic">ARA 201</span>
+							<div class="type-icon-sm discussion"><i class="fa fa-comments"></i></div>
+							<span class="planner-title tw-text-sm tw-font-medium second-color">Discussion: Arabic Calligraphy Styles</span>
+						</div>
+						<span class="tw-text-xs tw-text-gray-400 tw-hidden sm:tw-inline">11:59 PM</span>
+						<span class="tw-text-xs tw-font-semibold tw-text-blue-500">10 pts</span>
+					</div>
+				</div>
+
+				<!-- Tomorrow -->
+				<div class="shadcn-card tw-mb-4 tw-overflow-hidden">
+					<div class="day-header">
+						<span>Tomorrow - Thursday, March 26</span>
+						<span class="item-count">3 items</span>
+					</div>
+					<div class="planner-item">
+						<input type="checkbox" class="planner-checkbox">
+						<div class="planner-content tw-flex tw-items-center tw-gap-3 tw-flex-1 tw-flex-wrap">
+							<span class="course-badge spanish">SPA 201</span>
+							<div class="type-icon-sm quiz"><i class="fa fa-question-circle"></i></div>
+							<span class="planner-title tw-text-sm tw-font-medium second-color">Reflexive Verbs Conjugation Quiz</span>
+						</div>
+						<span class="tw-text-xs tw-text-gray-400 tw-hidden sm:tw-inline">2:00 PM</span>
+						<span class="tw-text-xs tw-font-semibold tw-text-blue-500">25 pts</span>
+					</div>
+					<div class="planner-item">
+						<input type="checkbox" class="planner-checkbox">
+						<div class="planner-content tw-flex tw-items-center tw-gap-3 tw-flex-1 tw-flex-wrap">
+							<span class="course-badge mandarin">MAN 101</span>
+							<div class="type-icon-sm assignment"><i class="fa fa-file-lines"></i></div>
+							<span class="planner-title tw-text-sm tw-font-medium second-color">Tone Practice Recording Submission</span>
+						</div>
+						<span class="tw-text-xs tw-text-gray-400 tw-hidden sm:tw-inline">11:59 PM</span>
+						<span class="tw-text-xs tw-font-semibold tw-text-blue-500">10 pts</span>
+					</div>
+					<div class="planner-item">
+						<input type="checkbox" class="planner-checkbox">
+						<div class="planner-content tw-flex tw-items-center tw-gap-3 tw-flex-1 tw-flex-wrap">
+							<span class="course-badge french">FRE 102</span>
+							<div class="type-icon-sm page"><i class="fa fa-file-alt"></i></div>
+							<span class="planner-title tw-text-sm tw-font-medium second-color">Read: Les Repas en France</span>
+						</div>
+						<span class="tw-text-xs tw-text-gray-400 tw-hidden sm:tw-inline">--</span>
+						<span class="tw-text-xs tw-font-semibold tw-text-gray-400">0 pts</span>
+					</div>
+				</div>
+
+				<!-- This Week -->
+				<div class="shadcn-card tw-mb-4 tw-overflow-hidden">
+					<div class="day-header">
+						<span>Friday, March 27 - Sunday, March 29</span>
+						<span class="item-count">3 items</span>
+					</div>
+					<div class="planner-item">
+						<input type="checkbox" class="planner-checkbox">
+						<div class="planner-content tw-flex tw-items-center tw-gap-3 tw-flex-1 tw-flex-wrap">
+							<span class="course-badge spanish">SPA 201</span>
+							<div class="type-icon-sm assignment"><i class="fa fa-file-lines"></i></div>
+							<span class="planner-title tw-text-sm tw-font-medium second-color">Essay: My Favorite Spanish City</span>
+						</div>
+						<span class="tw-text-xs tw-text-gray-400 tw-hidden sm:tw-inline">Mar 28, 11:59 PM</span>
+						<span class="tw-text-xs tw-font-semibold tw-text-blue-500">25 pts</span>
+					</div>
+					<div class="planner-item">
+						<input type="checkbox" class="planner-checkbox">
+						<div class="planner-content tw-flex tw-items-center tw-gap-3 tw-flex-1 tw-flex-wrap">
+							<span class="course-badge japanese">JPN 101</span>
+							<div class="type-icon-sm quiz"><i class="fa fa-question-circle"></i></div>
+							<span class="planner-title tw-text-sm tw-font-medium second-color">Hiragana Recognition Quiz</span>
+						</div>
+						<span class="tw-text-xs tw-text-gray-400 tw-hidden sm:tw-inline">Mar 28, 5:00 PM</span>
+						<span class="tw-text-xs tw-font-semibold tw-text-blue-500">15 pts</span>
+					</div>
+					<div class="planner-item">
+						<input type="checkbox" class="planner-checkbox">
+						<div class="planner-content tw-flex tw-items-center tw-gap-3 tw-flex-1 tw-flex-wrap">
+							<span class="course-badge arabic">ARA 201</span>
+							<div class="type-icon-sm assignment"><i class="fa fa-file-lines"></i></div>
+							<span class="planner-title tw-text-sm tw-font-medium second-color">Short Story Translation Exercise</span>
+						</div>
+						<span class="tw-text-xs tw-text-gray-400 tw-hidden sm:tw-inline">Mar 29, 11:59 PM</span>
+						<span class="tw-text-xs tw-font-semibold tw-text-blue-500">20 pts</span>
+					</div>
+				</div>
+
+				<!-- Next Week -->
+				<div class="shadcn-card tw-overflow-hidden">
+					<div class="day-header">
+						<span>Next Week - Mar 30 - Apr 5</span>
+						<span class="item-count">2 items</span>
+					</div>
+					<div class="planner-item">
+						<input type="checkbox" class="planner-checkbox">
+						<div class="planner-content tw-flex tw-items-center tw-gap-3 tw-flex-1 tw-flex-wrap">
+							<span class="course-badge french">FRE 102</span>
+							<div class="type-icon-sm assignment"><i class="fa fa-file-lines"></i></div>
+							<span class="planner-title tw-text-sm tw-font-medium second-color">Oral Presentation: Ma Ville Natale</span>
+						</div>
+						<span class="tw-text-xs tw-text-gray-400 tw-hidden sm:tw-inline">Apr 1, 10:00 AM</span>
+						<span class="tw-text-xs tw-font-semibold tw-text-blue-500">30 pts</span>
+					</div>
+					<div class="planner-item">
+						<input type="checkbox" class="planner-checkbox">
+						<div class="planner-content tw-flex tw-items-center tw-gap-3 tw-flex-1 tw-flex-wrap">
+							<span class="course-badge spanish">SPA 201</span>
+							<div class="type-icon-sm quiz"><i class="fa fa-question-circle"></i></div>
+							<span class="planner-title tw-text-sm tw-font-medium second-color">Module 3 Comprehensive Exam</span>
+						</div>
+						<span class="tw-text-xs tw-text-gray-400 tw-hidden sm:tw-inline">Apr 3, 2:00 PM</span>
+						<span class="tw-text-xs tw-font-semibold tw-text-blue-500">50 pts</span>
+					</div>
+				</div>
+			</div>
+
+			<!-- Sidebar: Opportunities -->
+			<div>
+				<div class="shadcn-card tw-p-5">
+					<h5 class="second-color tw-mb-3">Opportunities</h5>
+					<p class="tw-text-xs tw-text-gray-500 tw-mb-3">Missing or late items you can still submit for credit</p>
+					<div class="opportunity-item">
+						<div class="opportunity-dot late"></div>
+						<div class="tw-flex-1">
+							<div class="tw-text-sm tw-font-medium second-color">Dialogue Recording: At the Airport</div>
+							<div class="tw-text-xs tw-text-gray-400">Spanish 201 - 3 days late</div>
+						</div>
+						<span class="tw-text-xs tw-font-semibold tw-text-red-500">-10%</span>
+					</div>
+					<div class="opportunity-item">
+						<div class="opportunity-dot missing"></div>
+						<div class="tw-flex-1">
+							<div class="tw-text-sm tw-font-medium second-color">Cultural Comparison Post</div>
+							<div class="tw-text-xs tw-text-gray-400">French 102 - Missing</div>
+						</div>
+						<span class="tw-text-xs tw-font-semibold tw-text-yellow-600">0/10</span>
+					</div>
+					<div class="opportunity-item">
+						<div class="opportunity-dot late"></div>
+						<div class="tw-flex-1">
+							<div class="tw-text-sm tw-font-medium second-color">Katakana Writing Practice</div>
+							<div class="tw-text-xs tw-text-gray-400">Japanese 101 - 1 day late</div>
+						</div>
+						<span class="tw-text-xs tw-font-semibold tw-text-red-500">-5%</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Floating Action Button -->
+		<button class="fab-button" title="Add to-do item">
+			<i class="fa fa-plus"></i>
+		</button>
+	</main>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+<script>$(".button-collapse").sideNav();</script>
+<script src="js/router.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/api.js"></script>
+<script src="js/render.js"></script>
+<script src="js/sidebar.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

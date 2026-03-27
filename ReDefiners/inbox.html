@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	<title>ReDefiners</title>
+								<!-- --- Bootstrap 5 --- -->
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+								<!-- --- Tailwind CSS + Config --- -->
+	<script src="https://cdn.tailwindcss.com"></script>
+	<script src="css/tailwind-config.js?v=3"></script>
+								<!-- --- Font Awesome --- -->
+	<script src="https://kit.fontawesome.com/7a13c96681.js" crossorigin="anonymous"></script>
+								<!-- --- jQuery --- -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+								<!-- --- Text Font --- -->
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+								<!-- --- Custom Css --- -->
+	<link rel="stylesheet" type="text/css" href="css/tokens.css?v=3">
+	<link rel="stylesheet" type="text/css" href="css/shadcn.css?v=3">
+	<link rel="stylesheet" type="text/css" href="styles.css?v=3">
+</head>
+<body>
+	<div class="tw-flex tw-min-h-screen tw-font-poppins">
+		<!-- Sidebar -->
+		<aside class="left-sidebar tw-fixed tw-inset-y-0 tw-left-0 tw-w-[240px] tw-z-50 tw--translate-x-full lg:tw-translate-x-0 tw-transition-transform tw-duration-300 tw-overflow-y-auto shadcn-scrollbar">
+			<div class="menu-bar">
+				<section class="logo-section">
+					<i class="fa fa-times theme-color menu-hide"></i>
+					<img src="Images/logo.PNG" class="res-hide" alt="logo">
+					<div class="nav-input res-show-flex tw-mt-5">
+						<button class="tw-border tw-border-primary-400 tw-border-r-0 tw-bg-transparent tw-px-2">
+							<i class="fa fa-search"></i>
+						</button>
+						<input class="tw-border tw-border-primary-400 tw-border-l-0 tw-w-[85%] tw-bg-transparent tw-px-2 tw-py-1 tw-outline-none" type="text" name="search" placeholder="Search">
+					</div>
+				</section>
+				<section class="menu-links">
+					<div class="menu-link"><a href="dashboard.html"><i class="fa fa-th-large"></i><span> Dashboard</span></a></div>
+					<div class="menu-link"><a href="courses.html"><i class="fa fa-clipboard-list"></i><span> Courses</span></a></div>
+					<div class="menu-link"><a href="calendar.html"><i class="fa fa-calendar-alt"></i><span> Calendar</span></a></div>
+					<div class="menu-link"><a href="announcement.html"><i class="fa fa-bullhorn"></i><span> Announcements</span></a></div>
+					<div class="menu-link"><a href="inbox.html" class="active-menu"><i class="fa fa-comments"></i><span> Messages</span></a></div>
+					<div class="menu-link"><a href="assignments.html"><i class="fa fa-file-lines"></i><span> Assignments</span></a></div>
+					<div class="menu-link"><a href="grades.html"><i class="fa fa-chart-bar"></i><span> Grades</span></a></div>
+					<div class="menu-link"><a href="modules.html"><i class="fa fa-layer-group"></i><span> Modules</span></a></div>
+					<div class="menu-link"><a href="discussions.html"><i class="fa fa-comments-alt"></i><span> Discussions</span></a></div>
+					<div class="menu-link"><a href="quizzes.html"><i class="fa fa-question-circle"></i><span> Quizzes</span></a></div>
+					<div class="menu-link"><a href="pages.html"><i class="fa fa-file-alt"></i><span> Pages</span></a></div>
+					<div class="menu-link"><a href="files.html"><i class="fa fa-folder"></i><span> Files</span></a></div>
+					<div class="menu-link"><a href="people.html"><i class="fa fa-users"></i><span> People</span></a></div>
+					<div class="menu-link"><a href="outcomes.html"><i class="fa fa-bullseye"></i><span> Outcomes</span></a></div>
+					<div class="menu-link"><a href="rubrics.html"><i class="fa fa-th"></i><span> Rubrics</span></a></div>
+					<div class="menu-link"><a href="groups.html"><i class="fa fa-user-friends"></i><span> Groups</span></a></div>
+					<div class="menu-link"><a href="conferences.html"><i class="fa fa-video"></i><span> Conferences</span></a></div>
+					<div class="menu-link"><a href="collaborations.html"><i class="fa fa-handshake"></i><span> Collaborations</span></a></div>
+					<div class="menu-link"><a href="account-settings.html"><i class="fa fa-cog"></i><span> Settings</span></a></div>
+				</section>
+			</div>
+		</aside>
+		<!-- Mobile overlay -->
+		<div class="sidebar-overlay" id="sidebarOverlay"></div>
+		<!-- Main content -->
+		<main class="middle-part tw-flex-1 lg:tw-ml-[240px] tw-min-h-screen tw-px-4 md:tw-px-6 lg:tw-px-10 tw-pb-8">
+			<!-- Nav Bar -->
+			<div class="tw-flex tw-items-center tw-justify-between tw-py-4 tw-gap-3 tw-flex-wrap">
+				<div class="tw-flex tw-items-center tw-gap-3">
+					<i class="fa fa-bars tw-text-primary-400 tw-cursor-pointer tw-text-xl lg:tw-hidden menu-icon" id="menuToggle"></i>
+					<div class="shadcn-search tw-hidden sm:tw-flex tw-w-64">
+						<i class="fa fa-search"></i>
+						<input type="text" placeholder="Search...">
+					</div>
+				</div>
+				<div class="tw-flex tw-items-center tw-gap-3">
+					<button class="shadcn-btn shadcn-btn-ghost shadcn-btn-icon"><i class="fa fa-bell tw-text-primary-400"></i></button>
+					<div class="shadcn-avatar shadcn-avatar-md tw-cursor-pointer"><img src="Images/profile.png" alt="Profile"></div>
+				</div>
+			</div>
+			<!-- Inbox Card -->
+			<div class="shadcn-card tw-my-6 tw-overflow-hidden">
+				<div class="tw-grid tw-grid-cols-1 md:tw-grid-cols-[280px_1fr] tw-min-h-[500px]">
+					<!-- Left pane - contacts -->
+					<div class="inbox-left tw-border-r tw-border-surface-200 tw-overflow-y-auto shadcn-scrollbar tw-p-3">
+						<div class="message-head tw-flex tw-items-center tw-justify-between tw-mb-3">
+							<h5 class="second-color tw-font-bold tw-text-lg">
+								Messages
+							</h5>
+							<i class="theme-color fa fa-cog"></i>
+						</div>
+						<div class="mess-form">
+							<div class="people-sec">
+								<h5 class="second-color">
+									Teachers
+								</h5>
+								<div class="people-inn">
+									<img src="Images/instructor2.png">
+									<div>
+										<h5 class="second-color">
+											Lincoln
+										</h5>
+										<p>
+											Hlo 3:00 AM
+										</p>
+									</div>
+								</div>
+								<div class="people-inn">
+									<img src="Images/instructor1.png">
+									<div>
+										<h5 class="second-color">
+											Maren
+										</h5>
+										<p>
+											Hlo 3:00 AM
+										</p>
+									</div>
+								</div>
+							</div>
+							<div class="people-sec">
+								<h5 class="second-color">
+									Classmates
+								</h5>
+								<div class="people-inn inbox-active inbox-click">
+									<img src="Images/image6.png">
+									<div>
+										<h5 class="second-color">
+											Lindsey
+										</h5>
+										<p>
+											Thnkx 3:00 AM
+										</p>
+									</div>
+								</div>
+								<div class="people-inn">
+									<img src="Images/image3.png">
+									<div>
+										<h5 class="second-color">
+											Carter
+										</h5>
+										<p>
+											Thankx 3:00 AM
+										</p>
+									</div>
+								</div>
+								<div class="people-inn">
+									<img src="Images/image1.png">
+									<div>
+										<h5 class="second-color">
+											Rayna
+										</h5>
+										<p>
+											Thankx 3:00 AM
+										</p>
+									</div>
+								</div>
+								<div class="people-inn">
+									<img src="Images/image2.png">
+									<div>
+										<h5 class="second-color">
+											Jackson
+										</h5>
+										<p>
+											Thankx 3:00 AM
+										</p>
+									</div>
+								</div>
+								<div class="people-inn">
+									<img src="Images/image2.png">
+									<div>
+										<h5 class="second-color">
+											Jack
+										</h5>
+										<p>
+											Thankx 3:00 AM
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- Right pane - messages -->
+					<div class="inbox-right tw-flex tw-flex-col tw-hidden md:tw-flex">
+						<div class="message-head inbox-head tw-flex tw-items-center tw-justify-between tw-p-3 tw-border-b tw-border-surface-200">
+							<i class="fa fa-angle-left fa-2x inbox-back theme-color res-show"></i>
+							<div class="inbox-head-inn message-head tw-flex tw-items-center">
+								<img src="Images/image6.png">
+								<h5 class="second-color tw-ml-2.5 tw-font-bold tw-text-lg">
+									Lindsey
+								</h5>
+							</div>
+							<img src="Images/dots.png">
+						</div>
+						<div class="real-mess row tw-flex-1 tw-overflow-y-auto shadcn-scrollbar tw-p-3">
+							<div class="col-md-12">
+								<div class="row">
+									<div class="col-md-6">
+										<div class="real-mess-inn">
+											<img src="Images/image-inn.png">
+											<div class="mess-body">Hi</div>
+										</div>
+										<h5 class="second-color">5 min ago</h5>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-12">
+								<div class="row tw-justify-end">
+									<div class="col-md-6">
+										<div class="real-mess-inn">
+											<div class="mess-body">Hi</div>
+											<img src="Images/image-inn1.png" class="tw-ml-2.5">
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-12">
+								<div class="row">
+									<div class="col-md-6">
+										<div class="real-mess-inn">
+											<img src="Images/image-inn.png">
+											<div class="mess-body">
+												Pls send me
+												<br>
+												notes of previous class
+												<br>
+												pls.
+											</div>
+										</div>
+										<h5 class="second-color">2 min ago</h5>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-12">
+								<div class="row tw-justify-end">
+									<div class="col-md-6">
+										<div class="real-mess-inn">
+											<div class="mess-body">sure,wait</div>
+											<img src="Images/image-inn1.png" class="tw-ml-2.5">
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-12">
+								<div class="row tw-justify-end">
+									<div class="col-md-6">
+										<div class="real-mess-inn">
+											<div class="mess-body">
+												<img src="Images/media1.png">
+											</div>
+											<img src="Images/image-inn1.png" class="tw-ml-2.5">
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-12">
+								<div class="row">
+									<div class="col-md-6">
+										<div class="real-mess-inn">
+											<img src="Images/image-inn.png">
+											<div class="mess-body">thnkx</div>
+										</div>
+										<h5 class="second-color">Just now</h5>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-12">
+								<div class="row">
+									<div class="col-md-6">
+										<div class="real-mess-inn">
+											<img src="Images/image-inn.png">
+											<div class="mess-body">Hi</div>
+										</div>
+										<h5 class="second-color">5 min ago</h5>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-12">
+								<div class="row tw-justify-end">
+									<div class="col-md-6">
+										<div class="real-mess-inn">
+											<div class="mess-body">Hi</div>
+											<img src="Images/image-inn1.png" class="tw-ml-2.5">
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-12">
+								<div class="row">
+									<div class="col-md-6">
+										<div class="real-mess-inn">
+											<img src="Images/image-inn.png">
+											<div class="mess-body">
+												Pls send me
+												<br>
+												notes of previous class
+												<br>
+												pls.
+											</div>
+										</div>
+										<h5 class="second-color">2 min ago</h5>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-12">
+								<div class="row tw-justify-end">
+									<div class="col-md-6">
+										<div class="real-mess-inn">
+											<div class="mess-body">sure,wait</div>
+											<img src="Images/image-inn1.png" class="tw-ml-2.5">
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-12">
+								<div class="row tw-justify-end">
+									<div class="col-md-6">
+										<div class="real-mess-inn">
+											<div class="mess-body">
+												<img src="Images/media1.png">
+											</div>
+											<img src="Images/image-inn1.png" class="tw-ml-2.5">
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-12">
+								<div class="row">
+									<div class="col-md-6">
+										<div class="real-mess-inn">
+											<img src="Images/image-inn.png">
+											<div class="mess-body">thnkx</div>
+										</div>
+										<h5 class="second-color">Just now</h5>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="mess-field tw-flex tw-items-center tw-gap-2 tw-p-3 tw-border-t tw-border-surface-200">
+							<div class="mess-field-icon">
+								<img src="Images/attach-icon.png">
+							</div>
+							<div class="mess-field-icon">
+								<img src="Images/smile-icon.png">
+							</div>
+							<input class="shadcn-input tw-flex-1" type="text" name="" placeholder="Type a message...">
+							<div class="mess-field-send">
+								<i class="fa fa-angle-right fa-2x"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+		<!-- Right sidebar -->
+		<aside class="tw-hidden lg:tw-block tw-w-[280px] tw-flex-shrink-0 tw-pt-4 tw-px-5">
+			<div class="right-top">
+				<div>
+				<img src="Images/profile.png">
+				<p class="second-color">
+					RadicalCode
+				</p>
+				</div>
+				<i class="fa fa-cog"></i>
+				<i class="fa fa-bell"></i>
+			</div>
+			<div class="message-right">
+				<div class="message-pro">
+					<img src="Images/inbox-profile.png">
+					<h5 class="second-color">
+						Lindsey
+					</h5>
+					<p class="theme-color">
+						@lindsey211
+					</p>
+					<p class="theme-color tw-text-caption">
+						Ac massa ids gravida vestibulum alliquet diam prion.
+					</p>
+					<div class="pro-three">
+						<div class="pro-three-inn">
+							<i class="fa fa-user theme-color"></i>
+							<h5 class="second-color">
+								Profile
+							</h5>
+						</div>
+						<div class="pro-three-inn">
+							<img src="Images/report.png">
+							<h5 class="second-color">
+								Report
+							</h5>
+						</div>
+						<div class="pro-three-inn">
+							<img src="Images/block.png">
+							<h5 class="second-color">
+								Block
+							</h5>
+						</div>
+					</div>
+				</div>
+				<div class="message-gall">
+					<div class="message-head">
+						<h5 class="second-color">
+							Shared Media
+						</h5>
+						<h5 class="second-color">
+							See All
+						</h5>
+					</div>
+					<div class="row md-gall">
+						<div class="col-lg-6 col-sm-6">
+							<div><img src="Images/media1.png"></div>
+						</div>
+						<div class="col-lg-6 col-sm-6">
+							<div><img src="Images/media2.png"></div>
+						</div>
+						<div class="col-lg-6 col-sm-6">
+							<div><img src="Images/media3.png"></div>
+						</div>
+						<div class="col-lg-6 col-sm-6">
+							<div><img src="Images/media4.png"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</aside>
+	</div>
+<script type="text/javascript">
+	$(".inbox-click").click(function(){
+		$(".inbox-left").css("display","none");
+		$(".inbox-right").css("display","block");
+	})
+	$(".inbox-back").click(function(){
+		$(".inbox-left").css("display","block");
+		$(".inbox-right").css("display","none");
+	})
+</script>
+<script type="text/javascript">
+	$(".menu-icon, #menuToggle").click(function(){
+		$(".left-sidebar").removeClass("tw--translate-x-full").addClass("tw-translate-x-0");
+		$("#sidebarOverlay").addClass("active");
+		$("body").css("overflow","hidden");
+	});
+	$(".menu-hide, #sidebarOverlay").click(function(){
+		$(".left-sidebar").removeClass("tw-translate-x-0").addClass("tw--translate-x-full");
+		$("#sidebarOverlay").removeClass("active");
+		$("body").css("overflow","auto");
+	});
+
+	$(".calendar-icon").click(function(){
+		$(".right-sidebar").css("display","block")
+		$("body").css("overflow","hidden");
+	});
+</script>
+<script src="js/router.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/api.js"></script>
+<script src="js/render.js"></script>
+<script src="js/sidebar.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

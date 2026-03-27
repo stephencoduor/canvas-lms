@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	<title>ReDefiners - Prior Users</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+	<script src="https://cdn.tailwindcss.com"></script>
+	<script src="css/tailwind-config.js?v=3"></script>
+	<script src="https://kit.fontawesome.com/7a13c96681.js" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/tokens.css?v=3">
+	<link rel="stylesheet" type="text/css" href="css/shadcn.css?v=3">
+	<link rel="stylesheet" type="text/css" href="styles.css?v=3">
+</head>
+<body>
+	<div class="tw-flex tw-min-h-screen tw-font-poppins">
+		<aside class="left-sidebar tw-fixed tw-inset-y-0 tw-left-0 tw-w-[240px] tw-z-50 tw--translate-x-full lg:tw-translate-x-0 tw-transition-transform tw-duration-300 tw-overflow-y-auto shadcn-scrollbar">
+			<div class="menu-bar">
+				<section class="logo-section">
+					<i class="fa fa-times theme-color menu-hide"></i>
+					<img src="Images/logo.PNG" class="res-hide" alt="logo">
+					<div class="nav-input res-show-flex tw-mt-5">
+						<button class="tw-border tw-border-primary-400 tw-border-r-0 tw-bg-transparent tw-px-2"><i class="fa fa-search"></i></button>
+						<input class="tw-border tw-border-primary-400 tw-border-l-0 tw-w-[85%] tw-bg-transparent tw-px-2 tw-py-1 tw-outline-none" type="text" name="search" placeholder="Search">
+					</div>
+				</section>
+				<section class="menu-links">
+					<div class="menu-link"><a href="dashboard.html"><i class="fa fa-th-large"></i><span> Dashboard</span></a></div>
+					<div class="menu-link"><a href="courses.html"><i class="fa fa-clipboard-list"></i><span> Courses</span></a></div>
+					<div class="menu-link"><a href="calendar.html"><i class="fa fa-calendar-alt"></i><span> Calendar</span></a></div>
+					<div class="menu-link"><a href="announcement.html"><i class="fa fa-bullhorn"></i><span> Announcements</span></a></div>
+					<div class="menu-link"><a href="inbox.html"><i class="fa fa-comments"></i><span> Messages</span></a></div>
+					<div class="menu-link"><a href="assignments.html"><i class="fa fa-file-lines"></i><span> Assignments</span></a></div>
+					<div class="menu-link"><a href="grades.html"><i class="fa fa-chart-bar"></i><span> Grades</span></a></div>
+					<div class="menu-link"><a href="modules.html"><i class="fa fa-layer-group"></i><span> Modules</span></a></div>
+					<div class="menu-link"><a href="discussions.html"><i class="fa fa-comments-alt"></i><span> Discussions</span></a></div>
+					<div class="menu-link"><a href="quizzes.html"><i class="fa fa-question-circle"></i><span> Quizzes</span></a></div>
+					<div class="menu-link"><a href="pages.html"><i class="fa fa-file-alt"></i><span> Pages</span></a></div>
+					<div class="menu-link"><a href="files.html"><i class="fa fa-folder"></i><span> Files</span></a></div>
+					<div class="menu-link"><a href="people.html" class="active-menu"><i class="fa fa-users"></i><span> People</span></a></div>
+					<div class="menu-link"><a href="outcomes.html"><i class="fa fa-bullseye"></i><span> Outcomes</span></a></div>
+					<div class="menu-link"><a href="rubrics.html"><i class="fa fa-th"></i><span> Rubrics</span></a></div>
+					<div class="menu-link"><a href="groups.html"><i class="fa fa-user-friends"></i><span> Groups</span></a></div>
+					<div class="menu-link"><a href="conferences.html"><i class="fa fa-video"></i><span> Conferences</span></a></div>
+					<div class="menu-link"><a href="collaborations.html"><i class="fa fa-handshake"></i><span> Collaborations</span></a></div>
+					<div class="menu-link"><a href="account-settings.html"><i class="fa fa-cog"></i><span> Settings</span></a></div>
+				</section>
+			</div>
+		</aside>
+		<div class="sidebar-overlay" id="sidebarOverlay"></div>
+		<main class="middle-part tw-flex-1 lg:tw-ml-[240px] tw-min-h-screen tw-px-4 md:tw-px-6 lg:tw-px-10 tw-pb-8">
+			<div class="tw-flex tw-items-center tw-justify-between tw-py-4 tw-gap-3 tw-flex-wrap">
+				<div class="tw-flex tw-items-center tw-gap-3">
+					<i class="fa fa-bars tw-text-primary-400 tw-cursor-pointer tw-text-xl lg:tw-hidden menu-icon" id="menuToggle"></i>
+					<div class="shadcn-search tw-hidden sm:tw-flex tw-w-64">
+						<i class="fa fa-search"></i>
+						<input type="text" placeholder="Search courses, assignments...">
+					</div>
+				</div>
+				<div class="tw-flex tw-items-center tw-gap-3">
+					<button class="shadcn-btn shadcn-btn-ghost shadcn-btn-icon tw-relative"><i class="fa fa-bell tw-text-primary-400"></i></button>
+					<div class="shadcn-avatar shadcn-avatar-md tw-cursor-pointer profile-click"><img src="Images/profile.png" alt="Profile"></div>
+				</div>
+			</div>
+
+			<!-- Breadcrumb -->
+			<div class="tw-flex tw-items-center tw-gap-2 tw-text-sm tw-text-gray-500 tw-mb-6">
+				<a href="courses.html" class="theme-color tw-no-underline">Organic Chemistry II</a>
+				<i class="fa fa-chevron-right tw-text-xs"></i>
+				<a href="people.html" class="theme-color tw-no-underline">People</a>
+				<i class="fa fa-chevron-right tw-text-xs"></i>
+				<span class="second-color">Prior Enrollments</span>
+			</div>
+
+			<!-- Page Header -->
+			<div class="tw-flex tw-flex-col sm:tw-flex-row tw-items-start sm:tw-items-center tw-justify-between tw-mb-6 tw-gap-4">
+				<div>
+					<h4 class="second-color tw-font-semibold">
+						<i class="fa fa-user-clock theme-color tw-mr-2"></i> Prior Enrollments
+					</h4>
+					<p class="tw-text-sm tw-text-gray-500 tw-mt-1">Students who were previously enrolled in this course.</p>
+				</div>
+				<div class="tw-flex tw-gap-2">
+					<div class="shadcn-search tw-w-52">
+						<i class="fa fa-search"></i>
+						<input type="text" placeholder="Search prior users...">
+					</div>
+					<select class="shadcn-input tw-text-sm tw-w-36">
+						<option selected>All Terms</option>
+						<option>Fall 2025</option>
+						<option>Spring 2025</option>
+						<option>Fall 2024</option>
+					</select>
+				</div>
+			</div>
+
+			<!-- Summary -->
+			<div class="tw-grid tw-grid-cols-1 sm:tw-grid-cols-3 tw-gap-4 tw-mb-6">
+				<div class="shadcn-card tw-p-4 tw-text-center">
+					<div class="tw-text-2xl tw-font-bold theme-color">47</div>
+					<p class="tw-text-sm tw-text-gray-500">Total Prior Students</p>
+				</div>
+				<div class="shadcn-card tw-p-4 tw-text-center">
+					<div class="tw-text-2xl tw-font-bold tw-text-green-600">B+</div>
+					<p class="tw-text-sm tw-text-gray-500">Average Final Grade</p>
+				</div>
+				<div class="shadcn-card tw-p-4 tw-text-center">
+					<div class="tw-text-2xl tw-font-bold tw-text-blue-600">3</div>
+					<p class="tw-text-sm tw-text-gray-500">Terms Offered</p>
+				</div>
+			</div>
+
+			<!-- Prior Users Table -->
+			<div class="shadcn-card tw-p-5">
+				<div class="tw-overflow-x-auto">
+					<table class="tw-w-full tw-text-sm">
+						<thead>
+							<tr class="tw-border-b tw-text-left">
+								<th class="tw-py-3 tw-px-3 tw-font-medium second-color">Student</th>
+								<th class="tw-py-3 tw-px-3 tw-font-medium second-color">Role</th>
+								<th class="tw-py-3 tw-px-3 tw-font-medium second-color">Enrolled</th>
+								<th class="tw-py-3 tw-px-3 tw-font-medium second-color">Concluded</th>
+								<th class="tw-py-3 tw-px-3 tw-font-medium second-color">Final Grade</th>
+								<th class="tw-py-3 tw-px-3 tw-font-medium second-color">Last Activity</th>
+								<th class="tw-py-3 tw-px-3 tw-font-medium second-color">Actions</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr class="tw-border-b hover:tw-bg-gray-50">
+								<td class="tw-py-3 tw-px-3">
+									<div class="tw-flex tw-items-center tw-gap-2">
+										<div class="shadcn-avatar shadcn-avatar-sm"><img src="Images/profile.png" alt=""></div>
+										<div>
+											<p class="tw-font-medium second-color">Rachel Green</p>
+											<p class="tw-text-xs tw-text-gray-400">rachel.green@redefiners.edu</p>
+										</div>
+									</div>
+								</td>
+								<td class="tw-py-3 tw-px-3"><span class="tw-text-gray-500">Student</span></td>
+								<td class="tw-py-3 tw-px-3 tw-text-gray-500">Aug 25, 2025</td>
+								<td class="tw-py-3 tw-px-3 tw-text-gray-500">Dec 15, 2025</td>
+								<td class="tw-py-3 tw-px-3">
+									<span class="tw-bg-green-100 tw-text-green-700 tw-px-2 tw-py-0.5 tw-rounded tw-text-xs tw-font-medium">A- (91%)</span>
+								</td>
+								<td class="tw-py-3 tw-px-3 tw-text-gray-500">Dec 14, 2025</td>
+								<td class="tw-py-3 tw-px-3">
+									<button class="shadcn-btn shadcn-btn-outline tw-text-xs tw-h-7 tw-px-2">
+										<i class="fa fa-redo tw-mr-1"></i> Re-enroll
+									</button>
+								</td>
+							</tr>
+							<tr class="tw-border-b hover:tw-bg-gray-50">
+								<td class="tw-py-3 tw-px-3">
+									<div class="tw-flex tw-items-center tw-gap-2">
+										<div class="shadcn-avatar shadcn-avatar-sm"><img src="Images/profile.png" alt=""></div>
+										<div>
+											<p class="tw-font-medium second-color">Marcus Webb</p>
+											<p class="tw-text-xs tw-text-gray-400">marcus.webb@redefiners.edu</p>
+										</div>
+									</div>
+								</td>
+								<td class="tw-py-3 tw-px-3"><span class="tw-text-gray-500">Student</span></td>
+								<td class="tw-py-3 tw-px-3 tw-text-gray-500">Aug 25, 2025</td>
+								<td class="tw-py-3 tw-px-3 tw-text-gray-500">Dec 15, 2025</td>
+								<td class="tw-py-3 tw-px-3">
+									<span class="tw-bg-green-100 tw-text-green-700 tw-px-2 tw-py-0.5 tw-rounded tw-text-xs tw-font-medium">B+ (88%)</span>
+								</td>
+								<td class="tw-py-3 tw-px-3 tw-text-gray-500">Dec 12, 2025</td>
+								<td class="tw-py-3 tw-px-3">
+									<button class="shadcn-btn shadcn-btn-outline tw-text-xs tw-h-7 tw-px-2">
+										<i class="fa fa-redo tw-mr-1"></i> Re-enroll
+									</button>
+								</td>
+							</tr>
+							<tr class="tw-border-b hover:tw-bg-gray-50">
+								<td class="tw-py-3 tw-px-3">
+									<div class="tw-flex tw-items-center tw-gap-2">
+										<div class="shadcn-avatar shadcn-avatar-sm"><img src="Images/profile.png" alt=""></div>
+										<div>
+											<p class="tw-font-medium second-color">Lin Zhang</p>
+											<p class="tw-text-xs tw-text-gray-400">lin.zhang@redefiners.edu</p>
+										</div>
+									</div>
+								</td>
+								<td class="tw-py-3 tw-px-3"><span class="tw-text-gray-500">Student</span></td>
+								<td class="tw-py-3 tw-px-3 tw-text-gray-500">Aug 25, 2025</td>
+								<td class="tw-py-3 tw-px-3 tw-text-gray-500">Oct 30, 2025</td>
+								<td class="tw-py-3 tw-px-3">
+									<span class="tw-bg-yellow-100 tw-text-yellow-700 tw-px-2 tw-py-0.5 tw-rounded tw-text-xs tw-font-medium">W (Withdrawn)</span>
+								</td>
+								<td class="tw-py-3 tw-px-3 tw-text-gray-500">Oct 28, 2025</td>
+								<td class="tw-py-3 tw-px-3">
+									<button class="shadcn-btn shadcn-btn-outline tw-text-xs tw-h-7 tw-px-2">
+										<i class="fa fa-redo tw-mr-1"></i> Re-enroll
+									</button>
+								</td>
+							</tr>
+							<tr class="tw-border-b hover:tw-bg-gray-50">
+								<td class="tw-py-3 tw-px-3">
+									<div class="tw-flex tw-items-center tw-gap-2">
+										<div class="shadcn-avatar shadcn-avatar-sm"><img src="Images/profile.png" alt=""></div>
+										<div>
+											<p class="tw-font-medium second-color">Priya Sharma</p>
+											<p class="tw-text-xs tw-text-gray-400">priya.sharma@redefiners.edu</p>
+										</div>
+									</div>
+								</td>
+								<td class="tw-py-3 tw-px-3"><span class="tw-text-gray-500">Student</span></td>
+								<td class="tw-py-3 tw-px-3 tw-text-gray-500">Aug 25, 2025</td>
+								<td class="tw-py-3 tw-px-3 tw-text-gray-500">Dec 15, 2025</td>
+								<td class="tw-py-3 tw-px-3">
+									<span class="tw-bg-blue-100 tw-text-blue-700 tw-px-2 tw-py-0.5 tw-rounded tw-text-xs tw-font-medium">A (95%)</span>
+								</td>
+								<td class="tw-py-3 tw-px-3 tw-text-gray-500">Dec 15, 2025</td>
+								<td class="tw-py-3 tw-px-3">
+									<button class="shadcn-btn shadcn-btn-outline tw-text-xs tw-h-7 tw-px-2">
+										<i class="fa fa-redo tw-mr-1"></i> Re-enroll
+									</button>
+								</td>
+							</tr>
+							<tr class="tw-border-b hover:tw-bg-gray-50">
+								<td class="tw-py-3 tw-px-3">
+									<div class="tw-flex tw-items-center tw-gap-2">
+										<div class="shadcn-avatar shadcn-avatar-sm"><img src="Images/profile.png" alt=""></div>
+										<div>
+											<p class="tw-font-medium second-color">Kevin O'Brien</p>
+											<p class="tw-text-xs tw-text-gray-400">kevin.obrien@redefiners.edu</p>
+										</div>
+									</div>
+								</td>
+								<td class="tw-py-3 tw-px-3"><span class="tw-text-purple-500">TA</span></td>
+								<td class="tw-py-3 tw-px-3 tw-text-gray-500">Aug 20, 2025</td>
+								<td class="tw-py-3 tw-px-3 tw-text-gray-500">Dec 15, 2025</td>
+								<td class="tw-py-3 tw-px-3">
+									<span class="tw-bg-gray-100 tw-text-gray-500 tw-px-2 tw-py-0.5 tw-rounded tw-text-xs tw-font-medium">N/A</span>
+								</td>
+								<td class="tw-py-3 tw-px-3 tw-text-gray-500">Dec 15, 2025</td>
+								<td class="tw-py-3 tw-px-3">
+									<button class="shadcn-btn shadcn-btn-outline tw-text-xs tw-h-7 tw-px-2">
+										<i class="fa fa-redo tw-mr-1"></i> Re-enroll
+									</button>
+								</td>
+							</tr>
+							<tr class="tw-border-b hover:tw-bg-gray-50">
+								<td class="tw-py-3 tw-px-3">
+									<div class="tw-flex tw-items-center tw-gap-2">
+										<div class="shadcn-avatar shadcn-avatar-sm"><img src="Images/profile.png" alt=""></div>
+										<div>
+											<p class="tw-font-medium second-color">Jordan Taylor</p>
+											<p class="tw-text-xs tw-text-gray-400">jordan.taylor@redefiners.edu</p>
+										</div>
+									</div>
+								</td>
+								<td class="tw-py-3 tw-px-3"><span class="tw-text-gray-500">Student</span></td>
+								<td class="tw-py-3 tw-px-3 tw-text-gray-500">Aug 25, 2025</td>
+								<td class="tw-py-3 tw-px-3 tw-text-gray-500">Dec 15, 2025</td>
+								<td class="tw-py-3 tw-px-3">
+									<span class="tw-bg-orange-100 tw-text-orange-700 tw-px-2 tw-py-0.5 tw-rounded tw-text-xs tw-font-medium">C+ (78%)</span>
+								</td>
+								<td class="tw-py-3 tw-px-3 tw-text-gray-500">Dec 10, 2025</td>
+								<td class="tw-py-3 tw-px-3">
+									<button class="shadcn-btn shadcn-btn-outline tw-text-xs tw-h-7 tw-px-2">
+										<i class="fa fa-redo tw-mr-1"></i> Re-enroll
+									</button>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<!-- Pagination -->
+				<div class="tw-flex tw-items-center tw-justify-between tw-mt-4">
+					<span class="tw-text-sm tw-text-gray-500">Showing 1-6 of 47 prior enrollments</span>
+					<div class="tw-flex tw-gap-1">
+						<button class="shadcn-btn shadcn-btn-outline shadcn-btn-icon tw-h-8 tw-w-8" disabled><i class="fa fa-chevron-left tw-text-xs"></i></button>
+						<button class="shadcn-btn shadcn-btn-primary tw-h-8 tw-w-8 tw-text-xs">1</button>
+						<button class="shadcn-btn shadcn-btn-outline tw-h-8 tw-w-8 tw-text-xs">2</button>
+						<button class="shadcn-btn shadcn-btn-outline tw-h-8 tw-w-8 tw-text-xs">3</button>
+						<button class="shadcn-btn shadcn-btn-outline tw-h-8 tw-w-8 tw-text-xs">...</button>
+						<button class="shadcn-btn shadcn-btn-outline tw-h-8 tw-w-8 tw-text-xs">8</button>
+						<button class="shadcn-btn shadcn-btn-outline shadcn-btn-icon tw-h-8 tw-w-8"><i class="fa fa-chevron-right tw-text-xs"></i></button>
+					</div>
+				</div>
+			</div>
+		</main>
+	</div>
+	<script src="js/sidebar.js"></script>
+<script src="js/router.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/api.js"></script>
+<script src="js/render.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

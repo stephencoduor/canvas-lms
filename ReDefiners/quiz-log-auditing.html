@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	<title>ReDefiners - Quiz Log Auditing</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+	<script src="https://cdn.tailwindcss.com"></script>
+	<script src="css/tailwind-config.js?v=3"></script>
+	<script src="https://kit.fontawesome.com/7a13c96681.js" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/tokens.css?v=3">
+	<link rel="stylesheet" type="text/css" href="css/shadcn.css?v=3">
+	<link rel="stylesheet" type="text/css" href="styles.css?v=3">
+</head>
+<body>
+	<div class="tw-flex tw-min-h-screen tw-font-poppins">
+		<aside class="left-sidebar tw-fixed tw-inset-y-0 tw-left-0 tw-w-[240px] tw-z-50 tw--translate-x-full lg:tw-translate-x-0 tw-transition-transform tw-duration-300 tw-overflow-y-auto shadcn-scrollbar">
+			<div class="menu-bar">
+				<section class="logo-section">
+					<i class="fa fa-times theme-color menu-hide"></i>
+					<img src="Images/logo.PNG" class="res-hide" alt="logo">
+					<div class="nav-input res-show-flex tw-mt-5">
+						<button class="tw-border tw-border-primary-400 tw-border-r-0 tw-bg-transparent tw-px-2"><i class="fa fa-search"></i></button>
+						<input class="tw-border tw-border-primary-400 tw-border-l-0 tw-w-[85%] tw-bg-transparent tw-px-2 tw-py-1 tw-outline-none" type="text" name="search" placeholder="Search">
+					</div>
+				</section>
+				<section class="menu-links">
+					<div class="menu-link"><a href="dashboard.html"><i class="fa fa-th-large"></i><span> Dashboard</span></a></div>
+					<div class="menu-link"><a href="courses.html"><i class="fa fa-clipboard-list"></i><span> Courses</span></a></div>
+					<div class="menu-link"><a href="calendar.html"><i class="fa fa-calendar-alt"></i><span> Calendar</span></a></div>
+					<div class="menu-link"><a href="announcement.html"><i class="fa fa-bullhorn"></i><span> Announcements</span></a></div>
+					<div class="menu-link"><a href="inbox.html"><i class="fa fa-comments"></i><span> Messages</span></a></div>
+					<div class="menu-link"><a href="assignments.html"><i class="fa fa-file-lines"></i><span> Assignments</span></a></div>
+					<div class="menu-link"><a href="grades.html"><i class="fa fa-chart-bar"></i><span> Grades</span></a></div>
+					<div class="menu-link"><a href="modules.html"><i class="fa fa-layer-group"></i><span> Modules</span></a></div>
+					<div class="menu-link"><a href="discussions.html"><i class="fa fa-comments-alt"></i><span> Discussions</span></a></div>
+					<div class="menu-link"><a href="quizzes.html" class="active-menu"><i class="fa fa-question-circle"></i><span> Quizzes</span></a></div>
+					<div class="menu-link"><a href="pages.html"><i class="fa fa-file-alt"></i><span> Pages</span></a></div>
+					<div class="menu-link"><a href="files.html"><i class="fa fa-folder"></i><span> Files</span></a></div>
+					<div class="menu-link"><a href="people.html"><i class="fa fa-users"></i><span> People</span></a></div>
+					<div class="menu-link"><a href="outcomes.html"><i class="fa fa-bullseye"></i><span> Outcomes</span></a></div>
+					<div class="menu-link"><a href="rubrics.html"><i class="fa fa-th"></i><span> Rubrics</span></a></div>
+					<div class="menu-link"><a href="groups.html"><i class="fa fa-user-friends"></i><span> Groups</span></a></div>
+					<div class="menu-link"><a href="conferences.html"><i class="fa fa-video"></i><span> Conferences</span></a></div>
+					<div class="menu-link"><a href="collaborations.html"><i class="fa fa-handshake"></i><span> Collaborations</span></a></div>
+					<div class="menu-link"><a href="account-settings.html"><i class="fa fa-cog"></i><span> Settings</span></a></div>
+				</section>
+			</div>
+		</aside>
+		<div class="sidebar-overlay" id="sidebarOverlay"></div>
+		<main class="middle-part tw-flex-1 lg:tw-ml-[240px] tw-min-h-screen tw-px-4 md:tw-px-6 lg:tw-px-10 tw-pb-8">
+			<div class="tw-flex tw-items-center tw-justify-between tw-py-4 tw-gap-3 tw-flex-wrap">
+				<div class="tw-flex tw-items-center tw-gap-3">
+					<i class="fa fa-bars tw-text-primary-400 tw-cursor-pointer tw-text-xl lg:tw-hidden menu-icon" id="menuToggle"></i>
+					<div class="shadcn-search tw-hidden sm:tw-flex tw-w-64"><i class="fa fa-search"></i><input type="text" placeholder="Search courses, assignments..."></div>
+				</div>
+				<div class="tw-flex tw-items-center tw-gap-3">
+					<button class="shadcn-btn shadcn-btn-ghost shadcn-btn-icon tw-relative"><i class="fa fa-bell tw-text-primary-400"></i></button>
+					<div class="shadcn-avatar shadcn-avatar-md tw-cursor-pointer profile-click"><img src="Images/profile.png" alt="Profile"></div>
+				</div>
+			</div>
+
+			<!-- Header -->
+			<div class="tw-flex tw-flex-col sm:tw-flex-row tw-items-start sm:tw-items-center tw-justify-between tw-py-6 tw-gap-4">
+				<div>
+					<nav class="tw-text-sm tw-text-gray-500 tw-mb-2">
+						<a href="courses.html" class="theme-color tw-no-underline">Courses</a>
+						<i class="fa fa-chevron-right tw-text-xs tw-mx-1"></i>
+						<a href="quizzes.html" class="theme-color tw-no-underline">Quizzes</a>
+						<i class="fa fa-chevron-right tw-text-xs tw-mx-1"></i>
+						<span class="tw-text-gray-400">Quiz Log Auditing</span>
+					</nav>
+					<h3 class="second-color">Quiz Log: Midterm Exam - Biology 101</h3>
+					<p class="tw-text-gray-500 tw-text-sm tw-mt-1">Review timestamped events and detect suspicious activity during quiz attempts</p>
+				</div>
+				<button class="shadcn-btn shadcn-btn-outline tw-text-sm"><i class="fa fa-download tw-mr-1"></i> Export Log</button>
+			</div>
+
+			<!-- Student Selector and Attempt Info -->
+			<div class="shadcn-card tw-p-4 tw-mb-6">
+				<div class="tw-flex tw-flex-wrap tw-items-center tw-gap-4">
+					<div class="tw-flex tw-items-center tw-gap-2">
+						<label class="tw-text-sm tw-text-gray-600">Student:</label>
+						<select class="shadcn-input tw-w-52 tw-text-sm">
+							<option>Marcus Johnson</option>
+							<option>Emily Chen</option>
+							<option>Sarah Williams</option>
+							<option>David Park</option>
+						</select>
+					</div>
+					<div class="tw-flex tw-items-center tw-gap-2">
+						<label class="tw-text-sm tw-text-gray-600">Attempt:</label>
+						<select class="shadcn-input tw-w-32 tw-text-sm">
+							<option>Attempt 1</option>
+							<option>Attempt 2</option>
+						</select>
+					</div>
+					<div class="tw-flex tw-items-center tw-gap-2 tw-ml-auto">
+						<span class="tw-text-sm tw-text-gray-500">Started: Mar 15, 2025 10:02 AM</span>
+						<span class="tw-text-gray-300">|</span>
+						<span class="tw-text-sm tw-text-gray-500">Submitted: Mar 15, 2025 10:58 AM</span>
+						<span class="tw-text-gray-300">|</span>
+						<span class="tw-text-sm tw-font-medium second-color">Duration: 56 min</span>
+					</div>
+				</div>
+			</div>
+
+			<!-- Flagged Events Summary -->
+			<div class="tw-grid tw-grid-cols-1 sm:tw-grid-cols-3 tw-gap-4 tw-mb-6">
+				<div class="shadcn-card tw-p-4 tw-border-l-4 tw-border-l-red-500">
+					<div class="tw-flex tw-items-center tw-gap-3">
+						<div class="tw-w-10 tw-h-10 tw-rounded-full tw-bg-red-100 tw-flex tw-items-center tw-justify-center">
+							<i class="fa fa-flag tw-text-red-600"></i>
+						</div>
+						<div>
+							<p class="tw-text-xs tw-text-gray-500">Flagged Events</p>
+							<p class="tw-text-lg tw-font-semibold tw-text-red-600">4</p>
+						</div>
+					</div>
+				</div>
+				<div class="shadcn-card tw-p-4 tw-border-l-4 tw-border-l-yellow-500">
+					<div class="tw-flex tw-items-center tw-gap-3">
+						<div class="tw-w-10 tw-h-10 tw-rounded-full tw-bg-yellow-100 tw-flex tw-items-center tw-justify-center">
+							<i class="fa fa-eye-slash tw-text-yellow-600"></i>
+						</div>
+						<div>
+							<p class="tw-text-xs tw-text-gray-500">Page Blur Events</p>
+							<p class="tw-text-lg tw-font-semibold tw-text-yellow-600">6</p>
+						</div>
+					</div>
+				</div>
+				<div class="shadcn-card tw-p-4 tw-border-l-4 tw-border-l-blue-500">
+					<div class="tw-flex tw-items-center tw-gap-3">
+						<div class="tw-w-10 tw-h-10 tw-rounded-full tw-bg-blue-100 tw-flex tw-items-center tw-justify-center">
+							<i class="fa fa-exchange-alt tw-text-blue-600"></i>
+						</div>
+						<div>
+							<p class="tw-text-xs tw-text-gray-500">Answer Changes</p>
+							<p class="tw-text-lg tw-font-semibold tw-text-blue-600">8</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Answer Timeline -->
+			<div class="shadcn-card tw-p-5 tw-mb-6">
+				<h5 class="second-color tw-font-semibold tw-mb-4"><i class="fa fa-clock tw-mr-2"></i>Answer Timeline</h5>
+				<div class="tw-flex tw-items-center tw-gap-1 tw-overflow-x-auto tw-pb-2">
+					<div class="tw-flex tw-flex-col tw-items-center tw-min-w-[60px]">
+						<div class="tw-w-8 tw-h-8 tw-rounded-full tw-bg-green-500 tw-text-white tw-flex tw-items-center tw-justify-center tw-text-xs tw-font-bold">Q1</div>
+						<div class="tw-w-0.5 tw-h-4 tw-bg-gray-300"></div>
+						<span class="tw-text-xs tw-text-gray-400">0:02</span>
+					</div>
+					<div class="tw-h-0.5 tw-w-6 tw-bg-gray-300 tw-flex-shrink-0"></div>
+					<div class="tw-flex tw-flex-col tw-items-center tw-min-w-[60px]">
+						<div class="tw-w-8 tw-h-8 tw-rounded-full tw-bg-green-500 tw-text-white tw-flex tw-items-center tw-justify-center tw-text-xs tw-font-bold">Q2</div>
+						<div class="tw-w-0.5 tw-h-4 tw-bg-gray-300"></div>
+						<span class="tw-text-xs tw-text-gray-400">3:15</span>
+					</div>
+					<div class="tw-h-0.5 tw-w-6 tw-bg-gray-300 tw-flex-shrink-0"></div>
+					<div class="tw-flex tw-flex-col tw-items-center tw-min-w-[60px]">
+						<div class="tw-w-8 tw-h-8 tw-rounded-full tw-bg-yellow-500 tw-text-white tw-flex tw-items-center tw-justify-center tw-text-xs tw-font-bold">Q3</div>
+						<div class="tw-w-0.5 tw-h-4 tw-bg-gray-300"></div>
+						<span class="tw-text-xs tw-text-gray-400">8:42</span>
+						<span class="tw-text-xs tw-text-yellow-600">changed</span>
+					</div>
+					<div class="tw-h-0.5 tw-w-6 tw-bg-gray-300 tw-flex-shrink-0"></div>
+					<div class="tw-flex tw-flex-col tw-items-center tw-min-w-[60px]">
+						<div class="tw-w-8 tw-h-8 tw-rounded-full tw-bg-red-500 tw-text-white tw-flex tw-items-center tw-justify-center tw-text-xs tw-font-bold">Q4</div>
+						<div class="tw-w-0.5 tw-h-4 tw-bg-gray-300"></div>
+						<span class="tw-text-xs tw-text-gray-400">15:30</span>
+						<span class="tw-text-xs tw-text-red-600">flagged</span>
+					</div>
+					<div class="tw-h-0.5 tw-w-6 tw-bg-gray-300 tw-flex-shrink-0"></div>
+					<div class="tw-flex tw-flex-col tw-items-center tw-min-w-[60px]">
+						<div class="tw-w-8 tw-h-8 tw-rounded-full tw-bg-green-500 tw-text-white tw-flex tw-items-center tw-justify-center tw-text-xs tw-font-bold">Q5</div>
+						<div class="tw-w-0.5 tw-h-4 tw-bg-gray-300"></div>
+						<span class="tw-text-xs tw-text-gray-400">22:10</span>
+					</div>
+					<div class="tw-h-0.5 tw-w-6 tw-bg-gray-300 tw-flex-shrink-0"></div>
+					<div class="tw-flex tw-flex-col tw-items-center tw-min-w-[60px]">
+						<div class="tw-w-8 tw-h-8 tw-rounded-full tw-bg-green-500 tw-text-white tw-flex tw-items-center tw-justify-center tw-text-xs tw-font-bold">Q6</div>
+						<div class="tw-w-0.5 tw-h-4 tw-bg-gray-300"></div>
+						<span class="tw-text-xs tw-text-gray-400">35:00</span>
+					</div>
+				</div>
+			</div>
+
+			<!-- Event Log Table -->
+			<div class="shadcn-card tw-overflow-hidden">
+				<div class="tw-p-4 tw-border-b tw-flex tw-items-center tw-justify-between">
+					<h5 class="second-color tw-font-semibold">Detailed Event Log</h5>
+					<div class="tw-flex tw-gap-2">
+						<select class="shadcn-input tw-w-40 tw-text-sm">
+							<option>All Events</option>
+							<option>Flagged Only</option>
+							<option>Page Blur/Focus</option>
+							<option>Answer Changes</option>
+						</select>
+					</div>
+				</div>
+				<div class="tw-overflow-x-auto">
+					<table class="tw-w-full tw-text-sm">
+						<thead class="tw-bg-gray-50">
+							<tr>
+								<th class="tw-px-4 tw-py-3 tw-text-left tw-font-medium tw-text-gray-600">Timestamp</th>
+								<th class="tw-px-4 tw-py-3 tw-text-left tw-font-medium tw-text-gray-600">Elapsed</th>
+								<th class="tw-px-4 tw-py-3 tw-text-left tw-font-medium tw-text-gray-600">Event Type</th>
+								<th class="tw-px-4 tw-py-3 tw-text-left tw-font-medium tw-text-gray-600">Details</th>
+								<th class="tw-px-4 tw-py-3 tw-text-center tw-font-medium tw-text-gray-600">Status</th>
+							</tr>
+						</thead>
+						<tbody class="tw-divide-y">
+							<tr>
+								<td class="tw-px-4 tw-py-3 tw-text-gray-500 tw-font-mono tw-text-xs">10:02:00 AM</td>
+								<td class="tw-px-4 tw-py-3 tw-text-xs">0:00</td>
+								<td class="tw-px-4 tw-py-3"><span class="tw-bg-blue-100 tw-text-blue-700 tw-px-2 tw-py-0.5 tw-rounded-full tw-text-xs"><i class="fa fa-play tw-mr-1"></i>Quiz Started</span></td>
+								<td class="tw-px-4 tw-py-3 tw-text-gray-600">Student opened quiz, page focused</td>
+								<td class="tw-px-4 tw-py-3 tw-text-center"><i class="fa fa-check-circle tw-text-green-500"></i></td>
+							</tr>
+							<tr>
+								<td class="tw-px-4 tw-py-3 tw-text-gray-500 tw-font-mono tw-text-xs">10:02:45 AM</td>
+								<td class="tw-px-4 tw-py-3 tw-text-xs">0:45</td>
+								<td class="tw-px-4 tw-py-3"><span class="tw-bg-green-100 tw-text-green-700 tw-px-2 tw-py-0.5 tw-rounded-full tw-text-xs"><i class="fa fa-pencil-alt tw-mr-1"></i>Answer Saved</span></td>
+								<td class="tw-px-4 tw-py-3 tw-text-gray-600">Q1: Selected answer A - Phospholipid bilayer</td>
+								<td class="tw-px-4 tw-py-3 tw-text-center"><i class="fa fa-check-circle tw-text-green-500"></i></td>
+							</tr>
+							<tr>
+								<td class="tw-px-4 tw-py-3 tw-text-gray-500 tw-font-mono tw-text-xs">10:05:15 AM</td>
+								<td class="tw-px-4 tw-py-3 tw-text-xs">3:15</td>
+								<td class="tw-px-4 tw-py-3"><span class="tw-bg-green-100 tw-text-green-700 tw-px-2 tw-py-0.5 tw-rounded-full tw-text-xs"><i class="fa fa-pencil-alt tw-mr-1"></i>Answer Saved</span></td>
+								<td class="tw-px-4 tw-py-3 tw-text-gray-600">Q2: Selected answer B - ATP production</td>
+								<td class="tw-px-4 tw-py-3 tw-text-center"><i class="fa fa-check-circle tw-text-green-500"></i></td>
+							</tr>
+							<tr class="tw-bg-yellow-50">
+								<td class="tw-px-4 tw-py-3 tw-text-gray-500 tw-font-mono tw-text-xs">10:07:30 AM</td>
+								<td class="tw-px-4 tw-py-3 tw-text-xs">5:30</td>
+								<td class="tw-px-4 tw-py-3"><span class="tw-bg-yellow-100 tw-text-yellow-700 tw-px-2 tw-py-0.5 tw-rounded-full tw-text-xs"><i class="fa fa-eye-slash tw-mr-1"></i>Page Blurred</span></td>
+								<td class="tw-px-4 tw-py-3 tw-text-gray-600">Student navigated away from quiz tab</td>
+								<td class="tw-px-4 tw-py-3 tw-text-center"><i class="fa fa-exclamation-triangle tw-text-yellow-500"></i></td>
+							</tr>
+							<tr class="tw-bg-yellow-50">
+								<td class="tw-px-4 tw-py-3 tw-text-gray-500 tw-font-mono tw-text-xs">10:07:48 AM</td>
+								<td class="tw-px-4 tw-py-3 tw-text-xs">5:48</td>
+								<td class="tw-px-4 tw-py-3"><span class="tw-bg-blue-100 tw-text-blue-700 tw-px-2 tw-py-0.5 tw-rounded-full tw-text-xs"><i class="fa fa-eye tw-mr-1"></i>Page Focused</span></td>
+								<td class="tw-px-4 tw-py-3 tw-text-gray-600">Student returned to quiz tab (18 seconds away)</td>
+								<td class="tw-px-4 tw-py-3 tw-text-center"><i class="fa fa-exclamation-triangle tw-text-yellow-500"></i></td>
+							</tr>
+							<tr>
+								<td class="tw-px-4 tw-py-3 tw-text-gray-500 tw-font-mono tw-text-xs">10:10:42 AM</td>
+								<td class="tw-px-4 tw-py-3 tw-text-xs">8:42</td>
+								<td class="tw-px-4 tw-py-3"><span class="tw-bg-orange-100 tw-text-orange-700 tw-px-2 tw-py-0.5 tw-rounded-full tw-text-xs"><i class="fa fa-exchange-alt tw-mr-1"></i>Answer Changed</span></td>
+								<td class="tw-px-4 tw-py-3 tw-text-gray-600">Q3: Changed from A to B, then to C - Uncompetitive</td>
+								<td class="tw-px-4 tw-py-3 tw-text-center"><i class="fa fa-info-circle tw-text-blue-500"></i></td>
+							</tr>
+							<tr class="tw-bg-red-50">
+								<td class="tw-px-4 tw-py-3 tw-text-gray-500 tw-font-mono tw-text-xs">10:15:10 AM</td>
+								<td class="tw-px-4 tw-py-3 tw-text-xs">13:10</td>
+								<td class="tw-px-4 tw-py-3"><span class="tw-bg-yellow-100 tw-text-yellow-700 tw-px-2 tw-py-0.5 tw-rounded-full tw-text-xs"><i class="fa fa-eye-slash tw-mr-1"></i>Page Blurred</span></td>
+								<td class="tw-px-4 tw-py-3 tw-text-gray-600">Student navigated away from quiz tab</td>
+								<td class="tw-px-4 tw-py-3 tw-text-center"><i class="fa fa-flag tw-text-red-500"></i></td>
+							</tr>
+							<tr class="tw-bg-red-50">
+								<td class="tw-px-4 tw-py-3 tw-text-gray-500 tw-font-mono tw-text-xs">10:17:30 AM</td>
+								<td class="tw-px-4 tw-py-3 tw-text-xs">15:30</td>
+								<td class="tw-px-4 tw-py-3"><span class="tw-bg-blue-100 tw-text-blue-700 tw-px-2 tw-py-0.5 tw-rounded-full tw-text-xs"><i class="fa fa-eye tw-mr-1"></i>Page Focused</span></td>
+								<td class="tw-px-4 tw-py-3 tw-text-gray-600">Student returned to quiz tab (2 min 20 sec away) - Extended absence flagged</td>
+								<td class="tw-px-4 tw-py-3 tw-text-center"><i class="fa fa-flag tw-text-red-500"></i></td>
+							</tr>
+							<tr class="tw-bg-red-50">
+								<td class="tw-px-4 tw-py-3 tw-text-gray-500 tw-font-mono tw-text-xs">10:17:45 AM</td>
+								<td class="tw-px-4 tw-py-3 tw-text-xs">15:45</td>
+								<td class="tw-px-4 tw-py-3"><span class="tw-bg-orange-100 tw-text-orange-700 tw-px-2 tw-py-0.5 tw-rounded-full tw-text-xs"><i class="fa fa-exchange-alt tw-mr-1"></i>Answer Changed</span></td>
+								<td class="tw-px-4 tw-py-3 tw-text-gray-600">Q4: Answer changed immediately after return from extended absence</td>
+								<td class="tw-px-4 tw-py-3 tw-text-center"><i class="fa fa-flag tw-text-red-500"></i></td>
+							</tr>
+							<tr>
+								<td class="tw-px-4 tw-py-3 tw-text-gray-500 tw-font-mono tw-text-xs">10:24:10 AM</td>
+								<td class="tw-px-4 tw-py-3 tw-text-xs">22:10</td>
+								<td class="tw-px-4 tw-py-3"><span class="tw-bg-green-100 tw-text-green-700 tw-px-2 tw-py-0.5 tw-rounded-full tw-text-xs"><i class="fa fa-pencil-alt tw-mr-1"></i>Answer Saved</span></td>
+								<td class="tw-px-4 tw-py-3 tw-text-gray-600">Q5: Selected answer C - 6CO2 + 6H2O + light energy</td>
+								<td class="tw-px-4 tw-py-3 tw-text-center"><i class="fa fa-check-circle tw-text-green-500"></i></td>
+							</tr>
+							<tr>
+								<td class="tw-px-4 tw-py-3 tw-text-gray-500 tw-font-mono tw-text-xs">10:37:00 AM</td>
+								<td class="tw-px-4 tw-py-3 tw-text-xs">35:00</td>
+								<td class="tw-px-4 tw-py-3"><span class="tw-bg-green-100 tw-text-green-700 tw-px-2 tw-py-0.5 tw-rounded-full tw-text-xs"><i class="fa fa-pencil-alt tw-mr-1"></i>Answer Saved</span></td>
+								<td class="tw-px-4 tw-py-3 tw-text-gray-600">Q6: Essay response submitted (342 words)</td>
+								<td class="tw-px-4 tw-py-3 tw-text-center"><i class="fa fa-check-circle tw-text-green-500"></i></td>
+							</tr>
+							<tr>
+								<td class="tw-px-4 tw-py-3 tw-text-gray-500 tw-font-mono tw-text-xs">10:58:00 AM</td>
+								<td class="tw-px-4 tw-py-3 tw-text-xs">56:00</td>
+								<td class="tw-px-4 tw-py-3"><span class="tw-bg-purple-100 tw-text-purple-700 tw-px-2 tw-py-0.5 tw-rounded-full tw-text-xs"><i class="fa fa-paper-plane tw-mr-1"></i>Quiz Submitted</span></td>
+								<td class="tw-px-4 tw-py-3 tw-text-gray-600">Quiz submitted with 4 minutes remaining</td>
+								<td class="tw-px-4 tw-py-3 tw-text-center"><i class="fa fa-check-circle tw-text-green-500"></i></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</main>
+	</div>
+	<script src="js/sidebar.js"></script>
+<script src="js/router.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/api.js"></script>
+<script src="js/render.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

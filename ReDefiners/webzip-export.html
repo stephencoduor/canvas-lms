@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	<title>ReDefiners - Web ZIP Export</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+	<script src="https://cdn.tailwindcss.com"></script>
+	<script src="css/tailwind-config.js?v=3"></script>
+	<script src="https://kit.fontawesome.com/7a13c96681.js" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/tokens.css?v=3">
+	<link rel="stylesheet" type="text/css" href="css/shadcn.css?v=3">
+	<link rel="stylesheet" type="text/css" href="styles.css?v=3">
+</head>
+<body>
+	<div class="tw-flex tw-min-h-screen tw-font-poppins">
+		<aside class="left-sidebar tw-fixed tw-inset-y-0 tw-left-0 tw-w-[240px] tw-z-50 tw--translate-x-full lg:tw-translate-x-0 tw-transition-transform tw-duration-300 tw-overflow-y-auto shadcn-scrollbar">
+			<div class="menu-bar">
+				<section class="logo-section">
+					<i class="fa fa-times theme-color menu-hide"></i>
+					<img src="Images/logo.PNG" class="res-hide" alt="logo">
+					<div class="nav-input res-show-flex tw-mt-5">
+						<button class="tw-border tw-border-primary-400 tw-border-r-0 tw-bg-transparent tw-px-2"><i class="fa fa-search"></i></button>
+						<input class="tw-border tw-border-primary-400 tw-border-l-0 tw-w-[85%] tw-bg-transparent tw-px-2 tw-py-1 tw-outline-none" type="text" name="search" placeholder="Search">
+					</div>
+				</section>
+				<section class="menu-links">
+					<div class="menu-link"><a href="dashboard.html"><i class="fa fa-th-large"></i><span> Dashboard</span></a></div>
+					<div class="menu-link"><a href="courses.html"><i class="fa fa-clipboard-list"></i><span> Courses</span></a></div>
+					<div class="menu-link"><a href="calendar.html"><i class="fa fa-calendar-alt"></i><span> Calendar</span></a></div>
+					<div class="menu-link"><a href="announcement.html"><i class="fa fa-bullhorn"></i><span> Announcements</span></a></div>
+					<div class="menu-link"><a href="inbox.html"><i class="fa fa-comments"></i><span> Messages</span></a></div>
+					<div class="menu-link"><a href="assignments.html"><i class="fa fa-file-lines"></i><span> Assignments</span></a></div>
+					<div class="menu-link"><a href="grades.html"><i class="fa fa-chart-bar"></i><span> Grades</span></a></div>
+					<div class="menu-link"><a href="modules.html"><i class="fa fa-layer-group"></i><span> Modules</span></a></div>
+					<div class="menu-link"><a href="discussions.html"><i class="fa fa-comments-alt"></i><span> Discussions</span></a></div>
+					<div class="menu-link"><a href="quizzes.html"><i class="fa fa-question-circle"></i><span> Quizzes</span></a></div>
+					<div class="menu-link"><a href="pages.html"><i class="fa fa-file-alt"></i><span> Pages</span></a></div>
+					<div class="menu-link"><a href="files.html"><i class="fa fa-folder"></i><span> Files</span></a></div>
+					<div class="menu-link"><a href="people.html"><i class="fa fa-users"></i><span> People</span></a></div>
+					<div class="menu-link"><a href="outcomes.html"><i class="fa fa-bullseye"></i><span> Outcomes</span></a></div>
+					<div class="menu-link"><a href="rubrics.html"><i class="fa fa-th"></i><span> Rubrics</span></a></div>
+					<div class="menu-link"><a href="groups.html"><i class="fa fa-user-friends"></i><span> Groups</span></a></div>
+					<div class="menu-link"><a href="conferences.html"><i class="fa fa-video"></i><span> Conferences</span></a></div>
+					<div class="menu-link"><a href="collaborations.html"><i class="fa fa-handshake"></i><span> Collaborations</span></a></div>
+					<div class="menu-link"><a href="account-settings.html" class="active-menu"><i class="fa fa-cog"></i><span> Settings</span></a></div>
+				</section>
+			</div>
+		</aside>
+		<div class="sidebar-overlay" id="sidebarOverlay"></div>
+		<main class="middle-part tw-flex-1 lg:tw-ml-[240px] tw-min-h-screen tw-px-4 md:tw-px-6 lg:tw-px-10 tw-pb-8">
+			<div class="tw-flex tw-items-center tw-justify-between tw-py-4 tw-gap-3 tw-flex-wrap">
+				<div class="tw-flex tw-items-center tw-gap-3">
+					<i class="fa fa-bars tw-text-primary-400 tw-cursor-pointer tw-text-xl lg:tw-hidden menu-icon" id="menuToggle"></i>
+					<div class="shadcn-search tw-hidden sm:tw-flex tw-w-64">
+						<i class="fa fa-search"></i>
+						<input type="text" placeholder="Search courses, assignments...">
+					</div>
+				</div>
+				<div class="tw-flex tw-items-center tw-gap-3">
+					<button class="shadcn-btn shadcn-btn-ghost shadcn-btn-icon tw-relative"><i class="fa fa-bell tw-text-primary-400"></i></button>
+					<div class="shadcn-avatar shadcn-avatar-md tw-cursor-pointer profile-click"><img src="Images/profile.png" alt="Profile"></div>
+				</div>
+			</div>
+
+			<!-- Breadcrumb -->
+			<div class="tw-flex tw-items-center tw-gap-2 tw-text-sm tw-text-gray-500 tw-mb-6">
+				<a href="courses.html" class="theme-color tw-no-underline">Organic Chemistry II</a>
+				<i class="fa fa-chevron-right tw-text-xs"></i>
+				<a href="course-settings.html" class="theme-color tw-no-underline">Settings</a>
+				<i class="fa fa-chevron-right tw-text-xs"></i>
+				<span class="second-color">Web ZIP Export</span>
+			</div>
+
+			<!-- Page Header -->
+			<div class="tw-flex tw-flex-col sm:tw-flex-row tw-items-start sm:tw-items-center tw-justify-between tw-mb-6 tw-gap-4">
+				<div>
+					<h4 class="second-color tw-font-semibold">
+						<i class="fa fa-file-archive theme-color tw-mr-2"></i> Web ZIP Export
+					</h4>
+					<p class="tw-text-sm tw-text-gray-500 tw-mt-1">Export your entire course as an offline-viewable website packaged in a ZIP file.</p>
+				</div>
+			</div>
+
+			<div class="tw-grid tw-grid-cols-1 lg:tw-grid-cols-3 tw-gap-6">
+				<!-- Export Configuration -->
+				<div class="lg:tw-col-span-2">
+					<!-- Content Selection -->
+					<div class="shadcn-card tw-p-6 tw-mb-6">
+						<h5 class="second-color tw-font-semibold tw-mb-4">
+							<i class="fa fa-check-square tw-mr-2 theme-color"></i> Select Content to Export
+						</h5>
+						<div class="tw-mb-3">
+							<label class="tw-flex tw-items-center tw-gap-2 tw-cursor-pointer tw-mb-3">
+								<input type="checkbox" class="tw-w-4 tw-h-4 tw-accent-blue-600" checked>
+								<span class="tw-text-sm tw-font-medium second-color">Select All Content</span>
+							</label>
+						</div>
+						<div class="tw-space-y-2 tw-pl-6">
+							<label class="tw-flex tw-items-center tw-justify-between tw-gap-2 tw-cursor-pointer tw-p-2 tw-rounded hover:tw-bg-gray-50">
+								<div class="tw-flex tw-items-center tw-gap-2">
+									<input type="checkbox" class="tw-w-4 tw-h-4 tw-accent-blue-600" checked>
+									<i class="fa fa-layer-group tw-text-blue-500 tw-w-5 tw-text-center"></i>
+									<span class="tw-text-sm second-color">Modules (8 modules)</span>
+								</div>
+								<span class="tw-text-xs tw-text-gray-400">~12 MB</span>
+							</label>
+							<label class="tw-flex tw-items-center tw-justify-between tw-gap-2 tw-cursor-pointer tw-p-2 tw-rounded hover:tw-bg-gray-50">
+								<div class="tw-flex tw-items-center tw-gap-2">
+									<input type="checkbox" class="tw-w-4 tw-h-4 tw-accent-blue-600" checked>
+									<i class="fa fa-file-lines tw-text-green-500 tw-w-5 tw-text-center"></i>
+									<span class="tw-text-sm second-color">Assignments (24 assignments)</span>
+								</div>
+								<span class="tw-text-xs tw-text-gray-400">~4 MB</span>
+							</label>
+							<label class="tw-flex tw-items-center tw-justify-between tw-gap-2 tw-cursor-pointer tw-p-2 tw-rounded hover:tw-bg-gray-50">
+								<div class="tw-flex tw-items-center tw-gap-2">
+									<input type="checkbox" class="tw-w-4 tw-h-4 tw-accent-blue-600" checked>
+									<i class="fa fa-file-alt tw-text-purple-500 tw-w-5 tw-text-center"></i>
+									<span class="tw-text-sm second-color">Pages (15 pages)</span>
+								</div>
+								<span class="tw-text-xs tw-text-gray-400">~3 MB</span>
+							</label>
+							<label class="tw-flex tw-items-center tw-justify-between tw-gap-2 tw-cursor-pointer tw-p-2 tw-rounded hover:tw-bg-gray-50">
+								<div class="tw-flex tw-items-center tw-gap-2">
+									<input type="checkbox" class="tw-w-4 tw-h-4 tw-accent-blue-600" checked>
+									<i class="fa fa-comments-alt tw-text-orange-500 tw-w-5 tw-text-center"></i>
+									<span class="tw-text-sm second-color">Discussions (10 topics)</span>
+								</div>
+								<span class="tw-text-xs tw-text-gray-400">~2 MB</span>
+							</label>
+							<label class="tw-flex tw-items-center tw-justify-between tw-gap-2 tw-cursor-pointer tw-p-2 tw-rounded hover:tw-bg-gray-50">
+								<div class="tw-flex tw-items-center tw-gap-2">
+									<input type="checkbox" class="tw-w-4 tw-h-4 tw-accent-blue-600" checked>
+									<i class="fa fa-question-circle tw-text-teal-500 tw-w-5 tw-text-center"></i>
+									<span class="tw-text-sm second-color">Quizzes (6 quizzes)</span>
+								</div>
+								<span class="tw-text-xs tw-text-gray-400">~1 MB</span>
+							</label>
+							<label class="tw-flex tw-items-center tw-justify-between tw-gap-2 tw-cursor-pointer tw-p-2 tw-rounded hover:tw-bg-gray-50">
+								<div class="tw-flex tw-items-center tw-gap-2">
+									<input type="checkbox" class="tw-w-4 tw-h-4 tw-accent-blue-600" checked>
+									<i class="fa fa-folder tw-text-yellow-500 tw-w-5 tw-text-center"></i>
+									<span class="tw-text-sm second-color">Files (42 files)</span>
+								</div>
+								<span class="tw-text-xs tw-text-gray-400">~85 MB</span>
+							</label>
+							<label class="tw-flex tw-items-center tw-justify-between tw-gap-2 tw-cursor-pointer tw-p-2 tw-rounded hover:tw-bg-gray-50">
+								<div class="tw-flex tw-items-center tw-gap-2">
+									<input type="checkbox" class="tw-w-4 tw-h-4 tw-accent-blue-600">
+									<i class="fa fa-book tw-text-indigo-500 tw-w-5 tw-text-center"></i>
+									<span class="tw-text-sm second-color">Syllabus</span>
+								</div>
+								<span class="tw-text-xs tw-text-gray-400">~0.5 MB</span>
+							</label>
+						</div>
+						<div class="tw-flex tw-items-center tw-justify-between tw-mt-4 tw-pt-4 tw-border-t">
+							<span class="tw-text-sm tw-text-gray-500">Estimated total size:</span>
+							<span class="tw-text-sm tw-font-bold second-color">~107.5 MB</span>
+						</div>
+					</div>
+
+					<!-- Download Progress -->
+					<div class="shadcn-card tw-p-6 tw-mb-6">
+						<h5 class="second-color tw-font-semibold tw-mb-4">
+							<i class="fa fa-download tw-mr-2 theme-color"></i> Export Progress
+						</h5>
+						<!-- Active Export -->
+						<div class="tw-bg-blue-50 tw-border tw-border-blue-200 tw-rounded-lg tw-p-4 tw-mb-4">
+							<div class="tw-flex tw-items-center tw-justify-between tw-mb-2">
+								<div class="tw-flex tw-items-center tw-gap-2">
+									<i class="fa fa-spinner fa-spin tw-text-blue-500"></i>
+									<span class="tw-text-sm tw-font-medium second-color">Exporting course content...</span>
+								</div>
+								<span class="tw-text-sm tw-font-bold tw-text-blue-600">68%</span>
+							</div>
+							<div class="tw-bg-blue-200 tw-rounded-full tw-h-3 tw-overflow-hidden">
+								<div class="tw-h-full tw-rounded-full tw-bg-blue-500 tw-transition-all tw-duration-500" style="width: 68%"></div>
+							</div>
+							<div class="tw-flex tw-items-center tw-justify-between tw-mt-2 tw-text-xs tw-text-gray-500">
+								<span>Processing: Module 5 of 8 - Lab Safety Protocols</span>
+								<span>Estimated time remaining: 2 min</span>
+							</div>
+						</div>
+
+						<button class="shadcn-btn shadcn-btn-primary tw-w-full">
+							<i class="fa fa-file-archive tw-mr-1"></i> Generate New Export
+						</button>
+					</div>
+				</div>
+
+				<!-- Previous Exports & Info -->
+				<div class="lg:tw-col-span-1">
+					<!-- Info Card -->
+					<div class="shadcn-card tw-p-5 tw-mb-6">
+						<h6 class="second-color tw-font-semibold tw-mb-3">
+							<i class="fa fa-info-circle tw-mr-1 theme-color"></i> About Web ZIP Export
+						</h6>
+						<div class="tw-space-y-3 tw-text-sm tw-text-gray-600">
+							<p>Web ZIP exports package your course content as a self-contained website that can be viewed offline in any web browser.</p>
+							<div class="tw-bg-gray-50 tw-rounded tw-p-3">
+								<p class="tw-font-medium second-color tw-text-xs tw-mb-1">Included in export:</p>
+								<ul class="tw-text-xs tw-text-gray-500 tw-list-disc tw-pl-4 tw-space-y-0.5">
+									<li>HTML pages with navigation</li>
+									<li>Embedded images and media</li>
+									<li>Downloadable file attachments</li>
+									<li>Table of contents index</li>
+								</ul>
+							</div>
+							<div class="tw-bg-yellow-50 tw-rounded tw-p-3 tw-border tw-border-yellow-200">
+								<p class="tw-text-xs tw-text-yellow-700"><i class="fa fa-exclamation-triangle tw-mr-1"></i>Interactive elements like quizzes and external tools will be exported as static snapshots and cannot be submitted offline.</p>
+							</div>
+						</div>
+					</div>
+
+					<!-- Previous Exports -->
+					<div class="shadcn-card tw-p-5">
+						<h6 class="second-color tw-font-semibold tw-mb-3">
+							<i class="fa fa-history tw-mr-1 theme-color"></i> Previous Exports
+						</h6>
+						<div class="tw-space-y-3">
+							<div class="tw-p-3 tw-border tw-rounded-lg">
+								<div class="tw-flex tw-items-center tw-justify-between tw-mb-1">
+									<p class="tw-text-sm tw-font-medium second-color">Full Course Export</p>
+									<span class="tw-bg-green-100 tw-text-green-700 tw-px-2 tw-py-0.5 tw-rounded tw-text-xs">Ready</span>
+								</div>
+								<p class="tw-text-xs tw-text-gray-400 tw-mb-2">March 20, 2026 - 94.2 MB</p>
+								<div class="tw-flex tw-gap-2">
+									<button class="shadcn-btn shadcn-btn-outline tw-text-xs tw-h-7 tw-flex-1">
+										<i class="fa fa-download tw-mr-1"></i> Download
+									</button>
+									<button class="shadcn-btn shadcn-btn-ghost shadcn-btn-icon tw-h-7 tw-w-7" title="Delete">
+										<i class="fa fa-trash tw-text-xs tw-text-red-400"></i>
+									</button>
+								</div>
+							</div>
+							<div class="tw-p-3 tw-border tw-rounded-lg">
+								<div class="tw-flex tw-items-center tw-justify-between tw-mb-1">
+									<p class="tw-text-sm tw-font-medium second-color">Modules Only</p>
+									<span class="tw-bg-green-100 tw-text-green-700 tw-px-2 tw-py-0.5 tw-rounded tw-text-xs">Ready</span>
+								</div>
+								<p class="tw-text-xs tw-text-gray-400 tw-mb-2">March 10, 2026 - 15.8 MB</p>
+								<div class="tw-flex tw-gap-2">
+									<button class="shadcn-btn shadcn-btn-outline tw-text-xs tw-h-7 tw-flex-1">
+										<i class="fa fa-download tw-mr-1"></i> Download
+									</button>
+									<button class="shadcn-btn shadcn-btn-ghost shadcn-btn-icon tw-h-7 tw-w-7" title="Delete">
+										<i class="fa fa-trash tw-text-xs tw-text-red-400"></i>
+									</button>
+								</div>
+							</div>
+							<div class="tw-p-3 tw-border tw-rounded-lg tw-opacity-60">
+								<div class="tw-flex tw-items-center tw-justify-between tw-mb-1">
+									<p class="tw-text-sm tw-font-medium second-color">Full Course Export</p>
+									<span class="tw-bg-red-100 tw-text-red-700 tw-px-2 tw-py-0.5 tw-rounded tw-text-xs">Expired</span>
+								</div>
+								<p class="tw-text-xs tw-text-gray-400 tw-mb-2">February 15, 2026 - Expired after 30 days</p>
+								<button class="shadcn-btn shadcn-btn-outline tw-text-xs tw-h-7 tw-w-full">
+									<i class="fa fa-redo tw-mr-1"></i> Regenerate
+								</button>
+							</div>
+						</div>
+						<p class="tw-text-xs tw-text-gray-400 tw-mt-3 tw-text-center">Exports expire after 30 days</p>
+					</div>
+				</div>
+			</div>
+		</main>
+	</div>
+	<script src="js/sidebar.js"></script>
+<script src="js/router.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/api.js"></script>
+<script src="js/render.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

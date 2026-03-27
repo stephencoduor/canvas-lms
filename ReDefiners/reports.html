@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	<title>ReDefiners - Reports & Analytics</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+	<script src="https://cdn.tailwindcss.com"></script>
+	<script src="css/tailwind-config.js?v=3"></script>
+	<script src="https://kit.fontawesome.com/7a13c96681.js" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/tokens.css?v=3">
+	<link rel="stylesheet" type="text/css" href="css/shadcn.css?v=3">
+	<link rel="stylesheet" type="text/css" href="styles.css?v=3">
+	<style>
+		.report-tab { padding: 10px 20px; font-size: 13px; font-weight: 600; border: none; background: none; cursor: pointer; color: #668B91; border-bottom: 2px solid transparent; transition: all 0.2s; }
+		.report-tab.active { color: var(--color-primary-700); border-bottom-color: var(--color-primary-400); }
+		.report-tab:hover:not(.active) { color: var(--color-primary-700); }
+		.report-card { border: 1px solid #e5e7eb; border-radius: 12px; padding: 20px; transition: all 0.2s; }
+		.report-card:hover { border-color: var(--color-primary-400); box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+		.report-card .report-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+		.date-input { border: 1px solid #e5e7eb; border-radius: 8px; padding: 8px 12px; font-size: 13px; color: #334155; outline: none; }
+		.date-input:focus { border-color: var(--color-primary-400); }
+		.reports-table { width: 100%; border-collapse: collapse; }
+		.reports-table th { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: #668B91; padding: 12px 16px; border-bottom: 2px solid #e5e7eb; text-align: left; }
+		.reports-table td { padding: 12px 16px; border-bottom: 1px solid #f0f0f0; font-size: 13px; color: #334155; }
+		.reports-table tr:hover { background: #f8fafb; }
+	</style>
+</head>
+<body>
+<div class="tw-flex tw-min-h-screen tw-font-poppins">
+	<aside class="left-sidebar tw-fixed tw-inset-y-0 tw-left-0 tw-w-[240px] tw-z-50 tw--translate-x-full lg:tw-translate-x-0 tw-transition-transform tw-duration-300 tw-overflow-y-auto shadcn-scrollbar">
+		<div class="menu-bar">
+			<section class="logo-section">
+				<i class="fa fa-times theme-color menu-hide"></i>
+				<img src="Images/logo.PNG" class="res-hide" alt="logo">
+				<div class="nav-input res-show-flex tw-mt-5">
+					<button class="tw-border tw-border-primary-400 tw-border-r-0 tw-bg-transparent tw-px-2"><i class="fa fa-search"></i></button>
+					<input class="tw-border tw-border-primary-400 tw-border-l-0 tw-w-[85%] tw-bg-transparent tw-px-2 tw-py-1 tw-outline-none" type="text" name="search" placeholder="Search">
+				</div>
+			</section>
+			<section class="menu-links">
+				<div class="menu-link"><a href="dashboard.html"><i class="fa fa-th-large"></i><span> Dashboard</span></a></div>
+				<div class="menu-link"><a href="courses.html"><i class="fa fa-clipboard-list"></i><span> Courses</span></a></div>
+				<div class="menu-link"><a href="calendar.html"><i class="fa fa-calendar-alt"></i><span> Calendar</span></a></div>
+				<div class="menu-link"><a href="announcement.html"><i class="fa fa-bullhorn"></i><span> Announcements</span></a></div>
+				<div class="menu-link"><a href="inbox.html"><i class="fa fa-comments"></i><span> Messages</span></a></div>
+				<div class="menu-link"><a href="assignments.html"><i class="fa fa-file-lines"></i><span> Assignments</span></a></div>
+				<div class="menu-link"><a href="grades.html"><i class="fa fa-chart-bar"></i><span> Grades</span></a></div>
+				<div class="menu-link"><a href="modules.html"><i class="fa fa-layer-group"></i><span> Modules</span></a></div>
+				<div class="menu-link"><a href="discussions.html"><i class="fa fa-comments-alt"></i><span> Discussions</span></a></div>
+				<div class="menu-link"><a href="quizzes.html"><i class="fa fa-question-circle"></i><span> Quizzes</span></a></div>
+				<div class="menu-link"><a href="pages.html"><i class="fa fa-file-alt"></i><span> Pages</span></a></div>
+				<div class="menu-link"><a href="files.html"><i class="fa fa-folder"></i><span> Files</span></a></div>
+				<div class="menu-link"><a href="people.html"><i class="fa fa-users"></i><span> People</span></a></div>
+				<div class="menu-link"><a href="outcomes.html"><i class="fa fa-bullseye"></i><span> Outcomes</span></a></div>
+				<div class="menu-link"><a href="rubrics.html"><i class="fa fa-th"></i><span> Rubrics</span></a></div>
+				<div class="menu-link"><a href="groups.html"><i class="fa fa-user-friends"></i><span> Groups</span></a></div>
+				<div class="menu-link"><a href="conferences.html"><i class="fa fa-video"></i><span> Conferences</span></a></div>
+				<div class="menu-link"><a href="collaborations.html"><i class="fa fa-handshake"></i><span> Collaborations</span></a></div>
+				<div class="menu-link"><a href="account-settings.html" class="active-menu"><i class="fa fa-cog"></i><span> Settings</span></a></div>
+			</section>
+		</div>
+	</aside>
+	<div class="sidebar-overlay" id="sidebarOverlay"></div>
+	<main class="middle-part tw-flex-1 lg:tw-ml-[240px] tw-min-h-screen tw-px-4 md:tw-px-6 lg:tw-px-10 tw-pb-8">
+		<!-- Nav Bar -->
+		<div class="tw-flex tw-items-center tw-justify-between tw-py-4 tw-gap-3 tw-flex-wrap">
+			<div class="tw-flex tw-items-center tw-gap-3">
+				<i class="fa fa-bars tw-text-primary-400 tw-cursor-pointer tw-text-xl lg:tw-hidden menu-icon" id="menuToggle"></i>
+				<div class="shadcn-search tw-hidden sm:tw-flex tw-w-64">
+					<i class="fa fa-search"></i>
+					<input type="text" placeholder="Search courses, assignments...">
+				</div>
+			</div>
+			<div class="tw-flex tw-items-center tw-gap-3">
+				<div class="tw-hidden sm:tw-flex tw-items-center tw-gap-2 tw-bg-accent-orange tw-text-white tw-rounded-token-md tw-px-3 tw-py-1.5 tw-text-caption-sm">
+					<i class="fa fa-bullhorn tw-text-xs"></i>
+					<span>New announcements available</span>
+				</div>
+				<button class="shadcn-btn shadcn-btn-ghost shadcn-btn-icon tw-relative">
+					<i class="fa fa-bell tw-text-primary-400"></i>
+				</button>
+				<div class="shadcn-avatar shadcn-avatar-md tw-cursor-pointer profile-click">
+					<img src="Images/profile.png" alt="Profile">
+				</div>
+			</div>
+		</div>
+
+		<!-- Page Header -->
+		<div class="tw-flex tw-flex-col sm:tw-flex-row tw-items-start sm:tw-items-center tw-justify-between tw-py-6 tw-gap-4">
+			<div>
+				<h3 class="second-color">Reports & Analytics</h3>
+				<p class="tw-text-sm tw-text-gray-500 tw-mt-1">Generate and download reports for student progress, enrollment, and compliance</p>
+			</div>
+		</div>
+
+		<!-- Report Category Tabs -->
+		<div class="tw-flex tw-border-b tw-border-gray-200 tw-mb-5 tw-overflow-x-auto">
+			<button class="report-tab active">Enrollment</button>
+			<button class="report-tab">Grades</button>
+			<button class="report-tab">Activity</button>
+			<button class="report-tab">Compliance</button>
+		</div>
+
+		<!-- Date Range Picker -->
+		<div class="tw-flex tw-items-center tw-gap-3 tw-mb-5 tw-flex-wrap">
+			<span class="tw-text-sm tw-font-medium tw-text-gray-600">Date Range:</span>
+			<input type="date" class="date-input" value="2026-01-01">
+			<span class="tw-text-sm tw-text-gray-400">to</span>
+			<input type="date" class="date-input" value="2026-03-25">
+			<button class="shadcn-btn shadcn-btn-outline tw-text-xs">Apply</button>
+		</div>
+
+		<!-- Report Cards Grid -->
+		<div class="tw-grid tw-grid-cols-1 md:tw-grid-cols-2 tw-gap-4 tw-mb-6">
+			<div class="report-card">
+				<div class="tw-flex tw-items-start tw-gap-3">
+					<div class="report-icon" style="background:#e8f4fd;color:#3B82F6;"><i class="fa fa-user-graduate"></i></div>
+					<div class="tw-flex-1">
+						<h6 class="second-color tw-font-semibold">Student Enrollment Report</h6>
+						<p class="tw-text-xs tw-text-gray-500 tw-mt-1">View enrollment data across all language programs including new registrations, withdrawals, and waitlist status by term.</p>
+						<button class="shadcn-btn shadcn-btn-primary tw-text-xs tw-mt-3"><i class="fa fa-file-export tw-mr-1"></i> Generate</button>
+					</div>
+				</div>
+			</div>
+			<div class="report-card">
+				<div class="tw-flex tw-items-start tw-gap-3">
+					<div class="report-icon" style="background:#D4EFE6;color:#2DB88A;"><i class="fa fa-chart-bar"></i></div>
+					<div class="tw-flex-1">
+						<h6 class="second-color tw-font-semibold">Grade Distribution Report</h6>
+						<p class="tw-text-xs tw-text-gray-500 tw-mt-1">Analyze grade distributions across courses, sections, and instructors. Includes pass rates and average scores per language level.</p>
+						<button class="shadcn-btn shadcn-btn-primary tw-text-xs tw-mt-3"><i class="fa fa-file-export tw-mr-1"></i> Generate</button>
+					</div>
+				</div>
+			</div>
+			<div class="report-card">
+				<div class="tw-flex tw-items-start tw-gap-3">
+					<div class="report-icon" style="background:#fff3e0;color:#FF6B35;"><i class="fa fa-chart-line"></i></div>
+					<div class="tw-flex-1">
+						<h6 class="second-color tw-font-semibold">Course Activity Report</h6>
+						<p class="tw-text-xs tw-text-gray-500 tw-mt-1">Track student engagement metrics including page views, assignment submissions, discussion posts, and time spent per course.</p>
+						<button class="shadcn-btn shadcn-btn-primary tw-text-xs tw-mt-3"><i class="fa fa-file-export tw-mr-1"></i> Generate</button>
+					</div>
+				</div>
+			</div>
+			<div class="report-card">
+				<div class="tw-flex tw-items-start tw-gap-3">
+					<div class="report-icon" style="background:#f3e8ff;color:#8B5CF6;"><i class="fa fa-tasks"></i></div>
+					<div class="tw-flex-1">
+						<h6 class="second-color tw-font-semibold">Student Progress Report</h6>
+						<p class="tw-text-xs tw-text-gray-500 tw-mt-1">Monitor individual student progress through learning outcomes, mastery levels, and competency benchmarks for each language track.</p>
+						<button class="shadcn-btn shadcn-btn-primary tw-text-xs tw-mt-3"><i class="fa fa-file-export tw-mr-1"></i> Generate</button>
+					</div>
+				</div>
+			</div>
+			<div class="report-card">
+				<div class="tw-flex tw-items-start tw-gap-3">
+					<div class="report-icon" style="background:#e8f4fd;color:#3B82F6;"><i class="fa fa-sign-in-alt"></i></div>
+					<div class="tw-flex-1">
+						<h6 class="second-color tw-font-semibold">Login Activity Report</h6>
+						<p class="tw-text-xs tw-text-gray-500 tw-mt-1">Review user login frequency, session duration, and access patterns. Identify inactive accounts and peak usage times.</p>
+						<button class="shadcn-btn shadcn-btn-primary tw-text-xs tw-mt-3"><i class="fa fa-file-export tw-mr-1"></i> Generate</button>
+					</div>
+				</div>
+			</div>
+			<div class="report-card">
+				<div class="tw-flex tw-items-start tw-gap-3">
+					<div class="report-icon" style="background:#D4EFE6;color:#2DB88A;"><i class="fa fa-database"></i></div>
+					<div class="tw-flex-1">
+						<h6 class="second-color tw-font-semibold">SIS Import Report</h6>
+						<p class="tw-text-xs tw-text-gray-500 tw-mt-1">Review history of Student Information System data imports including success rates, error logs, and data sync status.</p>
+						<button class="shadcn-btn shadcn-btn-primary tw-text-xs tw-mt-3"><i class="fa fa-file-export tw-mr-1"></i> Generate</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Generated Reports Table -->
+		<div class="shadcn-card tw-p-5">
+			<h5 class="second-color tw-mb-4">Generated Reports</h5>
+			<div class="tw-overflow-x-auto">
+				<table class="reports-table">
+					<thead>
+						<tr>
+							<th>Report Name</th>
+							<th>Created</th>
+							<th>Type</th>
+							<th>Size</th>
+							<th>Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="tw-font-medium"><i class="fa fa-file-csv tw-text-green-500 tw-mr-2"></i>Spring 2026 Enrollment Summary</td>
+							<td>Mar 20, 2026</td>
+							<td>CSV</td>
+							<td>245 KB</td>
+							<td><button class="shadcn-btn shadcn-btn-outline tw-text-xs"><i class="fa fa-download tw-mr-1"></i> Download</button></td>
+						</tr>
+						<tr>
+							<td class="tw-font-medium"><i class="fa fa-file-pdf tw-text-red-500 tw-mr-2"></i>Q1 Grade Distribution - All Languages</td>
+							<td>Mar 15, 2026</td>
+							<td>PDF</td>
+							<td>1.2 MB</td>
+							<td><button class="shadcn-btn shadcn-btn-outline tw-text-xs"><i class="fa fa-download tw-mr-1"></i> Download</button></td>
+						</tr>
+						<tr>
+							<td class="tw-font-medium"><i class="fa fa-file-csv tw-text-green-500 tw-mr-2"></i>February 2026 Login Activity</td>
+							<td>Mar 1, 2026</td>
+							<td>CSV</td>
+							<td>89 KB</td>
+							<td><button class="shadcn-btn shadcn-btn-outline tw-text-xs"><i class="fa fa-download tw-mr-1"></i> Download</button></td>
+						</tr>
+						<tr>
+							<td class="tw-font-medium"><i class="fa fa-file-pdf tw-text-red-500 tw-mr-2"></i>Student Progress - Spanish Program</td>
+							<td>Feb 28, 2026</td>
+							<td>PDF</td>
+							<td>890 KB</td>
+							<td><button class="shadcn-btn shadcn-btn-outline tw-text-xs"><i class="fa fa-download tw-mr-1"></i> Download</button></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</main>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+<script>$(".button-collapse").sideNav();</script>
+<script src="js/router.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/api.js"></script>
+<script src="js/render.js"></script>
+<script src="js/sidebar.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

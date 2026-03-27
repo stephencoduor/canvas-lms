@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	<title>ReDefiners</title>
+								<!-- --- Bootstrap 5 --- -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+								<!-- --- Tailwind CSS + Config --- -->
+	<script src="https://cdn.tailwindcss.com"></script>
+	<script src="css/tailwind-config.js?v=3"></script>
+								<!-- --- Font Awesome --- -->
+	<script src="https://kit.fontawesome.com/7a13c96681.js" crossorigin="anonymous"></script>
+								<!-- --- jQuery --- -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+								<!-- --- Text Font --- -->
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+								<!-- --- Custom Css --- -->
+	<link rel="stylesheet" type="text/css" href="css/tokens.css?v=3">
+	<link rel="stylesheet" type="text/css" href="css/shadcn.css?v=3">
+	<link rel="stylesheet" type="text/css" href="styles.css?v=3">
+</head>
+<body>
+	<div class="tw-flex tw-min-h-screen tw-font-poppins">
+		<!-- Sidebar -->
+		<aside class="left-sidebar tw-fixed tw-inset-y-0 tw-left-0 tw-w-[240px] tw-z-50 tw--translate-x-full lg:tw-translate-x-0 tw-transition-transform tw-duration-300 tw-overflow-y-auto shadcn-scrollbar">
+			<div class="menu-bar">
+				<section class="logo-section">
+					<i class="fa fa-times theme-color menu-hide"></i>
+					<img src="Images/logo.PNG" class="res-hide" alt="logo">
+					<div class="nav-input res-show-flex tw-mt-5">
+						<button class="tw-border tw-border-primary-400 tw-border-r-0 tw-bg-transparent tw-px-2">
+							<i class="fa fa-search"></i>
+						</button>
+						<input class="tw-border tw-border-primary-400 tw-border-l-0 tw-w-[85%] tw-bg-transparent tw-px-2 tw-py-1 tw-outline-none" type="text" name="search" placeholder="Search">
+					</div>
+				</section>
+				<section class="menu-links">
+					<div class="menu-link"><a href="dashboard.html"><i class="fa fa-th-large"></i><span> Dashboard</span></a></div>
+					<div class="menu-link"><a href="courses.html"><i class="fa fa-clipboard-list"></i><span> Courses</span></a></div>
+					<div class="menu-link"><a href="calendar.html"><i class="fa fa-calendar-alt"></i><span> Calendar</span></a></div>
+					<div class="menu-link"><a href="announcement.html"><i class="fa fa-bullhorn"></i><span> Announcements</span></a></div>
+					<div class="menu-link"><a href="inbox.html"><i class="fa fa-comments"></i><span> Messages</span></a></div>
+					<div class="menu-link"><a href="assignments.html"><i class="fa fa-file-lines"></i><span> Assignments</span></a></div>
+					<div class="menu-link"><a href="grades.html"><i class="fa fa-chart-bar"></i><span> Grades</span></a></div>
+					<div class="menu-link"><a href="modules.html"><i class="fa fa-layer-group"></i><span> Modules</span></a></div>
+					<div class="menu-link"><a href="discussions.html"><i class="fa fa-comments-alt"></i><span> Discussions</span></a></div>
+					<div class="menu-link"><a href="quizzes.html"><i class="fa fa-question-circle"></i><span> Quizzes</span></a></div>
+					<div class="menu-link"><a href="pages.html"><i class="fa fa-file-alt"></i><span> Pages</span></a></div>
+					<div class="menu-link"><a href="files.html"><i class="fa fa-folder"></i><span> Files</span></a></div>
+					<div class="menu-link"><a href="people.html"><i class="fa fa-users"></i><span> People</span></a></div>
+					<div class="menu-link"><a href="outcomes.html"><i class="fa fa-bullseye"></i><span> Outcomes</span></a></div>
+					<div class="menu-link"><a href="rubrics.html"><i class="fa fa-th"></i><span> Rubrics</span></a></div>
+					<div class="menu-link"><a href="groups.html"><i class="fa fa-user-friends"></i><span> Groups</span></a></div>
+					<div class="menu-link"><a href="conferences.html"><i class="fa fa-video"></i><span> Conferences</span></a></div>
+					<div class="menu-link"><a href="collaborations.html"><i class="fa fa-handshake"></i><span> Collaborations</span></a></div>
+					<div class="menu-link"><a href="account-settings.html" class="active-menu"><i class="fa fa-cog"></i><span> Settings</span></a></div>
+				</section>
+			</div>
+		</aside>
+		<!-- Mobile overlay -->
+		<div class="sidebar-overlay" id="sidebarOverlay"></div>
+		<!-- Main content -->
+		<main class="middle-part tw-flex-1 lg:tw-ml-[240px] tw-min-h-screen tw-px-4 md:tw-px-6 lg:tw-px-10 tw-pb-8">
+			<!-- Nav Bar -->
+			<div class="tw-flex tw-items-center tw-justify-between tw-py-4 tw-gap-3 tw-flex-wrap">
+				<div class="tw-flex tw-items-center tw-gap-3">
+					<i class="fa fa-bars tw-text-primary-400 tw-cursor-pointer tw-text-xl lg:tw-hidden menu-icon" id="menuToggle"></i>
+					<div class="shadcn-search tw-hidden sm:tw-flex tw-w-64">
+						<i class="fa fa-search"></i>
+						<input type="text" placeholder="Search...">
+					</div>
+				</div>
+				<div class="tw-flex tw-items-center tw-gap-3">
+					<button class="shadcn-btn shadcn-btn-ghost shadcn-btn-icon"><i class="fa fa-bell tw-text-primary-400"></i></button>
+					<div class="shadcn-avatar shadcn-avatar-md tw-cursor-pointer"><img src="Images/profile.png" alt="Profile"></div>
+				</div>
+			</div>
+			<!-- Profile Header -->
+			<div class="shadcn-card tw-p-8 tw-my-6">
+				<div class="profile-img">
+					<div class="shadcn-avatar shadcn-avatar-xl tw-border-4 tw-border-white tw-shadow-md">
+						<img src="Images/profile-img.png" alt="Profile">
+					</div>
+					<div class="pr-inn">
+						<div>
+							<h5>RadialCode</h5>
+							<p>@radialcode</p>
+						</div>
+						<div class="pr-inn-icons">
+							<div>
+								<i class="fa fa-comments theme-color"></i>
+							</div>
+							<div>
+								<i class="fa fa-edit theme-color info-pop tw-cursor-pointer"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- About Section -->
+			<div class="profile-bout row">
+				<div class="col-md-4 pr-about">
+					<div class="shadcn-card tw-p-6 tw-my-6">
+						<div class="pr-about-in">
+							<h5 class="theme-color tw-font-normal tw-text-sm">
+								Parent/Caregiver name:
+							</h5>
+							<h4 class="second-color">
+								Jhon Doe
+							</h4>
+						</div>
+						<div class="pr-about-in">
+							<h5 class="theme-color tw-font-normal tw-text-sm">
+								Location:
+							</h5>
+							<h4 class="second-color">
+								California
+							</h4>
+						</div>
+						<div class="pr-about-in">
+							<h5 class="theme-color tw-font-normal tw-text-sm">
+								Enrollment date:
+							</h5>
+							<h4 class="second-color tw-font-bold">
+								24/01/2021
+							</h4>
+						</div>
+						<div class="progres tw-p-0 tw-mb-5">
+							<div class="progress-in">
+								<h5 class="second-color">
+									Language Level
+								</h5>
+							</div>
+							<progress class="progress-field progress-field1" value="85" min="0" max="100"> 32% </progress>
+						</div>
+						<div class="progres tw-p-0 tw-mb-5">
+							<div class="progress-in">
+								<h5 class="second-color">
+									Points
+								</h5>
+							</div>
+							<progress class="progress-field progress-field2" value="55" min="0" max="100"> 32% </progress>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-8 about">
+					<div class="shadcn-card tw-p-6 tw-my-6">
+						<h5 class="second-color tw-font-bold">
+							About
+						</h5>
+						<p class="theme-color">
+							Aliquam enim, aenean tincidunt lectus porta facilisis nullum. Gravida velit pretium.Aliquam enim, aenean tincidunt lectus porta facilisis nullum. Gravida velit pretium.
+							<br>
+							Aliquam enim, aenean tincidunt lectus porta facilisis nullum. Gravida velit pretium.Aliquam enim, aenean tincidunt lectus porta facilisis nullum. Gravida velit pretium.
+						</p>
+						<div class="pr-notes tw-hidden">
+							<h5 class="second-color tw-font-bold">
+								Notes
+							</h5>
+							<div class="shadcn-card shadcn-card-interactive tw-p-4 tw-mb-3 pp1">
+								<div class="flex-display">
+									<img src="Images/image1.jpg">
+									<h5>
+										Aliquam enim, aenean tincidunt lectus porta
+									</h5>
+									<i class="fa fa-chevron-down theme-color"></i>
+								</div>
+								<div class="pp-open1 tw-py-2.5 tw-text-[15px] tw-hidden">
+									Aliquam enim, aenean tincidunt lectus porta facilisis nullum. Gravida velit pretium.Aliquam enim, aenean tincidunt lectus porta facilisis nullum. Gravida velit pretium.
+								</div>
+							</div>
+							<div class="shadcn-card shadcn-card-interactive tw-p-4 tw-mb-3 pp2">
+								<div class="flex-display">
+									<img src="Images/image1.jpg">
+									<h5>
+										Aliquam enim, aenean tincidunt lectus porta
+									</h5>
+									<i class="fa fa-chevron-down theme-color"></i>
+								</div>
+								<div class="pp-open2 tw-py-2.5 tw-text-[15px] tw-hidden">
+									Aliquam enim, aenean tincidunt lectus porta facilisis nullum. Gravida velit pretium.Aliquam enim, aenean tincidunt lectus porta facilisis nullum. Gravida velit pretium.
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Student Info Section -->
+			<div class="shadcn-card tw-p-6 tw-my-6 stdnt-info tw-hidden">
+				<h5 class="second-color">
+					Student Information
+				</h5>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="info-in">
+							<h5 class="theme-color">Student type</h5>
+							<h4>K-12 Learner</h4>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="info-in">
+							<h5 class="theme-color">Selected Course</h5>
+							<h4>Course 1</h4>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="info-in">
+							<h5 class="theme-color">Starting Date</h5>
+							<h4>24/04/2021</h4>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="info-in">
+							<h5 class="theme-color">Language of Study</h5>
+							<h4>English</h4>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="info-in">
+							<h5 class="theme-color">E-mail</h5>
+							<h4>learner@redefiners.com</h4>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="info-in">
+							<h5 class="theme-color">Phone Number</h5>
+							<h4>123 456 789</h4>
+						</div>
+					</div>
+				</div>
+				<h5 class="second-color tw-pb-2.5 tw-border-b tw-border-surface-200">
+					Mailing Address
+				</h5>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="info-in">
+							<h5 class="theme-color">Street Address</h5>
+							<h4>House no, 34 /5 block 5, 2nd Street</h4>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="info-in">
+							<h5 class="theme-color">Country</h5>
+							<h4>USA</h4>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="info-in">
+							<h5 class="theme-color">State California</h5>
+							<h4>123 456 789</h4>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="info-in">
+							<h5 class="theme-color">City</h5>
+							<h4>San Diego</h4>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="info-in">
+							<h5 class="theme-color">Zip Code</h5>
+							<h4>3343</h4>
+						</div>
+					</div>
+				</div>
+				<button>
+					Update
+				</button>
+			</div>
+		</main>
+		<!-- Right sidebar -->
+		<aside class="tw-hidden lg:tw-block tw-w-[280px] tw-flex-shrink-0 tw-pt-4 tw-px-5">
+			<div class="real-rightmap">
+				<div class="right-top">
+					<div class="profile-click">
+					<img src="Images/profile.png">
+					<p class="second-color">
+						RadicalCode
+					</p>
+					</div>
+					<i class="fa fa-cog"></i>
+					<i class="fa fa-bell"></i>
+				</div>
+				<div class="main-wrapper">
+					<div class="sidebar-wrapper z-depth-2 side-nav fixed" id="sidebar" class="tw-hidden">
+						<div class="sidebar-title">
+						  <h4>Events</h4>
+						  <h5 id="eventDayName">Date</h5>
+						</div>
+						<div class="sidebar-events" id="sidebarEvents">
+						</div>
+					</div>
+					<div class="content-wrapper grey lighten-3">
+						<div class="">
+						  <div class="calendar-wrapper z-depth-2">
+						    <div class="header-background">
+						      <div class="calendar-header tw-mb-1">
+						      	<div class="row header-title">
+						          <div class="header-text tw-text-center tw-pb-2.5">
+						            <h3 id="month-name" class="tw-text-base tw-font-bold tw-mb-0">February</h3>
+						            <h5 id="todayDayName" class="tw-text-caption-sm tw-font-bold tw-mb-0">Today is Friday 7 Feb</h5>
+						          </div>
+						        </div>
+						        <div class="tw-flex tw-justify-between tw-pb-0.5">
+						        <a class="prev-button" id="prev" class="tw-no-underline">
+						          <i class="fa fa-chevron-left tw-cursor-pointer tw-bg-surface-200 tw-p-1 tw-text-primary-400 tw-rounded-l-token-md"></i>
+						        </a>
+						        <a class="next-button" id="next" class="tw-no-underline">
+						          <i class="fa fa-chevron-right tw-cursor-pointer tw-bg-surface-200 tw-p-1 tw-text-primary-400 tw-rounded-r-token-md"></i>
+						        </a>
+						        </div>
+						      </div>
+						    </div>
+						    <div class="calendar-content">
+						      <div id="calendar-table" class="calendar-cells">
+						        <div id="table-header">
+						          <div class="row tw-bg-surface-200 tw-text-center tw-rounded-token-md tw-font-bold">
+						            <div class="col">M</div>
+						            <div class="col">T</div>
+						            <div class="col">W</div>
+						            <div class="col">T</div>
+						            <div class="col">F</div>
+						            <div class="col">S</div>
+						            <div class="col">S</div>
+						          </div>
+						        </div>
+						        <div id="table-body" class="second-color tw-text-center">
+						        </div>
+						      </div>
+						    </div>
+						  </div>
+						</div>
+					</div>
+				</div>
+				<div class="right-end">
+					<div id="">
+						<h5 class="second-color">Recent Chats</h5>
+						<div class="assign-inn right-end1">
+							 <div class="assign-img re"><img src="Images/reena.png"><section><h5 class="second-color">Reena</h5><p>Hlo 3:00 AM</p></section></div>
+							 <div class="assign-btn re-btn1"><i class="fa fa-comments theme-color"></i></div>
+						</div>
+						<div class="assign-inn right-end2">
+							 <div class="assign-img re"><img src="Images/jake.png"><section><h5 class="second-color">Jake</h5><p>Hlo 3:00 AM</p></section></div>
+							 <div class="assign-btn re-btn2"><i class="fa fa-comments theme-color"></i></div>
+						</div>
+						<div class="assign-inn right-end3">
+							 <div class="assign-img re"><img src="Images/profile.png"><section><h5 class="second-color">Teena</h5><p>Hlo 3:00 AM</p></section></div>
+							 <div class="assign-btn re-btn3"><i class="fa fa-comments theme-color"></i></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="right-popup">
+				<i class="fa fa-angle-left theme-color fa-2x close-profile tw-cursor-pointer"></i>
+				<div class="message-pro">
+					<img src="Images/profile-img.png">
+					<h5 class="second-color">RacialCode</h5>
+					<p class="theme-color">@radialcode</p>
+					<p class="theme-color tw-text-caption">
+						Ac massa ids gravida vestibulum alliquet diam prion.
+					</p>
+					<div class="pro-three tw-flex-col">
+						<a href="profile.html" class="tw-no-underline">
+							<div class="pro-three-inn tw-flex tw-items-center tw-mb-5 tw-cursor-pointer">
+								<i class="fa fa-user theme-color tw-mb-0"></i>
+								<h5 class="second-color tw-ml-2.5">Profile</h5>
+							</div>
+						</a>
+						<div class="pro-three-inn tw-flex tw-items-center tw-mb-5 tw-cursor-pointer">
+							<i class="fa fa-cog theme-color tw-mb-0"></i>
+							<h5 class="second-color tw-ml-2.5">Settings</h5>
+						</div>
+						<div class="pro-three-inn tw-flex tw-items-center tw-mb-5 tw-cursor-pointer">
+							<img src="Images/logout.png" class="tw-mb-0">
+							<h5 class="second-color tw-ml-2.5">Logout</h5>
+						</div>
+					</div>
+				</div>
+			</div>
+		</aside>
+	</div>
+<script type="text/javascript">
+	$(".pp1").click(function(){
+		$(".pp-open1").slideToggle("slow");
+	})
+	$(".pp2").click(function(){
+		$(".pp-open2").slideToggle("slow");
+	})
+	$(".info-pop").click(function(){
+		$(".pr-notes").css("display","block");
+		$(".stdnt-info").css("display","block");
+	})
+	$(".stdnt-info button").click(function(){
+		$(".pr-notes").css("display","none");
+		$(".stdnt-info").css("display","none");
+	})
+</script>
+<script type="text/javascript">
+	$(".menu-icon, #menuToggle").click(function(){
+		$(".left-sidebar").removeClass("tw--translate-x-full").addClass("tw-translate-x-0");
+		$("#sidebarOverlay").addClass("active");
+		$("body").css("overflow","hidden");
+	});
+	$(".menu-hide, #sidebarOverlay").click(function(){
+		$(".left-sidebar").removeClass("tw-translate-x-0").addClass("tw--translate-x-full");
+		$("#sidebarOverlay").removeClass("active");
+		$("body").css("overflow","auto");
+	});
+
+	$(".calendar-icon").click(function(){
+		$(".right-sidebar").css("display","block")
+		$("body").css("overflow","hidden");
+	});
+</script>
+<script type="text/javascript">
+	$(".profile-click").click(function(){
+		$(".real-rightmap").css("display","none");
+		$(".right-popup").css("display","block");
+	})
+	$(".close-profile").click(function(){
+		$(".real-rightmap").css("display","block");
+		$(".right-popup").css("display","none");
+	})
+</script>
+<script type="text/javascript">
+	$(".diss-btn1").click(function(){
+		$(".diss-inn1").addClass("active-diss")
+		$(".diss-inn2").removeClass("active-diss")
+		$(".diss-inn3").removeClass("active-diss")
+		$(".diss-inn1 div section h5").css("color","white")
+		$(".diss-inn1 div section p").css("color","white")
+		$(".diss-btn1 button").css({"background":"white","fontWeight":"bold","color": "#8828CD","borderColor": "white"});
+		$(".diss-btn2 button").css({"background":"none","fontWeight":"normal","color": "black","borderColor": "black"});
+		$(".diss-btn3 button").css({"background":"none","fontWeight":"normal","color": "black","borderColor": "black"});
+		$(".diss-inn2 div section h5").css("color","black")
+		$(".diss-inn2 div section p").css("color","black")
+		$(".diss-inn3 div section h5").css("color","black")
+		$(".diss-inn3 div section p").css("color","black")
+	})
+	$(".diss-btn2").click(function(){
+		$(".diss-inn2").addClass("active-diss")
+		$(".diss-inn1").removeClass("active-diss")
+		$(".diss-inn3").removeClass("active-diss")
+		$(".diss-btn2 button").css({"background":"white","fontWeight":"bold","color": "#8828CD","borderColor": "white"});
+		$(".diss-inn2 div section h5").css("color","white")
+		$(".diss-inn2 div section p").css("color","white")
+		$(".diss-btn1 button").css({"background":"none","fontWeight":"normal","color": "black","borderColor": "black"});
+		$(".diss-btn3 button").css({"background":"none","fontWeight":"normal","color": "black","borderColor": "black"});
+		$(".diss-inn1 div section h5").css("color","black")
+		$(".diss-inn1 div section p").css("color","black")
+		$(".diss-inn3 div section h5").css("color","black")
+		$(".diss-inn3 div section p").css("color","black")
+	})
+	$(".diss-btn3").click(function(){
+		$(".diss-inn3").addClass("active-diss")
+		$(".diss-inn2").removeClass("active-diss")
+		$(".diss-inn1").removeClass("active-diss")
+		$(".diss-btn3 button").css({"background":"white","fontWeight":"bold","color": "#8828CD","borderColor": "white"});
+		$(".diss-inn3 div section h5").css("color","white")
+		$(".diss-inn3 div section p").css("color","white")
+		$(".diss-btn1 button").css({"background":"none","fontWeight":"normal","color": "black","borderColor": "black"});
+		$(".diss-btn2 button").css({"background":"none","fontWeight":"normal","color": "black","borderColor": "black"});
+		$(".diss-inn2 div section h5").css("color","black")
+		$(".diss-inn2 div section p").css("color","black")
+		$(".diss-inn1 div section h5").css("color","black")
+		$(".diss-inn1 div section p").css("color","black")
+	})
+</script>
+<script type="text/javascript">
+	$(".re-btn1").click(function(){
+		$(".right-end1").addClass("active-re")
+		$(".right-end2").removeClass("active-re")
+		$(".right-end3").removeClass("active-re")
+		$(".right-end1 div section h5").css("color","white")
+		$(".right-end1 div section p").css("color","white")
+		$(".re-btn1 button").css({"background":"white","fontWeight":"bold","color": "#F5BE24","borderColor": "white"});
+		$(".re-btn2 button").css({"background":"none","fontWeight":"normal","color": "black","borderColor": "black"});
+		$(".re-btn3 button").css({"background":"none","fontWeight":"normal","color": "black","borderColor": "black"});
+		$(".right-end2 div section h5").css("color","black")
+		$(".right-end2 div section p").css("color","black")
+		$(".right-end3 div section h5").css("color","black")
+		$(".right-end3 div section p").css("color","black")
+	})
+	$(".re-btn2").click(function(){
+		$(".right-end2").addClass("active-re")
+		$(".right-end1").removeClass("active-re")
+		$(".right-end3").removeClass("active-re")
+		$(".re-btn2 button").css({"background":"white","fontWeight":"bold","color": "#F5BE24","borderColor": "white"});
+		$(".right-end2 div section h5").css("color","white")
+		$(".right-end2 div section p").css("color","white")
+		$(".re-btn1 button").css({"background":"none","fontWeight":"normal","color": "black","borderColor": "black"});
+		$(".re-btn3 button").css({"background":"none","fontWeight":"normal","color": "black","borderColor": "black"});
+		$(".right-end1 div section h5").css("color","black")
+		$(".right-end1 div section p").css("color","black")
+		$(".right-end3 div section h5").css("color","black")
+		$(".right-end3 div section p").css("color","black")
+	})
+	$(".re-btn3").click(function(){
+		$(".right-end3").addClass("active-re")
+		$(".right-end2").removeClass("active-re")
+		$(".right-end1").removeClass("active-re")
+		$(".re-btn3 button").css({"background":"white","fontWeight":"bold","color": "#F5BE24","borderColor": "white"});
+		$(".right-end3 div section h5").css("color","white")
+		$(".right-end3 div section p").css("color","white")
+		$(".re-btn1 button").css({"background":"none","fontWeight":"normal","color": "black","borderColor": "black"});
+		$(".re-btn2 button").css({"background":"none","fontWeight":"normal","color": "black","borderColor": "black"});
+		$(".right-end2 div section h5").css("color","black")
+		$(".right-end2 div section p").css("color","black")
+		$(".right-end1 div section h5").css("color","black")
+		$(".right-end1 div section p").css("color","black")
+	})
+</script>
+<script type="text/javascript">
+var calendar = document.getElementById("calendar-table");
+var gridTable = document.getElementById("table-body");
+var currentDate = new Date();
+var selectedDate = currentDate;
+var selectedDayBlock = null;
+var globalEventObj = {};
+var sidebar = document.getElementById("sidebar");
+function createCalendar(date, side) {
+   var currentDate = date;
+   var startDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
+   var monthTitle = document.getElementById("month-name");
+   var monthName = currentDate.toLocaleString("en-US", { month: "long" });
+   var yearNum = currentDate.toLocaleString("en-US", { year: "numeric" });
+   monthTitle.innerHTML = `${monthName} ${yearNum}`;
+   if (side == "left") { gridTable.className = "animated fadeOutRight"; } else { gridTable.className = "animated fadeOutLeft"; }
+   setTimeout(() => {
+      gridTable.innerHTML = "";
+      var newTr = document.createElement("div"); newTr.className = "row"; var currentTr = gridTable.appendChild(newTr);
+      for (let i = 1; i < startDate.getDay(); i++) { let emptyDivCol = document.createElement("div"); emptyDivCol.className = "col empty-day"; currentTr.appendChild(emptyDivCol); }
+      var lastDay = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0); lastDay = lastDay.getDate();
+      for (let i = 1; i <= lastDay; i++) {
+         if (currentTr.children.length >= 7) { currentTr = gridTable.appendChild(addNewRow()); }
+         let currentDay = document.createElement("div"); currentDay.className = "col";
+         if (selectedDayBlock == null && i == currentDate.getDate() || selectedDate.toDateString() == new Date(currentDate.getFullYear(), currentDate.getMonth(), i).toDateString()) {
+            selectedDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), i);
+            document.getElementById("eventDayName").innerHTML = selectedDate.toLocaleString("en-US", { month: "long", day: "numeric", year: "numeric" });
+            selectedDayBlock = currentDay; setTimeout(() => { currentDay.classList.add("blue"); currentDay.classList.add("lighten-3"); }, 900);
+         }
+         currentDay.innerHTML = i;
+         if (globalEventObj[new Date(currentDate.getFullYear(), currentDate.getMonth(), i).toDateString()]) { let eventMark = document.createElement("div"); eventMark.className = "day-mark"; currentDay.appendChild(eventMark); }
+         currentTr.appendChild(currentDay);
+      }
+      for (let i = currentTr.getElementsByTagName("div").length; i < 7; i++) { let emptyDivCol = document.createElement("div"); emptyDivCol.className = "col empty-day"; currentTr.appendChild(emptyDivCol); }
+      if (side == "left") { gridTable.className = "animated fadeInLeft"; } else { gridTable.className = "animated fadeInRight"; }
+      function addNewRow() { let node = document.createElement("div"); node.className = "row"; return node; }
+   }, !side ? 0 : 270);
+}
+createCalendar(currentDate);
+var todayDayName = document.getElementById("todayDayName");
+todayDayName.innerHTML = "Today is " + currentDate.toLocaleString("en-US", { weekday: "long", day: "numeric", month: "short" });
+var prevButton = document.getElementById("prev"); var nextButton = document.getElementById("next");
+prevButton.onclick = function changeMonthPrev() { currentDate = new Date(currentDate.getFullYear(), currentDate.getMonth() - 1); createCalendar(currentDate, "left"); }
+nextButton.onclick = function changeMonthNext() { currentDate = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1); createCalendar(currentDate, "right"); }
+function addEvent(title, desc) { if (!globalEventObj[selectedDate.toDateString()]) { globalEventObj[selectedDate.toDateString()] = {}; } globalEventObj[selectedDate.toDateString()][title] = desc; }
+function showEvents() { let sidebarEvents = document.getElementById("sidebarEvents"); let objWithDate = globalEventObj[selectedDate.toDateString()]; sidebarEvents.innerHTML = ""; if (objWithDate) { let eventsCount = 0; for (key in globalEventObj[selectedDate.toDateString()]) { let eventContainer = document.createElement("div"); eventContainer.className = "eventCard"; let eventHeader = document.createElement("div"); eventHeader.className = "eventCard-header"; let eventDescription = document.createElement("div"); eventDescription.className = "eventCard-description"; eventHeader.appendChild(document.createTextNode(key)); eventContainer.appendChild(eventHeader); eventDescription.appendChild(document.createTextNode(objWithDate[key])); eventContainer.appendChild(eventDescription); let markWrapper = document.createElement("div"); markWrapper.className = "eventCard-mark-wrapper"; let mark = document.createElement("div"); mark.classList = "eventCard-mark"; markWrapper.appendChild(mark); eventContainer.appendChild(markWrapper); sidebarEvents.appendChild(eventContainer); eventsCount++; } let emptyFormMessage = document.getElementById("emptyFormTitle"); emptyFormMessage.innerHTML = `${eventsCount} events now`; } else { let emptyMessage = document.createElement("div"); emptyMessage.className = "empty-message"; emptyMessage.innerHTML = "Sorry, no events to selected date"; sidebarEvents.appendChild(emptyMessage); let emptyFormMessage = document.getElementById("emptyFormTitle"); emptyFormMessage.innerHTML = "No events now"; } }
+gridTable.onclick = function (e) { if (!e.target.classList.contains("col") || e.target.classList.contains("empty-day")) { return; } if (selectedDayBlock) { if (selectedDayBlock.classList.contains("blue") && selectedDayBlock.classList.contains("lighten-3")) { selectedDayBlock.classList.remove("blue"); selectedDayBlock.classList.remove("lighten-3"); } } selectedDayBlock = e.target; selectedDayBlock.classList.add("blue"); selectedDayBlock.classList.add("lighten-3"); selectedDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), parseInt(e.target.innerHTML)); showEvents(); document.getElementById("eventDayName").innerHTML = selectedDate.toLocaleString("en-US", { month: "long", day: "numeric", year: "numeric" }); }
+var changeFormButton = document.getElementById("changeFormButton"); var addForm = document.getElementById("addForm");
+changeFormButton.onclick = function (e) { addForm.style.top = 0; }
+var cancelAdd = document.getElementById("cancelAdd");
+cancelAdd.onclick = function (e) { addForm.style.top = "100%"; let inputs = addForm.getElementsByTagName("input"); for (let i = 0; i < inputs.length; i++) { inputs[i].value = ""; } let labels = addForm.getElementsByTagName("label"); for (let i = 0; i < labels.length; i++) { labels[i].className = ""; } }
+var addEventButton = document.getElementById("addEventButton");
+addEventButton.onclick = function (e) { let title = document.getElementById("eventTitleInput").value.trim(); let desc = document.getElementById("eventDescInput").value.trim(); if (!title || !desc) { document.getElementById("eventTitleInput").value = ""; document.getElementById("eventDescInput").value = ""; let labels = addForm.getElementsByTagName("label"); for (let i = 0; i < labels.length; i++) { labels[i].className = ""; } return; } addEvent(title, desc); showEvents(); if (!selectedDayBlock.querySelector(".day-mark")) { selectedDayBlock.appendChild(document.createElement("div")).className = "day-mark"; } let inputs = addForm.getElementsByTagName("input"); for (let i = 0; i < inputs.length; i++) { inputs[i].value = ""; } let labels = addForm.getElementsByTagName("label"); for (let i = 0; i < labels.length; i++) { labels[i].className = ""; } }
+</script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <script>
+      $(".button-collapse").sideNav();
+    </script>
+<script src="js/router.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/api.js"></script>
+<script src="js/render.js"></script>
+<script src="js/sidebar.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

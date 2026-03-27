@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	<title>ReDefiners - Course Setup Wizard</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+	<script src="https://cdn.tailwindcss.com"></script>
+	<script src="css/tailwind-config.js?v=3"></script>
+	<script src="https://kit.fontawesome.com/7a13c96681.js" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/tokens.css?v=3">
+	<link rel="stylesheet" type="text/css" href="css/shadcn.css?v=3">
+	<link rel="stylesheet" type="text/css" href="styles.css?v=3">
+</head>
+<body>
+	<div class="tw-flex tw-min-h-screen tw-font-poppins">
+		<aside class="left-sidebar tw-fixed tw-inset-y-0 tw-left-0 tw-w-[240px] tw-z-50 tw--translate-x-full lg:tw-translate-x-0 tw-transition-transform tw-duration-300 tw-overflow-y-auto shadcn-scrollbar">
+			<div class="menu-bar">
+				<section class="logo-section">
+					<i class="fa fa-times theme-color menu-hide"></i>
+					<img src="Images/logo.PNG" class="res-hide" alt="logo">
+					<div class="nav-input res-show-flex tw-mt-5">
+						<button class="tw-border tw-border-primary-400 tw-border-r-0 tw-bg-transparent tw-px-2"><i class="fa fa-search"></i></button>
+						<input class="tw-border tw-border-primary-400 tw-border-l-0 tw-w-[85%] tw-bg-transparent tw-px-2 tw-py-1 tw-outline-none" type="text" name="search" placeholder="Search">
+					</div>
+				</section>
+				<section class="menu-links">
+					<div class="menu-link"><a href="dashboard.html"><i class="fa fa-th-large"></i><span> Dashboard</span></a></div>
+					<div class="menu-link"><a href="courses.html"><i class="fa fa-clipboard-list"></i><span> Courses</span></a></div>
+					<div class="menu-link"><a href="calendar.html"><i class="fa fa-calendar-alt"></i><span> Calendar</span></a></div>
+					<div class="menu-link"><a href="announcement.html"><i class="fa fa-bullhorn"></i><span> Announcements</span></a></div>
+					<div class="menu-link"><a href="inbox.html"><i class="fa fa-comments"></i><span> Messages</span></a></div>
+					<div class="menu-link"><a href="assignments.html"><i class="fa fa-file-lines"></i><span> Assignments</span></a></div>
+					<div class="menu-link"><a href="grades.html"><i class="fa fa-chart-bar"></i><span> Grades</span></a></div>
+					<div class="menu-link"><a href="modules.html"><i class="fa fa-layer-group"></i><span> Modules</span></a></div>
+					<div class="menu-link"><a href="discussions.html"><i class="fa fa-comments-alt"></i><span> Discussions</span></a></div>
+					<div class="menu-link"><a href="quizzes.html"><i class="fa fa-question-circle"></i><span> Quizzes</span></a></div>
+					<div class="menu-link"><a href="pages.html"><i class="fa fa-file-alt"></i><span> Pages</span></a></div>
+					<div class="menu-link"><a href="files.html"><i class="fa fa-folder"></i><span> Files</span></a></div>
+					<div class="menu-link"><a href="people.html"><i class="fa fa-users"></i><span> People</span></a></div>
+					<div class="menu-link"><a href="outcomes.html"><i class="fa fa-bullseye"></i><span> Outcomes</span></a></div>
+					<div class="menu-link"><a href="rubrics.html"><i class="fa fa-th"></i><span> Rubrics</span></a></div>
+					<div class="menu-link"><a href="groups.html"><i class="fa fa-user-friends"></i><span> Groups</span></a></div>
+					<div class="menu-link"><a href="conferences.html"><i class="fa fa-video"></i><span> Conferences</span></a></div>
+					<div class="menu-link"><a href="collaborations.html"><i class="fa fa-handshake"></i><span> Collaborations</span></a></div>
+					<div class="menu-link"><a href="account-settings.html"><i class="fa fa-cog"></i><span> Settings</span></a></div>
+				</section>
+			</div>
+		</aside>
+		<div class="sidebar-overlay" id="sidebarOverlay"></div>
+		<main class="middle-part tw-flex-1 lg:tw-ml-[240px] tw-min-h-screen tw-px-4 md:tw-px-6 lg:tw-px-10 tw-pb-8">
+			<div class="tw-flex tw-items-center tw-justify-between tw-py-4 tw-gap-3 tw-flex-wrap">
+				<div class="tw-flex tw-items-center tw-gap-3">
+					<i class="fa fa-bars tw-text-primary-400 tw-cursor-pointer tw-text-xl lg:tw-hidden menu-icon" id="menuToggle"></i>
+					<div class="shadcn-search tw-hidden sm:tw-flex tw-w-64">
+						<i class="fa fa-search"></i>
+						<input type="text" placeholder="Search courses, assignments...">
+					</div>
+				</div>
+				<div class="tw-flex tw-items-center tw-gap-3">
+					<button class="shadcn-btn shadcn-btn-ghost shadcn-btn-icon tw-relative"><i class="fa fa-bell tw-text-primary-400"></i></button>
+					<div class="shadcn-avatar shadcn-avatar-md tw-cursor-pointer profile-click"><img src="Images/profile.png" alt="Profile"></div>
+				</div>
+			</div>
+
+			<!-- Page Header -->
+			<div class="tw-flex tw-flex-col sm:tw-flex-row tw-items-start sm:tw-items-center tw-justify-between tw-py-6 tw-gap-4">
+				<div>
+					<h3 class="second-color"><i class="fa fa-magic tw-mr-2"></i>Course Setup Wizard</h3>
+					<p class="tw-text-sm tw-text-gray-500 tw-mt-1">Follow these steps to get your course ready for students</p>
+				</div>
+				<div class="tw-flex tw-items-center tw-gap-2">
+					<span class="tw-text-sm tw-font-medium theme-color">3 of 6 steps complete</span>
+					<div class="tw-w-32 tw-bg-gray-200 tw-rounded-full tw-h-2">
+						<div class="tw-bg-green-500 tw-h-2 tw-rounded-full" style="width: 50%"></div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Wizard Steps -->
+			<div class="tw-max-w-3xl tw-mx-auto tw-space-y-4">
+				<!-- Step 1: Import Content - Completed -->
+				<div class="shadcn-card tw-p-5 tw-border-l-4 tw-border-l-green-500">
+					<div class="tw-flex tw-items-center tw-justify-between">
+						<div class="tw-flex tw-items-center tw-gap-4">
+							<div class="tw-w-10 tw-h-10 tw-rounded-full tw-bg-green-500 tw-flex tw-items-center tw-justify-center tw-flex-shrink-0">
+								<i class="fa fa-check tw-text-white"></i>
+							</div>
+							<div>
+								<h5 class="second-color tw-mb-0">Import Content</h5>
+								<p class="tw-text-xs tw-text-gray-500 tw-mb-0">Import content from a previous course, a file, or a content package</p>
+							</div>
+						</div>
+						<div class="tw-flex tw-items-center tw-gap-2">
+							<span class="tw-text-xs tw-text-green-600 tw-font-medium">Completed</span>
+							<button class="shadcn-btn shadcn-btn-ghost tw-text-xs"><i class="fa fa-redo"></i></button>
+						</div>
+					</div>
+					<div class="tw-mt-3 tw-ml-14 tw-p-3 tw-bg-green-50 tw-rounded-lg">
+						<p class="tw-text-xs tw-text-green-700 tw-mb-0"><i class="fa fa-check-circle tw-mr-1"></i> Imported from "Biology 101 - Fall 2024" on Mar 10, 2025. 14 modules, 42 assignments, 8 quizzes imported.</p>
+					</div>
+				</div>
+
+				<!-- Step 2: Set Home Page - Completed -->
+				<div class="shadcn-card tw-p-5 tw-border-l-4 tw-border-l-green-500">
+					<div class="tw-flex tw-items-center tw-justify-between">
+						<div class="tw-flex tw-items-center tw-gap-4">
+							<div class="tw-w-10 tw-h-10 tw-rounded-full tw-bg-green-500 tw-flex tw-items-center tw-justify-center tw-flex-shrink-0">
+								<i class="fa fa-check tw-text-white"></i>
+							</div>
+							<div>
+								<h5 class="second-color tw-mb-0">Set Home Page</h5>
+								<p class="tw-text-xs tw-text-gray-500 tw-mb-0">Choose what students see when they first open the course</p>
+							</div>
+						</div>
+						<div class="tw-flex tw-items-center tw-gap-2">
+							<span class="tw-text-xs tw-text-green-600 tw-font-medium">Completed</span>
+							<button class="shadcn-btn shadcn-btn-ghost tw-text-xs"><i class="fa fa-redo"></i></button>
+						</div>
+					</div>
+					<div class="tw-mt-3 tw-ml-14 tw-p-3 tw-bg-green-50 tw-rounded-lg">
+						<p class="tw-text-xs tw-text-green-700 tw-mb-0"><i class="fa fa-check-circle tw-mr-1"></i> Home page set to "Modules" layout</p>
+					</div>
+				</div>
+
+				<!-- Step 3: Choose Navigation - Completed -->
+				<div class="shadcn-card tw-p-5 tw-border-l-4 tw-border-l-green-500">
+					<div class="tw-flex tw-items-center tw-justify-between">
+						<div class="tw-flex tw-items-center tw-gap-4">
+							<div class="tw-w-10 tw-h-10 tw-rounded-full tw-bg-green-500 tw-flex tw-items-center tw-justify-center tw-flex-shrink-0">
+								<i class="fa fa-check tw-text-white"></i>
+							</div>
+							<div>
+								<h5 class="second-color tw-mb-0">Choose Course Navigation</h5>
+								<p class="tw-text-xs tw-text-gray-500 tw-mb-0">Select which navigation links appear in the course sidebar</p>
+							</div>
+						</div>
+						<div class="tw-flex tw-items-center tw-gap-2">
+							<span class="tw-text-xs tw-text-green-600 tw-font-medium">Completed</span>
+							<button class="shadcn-btn shadcn-btn-ghost tw-text-xs"><i class="fa fa-redo"></i></button>
+						</div>
+					</div>
+					<div class="tw-mt-3 tw-ml-14 tw-p-3 tw-bg-green-50 tw-rounded-lg">
+						<p class="tw-text-xs tw-text-green-700 tw-mb-0"><i class="fa fa-check-circle tw-mr-1"></i> 10 navigation items enabled: Home, Modules, Assignments, Quizzes, Grades, Discussions, Pages, Syllabus, People, Files</p>
+					</div>
+				</div>
+
+				<!-- Step 4: Add TAs - Current Step -->
+				<div class="shadcn-card tw-p-5 tw-border-l-4 tw-border-l-blue-500 tw-ring-2 tw-ring-blue-100">
+					<div class="tw-flex tw-items-center tw-justify-between">
+						<div class="tw-flex tw-items-center tw-gap-4">
+							<div class="tw-w-10 tw-h-10 tw-rounded-full tw-bg-blue-500 tw-flex tw-items-center tw-justify-center tw-flex-shrink-0">
+								<span class="tw-text-white tw-font-bold">4</span>
+							</div>
+							<div>
+								<h5 class="second-color tw-mb-0">Add Teaching Assistants</h5>
+								<p class="tw-text-xs tw-text-gray-500 tw-mb-0">Invite TAs and graders to help manage your course</p>
+							</div>
+						</div>
+						<span class="tw-bg-blue-100 tw-text-blue-700 tw-px-2 tw-py-0.5 tw-rounded tw-text-xs tw-font-medium">Current Step</span>
+					</div>
+					<div class="tw-mt-4 tw-ml-14">
+						<div class="tw-flex tw-gap-2 tw-mb-3">
+							<input type="email" class="shadcn-input tw-flex-1" placeholder="Enter TA email address...">
+							<select class="shadcn-input tw-w-32">
+								<option>TA</option>
+								<option>Grader</option>
+								<option>Designer</option>
+							</select>
+							<button class="shadcn-btn shadcn-btn-primary tw-text-sm"><i class="fa fa-plus tw-mr-1"></i> Add</button>
+						</div>
+						<p class="tw-text-xs tw-text-gray-400 tw-mb-3">No TAs added yet. You can skip this step if not needed.</p>
+						<div class="tw-flex tw-gap-2">
+							<button class="shadcn-btn shadcn-btn-outline tw-text-sm">Skip this step</button>
+							<button class="shadcn-btn shadcn-btn-primary tw-text-sm">Continue</button>
+						</div>
+					</div>
+				</div>
+
+				<!-- Step 5: Add Students - Pending -->
+				<div class="shadcn-card tw-p-5 tw-border-l-4 tw-border-l-gray-300 tw-opacity-75">
+					<div class="tw-flex tw-items-center tw-justify-between">
+						<div class="tw-flex tw-items-center tw-gap-4">
+							<div class="tw-w-10 tw-h-10 tw-rounded-full tw-bg-gray-200 tw-flex tw-items-center tw-justify-center tw-flex-shrink-0">
+								<span class="tw-text-gray-500 tw-font-bold">5</span>
+							</div>
+							<div>
+								<h5 class="second-color tw-mb-0">Add Students</h5>
+								<p class="tw-text-xs tw-text-gray-500 tw-mb-0">Invite students via email or SIS enrollment sync</p>
+							</div>
+						</div>
+						<span class="tw-text-xs tw-text-gray-400">Pending</span>
+					</div>
+				</div>
+
+				<!-- Step 6: Publish Course - Pending -->
+				<div class="shadcn-card tw-p-5 tw-border-l-4 tw-border-l-gray-300 tw-opacity-75">
+					<div class="tw-flex tw-items-center tw-justify-between">
+						<div class="tw-flex tw-items-center tw-gap-4">
+							<div class="tw-w-10 tw-h-10 tw-rounded-full tw-bg-gray-200 tw-flex tw-items-center tw-justify-center tw-flex-shrink-0">
+								<span class="tw-text-gray-500 tw-font-bold">6</span>
+							</div>
+							<div>
+								<h5 class="second-color tw-mb-0">Publish Course</h5>
+								<p class="tw-text-xs tw-text-gray-500 tw-mb-0">Make the course visible to enrolled students</p>
+							</div>
+						</div>
+						<span class="tw-text-xs tw-text-gray-400">Pending</span>
+					</div>
+				</div>
+			</div>
+
+			<!-- Info Banner -->
+			<div class="tw-max-w-3xl tw-mx-auto tw-mt-6">
+				<div class="tw-flex tw-items-start tw-gap-3 tw-p-4 tw-bg-blue-50 tw-rounded-lg">
+					<i class="fa fa-info-circle tw-text-blue-500 tw-mt-0.5"></i>
+					<div>
+						<p class="tw-text-sm tw-font-medium tw-text-blue-800 tw-mb-1">Need help setting up your course?</p>
+						<p class="tw-text-xs tw-text-blue-700 tw-mb-0">Visit the <a href="#" class="tw-underline">Canvas Instructor Guide</a> for detailed instructions on each step, or contact your institution's Canvas administrator for assistance.</p>
+					</div>
+				</div>
+			</div>
+		</main>
+	</div>
+<script src="js/sidebar.js"></script>
+<script src="js/router.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/api.js"></script>
+<script src="js/render.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

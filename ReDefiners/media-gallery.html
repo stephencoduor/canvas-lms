@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	<title>ReDefiners - Media Gallery</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+	<script src="https://cdn.tailwindcss.com"></script>
+	<script src="css/tailwind-config.js?v=3"></script>
+	<script src="https://kit.fontawesome.com/7a13c96681.js" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/tokens.css?v=3">
+	<link rel="stylesheet" type="text/css" href="css/shadcn.css?v=3">
+	<link rel="stylesheet" type="text/css" href="styles.css?v=3">
+	<style>
+		.media-card { border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden; transition: all 0.2s; cursor: pointer; }
+		.media-card:hover { border-color: var(--color-primary-400); box-shadow: 0 4px 12px rgba(0,0,0,0.08); transform: translateY(-2px); }
+		.media-thumbnail { position: relative; background: #1a1a2e; height: 160px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+		.media-thumbnail .play-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.3); opacity: 0; transition: opacity 0.2s; }
+		.media-card:hover .play-overlay { opacity: 1; }
+		.play-overlay i { font-size: 36px; color: white; }
+		.media-thumbnail .duration { position: absolute; bottom: 8px; right: 8px; background: rgba(0,0,0,0.7); color: white; font-size: 11px; padding: 2px 6px; border-radius: 4px; }
+		.media-thumbnail .type-badge { position: absolute; top: 8px; left: 8px; font-size: 10px; padding: 2px 8px; border-radius: 4px; font-weight: 600; }
+		.type-badge.video { background: #e8f4fd; color: #3B82F6; }
+		.type-badge.audio { background: #f3e8ff; color: #8B5CF6; }
+		.type-badge.image { background: #D4EFE6; color: #163B32; }
+		.media-info { padding: 12px 14px; }
+		.media-info h6 { font-size: 13px; font-weight: 600; margin: 0; }
+		.media-meta { display: flex; align-items: center; gap: 12px; margin-top: 6px; font-size: 11px; color: #668B91; }
+		.view-toggle button { width: 32px; height: 32px; border-radius: 6px; border: 1px solid #e5e7eb; background: white; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; color: #668B91; transition: all 0.15s; }
+		.view-toggle button.active { background: var(--color-primary-400); color: white; border-color: var(--color-primary-400); }
+		.filter-select { border: 1px solid #e5e7eb; border-radius: 8px; padding: 8px 12px; font-size: 13px; color: #334155; background: white; outline: none; cursor: pointer; }
+		.filter-select:focus { border-color: var(--color-primary-400); }
+		.media-placeholder-icon { font-size: 48px; color: rgba(255,255,255,0.3); }
+		.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 100; align-items: center; justify-content: center; }
+		.modal-content { background: white; border-radius: 16px; padding: 24px; max-width: 640px; width: 90%; max-height: 80vh; overflow-y: auto; }
+	</style>
+</head>
+<body>
+<div class="tw-flex tw-min-h-screen tw-font-poppins">
+	<aside class="left-sidebar tw-fixed tw-inset-y-0 tw-left-0 tw-w-[240px] tw-z-50 tw--translate-x-full lg:tw-translate-x-0 tw-transition-transform tw-duration-300 tw-overflow-y-auto shadcn-scrollbar">
+		<div class="menu-bar">
+			<section class="logo-section">
+				<i class="fa fa-times theme-color menu-hide"></i>
+				<img src="Images/logo.PNG" class="res-hide" alt="logo">
+				<div class="nav-input res-show-flex tw-mt-5">
+					<button class="tw-border tw-border-primary-400 tw-border-r-0 tw-bg-transparent tw-px-2"><i class="fa fa-search"></i></button>
+					<input class="tw-border tw-border-primary-400 tw-border-l-0 tw-w-[85%] tw-bg-transparent tw-px-2 tw-py-1 tw-outline-none" type="text" name="search" placeholder="Search">
+				</div>
+			</section>
+			<section class="menu-links">
+				<div class="menu-link"><a href="dashboard.html"><i class="fa fa-th-large"></i><span> Dashboard</span></a></div>
+				<div class="menu-link"><a href="courses.html"><i class="fa fa-clipboard-list"></i><span> Courses</span></a></div>
+				<div class="menu-link"><a href="calendar.html"><i class="fa fa-calendar-alt"></i><span> Calendar</span></a></div>
+				<div class="menu-link"><a href="announcement.html"><i class="fa fa-bullhorn"></i><span> Announcements</span></a></div>
+				<div class="menu-link"><a href="inbox.html"><i class="fa fa-comments"></i><span> Messages</span></a></div>
+				<div class="menu-link"><a href="assignments.html"><i class="fa fa-file-lines"></i><span> Assignments</span></a></div>
+				<div class="menu-link"><a href="grades.html"><i class="fa fa-chart-bar"></i><span> Grades</span></a></div>
+				<div class="menu-link"><a href="modules.html"><i class="fa fa-layer-group"></i><span> Modules</span></a></div>
+				<div class="menu-link"><a href="discussions.html"><i class="fa fa-comments-alt"></i><span> Discussions</span></a></div>
+				<div class="menu-link"><a href="quizzes.html"><i class="fa fa-question-circle"></i><span> Quizzes</span></a></div>
+				<div class="menu-link"><a href="pages.html"><i class="fa fa-file-alt"></i><span> Pages</span></a></div>
+				<div class="menu-link"><a href="files.html" class="active-menu"><i class="fa fa-folder"></i><span> Files</span></a></div>
+				<div class="menu-link"><a href="people.html"><i class="fa fa-users"></i><span> People</span></a></div>
+				<div class="menu-link"><a href="outcomes.html"><i class="fa fa-bullseye"></i><span> Outcomes</span></a></div>
+				<div class="menu-link"><a href="rubrics.html"><i class="fa fa-th"></i><span> Rubrics</span></a></div>
+				<div class="menu-link"><a href="groups.html"><i class="fa fa-user-friends"></i><span> Groups</span></a></div>
+				<div class="menu-link"><a href="conferences.html"><i class="fa fa-video"></i><span> Conferences</span></a></div>
+				<div class="menu-link"><a href="collaborations.html"><i class="fa fa-handshake"></i><span> Collaborations</span></a></div>
+				<div class="menu-link"><a href="account-settings.html"><i class="fa fa-cog"></i><span> Settings</span></a></div>
+			</section>
+		</div>
+	</aside>
+	<div class="sidebar-overlay" id="sidebarOverlay"></div>
+	<main class="middle-part tw-flex-1 lg:tw-ml-[240px] tw-min-h-screen tw-px-4 md:tw-px-6 lg:tw-px-10 tw-pb-8">
+		<!-- Nav Bar -->
+		<div class="tw-flex tw-items-center tw-justify-between tw-py-4 tw-gap-3 tw-flex-wrap">
+			<div class="tw-flex tw-items-center tw-gap-3">
+				<i class="fa fa-bars tw-text-primary-400 tw-cursor-pointer tw-text-xl lg:tw-hidden menu-icon" id="menuToggle"></i>
+				<div class="shadcn-search tw-hidden sm:tw-flex tw-w-64">
+					<i class="fa fa-search"></i>
+					<input type="text" placeholder="Search courses, assignments...">
+				</div>
+			</div>
+			<div class="tw-flex tw-items-center tw-gap-3">
+				<div class="tw-hidden sm:tw-flex tw-items-center tw-gap-2 tw-bg-accent-orange tw-text-white tw-rounded-token-md tw-px-3 tw-py-1.5 tw-text-caption-sm">
+					<i class="fa fa-bullhorn tw-text-xs"></i>
+					<span>New announcements available</span>
+				</div>
+				<button class="shadcn-btn shadcn-btn-ghost shadcn-btn-icon tw-relative">
+					<i class="fa fa-bell tw-text-primary-400"></i>
+				</button>
+				<div class="shadcn-avatar shadcn-avatar-md tw-cursor-pointer profile-click">
+					<img src="Images/profile.png" alt="Profile">
+				</div>
+			</div>
+		</div>
+
+		<!-- Page Header -->
+		<div class="tw-flex tw-flex-col sm:tw-flex-row tw-items-start sm:tw-items-center tw-justify-between tw-py-6 tw-gap-4">
+			<div>
+				<h3 class="second-color">Media Gallery</h3>
+				<p class="tw-text-sm tw-text-gray-500 tw-mt-1">Browse and manage language learning media resources</p>
+			</div>
+			<button class="shadcn-btn shadcn-btn-primary tw-text-sm"><i class="fa fa-upload tw-mr-1"></i> Upload Media</button>
+		</div>
+
+		<!-- Action Bar -->
+		<div class="tw-flex tw-items-center tw-gap-3 tw-mb-5 tw-flex-wrap">
+			<div class="shadcn-search tw-flex tw-w-56">
+				<i class="fa fa-search"></i>
+				<input type="text" placeholder="Search media...">
+			</div>
+			<select class="filter-select">
+				<option value="all">All Types</option>
+				<option value="video">Video</option>
+				<option value="audio">Audio</option>
+				<option value="image">Image</option>
+			</select>
+			<div class="tw-flex-1"></div>
+			<div class="view-toggle tw-flex tw-gap-1">
+				<button class="active"><i class="fa fa-th"></i></button>
+				<button><i class="fa fa-list"></i></button>
+			</div>
+		</div>
+
+		<!-- Media Grid -->
+		<div class="tw-grid tw-grid-cols-1 sm:tw-grid-cols-2 lg:tw-grid-cols-3 tw-gap-4">
+			<!-- Media 1 -->
+			<div class="media-card">
+				<div class="media-thumbnail">
+					<i class="fa fa-video media-placeholder-icon"></i>
+					<span class="type-badge video">Video</span>
+					<div class="play-overlay"><i class="fa fa-play-circle"></i></div>
+					<span class="duration">12:34</span>
+				</div>
+				<div class="media-info">
+					<h6 class="second-color">Spanish Pronunciation: Rolling the R</h6>
+					<div class="media-meta">
+						<span><i class="fa fa-calendar tw-mr-1"></i>Mar 20, 2026</span>
+						<span><i class="fa fa-eye tw-mr-1"></i>342 views</span>
+					</div>
+				</div>
+			</div>
+			<!-- Media 2 -->
+			<div class="media-card">
+				<div class="media-thumbnail" style="background:#2d1b69;">
+					<i class="fa fa-headphones media-placeholder-icon"></i>
+					<span class="type-badge audio">Audio</span>
+					<div class="play-overlay"><i class="fa fa-play-circle"></i></div>
+					<span class="duration">8:15</span>
+				</div>
+				<div class="media-info">
+					<h6 class="second-color">Listening Practice: Ordering at a Cafe</h6>
+					<div class="media-meta">
+						<span><i class="fa fa-calendar tw-mr-1"></i>Mar 18, 2026</span>
+						<span><i class="fa fa-eye tw-mr-1"></i>218 views</span>
+					</div>
+				</div>
+			</div>
+			<!-- Media 3 -->
+			<div class="media-card">
+				<div class="media-thumbnail" style="background:#1b3a2d;">
+					<i class="fa fa-image media-placeholder-icon"></i>
+					<span class="type-badge image">Image</span>
+					<div class="play-overlay"><i class="fa fa-expand"></i></div>
+					<span class="duration">2.4 MB</span>
+				</div>
+				<div class="media-info">
+					<h6 class="second-color">Infographic: Preterite vs. Imperfect Tense</h6>
+					<div class="media-meta">
+						<span><i class="fa fa-calendar tw-mr-1"></i>Mar 15, 2026</span>
+						<span><i class="fa fa-eye tw-mr-1"></i>567 views</span>
+					</div>
+				</div>
+			</div>
+			<!-- Media 4 -->
+			<div class="media-card">
+				<div class="media-thumbnail">
+					<i class="fa fa-video media-placeholder-icon"></i>
+					<span class="type-badge video">Video</span>
+					<div class="play-overlay"><i class="fa fa-play-circle"></i></div>
+					<span class="duration">18:42</span>
+				</div>
+				<div class="media-info">
+					<h6 class="second-color">Virtual Tour: Markets of Mexico City</h6>
+					<div class="media-meta">
+						<span><i class="fa fa-calendar tw-mr-1"></i>Mar 12, 2026</span>
+						<span><i class="fa fa-eye tw-mr-1"></i>891 views</span>
+					</div>
+				</div>
+			</div>
+			<!-- Media 5 -->
+			<div class="media-card">
+				<div class="media-thumbnail" style="background:#2d1b69;">
+					<i class="fa fa-headphones media-placeholder-icon"></i>
+					<span class="type-badge audio">Audio</span>
+					<div class="play-overlay"><i class="fa fa-play-circle"></i></div>
+					<span class="duration">22:10</span>
+				</div>
+				<div class="media-info">
+					<h6 class="second-color">Podcast: Interview with a Native Speaker</h6>
+					<div class="media-meta">
+						<span><i class="fa fa-calendar tw-mr-1"></i>Mar 10, 2026</span>
+						<span><i class="fa fa-eye tw-mr-1"></i>156 views</span>
+					</div>
+				</div>
+			</div>
+			<!-- Media 6 -->
+			<div class="media-card">
+				<div class="media-thumbnail">
+					<i class="fa fa-video media-placeholder-icon"></i>
+					<span class="type-badge video">Video</span>
+					<div class="play-overlay"><i class="fa fa-play-circle"></i></div>
+					<span class="duration">6:58</span>
+				</div>
+				<div class="media-info">
+					<h6 class="second-color">Conjugation Song: Ser vs. Estar</h6>
+					<div class="media-meta">
+						<span><i class="fa fa-calendar tw-mr-1"></i>Mar 8, 2026</span>
+						<span><i class="fa fa-eye tw-mr-1"></i>1,204 views</span>
+					</div>
+				</div>
+			</div>
+			<!-- Media 7 -->
+			<div class="media-card">
+				<div class="media-thumbnail" style="background:#1b3a2d;">
+					<i class="fa fa-image media-placeholder-icon"></i>
+					<span class="type-badge image">Image</span>
+					<div class="play-overlay"><i class="fa fa-expand"></i></div>
+					<span class="duration">1.8 MB</span>
+				</div>
+				<div class="media-info">
+					<h6 class="second-color">Flashcard Set: Food & Kitchen Vocabulary</h6>
+					<div class="media-meta">
+						<span><i class="fa fa-calendar tw-mr-1"></i>Mar 5, 2026</span>
+						<span><i class="fa fa-eye tw-mr-1"></i>423 views</span>
+					</div>
+				</div>
+			</div>
+			<!-- Media 8 -->
+			<div class="media-card">
+				<div class="media-thumbnail" style="background:#2d1b69;">
+					<i class="fa fa-headphones media-placeholder-icon"></i>
+					<span class="type-badge audio">Audio</span>
+					<div class="play-overlay"><i class="fa fa-play-circle"></i></div>
+					<span class="duration">15:30</span>
+				</div>
+				<div class="media-info">
+					<h6 class="second-color">Dictation Exercise: Travel Dialogue</h6>
+					<div class="media-meta">
+						<span><i class="fa fa-calendar tw-mr-1"></i>Mar 3, 2026</span>
+						<span><i class="fa fa-eye tw-mr-1"></i>189 views</span>
+					</div>
+				</div>
+			</div>
+			<!-- Media 9 -->
+			<div class="media-card">
+				<div class="media-thumbnail">
+					<i class="fa fa-video media-placeholder-icon"></i>
+					<span class="type-badge video">Video</span>
+					<div class="play-overlay"><i class="fa fa-play-circle"></i></div>
+					<span class="duration">24:15</span>
+				</div>
+				<div class="media-info">
+					<h6 class="second-color">Cultural Documentary: Flamenco Dance Origins</h6>
+					<div class="media-meta">
+						<span><i class="fa fa-calendar tw-mr-1"></i>Feb 28, 2026</span>
+						<span><i class="fa fa-eye tw-mr-1"></i>734 views</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Media Player Modal Placeholder -->
+		<div class="modal-overlay" id="mediaModal">
+			<div class="modal-content">
+				<div class="tw-flex tw-items-center tw-justify-between tw-mb-4">
+					<h5 class="second-color">Media Player</h5>
+					<button onclick="document.getElementById('mediaModal').style.display='none'" class="tw-text-gray-400 tw-text-xl tw-cursor-pointer tw-bg-transparent tw-border-none"><i class="fa fa-times"></i></button>
+				</div>
+				<div style="background:#1a1a2e;border-radius:8px;height:300px;display:flex;align-items:center;justify-content:center;">
+					<i class="fa fa-play-circle" style="font-size:64px;color:rgba(255,255,255,0.4);"></i>
+				</div>
+				<div class="tw-mt-3">
+					<h6 class="second-color">Media title will appear here</h6>
+					<p class="tw-text-xs tw-text-gray-400 tw-mt-1">Media player controls placeholder</p>
+				</div>
+			</div>
+		</div>
+	</main>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+<script>$(".button-collapse").sideNav();</script>
+<script src="js/router.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/api.js"></script>
+<script src="js/render.js"></script>
+<script src="js/sidebar.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

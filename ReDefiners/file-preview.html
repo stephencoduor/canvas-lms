@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	<title>ReDefiners - File Preview</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+	<script src="https://cdn.tailwindcss.com"></script>
+	<script src="css/tailwind-config.js?v=3"></script>
+	<script src="https://kit.fontawesome.com/7a13c96681.js" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/tokens.css?v=3">
+	<link rel="stylesheet" type="text/css" href="css/shadcn.css?v=3">
+	<link rel="stylesheet" type="text/css" href="styles.css?v=3">
+</head>
+<body>
+	<div class="tw-flex tw-min-h-screen tw-font-poppins">
+		<aside class="left-sidebar tw-fixed tw-inset-y-0 tw-left-0 tw-w-[240px] tw-z-50 tw--translate-x-full lg:tw-translate-x-0 tw-transition-transform tw-duration-300 tw-overflow-y-auto shadcn-scrollbar">
+			<div class="menu-bar">
+				<section class="logo-section">
+					<i class="fa fa-times theme-color menu-hide"></i>
+					<img src="Images/logo.PNG" class="res-hide" alt="logo">
+					<div class="nav-input res-show-flex tw-mt-5">
+						<button class="tw-border tw-border-primary-400 tw-border-r-0 tw-bg-transparent tw-px-2"><i class="fa fa-search"></i></button>
+						<input class="tw-border tw-border-primary-400 tw-border-l-0 tw-w-[85%] tw-bg-transparent tw-px-2 tw-py-1 tw-outline-none" type="text" name="search" placeholder="Search">
+					</div>
+				</section>
+				<section class="menu-links">
+					<div class="menu-link"><a href="dashboard.html"><i class="fa fa-th-large"></i><span> Dashboard</span></a></div>
+					<div class="menu-link"><a href="courses.html"><i class="fa fa-clipboard-list"></i><span> Courses</span></a></div>
+					<div class="menu-link"><a href="calendar.html"><i class="fa fa-calendar-alt"></i><span> Calendar</span></a></div>
+					<div class="menu-link"><a href="announcement.html"><i class="fa fa-bullhorn"></i><span> Announcements</span></a></div>
+					<div class="menu-link"><a href="inbox.html"><i class="fa fa-comments"></i><span> Messages</span></a></div>
+					<div class="menu-link"><a href="assignments.html"><i class="fa fa-file-lines"></i><span> Assignments</span></a></div>
+					<div class="menu-link"><a href="grades.html"><i class="fa fa-chart-bar"></i><span> Grades</span></a></div>
+					<div class="menu-link"><a href="modules.html"><i class="fa fa-layer-group"></i><span> Modules</span></a></div>
+					<div class="menu-link"><a href="discussions.html"><i class="fa fa-comments-alt"></i><span> Discussions</span></a></div>
+					<div class="menu-link"><a href="quizzes.html"><i class="fa fa-question-circle"></i><span> Quizzes</span></a></div>
+					<div class="menu-link"><a href="pages.html"><i class="fa fa-file-alt"></i><span> Pages</span></a></div>
+					<div class="menu-link"><a href="files.html" class="active-menu"><i class="fa fa-folder"></i><span> Files</span></a></div>
+					<div class="menu-link"><a href="people.html"><i class="fa fa-users"></i><span> People</span></a></div>
+					<div class="menu-link"><a href="outcomes.html"><i class="fa fa-bullseye"></i><span> Outcomes</span></a></div>
+					<div class="menu-link"><a href="rubrics.html"><i class="fa fa-th"></i><span> Rubrics</span></a></div>
+					<div class="menu-link"><a href="groups.html"><i class="fa fa-user-friends"></i><span> Groups</span></a></div>
+					<div class="menu-link"><a href="conferences.html"><i class="fa fa-video"></i><span> Conferences</span></a></div>
+					<div class="menu-link"><a href="collaborations.html"><i class="fa fa-handshake"></i><span> Collaborations</span></a></div>
+					<div class="menu-link"><a href="account-settings.html"><i class="fa fa-cog"></i><span> Settings</span></a></div>
+				</section>
+			</div>
+		</aside>
+		<div class="sidebar-overlay" id="sidebarOverlay"></div>
+		<main class="middle-part tw-flex-1 lg:tw-ml-[240px] tw-min-h-screen tw-px-4 md:tw-px-6 lg:tw-px-10 tw-pb-8">
+			<div class="tw-flex tw-items-center tw-justify-between tw-py-4 tw-gap-3 tw-flex-wrap">
+				<div class="tw-flex tw-items-center tw-gap-3">
+					<i class="fa fa-bars tw-text-primary-400 tw-cursor-pointer tw-text-xl lg:tw-hidden menu-icon" id="menuToggle"></i>
+					<div class="shadcn-search tw-hidden sm:tw-flex tw-w-64">
+						<i class="fa fa-search"></i>
+						<input type="text" placeholder="Search courses, assignments...">
+					</div>
+				</div>
+				<div class="tw-flex tw-items-center tw-gap-3">
+					<button class="shadcn-btn shadcn-btn-ghost shadcn-btn-icon tw-relative"><i class="fa fa-bell tw-text-primary-400"></i></button>
+					<div class="shadcn-avatar shadcn-avatar-md tw-cursor-pointer profile-click"><img src="Images/profile.png" alt="Profile"></div>
+				</div>
+			</div>
+
+			<!-- Breadcrumb -->
+			<nav class="tw-text-sm tw-text-gray-500 tw-py-3">
+				<a href="dashboard.html" class="theme-color">Dashboard</a>
+				<span class="tw-mx-2">/</span>
+				<a href="courses.html" class="theme-color">Biology 101</a>
+				<span class="tw-mx-2">/</span>
+				<a href="files.html" class="theme-color">Files</a>
+				<span class="tw-mx-2">/</span>
+				<span>Lab Materials</span>
+				<span class="tw-mx-2">/</span>
+				<span>Cell-Division-Diagram.pdf</span>
+			</nav>
+
+			<div class="tw-grid tw-grid-cols-1 lg:tw-grid-cols-4 tw-gap-6">
+				<!-- File Preview Area -->
+				<div class="lg:tw-col-span-3">
+					<div class="shadcn-card tw-overflow-hidden">
+						<!-- Preview Toolbar -->
+						<div class="tw-flex tw-items-center tw-justify-between tw-px-4 tw-py-3 tw-bg-gray-50 tw-border-b">
+							<div class="tw-flex tw-items-center tw-gap-2">
+								<button class="shadcn-btn shadcn-btn-ghost shadcn-btn-icon tw-text-sm" title="Zoom Out"><i class="fa fa-search-minus"></i></button>
+								<span class="tw-text-sm tw-text-gray-600 tw-px-2">100%</span>
+								<button class="shadcn-btn shadcn-btn-ghost shadcn-btn-icon tw-text-sm" title="Zoom In"><i class="fa fa-search-plus"></i></button>
+								<span class="tw-w-px tw-h-5 tw-bg-gray-300 tw-mx-1"></span>
+								<button class="shadcn-btn shadcn-btn-ghost shadcn-btn-icon tw-text-sm" title="Fit to Width"><i class="fa fa-arrows-alt-h"></i></button>
+								<button class="shadcn-btn shadcn-btn-ghost shadcn-btn-icon tw-text-sm" title="Fit to Page"><i class="fa fa-expand"></i></button>
+							</div>
+							<div class="tw-flex tw-items-center tw-gap-2">
+								<button class="shadcn-btn shadcn-btn-ghost shadcn-btn-icon tw-text-sm" title="Previous Page"><i class="fa fa-chevron-left"></i></button>
+								<span class="tw-text-sm tw-text-gray-600">Page 1 of 3</span>
+								<button class="shadcn-btn shadcn-btn-ghost shadcn-btn-icon tw-text-sm" title="Next Page"><i class="fa fa-chevron-right"></i></button>
+							</div>
+						</div>
+						<!-- Preview Content -->
+						<div class="tw-bg-gray-100 tw-flex tw-items-center tw-justify-center" style="min-height: 500px;">
+							<div class="tw-bg-white tw-shadow-lg tw-rounded tw-p-8 tw-max-w-lg tw-text-center">
+								<i class="fa fa-file-pdf tw-text-red-500 tw-text-6xl tw-mb-4"></i>
+								<h4 class="second-color tw-mb-2">Cell Division Diagram</h4>
+								<p class="tw-text-sm tw-text-gray-500 tw-mb-4">A comprehensive visual guide showing the stages of mitosis and meiosis, including prophase, metaphase, anaphase, and telophase. Includes labeled diagrams of chromosome behavior during each stage.</p>
+								<div class="tw-border-t tw-pt-4 tw-mt-4">
+									<div class="tw-grid tw-grid-cols-2 tw-gap-4 tw-text-left tw-text-sm">
+										<div>
+											<p class="tw-text-gray-400 tw-text-xs tw-mb-0">Chapter</p>
+											<p class="tw-font-medium tw-mb-0">Cell Division & Reproduction</p>
+										</div>
+										<div>
+											<p class="tw-text-gray-400 tw-text-xs tw-mb-0">Related Module</p>
+											<p class="tw-font-medium tw-mb-0">Week 3: Cell Division</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- File Info Sidebar -->
+				<div class="lg:tw-col-span-1">
+					<div class="shadcn-card tw-p-5 tw-mb-4">
+						<h5 class="second-color tw-mb-4"><i class="fa fa-info-circle tw-mr-2 theme-color"></i>File Details</h5>
+						<div class="tw-space-y-3">
+							<div>
+								<p class="tw-text-xs tw-text-gray-400 tw-mb-0">File Name</p>
+								<p class="tw-text-sm tw-font-medium tw-mb-0 tw-break-all">Cell-Division-Diagram.pdf</p>
+							</div>
+							<div>
+								<p class="tw-text-xs tw-text-gray-400 tw-mb-0">Type</p>
+								<p class="tw-text-sm tw-mb-0">
+									<i class="fa fa-file-pdf tw-text-red-500 tw-mr-1"></i> PDF Document
+								</p>
+							</div>
+							<div>
+								<p class="tw-text-xs tw-text-gray-400 tw-mb-0">Size</p>
+								<p class="tw-text-sm tw-mb-0">2.4 MB</p>
+							</div>
+							<div>
+								<p class="tw-text-xs tw-text-gray-400 tw-mb-0">Dimensions</p>
+								<p class="tw-text-sm tw-mb-0">8.5 x 11 in (Letter)</p>
+							</div>
+							<div>
+								<p class="tw-text-xs tw-text-gray-400 tw-mb-0">Pages</p>
+								<p class="tw-text-sm tw-mb-0">3</p>
+							</div>
+							<div class="tw-border-t tw-pt-3">
+								<p class="tw-text-xs tw-text-gray-400 tw-mb-0">Uploaded By</p>
+								<div class="tw-flex tw-items-center tw-gap-2 tw-mt-1">
+									<div class="shadcn-avatar" style="width:24px;height:24px;">
+										<img src="Images/profile.png" alt="User">
+									</div>
+									<p class="tw-text-sm tw-mb-0">Dr. Sarah Chen</p>
+								</div>
+							</div>
+							<div>
+								<p class="tw-text-xs tw-text-gray-400 tw-mb-0">Upload Date</p>
+								<p class="tw-text-sm tw-mb-0">Feb 14, 2025 at 3:22 PM</p>
+							</div>
+							<div>
+								<p class="tw-text-xs tw-text-gray-400 tw-mb-0">Last Modified</p>
+								<p class="tw-text-sm tw-mb-0">Mar 2, 2025 at 10:08 AM</p>
+							</div>
+							<div>
+								<p class="tw-text-xs tw-text-gray-400 tw-mb-0">Location</p>
+								<p class="tw-text-sm tw-mb-0"><a href="#" class="theme-color">course files / Lab Materials</a></p>
+							</div>
+							<div>
+								<p class="tw-text-xs tw-text-gray-400 tw-mb-0">Usage Rights</p>
+								<p class="tw-text-sm tw-mb-0">Own copyright, used with permission</p>
+							</div>
+						</div>
+					</div>
+
+					<!-- Actions -->
+					<div class="shadcn-card tw-p-5 tw-mb-4">
+						<h5 class="second-color tw-mb-4"><i class="fa fa-cogs tw-mr-2 theme-color"></i>Actions</h5>
+						<div class="tw-space-y-2">
+							<button class="shadcn-btn shadcn-btn-primary tw-w-full tw-text-sm">
+								<i class="fa fa-download tw-mr-2"></i> Download File
+							</button>
+							<button class="shadcn-btn shadcn-btn-outline tw-w-full tw-text-sm">
+								<i class="fa fa-external-link-alt tw-mr-2"></i> Open in New Tab
+							</button>
+							<button class="shadcn-btn shadcn-btn-outline tw-w-full tw-text-sm">
+								<i class="fa fa-edit tw-mr-2"></i> Rename
+							</button>
+							<button class="shadcn-btn shadcn-btn-outline tw-w-full tw-text-sm">
+								<i class="fa fa-folder-open tw-mr-2"></i> Move To...
+							</button>
+						</div>
+					</div>
+
+					<!-- Share Options -->
+					<div class="shadcn-card tw-p-5">
+						<h5 class="second-color tw-mb-4"><i class="fa fa-share-alt tw-mr-2 theme-color"></i>Share</h5>
+						<div class="tw-space-y-3">
+							<div>
+								<label class="tw-text-xs tw-text-gray-500 tw-mb-1 tw-block">Access</label>
+								<select class="shadcn-input tw-w-full tw-text-sm">
+									<option selected>Course members only</option>
+									<option>Anyone with the link</option>
+									<option>Only me</option>
+								</select>
+							</div>
+							<div>
+								<label class="tw-text-xs tw-text-gray-500 tw-mb-1 tw-block">Direct Link</label>
+								<div class="tw-flex tw-gap-1">
+									<input type="text" class="shadcn-input tw-flex-1 tw-text-xs" value="https://canvas.redefiners.org/files/4821" readonly>
+									<button class="shadcn-btn shadcn-btn-outline tw-text-xs" title="Copy link"><i class="fa fa-copy"></i></button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+	</div>
+<script src="js/sidebar.js"></script>
+<script src="js/router.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/api.js"></script>
+<script src="js/render.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

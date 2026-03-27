@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	<title>ReDefiners - Admin Dashboard</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+	<script src="https://cdn.tailwindcss.com"></script>
+	<script src="css/tailwind-config.js?v=3"></script>
+	<script src="https://kit.fontawesome.com/7a13c96681.js" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/tokens.css?v=3">
+	<link rel="stylesheet" type="text/css" href="css/shadcn.css?v=3">
+	<link rel="stylesheet" type="text/css" href="styles.css?v=3">
+	<style>
+		.stat-card { position: relative; overflow: hidden; }
+		.stat-card .stat-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; }
+		.stat-card .stat-icon.blue { background: #e8f4fd; color: #3B82F6; }
+		.stat-card .stat-icon.green { background: #D4EFE6; color: #2DB88A; }
+		.stat-card .stat-icon.orange { background: #fff3e0; color: #FF6B35; }
+		.stat-card .stat-icon.purple { background: #f3e8ff; color: #8B5CF6; }
+		.trend-up { color: #2DB88A; font-size: 12px; font-weight: 600; }
+		.trend-down { color: #ef4444; font-size: 12px; font-weight: 600; }
+		.activity-item { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; border-bottom: 1px solid #f0f0f0; }
+		.activity-item:last-child { border-bottom: none; }
+		.activity-avatar { width: 36px; height: 36px; border-radius: 50%; background: #e8f4fd; display: flex; align-items: center; justify-content: center; font-size: 14px; color: #3B82F6; flex-shrink: 0; }
+		.chart-placeholder { background: #f8fafb; border: 2px dashed #e5e7eb; border-radius: 12px; display: flex; align-items: center; justify-content: center; min-height: 240px; color: #668B91; font-size: 14px; }
+		.quick-action-btn { display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 16px; border-radius: 12px; border: 1px solid #e5e7eb; background: white; cursor: pointer; transition: all 0.2s; font-size: 13px; font-weight: 500; color: #334155; }
+		.quick-action-btn:hover { border-color: var(--color-primary-400); background: #f8fafb; }
+		.quick-action-btn i { font-size: 20px; color: var(--color-primary-400); }
+	</style>
+</head>
+<body>
+<div class="tw-flex tw-min-h-screen tw-font-poppins">
+	<aside class="left-sidebar tw-fixed tw-inset-y-0 tw-left-0 tw-w-[240px] tw-z-50 tw--translate-x-full lg:tw-translate-x-0 tw-transition-transform tw-duration-300 tw-overflow-y-auto shadcn-scrollbar">
+		<div class="menu-bar">
+			<section class="logo-section">
+				<i class="fa fa-times theme-color menu-hide"></i>
+				<img src="Images/logo.PNG" class="res-hide" alt="logo">
+				<div class="nav-input res-show-flex tw-mt-5">
+					<button class="tw-border tw-border-primary-400 tw-border-r-0 tw-bg-transparent tw-px-2"><i class="fa fa-search"></i></button>
+					<input class="tw-border tw-border-primary-400 tw-border-l-0 tw-w-[85%] tw-bg-transparent tw-px-2 tw-py-1 tw-outline-none" type="text" name="search" placeholder="Search">
+				</div>
+			</section>
+			<section class="menu-links">
+				<div class="menu-link"><a href="dashboard.html"><i class="fa fa-th-large"></i><span> Dashboard</span></a></div>
+				<div class="menu-link"><a href="courses.html"><i class="fa fa-clipboard-list"></i><span> Courses</span></a></div>
+				<div class="menu-link"><a href="calendar.html"><i class="fa fa-calendar-alt"></i><span> Calendar</span></a></div>
+				<div class="menu-link"><a href="announcement.html"><i class="fa fa-bullhorn"></i><span> Announcements</span></a></div>
+				<div class="menu-link"><a href="inbox.html"><i class="fa fa-comments"></i><span> Messages</span></a></div>
+				<div class="menu-link"><a href="assignments.html"><i class="fa fa-file-lines"></i><span> Assignments</span></a></div>
+				<div class="menu-link"><a href="grades.html"><i class="fa fa-chart-bar"></i><span> Grades</span></a></div>
+				<div class="menu-link"><a href="modules.html"><i class="fa fa-layer-group"></i><span> Modules</span></a></div>
+				<div class="menu-link"><a href="discussions.html"><i class="fa fa-comments-alt"></i><span> Discussions</span></a></div>
+				<div class="menu-link"><a href="quizzes.html"><i class="fa fa-question-circle"></i><span> Quizzes</span></a></div>
+				<div class="menu-link"><a href="pages.html"><i class="fa fa-file-alt"></i><span> Pages</span></a></div>
+				<div class="menu-link"><a href="files.html"><i class="fa fa-folder"></i><span> Files</span></a></div>
+				<div class="menu-link"><a href="people.html"><i class="fa fa-users"></i><span> People</span></a></div>
+				<div class="menu-link"><a href="outcomes.html"><i class="fa fa-bullseye"></i><span> Outcomes</span></a></div>
+				<div class="menu-link"><a href="rubrics.html"><i class="fa fa-th"></i><span> Rubrics</span></a></div>
+				<div class="menu-link"><a href="groups.html"><i class="fa fa-user-friends"></i><span> Groups</span></a></div>
+				<div class="menu-link"><a href="conferences.html"><i class="fa fa-video"></i><span> Conferences</span></a></div>
+				<div class="menu-link"><a href="collaborations.html"><i class="fa fa-handshake"></i><span> Collaborations</span></a></div>
+				<div class="menu-link"><a href="account-settings.html" class="active-menu"><i class="fa fa-cog"></i><span> Settings</span></a></div>
+			</section>
+		</div>
+	</aside>
+	<div class="sidebar-overlay" id="sidebarOverlay"></div>
+	<main class="middle-part tw-flex-1 lg:tw-ml-[240px] tw-min-h-screen tw-px-4 md:tw-px-6 lg:tw-px-10 tw-pb-8">
+		<!-- Nav Bar -->
+		<div class="tw-flex tw-items-center tw-justify-between tw-py-4 tw-gap-3 tw-flex-wrap">
+			<div class="tw-flex tw-items-center tw-gap-3">
+				<i class="fa fa-bars tw-text-primary-400 tw-cursor-pointer tw-text-xl lg:tw-hidden menu-icon" id="menuToggle"></i>
+				<div class="shadcn-search tw-hidden sm:tw-flex tw-w-64">
+					<i class="fa fa-search"></i>
+					<input type="text" placeholder="Search courses, assignments...">
+				</div>
+			</div>
+			<div class="tw-flex tw-items-center tw-gap-3">
+				<div class="tw-hidden sm:tw-flex tw-items-center tw-gap-2 tw-bg-accent-orange tw-text-white tw-rounded-token-md tw-px-3 tw-py-1.5 tw-text-caption-sm">
+					<i class="fa fa-bullhorn tw-text-xs"></i>
+					<span>New announcements available</span>
+				</div>
+				<button class="shadcn-btn shadcn-btn-ghost shadcn-btn-icon tw-relative">
+					<i class="fa fa-bell tw-text-primary-400"></i>
+				</button>
+				<div class="shadcn-avatar shadcn-avatar-md tw-cursor-pointer profile-click">
+					<img src="Images/profile.png" alt="Profile">
+				</div>
+			</div>
+		</div>
+
+		<!-- Page Header -->
+		<div class="tw-flex tw-flex-col sm:tw-flex-row tw-items-start sm:tw-items-center tw-justify-between tw-py-6 tw-gap-4">
+			<div>
+				<h3 class="second-color">Admin Dashboard</h3>
+				<p class="tw-text-sm tw-text-gray-500 tw-mt-1">ReDefiners World Languages administration overview</p>
+			</div>
+			<div class="tw-flex tw-gap-2">
+				<button class="shadcn-btn shadcn-btn-outline tw-text-xs"><i class="fa fa-download tw-mr-1"></i> Export Data</button>
+				<button class="shadcn-btn shadcn-btn-primary tw-text-xs"><i class="fa fa-plus tw-mr-1"></i> Quick Setup</button>
+			</div>
+		</div>
+
+		<!-- Stats Cards -->
+		<div class="tw-grid tw-grid-cols-1 sm:tw-grid-cols-2 lg:tw-grid-cols-4 tw-gap-4">
+			<div class="shadcn-card tw-p-5 stat-card">
+				<div class="tw-flex tw-items-center tw-justify-between tw-mb-3">
+					<div class="stat-icon blue"><i class="fa fa-user-graduate"></i></div>
+					<span class="trend-up"><i class="fa fa-arrow-up tw-mr-1"></i>12%</span>
+				</div>
+				<div class="tw-text-2xl tw-font-bold second-color">1,247</div>
+				<div class="tw-text-sm tw-text-gray-500 tw-mt-1">Total Students</div>
+			</div>
+			<div class="shadcn-card tw-p-5 stat-card">
+				<div class="tw-flex tw-items-center tw-justify-between tw-mb-3">
+					<div class="stat-icon green"><i class="fa fa-book-open"></i></div>
+					<span class="trend-up"><i class="fa fa-arrow-up tw-mr-1"></i>8%</span>
+				</div>
+				<div class="tw-text-2xl tw-font-bold second-color">48</div>
+				<div class="tw-text-sm tw-text-gray-500 tw-mt-1">Active Courses</div>
+			</div>
+			<div class="shadcn-card tw-p-5 stat-card">
+				<div class="tw-flex tw-items-center tw-justify-between tw-mb-3">
+					<div class="stat-icon orange"><i class="fa fa-chalkboard-teacher"></i></div>
+					<span class="trend-up"><i class="fa fa-arrow-up tw-mr-1"></i>3%</span>
+				</div>
+				<div class="tw-text-2xl tw-font-bold second-color">32</div>
+				<div class="tw-text-sm tw-text-gray-500 tw-mt-1">Teachers</div>
+			</div>
+			<div class="shadcn-card tw-p-5 stat-card">
+				<div class="tw-flex tw-items-center tw-justify-between tw-mb-3">
+					<div class="stat-icon purple"><i class="fa fa-chart-line"></i></div>
+					<span class="trend-down"><i class="fa fa-arrow-down tw-mr-1"></i>2%</span>
+				</div>
+				<div class="tw-text-2xl tw-font-bold second-color">87%</div>
+				<div class="tw-text-sm tw-text-gray-500 tw-mt-1">Completion Rate</div>
+			</div>
+		</div>
+
+		<!-- Charts Section -->
+		<div class="tw-grid tw-grid-cols-1 lg:tw-grid-cols-2 tw-gap-5 tw-my-5">
+			<div class="shadcn-card tw-p-5">
+				<h5 class="second-color tw-mb-4">Student Enrollment Trends</h5>
+				<div class="chart-placeholder">
+					<div class="tw-text-center">
+						<i class="fa fa-chart-area tw-text-3xl tw-mb-2 tw-block"></i>
+						<span>Enrollment chart - integrate with Chart.js</span>
+					</div>
+				</div>
+			</div>
+			<div class="shadcn-card tw-p-5">
+				<h5 class="second-color tw-mb-4">Course Completion Rates</h5>
+				<div class="chart-placeholder">
+					<div class="tw-text-center">
+						<i class="fa fa-chart-bar tw-text-3xl tw-mb-2 tw-block"></i>
+						<span>Completion rates bar chart - integrate with Chart.js</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Recent Activity + Quick Actions -->
+		<div class="tw-grid tw-grid-cols-1 lg:tw-grid-cols-3 tw-gap-5 tw-my-5">
+			<div class="lg:tw-col-span-2 shadcn-card tw-p-5">
+				<h5 class="second-color tw-mb-4">Recent Activity</h5>
+				<div class="activity-item">
+					<div class="activity-avatar"><i class="fa fa-user-plus"></i></div>
+					<div class="tw-flex-1">
+						<p class="tw-text-sm second-color tw-font-medium">Maria Santos enrolled in Spanish 301 - Advanced Conversation</p>
+						<span class="tw-text-xs tw-text-gray-400">2 minutes ago</span>
+					</div>
+				</div>
+				<div class="activity-item">
+					<div class="activity-avatar" style="background:#D4EFE6;color:#2DB88A;"><i class="fa fa-check-circle"></i></div>
+					<div class="tw-flex-1">
+						<p class="tw-text-sm second-color tw-font-medium">Prof. Jean-Luc Dupont published grades for French 102 - Midterm Exam</p>
+						<span class="tw-text-xs tw-text-gray-400">15 minutes ago</span>
+					</div>
+				</div>
+				<div class="activity-item">
+					<div class="activity-avatar" style="background:#fff3e0;color:#FF6B35;"><i class="fa fa-book"></i></div>
+					<div class="tw-flex-1">
+						<p class="tw-text-sm second-color tw-font-medium">New course created: Mandarin 101 - Introduction to Chinese Characters</p>
+						<span class="tw-text-xs tw-text-gray-400">1 hour ago</span>
+					</div>
+				</div>
+				<div class="activity-item">
+					<div class="activity-avatar" style="background:#f3e8ff;color:#8B5CF6;"><i class="fa fa-comment"></i></div>
+					<div class="tw-flex-1">
+						<p class="tw-text-sm second-color tw-font-medium">Ahmed Al-Rashid posted a discussion reply in Arabic 201 - Modern Standard Arabic</p>
+						<span class="tw-text-xs tw-text-gray-400">2 hours ago</span>
+					</div>
+				</div>
+				<div class="activity-item">
+					<div class="activity-avatar"><i class="fa fa-file-alt"></i></div>
+					<div class="tw-flex-1">
+						<p class="tw-text-sm second-color tw-font-medium">Prof. Yuki Tanaka uploaded new lesson materials for Japanese 202 - Kanji Studies</p>
+						<span class="tw-text-xs tw-text-gray-400">3 hours ago</span>
+					</div>
+				</div>
+				<div class="activity-item">
+					<div class="activity-avatar" style="background:#D4EFE6;color:#2DB88A;"><i class="fa fa-trophy"></i></div>
+					<div class="tw-flex-1">
+						<p class="tw-text-sm second-color tw-font-medium">15 students completed Portuguese 101 - Beginner Foundations course</p>
+						<span class="tw-text-xs tw-text-gray-400">5 hours ago</span>
+					</div>
+				</div>
+				<div class="activity-item">
+					<div class="activity-avatar" style="background:#fff3e0;color:#FF6B35;"><i class="fa fa-exclamation-triangle"></i></div>
+					<div class="tw-flex-1">
+						<p class="tw-text-sm second-color tw-font-medium">SIS import completed with 3 warnings for German 101 student roster</p>
+						<span class="tw-text-xs tw-text-gray-400">6 hours ago</span>
+					</div>
+				</div>
+				<div class="activity-item">
+					<div class="activity-avatar" style="background:#f3e8ff;color:#8B5CF6;"><i class="fa fa-video"></i></div>
+					<div class="tw-flex-1">
+						<p class="tw-text-sm second-color tw-font-medium">Live conference session ended: Korean 101 - Pronunciation Practice with Prof. Kim</p>
+						<span class="tw-text-xs tw-text-gray-400">Yesterday at 4:30 PM</span>
+					</div>
+				</div>
+			</div>
+			<div class="shadcn-card tw-p-5">
+				<h5 class="second-color tw-mb-4">Quick Actions</h5>
+				<div class="tw-grid tw-grid-cols-2 tw-gap-3">
+					<div class="quick-action-btn">
+						<i class="fa fa-user-plus"></i>
+						<span>Add User</span>
+					</div>
+					<div class="quick-action-btn">
+						<i class="fa fa-plus-circle"></i>
+						<span>Create Course</span>
+					</div>
+					<div class="quick-action-btn">
+						<i class="fa fa-chart-pie"></i>
+						<span>View Reports</span>
+					</div>
+					<div class="quick-action-btn">
+						<i class="fa fa-user-shield"></i>
+						<span>Manage Roles</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+<script>$(".button-collapse").sideNav();</script>
+<script src="js/router.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/api.js"></script>
+<script src="js/render.js"></script>
+<script src="js/sidebar.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

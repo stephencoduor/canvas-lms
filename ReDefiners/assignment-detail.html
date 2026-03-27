@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	<title>ReDefiners - Assignment Detail</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+	<script src="https://cdn.tailwindcss.com"></script>
+	<script src="css/tailwind-config.js?v=3"></script>
+	<script src="https://kit.fontawesome.com/7a13c96681.js" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/tokens.css?v=3">
+	<link rel="stylesheet" type="text/css" href="css/shadcn.css?v=3">
+	<link rel="stylesheet" type="text/css" href="styles.css?v=3">
+	<style>
+		.dropzone {
+			border: 2px dashed var(--color-neutral-300);
+			border-radius: var(--radius-lg);
+			padding: 40px;
+			text-align: center;
+			transition: all var(--transition-default);
+			cursor: pointer;
+			background: var(--color-neutral-50);
+		}
+		.dropzone:hover {
+			border-color: var(--color-accent-green);
+			background: var(--color-accent-green-light);
+		}
+		.rubric-table th, .rubric-table td {
+			padding: 10px 14px;
+			font-size: 13px;
+		}
+		.rubric-rating {
+			padding: 6px 10px;
+			border-radius: var(--radius-sm);
+			font-size: 12px;
+			text-align: center;
+			cursor: pointer;
+			border: 1px solid var(--color-neutral-200);
+			transition: all var(--transition-default);
+		}
+		.rubric-rating:hover, .rubric-rating.selected {
+			background: var(--color-accent-green-light);
+			border-color: var(--color-accent-green);
+			color: #065F46;
+		}
+		.detail-sidebar-item {
+			display: flex;
+			justify-content: space-between;
+			padding: 10px 0;
+			border-bottom: 1px solid var(--color-neutral-100);
+			font-size: 13px;
+		}
+		.detail-sidebar-item:last-child { border-bottom: none; }
+	</style>
+</head>
+<body>
+<div class="tw-flex tw-min-h-screen tw-font-poppins">
+	<aside class="left-sidebar tw-fixed tw-inset-y-0 tw-left-0 tw-w-[240px] tw-z-50 tw--translate-x-full lg:tw-translate-x-0 tw-transition-transform tw-duration-300 tw-overflow-y-auto shadcn-scrollbar">
+		<div class="menu-bar">
+			<section class="logo-section">
+				<i class="fa fa-times theme-color menu-hide"></i>
+				<img src="Images/logo.PNG" class="res-hide" alt="logo">
+			</section>
+			<section class="menu-links">
+				<div class="menu-link"><a href="dashboard.html"><i class="fa fa-th-large"></i><span> Dashboard</span></a></div>
+				<div class="menu-link"><a href="courses.html"><i class="fa fa-clipboard-list"></i><span> Courses</span></a></div>
+				<div class="menu-link"><a href="calendar.html"><i class="fa fa-calendar-alt"></i><span> Calendar</span></a></div>
+				<div class="menu-link"><a href="announcement.html"><i class="fa fa-bullhorn"></i><span> Announcements</span></a></div>
+				<div class="menu-link"><a href="inbox.html"><i class="fa fa-comments"></i><span> Messages</span></a></div>
+				<div class="menu-link active-menu"><a href="assignments.html"><i class="fa fa-file-lines"></i><span> Assignments</span></a></div>
+				<div class="menu-link"><a href="grades.html"><i class="fa fa-chart-bar"></i><span> Grades</span></a></div>
+				<div class="menu-link"><a href="modules.html"><i class="fa fa-layer-group"></i><span> Modules</span></a></div>
+				<div class="menu-link"><a href="discussions.html"><i class="fa fa-comments-alt"></i><span> Discussions</span></a></div>
+				<div class="menu-link"><a href="quizzes.html"><i class="fa fa-question-circle"></i><span> Quizzes</span></a></div>
+				<div class="menu-link"><a href="pages.html"><i class="fa fa-file-alt"></i><span> Pages</span></a></div>
+				<div class="menu-link"><a href="files.html"><i class="fa fa-folder"></i><span> Files</span></a></div>
+				<div class="menu-link"><a href="people.html"><i class="fa fa-users"></i><span> People</span></a></div>
+				<div class="menu-link"><a href="outcomes.html"><i class="fa fa-bullseye"></i><span> Outcomes</span></a></div>
+				<div class="menu-link"><a href="rubrics.html"><i class="fa fa-th"></i><span> Rubrics</span></a></div>
+				<div class="menu-link"><a href="groups.html"><i class="fa fa-user-friends"></i><span> Groups</span></a></div>
+				<div class="menu-link"><a href="conferences.html"><i class="fa fa-video"></i><span> Conferences</span></a></div>
+				<div class="menu-link"><a href="collaborations.html"><i class="fa fa-handshake"></i><span> Collaborations</span></a></div>
+				<div class="menu-link"><a href="account-settings.html"><i class="fa fa-cog"></i><span> Settings</span></a></div>
+			</section>
+		</div>
+	</aside>
+	<div class="sidebar-overlay" id="sidebarOverlay"></div>
+	<main class="middle-part tw-flex-1 lg:tw-ml-[240px] tw-min-h-screen tw-px-4 md:tw-px-6 lg:tw-px-10 tw-pb-8">
+		<div class="tw-flex tw-items-center tw-justify-between tw-py-4 tw-gap-3 tw-flex-wrap">
+			<div class="tw-flex tw-items-center tw-gap-3">
+				<i class="fa fa-bars tw-text-primary-400 tw-cursor-pointer tw-text-xl lg:tw-hidden menu-icon" id="menuToggle"></i>
+				<div class="shadcn-search tw-hidden sm:tw-flex tw-w-64">
+					<i class="fa fa-search"></i>
+					<input type="text" placeholder="Search courses, assignments...">
+				</div>
+			</div>
+			<div class="tw-flex tw-items-center tw-gap-3">
+				<button class="shadcn-btn shadcn-btn-ghost shadcn-btn-icon tw-relative">
+					<i class="fa fa-bell tw-text-primary-400"></i>
+				</button>
+				<div class="shadcn-avatar shadcn-avatar-md tw-cursor-pointer">
+					<img src="Images/profile.png" alt="Profile">
+				</div>
+			</div>
+		</div>
+
+		<!-- Breadcrumbs -->
+		<nav class="tw-flex tw-items-center tw-gap-2 tw-text-sm tw-text-gray-500 tw-mb-6">
+			<a href="dashboard.html" class="hover:tw-text-primary-700">Home</a>
+			<i class="fa fa-chevron-right tw-text-xs"></i>
+			<a href="courses.html" class="hover:tw-text-primary-700">Spanish 101</a>
+			<i class="fa fa-chevron-right tw-text-xs"></i>
+			<a href="assignments.html" class="hover:tw-text-primary-700">Assignments</a>
+			<i class="fa fa-chevron-right tw-text-xs"></i>
+			<span class="tw-text-primary-800 tw-font-medium">Essay: Mi Familia</span>
+		</nav>
+
+		<div class="tw-flex tw-flex-col lg:tw-flex-row tw-gap-6">
+			<!-- Main Content -->
+			<div class="tw-flex-1">
+				<!-- Assignment Header -->
+				<div class="shadcn-card tw-p-6 tw-mb-6">
+					<div class="tw-flex tw-items-start tw-justify-between tw-flex-wrap tw-gap-3">
+						<div>
+							<h1 class="tw-text-2xl tw-font-bold tw-text-primary-800 tw-mb-2">Essay: Mi Familia</h1>
+							<div class="tw-flex tw-items-center tw-gap-3 tw-flex-wrap">
+								<span class="shadcn-badge shadcn-badge-warning">
+									<i class="fa fa-clock tw-mr-1"></i> Not Submitted
+								</span>
+								<span class="tw-text-sm tw-text-gray-500">
+									<i class="fa fa-file-upload tw-mr-1"></i> Online Upload / Text Entry
+								</span>
+							</div>
+						</div>
+						<div class="tw-text-right">
+							<div class="tw-text-2xl tw-font-bold tw-text-primary-700">100 <span class="tw-text-sm tw-font-normal tw-text-gray-500">pts</span></div>
+							<div class="tw-text-sm tw-text-gray-500">Due: Mar 28, 2026 at 11:59 PM</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Assignment Description -->
+				<div class="shadcn-card tw-p-6 tw-mb-6">
+					<h2 class="tw-text-lg tw-font-semibold tw-text-primary-800 tw-mb-4">Assignment Description</h2>
+					<div class="tw-text-sm tw-text-gray-700 tw-leading-relaxed tw-space-y-4">
+						<p>Write a 500-750 word essay in Spanish about your family. This assignment is designed to help you practice using vocabulary related to family members, physical descriptions, and personality traits that we have covered in Chapters 3 and 4.</p>
+						<p>Your essay should include descriptions of at least four family members using adjectives we have studied. Be sure to use correct gender and number agreement with all adjectives. Include at least three examples of the verb "ser" and three examples of the verb "tener" used in context.</p>
+						<p>Please double-space your essay and use 12-point Times New Roman font. Include a title at the top of your essay. You may submit your work as a .docx, .pdf, or use the text entry box below. Refer to the rubric for grading criteria.</p>
+					</div>
+				</div>
+
+				<!-- Rubric -->
+				<div class="shadcn-card tw-p-6 tw-mb-6">
+					<h2 class="tw-text-lg tw-font-semibold tw-text-primary-800 tw-mb-4">
+						<i class="fa fa-th tw-mr-2 tw-text-accent-purple"></i>Rubric
+					</h2>
+					<div class="tw-overflow-x-auto">
+						<table class="shadcn-table rubric-table tw-w-full">
+							<thead>
+								<tr>
+									<th class="tw-w-[180px]">Criterion</th>
+									<th class="tw-text-center">Excellent (5)</th>
+									<th class="tw-text-center">Good (4)</th>
+									<th class="tw-text-center">Satisfactory (3)</th>
+									<th class="tw-text-center">Needs Work (2)</th>
+									<th class="tw-text-center">Incomplete (1)</th>
+									<th class="tw-text-center tw-w-[70px]">Pts</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="tw-font-medium">Content &amp; Detail</td>
+									<td><div class="rubric-rating">Thorough, vivid descriptions of 4+ family members</div></td>
+									<td><div class="rubric-rating">Good descriptions of 4 family members</div></td>
+									<td><div class="rubric-rating">Adequate descriptions of 3 family members</div></td>
+									<td><div class="rubric-rating">Minimal detail, fewer than 3 members</div></td>
+									<td><div class="rubric-rating">Missing or very incomplete</div></td>
+									<td class="tw-text-center tw-font-semibold">20</td>
+								</tr>
+								<tr>
+									<td class="tw-font-medium">Grammar &amp; Accuracy</td>
+									<td><div class="rubric-rating">Near-perfect agreement and verb usage</div></td>
+									<td><div class="rubric-rating">Minor errors, mostly correct</div></td>
+									<td><div class="rubric-rating">Some errors but meaning is clear</div></td>
+									<td><div class="rubric-rating">Frequent errors hinder meaning</div></td>
+									<td><div class="rubric-rating">Pervasive errors</div></td>
+									<td class="tw-text-center tw-font-semibold">30</td>
+								</tr>
+								<tr>
+									<td class="tw-font-medium">Vocabulary Usage</td>
+									<td><div class="rubric-rating">Rich, varied vocabulary from Ch. 3-4</div></td>
+									<td><div class="rubric-rating">Good vocabulary variety</div></td>
+									<td><div class="rubric-rating">Adequate vocabulary use</div></td>
+									<td><div class="rubric-rating">Limited vocabulary</div></td>
+									<td><div class="rubric-rating">Very basic or English used</div></td>
+									<td class="tw-text-center tw-font-semibold">25</td>
+								</tr>
+								<tr>
+									<td class="tw-font-medium">Organization &amp; Flow</td>
+									<td><div class="rubric-rating">Logical, coherent structure with transitions</div></td>
+									<td><div class="rubric-rating">Well organized with some transitions</div></td>
+									<td><div class="rubric-rating">Basic organization present</div></td>
+									<td><div class="rubric-rating">Disorganized, hard to follow</div></td>
+									<td><div class="rubric-rating">No clear structure</div></td>
+									<td class="tw-text-center tw-font-semibold">15</td>
+								</tr>
+								<tr>
+									<td class="tw-font-medium">Formatting</td>
+									<td><div class="rubric-rating">Perfect formatting, title, length met</div></td>
+									<td><div class="rubric-rating">Minor formatting issues</div></td>
+									<td><div class="rubric-rating">Some formatting issues</div></td>
+									<td><div class="rubric-rating">Significant formatting issues</div></td>
+									<td><div class="rubric-rating">Does not follow guidelines</div></td>
+									<td class="tw-text-center tw-font-semibold">10</td>
+								</tr>
+							</tbody>
+							<tfoot>
+								<tr>
+									<td colspan="5" class="tw-text-right tw-font-semibold tw-text-primary-800">Total Points</td>
+									<td class="tw-text-center tw-font-bold tw-text-primary-700 tw-text-lg">100</td>
+								</tr>
+							</tfoot>
+						</table>
+					</div>
+				</div>
+
+				<!-- Submission Area -->
+				<div class="shadcn-card tw-p-6 tw-mb-6">
+					<h2 class="tw-text-lg tw-font-semibold tw-text-primary-800 tw-mb-4">Submit Your Assignment</h2>
+
+					<!-- File Upload -->
+					<div class="tw-mb-5">
+						<label class="tw-block tw-text-sm tw-font-medium tw-text-gray-700 tw-mb-2">File Upload</label>
+						<div class="dropzone">
+							<i class="fa fa-cloud-upload-alt tw-text-3xl tw-text-gray-400 tw-mb-3"></i>
+							<p class="tw-text-sm tw-text-gray-600 tw-mb-1">Drag and drop your file here, or click to browse</p>
+							<p class="tw-text-xs tw-text-gray-400">Accepted formats: .docx, .pdf, .txt (Max 50MB)</p>
+						</div>
+					</div>
+
+					<div class="tw-flex tw-items-center tw-gap-3 tw-mb-5">
+						<div class="shadcn-separator tw-flex-1"></div>
+						<span class="tw-text-xs tw-text-gray-400 tw-uppercase tw-font-medium">or</span>
+						<div class="shadcn-separator tw-flex-1"></div>
+					</div>
+
+					<!-- Text Entry -->
+					<div class="tw-mb-5">
+						<label class="tw-block tw-text-sm tw-font-medium tw-text-gray-700 tw-mb-2">Text Entry</label>
+						<textarea class="shadcn-textarea" rows="8" placeholder="Type or paste your essay here..."></textarea>
+					</div>
+
+					<div class="tw-flex tw-items-center tw-justify-between">
+						<button class="shadcn-btn shadcn-btn-primary shadcn-btn-lg" style="background: var(--color-accent-green); color: #fff;">
+							<i class="fa fa-paper-plane tw-mr-2"></i> Submit Assignment
+						</button>
+						<button class="shadcn-btn shadcn-btn-ghost tw-text-sm">Save as Draft</button>
+					</div>
+				</div>
+
+				<!-- Previous Submissions -->
+				<div class="shadcn-card tw-p-6">
+					<h2 class="tw-text-lg tw-font-semibold tw-text-primary-800 tw-mb-4">Previous Submissions</h2>
+					<p class="tw-text-sm tw-text-gray-500 tw-italic">No previous submissions. You have 3 attempts remaining.</p>
+				</div>
+			</div>
+
+			<!-- Right Sidebar -->
+			<div class="tw-w-full lg:tw-w-[280px] tw-flex-shrink-0">
+				<div class="shadcn-card tw-p-5 tw-sticky tw-top-4">
+					<h3 class="tw-text-sm tw-font-semibold tw-text-primary-800 tw-mb-3">Assignment Details</h3>
+					<div class="detail-sidebar-item">
+						<span class="tw-text-gray-500">Due</span>
+						<span class="tw-font-medium tw-text-primary-800">Mar 28, 2026</span>
+					</div>
+					<div class="detail-sidebar-item">
+						<span class="tw-text-gray-500">Points</span>
+						<span class="tw-font-medium tw-text-primary-800">100</span>
+					</div>
+					<div class="detail-sidebar-item">
+						<span class="tw-text-gray-500">Submitting</span>
+						<span class="tw-font-medium tw-text-primary-800">File / Text</span>
+					</div>
+					<div class="detail-sidebar-item">
+						<span class="tw-text-gray-500">File Types</span>
+						<span class="tw-font-medium tw-text-primary-800">.docx, .pdf</span>
+					</div>
+					<div class="detail-sidebar-item">
+						<span class="tw-text-gray-500">Attempts</span>
+						<span class="tw-font-medium tw-text-primary-800">3 allowed</span>
+					</div>
+					<div class="detail-sidebar-item">
+						<span class="tw-text-gray-500">Group</span>
+						<span class="tw-font-medium tw-text-primary-800">Essays (30%)</span>
+					</div>
+					<div class="detail-sidebar-item">
+						<span class="tw-text-gray-500">Status</span>
+						<span class="shadcn-badge shadcn-badge-warning tw-text-xs">Not Submitted</span>
+					</div>
+					<div class="shadcn-separator"></div>
+					<div class="tw-space-y-2">
+						<a href="#" class="tw-flex tw-items-center tw-gap-2 tw-text-sm tw-text-blue-600 hover:tw-underline">
+							<i class="fa fa-download"></i> Download Rubric
+						</a>
+						<a href="#" class="tw-flex tw-items-center tw-gap-2 tw-text-sm tw-text-blue-600 hover:tw-underline">
+							<i class="fa fa-print"></i> Print Assignment
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+</main></div><script src="js/router.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/api.js"></script>
+<script src="js/render.js"></script>
+<script src="js/sidebar.js"></script>
+<script src="js/app.js"></script></body></html>

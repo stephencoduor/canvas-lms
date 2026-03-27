@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	<title>ReDefiners - GraphQL Explorer</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+	<script src="https://cdn.tailwindcss.com"></script>
+	<script src="css/tailwind-config.js?v=3"></script>
+	<script src="https://kit.fontawesome.com/7a13c96681.js" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/tokens.css?v=3">
+	<link rel="stylesheet" type="text/css" href="css/shadcn.css?v=3">
+	<link rel="stylesheet" type="text/css" href="styles.css?v=3">
+</head>
+<body>
+	<div class="tw-flex tw-min-h-screen tw-font-poppins">
+		<aside class="left-sidebar tw-fixed tw-inset-y-0 tw-left-0 tw-w-[240px] tw-z-50 tw--translate-x-full lg:tw-translate-x-0 tw-transition-transform tw-duration-300 tw-overflow-y-auto shadcn-scrollbar">
+			<div class="menu-bar">
+				<section class="logo-section">
+					<i class="fa fa-times theme-color menu-hide"></i>
+					<img src="Images/logo.PNG" class="res-hide" alt="logo">
+					<div class="nav-input res-show-flex tw-mt-5">
+						<button class="tw-border tw-border-primary-400 tw-border-r-0 tw-bg-transparent tw-px-2"><i class="fa fa-search"></i></button>
+						<input class="tw-border tw-border-primary-400 tw-border-l-0 tw-w-[85%] tw-bg-transparent tw-px-2 tw-py-1 tw-outline-none" type="text" name="search" placeholder="Search">
+					</div>
+				</section>
+				<section class="menu-links">
+					<div class="menu-link"><a href="dashboard.html"><i class="fa fa-th-large"></i><span> Dashboard</span></a></div>
+					<div class="menu-link"><a href="courses.html"><i class="fa fa-clipboard-list"></i><span> Courses</span></a></div>
+					<div class="menu-link"><a href="calendar.html"><i class="fa fa-calendar-alt"></i><span> Calendar</span></a></div>
+					<div class="menu-link"><a href="announcement.html"><i class="fa fa-bullhorn"></i><span> Announcements</span></a></div>
+					<div class="menu-link"><a href="inbox.html"><i class="fa fa-comments"></i><span> Messages</span></a></div>
+					<div class="menu-link"><a href="assignments.html"><i class="fa fa-file-lines"></i><span> Assignments</span></a></div>
+					<div class="menu-link"><a href="grades.html"><i class="fa fa-chart-bar"></i><span> Grades</span></a></div>
+					<div class="menu-link"><a href="modules.html"><i class="fa fa-layer-group"></i><span> Modules</span></a></div>
+					<div class="menu-link"><a href="discussions.html"><i class="fa fa-comments-alt"></i><span> Discussions</span></a></div>
+					<div class="menu-link"><a href="quizzes.html"><i class="fa fa-question-circle"></i><span> Quizzes</span></a></div>
+					<div class="menu-link"><a href="pages.html"><i class="fa fa-file-alt"></i><span> Pages</span></a></div>
+					<div class="menu-link"><a href="files.html"><i class="fa fa-folder"></i><span> Files</span></a></div>
+					<div class="menu-link"><a href="people.html"><i class="fa fa-users"></i><span> People</span></a></div>
+					<div class="menu-link"><a href="outcomes.html"><i class="fa fa-bullseye"></i><span> Outcomes</span></a></div>
+					<div class="menu-link"><a href="rubrics.html"><i class="fa fa-th"></i><span> Rubrics</span></a></div>
+					<div class="menu-link"><a href="groups.html"><i class="fa fa-user-friends"></i><span> Groups</span></a></div>
+					<div class="menu-link"><a href="conferences.html"><i class="fa fa-video"></i><span> Conferences</span></a></div>
+					<div class="menu-link"><a href="collaborations.html"><i class="fa fa-handshake"></i><span> Collaborations</span></a></div>
+					<div class="menu-link"><a href="account-settings.html" class="active-menu"><i class="fa fa-cog"></i><span> Settings</span></a></div>
+				</section>
+			</div>
+		</aside>
+		<div class="sidebar-overlay" id="sidebarOverlay"></div>
+		<main class="middle-part tw-flex-1 lg:tw-ml-[240px] tw-min-h-screen tw-px-4 md:tw-px-6 lg:tw-px-10 tw-pb-8">
+			<div class="tw-flex tw-items-center tw-justify-between tw-py-4 tw-gap-3 tw-flex-wrap">
+				<div class="tw-flex tw-items-center tw-gap-3">
+					<i class="fa fa-bars tw-text-primary-400 tw-cursor-pointer tw-text-xl lg:tw-hidden menu-icon" id="menuToggle"></i>
+					<div class="shadcn-search tw-hidden sm:tw-flex tw-w-64">
+						<i class="fa fa-search"></i>
+						<input type="text" placeholder="Search schema...">
+					</div>
+				</div>
+				<div class="tw-flex tw-items-center tw-gap-3">
+					<button class="shadcn-btn shadcn-btn-ghost shadcn-btn-icon tw-relative"><i class="fa fa-bell tw-text-primary-400"></i></button>
+					<div class="shadcn-avatar shadcn-avatar-md tw-cursor-pointer profile-click"><img src="Images/profile.png" alt="Profile"></div>
+				</div>
+			</div>
+
+			<!-- Page Header -->
+			<div class="tw-flex tw-flex-col sm:tw-flex-row tw-items-start sm:tw-items-center tw-justify-between tw-mb-4 tw-gap-4">
+				<h4 class="second-color tw-font-semibold">
+					<i class="fa fa-project-diagram theme-color tw-mr-2"></i> GraphQL Explorer
+				</h4>
+				<div class="tw-flex tw-items-center tw-gap-2">
+					<span class="tw-text-xs tw-text-gray-400">Endpoint:</span>
+					<code class="tw-bg-gray-100 tw-text-xs tw-px-2 tw-py-1 tw-rounded tw-font-mono second-color">https://canvas.redefiners.edu/api/graphql</code>
+					<button class="shadcn-btn shadcn-btn-ghost shadcn-btn-icon tw-h-7 tw-w-7" title="Copy"><i class="fa fa-copy tw-text-xs"></i></button>
+				</div>
+			</div>
+
+			<div class="tw-grid tw-grid-cols-1 lg:tw-grid-cols-4 tw-gap-4" style="height: calc(100vh - 160px); min-height: 500px;">
+				<!-- Schema Explorer Sidebar -->
+				<div class="lg:tw-col-span-1">
+					<div class="shadcn-card tw-h-full tw-flex tw-flex-col">
+						<div class="tw-p-3 tw-border-b">
+							<h6 class="second-color tw-font-semibold tw-text-sm">
+								<i class="fa fa-sitemap tw-mr-1 theme-color"></i> Schema Explorer
+							</h6>
+						</div>
+						<div class="tw-p-3 tw-flex-1 tw-overflow-y-auto shadcn-scrollbar tw-text-xs tw-font-mono">
+							<div class="tw-space-y-1">
+								<div class="tw-cursor-pointer">
+									<div class="tw-flex tw-items-center tw-gap-1 tw-p-1 tw-rounded hover:tw-bg-gray-50 tw-text-purple-600 tw-font-bold">
+										<i class="fa fa-chevron-down tw-text-[8px] tw-text-gray-400"></i>
+										Query
+									</div>
+									<div class="tw-pl-4 tw-space-y-0.5">
+										<div class="tw-p-1 tw-rounded hover:tw-bg-blue-50 tw-cursor-pointer tw-bg-blue-50">
+											<span class="tw-text-blue-600">allCourses</span><span class="tw-text-gray-400">: [Course!]!</span>
+										</div>
+										<div class="tw-p-1 tw-rounded hover:tw-bg-blue-50 tw-cursor-pointer">
+											<span class="tw-text-blue-600">course</span><span class="tw-text-gray-400">(id: ID!): Course</span>
+										</div>
+										<div class="tw-p-1 tw-rounded hover:tw-bg-blue-50 tw-cursor-pointer">
+											<span class="tw-text-blue-600">assignment</span><span class="tw-text-gray-400">(id: ID!): Assignment</span>
+										</div>
+										<div class="tw-p-1 tw-rounded hover:tw-bg-blue-50 tw-cursor-pointer">
+											<span class="tw-text-blue-600">legacyNode</span><span class="tw-text-gray-400">(id: ID!): Node</span>
+										</div>
+										<div class="tw-p-1 tw-rounded hover:tw-bg-blue-50 tw-cursor-pointer">
+											<span class="tw-text-blue-600">currentUser</span><span class="tw-text-gray-400">: User</span>
+										</div>
+										<div class="tw-p-1 tw-rounded hover:tw-bg-blue-50 tw-cursor-pointer">
+											<span class="tw-text-blue-600">term</span><span class="tw-text-gray-400">(id: ID!): Term</span>
+										</div>
+									</div>
+								</div>
+								<div class="tw-cursor-pointer tw-mt-2">
+									<div class="tw-flex tw-items-center tw-gap-1 tw-p-1 tw-rounded hover:tw-bg-gray-50 tw-text-green-600 tw-font-bold">
+										<i class="fa fa-chevron-right tw-text-[8px] tw-text-gray-400"></i>
+										Mutation
+									</div>
+								</div>
+								<div class="tw-cursor-pointer tw-mt-2">
+									<div class="tw-flex tw-items-center tw-gap-1 tw-p-1 tw-rounded hover:tw-bg-gray-50 tw-font-bold second-color">
+										<i class="fa fa-chevron-down tw-text-[8px] tw-text-gray-400"></i>
+										Types
+									</div>
+									<div class="tw-pl-4 tw-space-y-0.5">
+										<div class="tw-p-1 tw-rounded hover:tw-bg-gray-50 tw-cursor-pointer">
+											<span class="tw-text-orange-600">Course</span>
+										</div>
+										<div class="tw-p-1 tw-rounded hover:tw-bg-gray-50 tw-cursor-pointer">
+											<span class="tw-text-orange-600">Assignment</span>
+										</div>
+										<div class="tw-p-1 tw-rounded hover:tw-bg-gray-50 tw-cursor-pointer">
+											<span class="tw-text-orange-600">User</span>
+										</div>
+										<div class="tw-p-1 tw-rounded hover:tw-bg-gray-50 tw-cursor-pointer">
+											<span class="tw-text-orange-600">Enrollment</span>
+										</div>
+										<div class="tw-p-1 tw-rounded hover:tw-bg-gray-50 tw-cursor-pointer">
+											<span class="tw-text-orange-600">Submission</span>
+										</div>
+										<div class="tw-p-1 tw-rounded hover:tw-bg-gray-50 tw-cursor-pointer">
+											<span class="tw-text-orange-600">Module</span>
+										</div>
+										<div class="tw-p-1 tw-rounded hover:tw-bg-gray-50 tw-cursor-pointer">
+											<span class="tw-text-orange-600">Discussion</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Query Editor & Results Split -->
+				<div class="lg:tw-col-span-3 tw-flex tw-flex-col tw-gap-4" style="height: calc(100vh - 160px); min-height: 500px;">
+					<!-- Query Editor -->
+					<div class="shadcn-card tw-flex tw-flex-col" style="flex: 1;">
+						<div class="tw-flex tw-items-center tw-justify-between tw-p-3 tw-border-b">
+							<h6 class="second-color tw-font-semibold tw-text-sm">
+								<i class="fa fa-code tw-mr-1 theme-color"></i> Query Editor
+							</h6>
+							<div class="tw-flex tw-gap-2">
+								<button class="shadcn-btn shadcn-btn-ghost tw-text-xs tw-h-7" title="Prettify">
+									<i class="fa fa-magic tw-mr-1"></i> Prettify
+								</button>
+								<button class="shadcn-btn shadcn-btn-ghost tw-text-xs tw-h-7" title="History">
+									<i class="fa fa-history tw-mr-1"></i> History
+								</button>
+								<button class="shadcn-btn shadcn-btn-primary tw-text-xs tw-h-7 tw-px-4">
+									<i class="fa fa-play tw-mr-1"></i> Execute
+								</button>
+							</div>
+						</div>
+						<div class="tw-flex-1 tw-overflow-auto">
+							<pre class="tw-p-4 tw-m-0 tw-text-sm tw-font-mono tw-bg-gray-900 tw-text-gray-100 tw-h-full tw-rounded-b-lg" style="tab-size: 2;"><code><span class="tw-text-purple-400">query</span> <span class="tw-text-yellow-300">AllCourses</span> {
+  <span class="tw-text-blue-300">allCourses</span> {
+    <span class="tw-text-cyan-300">_id</span>
+    <span class="tw-text-cyan-300">name</span>
+    <span class="tw-text-cyan-300">courseCode</span>
+    <span class="tw-text-cyan-300">state</span>
+    <span class="tw-text-blue-300">term</span> {
+      <span class="tw-text-cyan-300">name</span>
+      <span class="tw-text-cyan-300">startAt</span>
+      <span class="tw-text-cyan-300">endAt</span>
+    }
+    <span class="tw-text-blue-300">enrollmentsConnection</span> {
+      <span class="tw-text-blue-300">nodes</span> {
+        <span class="tw-text-cyan-300">type</span>
+        <span class="tw-text-blue-300">user</span> {
+          <span class="tw-text-cyan-300">name</span>
+          <span class="tw-text-cyan-300">email</span>
+        }
+      }
+    }
+  }
+}</code></pre>
+						</div>
+					</div>
+
+					<!-- Variables Panel -->
+					<div class="shadcn-card" style="flex: 0 0 auto;">
+						<div class="tw-flex tw-items-center tw-p-2 tw-border-b tw-bg-gray-50">
+							<button class="tw-px-3 tw-py-1 tw-text-xs tw-font-medium tw-border-b-2 tw-border-blue-500 tw-text-blue-600 tw-bg-transparent">Variables</button>
+							<button class="tw-px-3 tw-py-1 tw-text-xs tw-font-medium tw-border-b-2 tw-border-transparent tw-text-gray-400 tw-bg-transparent">Headers</button>
+						</div>
+						<pre class="tw-p-3 tw-m-0 tw-text-xs tw-font-mono tw-bg-gray-900 tw-text-gray-300 tw-rounded-b-lg"><code>{
+  <span class="tw-text-cyan-300">"courseId"</span>: <span class="tw-text-yellow-300">"Q291cnNlLTE"</span>
+}</code></pre>
+					</div>
+
+					<!-- Results Panel -->
+					<div class="shadcn-card tw-flex tw-flex-col" style="flex: 1;">
+						<div class="tw-flex tw-items-center tw-justify-between tw-p-3 tw-border-b">
+							<h6 class="second-color tw-font-semibold tw-text-sm">
+								<i class="fa fa-terminal tw-mr-1 theme-color"></i> Results
+							</h6>
+							<div class="tw-flex tw-items-center tw-gap-3">
+								<span class="tw-text-xs tw-text-green-500"><i class="fa fa-check-circle tw-mr-1"></i>200 OK</span>
+								<span class="tw-text-xs tw-text-gray-400">124ms</span>
+								<button class="shadcn-btn shadcn-btn-ghost shadcn-btn-icon tw-h-7 tw-w-7" title="Copy Results"><i class="fa fa-copy tw-text-xs"></i></button>
+							</div>
+						</div>
+						<div class="tw-flex-1 tw-overflow-auto">
+							<pre class="tw-p-4 tw-m-0 tw-text-sm tw-font-mono tw-bg-gray-900 tw-text-gray-100 tw-h-full tw-rounded-b-lg"><code>{
+  <span class="tw-text-cyan-300">"data"</span>: {
+    <span class="tw-text-cyan-300">"allCourses"</span>: [
+      {
+        <span class="tw-text-cyan-300">"_id"</span>: <span class="tw-text-yellow-300">"1"</span>,
+        <span class="tw-text-cyan-300">"name"</span>: <span class="tw-text-yellow-300">"Organic Chemistry II"</span>,
+        <span class="tw-text-cyan-300">"courseCode"</span>: <span class="tw-text-yellow-300">"CHEM-2020"</span>,
+        <span class="tw-text-cyan-300">"state"</span>: <span class="tw-text-yellow-300">"available"</span>,
+        <span class="tw-text-cyan-300">"term"</span>: {
+          <span class="tw-text-cyan-300">"name"</span>: <span class="tw-text-yellow-300">"Spring 2026"</span>,
+          <span class="tw-text-cyan-300">"startAt"</span>: <span class="tw-text-yellow-300">"2026-01-13"</span>,
+          <span class="tw-text-cyan-300">"endAt"</span>: <span class="tw-text-yellow-300">"2026-05-08"</span>
+        },
+        <span class="tw-text-cyan-300">"enrollmentsConnection"</span>: {
+          <span class="tw-text-cyan-300">"nodes"</span>: [
+            {
+              <span class="tw-text-cyan-300">"type"</span>: <span class="tw-text-yellow-300">"StudentEnrollment"</span>,
+              <span class="tw-text-cyan-300">"user"</span>: {
+                <span class="tw-text-cyan-300">"name"</span>: <span class="tw-text-yellow-300">"Maria Santos"</span>,
+                <span class="tw-text-cyan-300">"email"</span>: <span class="tw-text-yellow-300">"maria.santos@redefiners.edu"</span>
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}</code></pre>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+	</div>
+	<script src="js/sidebar.js"></script>
+<script src="js/router.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/api.js"></script>
+<script src="js/render.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

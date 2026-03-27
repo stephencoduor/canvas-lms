@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	<title>ReDefiners - Observer Linked Students</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+	<script src="https://cdn.tailwindcss.com"></script>
+	<script src="css/tailwind-config.js?v=3"></script>
+	<script src="https://kit.fontawesome.com/7a13c96681.js" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/tokens.css?v=3">
+	<link rel="stylesheet" type="text/css" href="css/shadcn.css?v=3">
+	<link rel="stylesheet" type="text/css" href="styles.css?v=3">
+</head>
+<body>
+	<div class="tw-flex tw-min-h-screen tw-font-poppins">
+		<aside class="left-sidebar tw-fixed tw-inset-y-0 tw-left-0 tw-w-[240px] tw-z-50 tw--translate-x-full lg:tw-translate-x-0 tw-transition-transform tw-duration-300 tw-overflow-y-auto shadcn-scrollbar">
+			<div class="menu-bar">
+				<section class="logo-section">
+					<i class="fa fa-times theme-color menu-hide"></i>
+					<img src="Images/logo.PNG" class="res-hide" alt="logo">
+					<div class="nav-input res-show-flex tw-mt-5">
+						<button class="tw-border tw-border-primary-400 tw-border-r-0 tw-bg-transparent tw-px-2"><i class="fa fa-search"></i></button>
+						<input class="tw-border tw-border-primary-400 tw-border-l-0 tw-w-[85%] tw-bg-transparent tw-px-2 tw-py-1 tw-outline-none" type="text" name="search" placeholder="Search">
+					</div>
+				</section>
+				<section class="menu-links">
+					<div class="menu-link"><a href="dashboard.html"><i class="fa fa-th-large"></i><span> Dashboard</span></a></div>
+					<div class="menu-link"><a href="courses.html"><i class="fa fa-clipboard-list"></i><span> Courses</span></a></div>
+					<div class="menu-link"><a href="calendar.html"><i class="fa fa-calendar-alt"></i><span> Calendar</span></a></div>
+					<div class="menu-link"><a href="announcement.html"><i class="fa fa-bullhorn"></i><span> Announcements</span></a></div>
+					<div class="menu-link"><a href="inbox.html"><i class="fa fa-comments"></i><span> Messages</span></a></div>
+					<div class="menu-link"><a href="assignments.html"><i class="fa fa-file-lines"></i><span> Assignments</span></a></div>
+					<div class="menu-link"><a href="grades.html"><i class="fa fa-chart-bar"></i><span> Grades</span></a></div>
+					<div class="menu-link"><a href="modules.html"><i class="fa fa-layer-group"></i><span> Modules</span></a></div>
+					<div class="menu-link"><a href="discussions.html"><i class="fa fa-comments-alt"></i><span> Discussions</span></a></div>
+					<div class="menu-link"><a href="quizzes.html"><i class="fa fa-question-circle"></i><span> Quizzes</span></a></div>
+					<div class="menu-link"><a href="pages.html"><i class="fa fa-file-alt"></i><span> Pages</span></a></div>
+					<div class="menu-link"><a href="files.html"><i class="fa fa-folder"></i><span> Files</span></a></div>
+					<div class="menu-link"><a href="people.html"><i class="fa fa-users"></i><span> People</span></a></div>
+					<div class="menu-link"><a href="outcomes.html"><i class="fa fa-bullseye"></i><span> Outcomes</span></a></div>
+					<div class="menu-link"><a href="rubrics.html"><i class="fa fa-th"></i><span> Rubrics</span></a></div>
+					<div class="menu-link"><a href="groups.html"><i class="fa fa-user-friends"></i><span> Groups</span></a></div>
+					<div class="menu-link"><a href="conferences.html"><i class="fa fa-video"></i><span> Conferences</span></a></div>
+					<div class="menu-link"><a href="collaborations.html"><i class="fa fa-handshake"></i><span> Collaborations</span></a></div>
+					<div class="menu-link"><a href="account-settings.html" class="active-menu"><i class="fa fa-cog"></i><span> Settings</span></a></div>
+				</section>
+			</div>
+		</aside>
+		<div class="sidebar-overlay" id="sidebarOverlay"></div>
+		<main class="middle-part tw-flex-1 lg:tw-ml-[240px] tw-min-h-screen tw-px-4 md:tw-px-6 lg:tw-px-10 tw-pb-8">
+			<div class="tw-flex tw-items-center tw-justify-between tw-py-4 tw-gap-3 tw-flex-wrap">
+				<div class="tw-flex tw-items-center tw-gap-3">
+					<i class="fa fa-bars tw-text-primary-400 tw-cursor-pointer tw-text-xl lg:tw-hidden menu-icon" id="menuToggle"></i>
+					<div class="shadcn-search tw-hidden sm:tw-flex tw-w-64"><i class="fa fa-search"></i><input type="text" placeholder="Search courses, assignments..."></div>
+				</div>
+				<div class="tw-flex tw-items-center tw-gap-3">
+					<button class="shadcn-btn shadcn-btn-ghost shadcn-btn-icon tw-relative"><i class="fa fa-bell tw-text-primary-400"></i></button>
+					<div class="shadcn-avatar shadcn-avatar-md tw-cursor-pointer profile-click"><img src="Images/profile.png" alt="Profile"></div>
+				</div>
+			</div>
+
+			<!-- Header -->
+			<div class="tw-flex tw-flex-col sm:tw-flex-row tw-items-start sm:tw-items-center tw-justify-between tw-py-6 tw-gap-4">
+				<div>
+					<nav class="tw-text-sm tw-text-gray-500 tw-mb-2">
+						<a href="account-settings.html" class="theme-color tw-no-underline">Account</a>
+						<i class="fa fa-chevron-right tw-text-xs tw-mx-1"></i>
+						<span class="tw-text-gray-400">Linked Students</span>
+					</nav>
+					<h3 class="second-color">Observing Students</h3>
+					<p class="tw-text-gray-500 tw-text-sm tw-mt-1">Manage students linked to your parent/observer account</p>
+				</div>
+				<button class="shadcn-btn shadcn-btn-primary tw-text-sm"><i class="fa fa-plus tw-mr-1"></i> Link New Student</button>
+			</div>
+
+			<!-- Add Student Pairing -->
+			<div class="shadcn-card tw-p-5 tw-mb-6 tw-border-l-4 tw-border-l-blue-500">
+				<h5 class="second-color tw-font-semibold tw-mb-3"><i class="fa fa-link tw-mr-2"></i>Pair with a Student</h5>
+				<p class="tw-text-sm tw-text-gray-500 tw-mb-3">Enter the student's pairing code to link their account. Students can generate a pairing code from their account settings.</p>
+				<div class="tw-flex tw-flex-wrap tw-gap-3">
+					<input type="text" class="shadcn-input tw-w-64 tw-text-sm tw-font-mono tw-tracking-widest tw-text-center" placeholder="Enter 6-digit pairing code" maxlength="6">
+					<button class="shadcn-btn shadcn-btn-primary tw-text-sm"><i class="fa fa-check tw-mr-1"></i> Pair Student</button>
+				</div>
+			</div>
+
+			<!-- Linked Students -->
+			<div class="tw-space-y-6">
+				<!-- Student 1 -->
+				<div class="shadcn-card tw-overflow-hidden">
+					<div class="tw-p-5 tw-border-b tw-bg-gray-50">
+						<div class="tw-flex tw-flex-wrap tw-items-center tw-justify-between tw-gap-3">
+							<div class="tw-flex tw-items-center tw-gap-3">
+								<div class="shadcn-avatar shadcn-avatar-md">
+									<img src="Images/profile.png" alt="Student">
+								</div>
+								<div>
+									<h5 class="second-color tw-font-semibold">Emily Chen</h5>
+									<p class="tw-text-xs tw-text-gray-500">Grade 10 &middot; Linked since Sep 1, 2024</p>
+								</div>
+							</div>
+							<div class="tw-flex tw-gap-2">
+								<button class="shadcn-btn shadcn-btn-outline tw-text-xs"><i class="fa fa-envelope tw-mr-1"></i> Message Teachers</button>
+								<button class="shadcn-btn shadcn-btn-ghost tw-text-xs tw-text-red-500"><i class="fa fa-unlink tw-mr-1"></i> Unlink</button>
+							</div>
+						</div>
+					</div>
+					<div class="tw-p-5">
+						<h6 class="tw-text-sm tw-font-semibold second-color tw-mb-3">Enrolled Courses &amp; Grades Summary</h6>
+						<div class="tw-grid tw-grid-cols-1 md:tw-grid-cols-2 tw-gap-3">
+							<div class="tw-border tw-rounded-lg tw-p-3">
+								<div class="tw-flex tw-items-center tw-justify-between tw-mb-2">
+									<span class="tw-text-sm tw-font-medium second-color">Biology 101</span>
+									<span class="tw-font-semibold theme-color">A- (91%)</span>
+								</div>
+								<div class="tw-w-full tw-bg-gray-200 tw-rounded-full tw-h-2 tw-mb-2">
+									<div class="tw-bg-green-500 tw-h-2 tw-rounded-full" style="width: 91%"></div>
+								</div>
+								<div class="tw-flex tw-justify-between tw-text-xs tw-text-gray-400">
+									<span>3 upcoming assignments</span>
+									<span>Last active: Today</span>
+								</div>
+							</div>
+							<div class="tw-border tw-rounded-lg tw-p-3">
+								<div class="tw-flex tw-items-center tw-justify-between tw-mb-2">
+									<span class="tw-text-sm tw-font-medium second-color">English Literature</span>
+									<span class="tw-font-semibold theme-color">B+ (87%)</span>
+								</div>
+								<div class="tw-w-full tw-bg-gray-200 tw-rounded-full tw-h-2 tw-mb-2">
+									<div class="tw-bg-blue-500 tw-h-2 tw-rounded-full" style="width: 87%"></div>
+								</div>
+								<div class="tw-flex tw-justify-between tw-text-xs tw-text-gray-400">
+									<span>1 upcoming assignment</span>
+									<span>Last active: Yesterday</span>
+								</div>
+							</div>
+							<div class="tw-border tw-rounded-lg tw-p-3">
+								<div class="tw-flex tw-items-center tw-justify-between tw-mb-2">
+									<span class="tw-text-sm tw-font-medium second-color">Algebra II</span>
+									<span class="tw-font-semibold tw-text-yellow-600">C+ (77%)</span>
+								</div>
+								<div class="tw-w-full tw-bg-gray-200 tw-rounded-full tw-h-2 tw-mb-2">
+									<div class="tw-bg-yellow-500 tw-h-2 tw-rounded-full" style="width: 77%"></div>
+								</div>
+								<div class="tw-flex tw-justify-between tw-text-xs tw-text-gray-400">
+									<span>2 missing assignments</span>
+									<span class="tw-text-red-500 tw-font-medium">Needs attention</span>
+								</div>
+							</div>
+							<div class="tw-border tw-rounded-lg tw-p-3">
+								<div class="tw-flex tw-items-center tw-justify-between tw-mb-2">
+									<span class="tw-text-sm tw-font-medium second-color">World History</span>
+									<span class="tw-font-semibold theme-color">A (94%)</span>
+								</div>
+								<div class="tw-w-full tw-bg-gray-200 tw-rounded-full tw-h-2 tw-mb-2">
+									<div class="tw-bg-green-500 tw-h-2 tw-rounded-full" style="width: 94%"></div>
+								</div>
+								<div class="tw-flex tw-justify-between tw-text-xs tw-text-gray-400">
+									<span>0 upcoming assignments</span>
+									<span>Last active: Today</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Student 2 -->
+				<div class="shadcn-card tw-overflow-hidden">
+					<div class="tw-p-5 tw-border-b tw-bg-gray-50">
+						<div class="tw-flex tw-flex-wrap tw-items-center tw-justify-between tw-gap-3">
+							<div class="tw-flex tw-items-center tw-gap-3">
+								<div class="shadcn-avatar shadcn-avatar-md">
+									<img src="Images/profile.png" alt="Student">
+								</div>
+								<div>
+									<h5 class="second-color tw-font-semibold">Kevin Chen</h5>
+									<p class="tw-text-xs tw-text-gray-500">Grade 7 &middot; Linked since Sep 1, 2024</p>
+								</div>
+							</div>
+							<div class="tw-flex tw-gap-2">
+								<button class="shadcn-btn shadcn-btn-outline tw-text-xs"><i class="fa fa-envelope tw-mr-1"></i> Message Teachers</button>
+								<button class="shadcn-btn shadcn-btn-ghost tw-text-xs tw-text-red-500"><i class="fa fa-unlink tw-mr-1"></i> Unlink</button>
+							</div>
+						</div>
+					</div>
+					<div class="tw-p-5">
+						<h6 class="tw-text-sm tw-font-semibold second-color tw-mb-3">Enrolled Courses &amp; Grades Summary</h6>
+						<div class="tw-grid tw-grid-cols-1 md:tw-grid-cols-2 tw-gap-3">
+							<div class="tw-border tw-rounded-lg tw-p-3">
+								<div class="tw-flex tw-items-center tw-justify-between tw-mb-2">
+									<span class="tw-text-sm tw-font-medium second-color">Life Science</span>
+									<span class="tw-font-semibold theme-color">B (84%)</span>
+								</div>
+								<div class="tw-w-full tw-bg-gray-200 tw-rounded-full tw-h-2 tw-mb-2">
+									<div class="tw-bg-blue-500 tw-h-2 tw-rounded-full" style="width: 84%"></div>
+								</div>
+								<div class="tw-flex tw-justify-between tw-text-xs tw-text-gray-400">
+									<span>2 upcoming assignments</span>
+									<span>Last active: Today</span>
+								</div>
+							</div>
+							<div class="tw-border tw-rounded-lg tw-p-3">
+								<div class="tw-flex tw-items-center tw-justify-between tw-mb-2">
+									<span class="tw-text-sm tw-font-medium second-color">Pre-Algebra</span>
+									<span class="tw-font-semibold theme-color">A- (92%)</span>
+								</div>
+								<div class="tw-w-full tw-bg-gray-200 tw-rounded-full tw-h-2 tw-mb-2">
+									<div class="tw-bg-green-500 tw-h-2 tw-rounded-full" style="width: 92%"></div>
+								</div>
+								<div class="tw-flex tw-justify-between tw-text-xs tw-text-gray-400">
+									<span>1 upcoming assignment</span>
+									<span>Last active: Yesterday</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Notification Preferences -->
+			<div class="shadcn-card tw-p-5 tw-mt-6">
+				<h5 class="second-color tw-font-semibold tw-mb-4"><i class="fa fa-bell tw-mr-2"></i>Notification Preferences</h5>
+				<div class="tw-space-y-3">
+					<div class="tw-flex tw-items-center tw-justify-between tw-py-2">
+						<div>
+							<p class="tw-text-sm tw-font-medium second-color">Grade Updates</p>
+							<p class="tw-text-xs tw-text-gray-400">Receive alerts when new grades are posted</p>
+						</div>
+						<div class="tw-flex tw-items-center tw-gap-4">
+							<label class="tw-flex tw-items-center tw-gap-1 tw-text-xs"><input type="checkbox" checked class="tw-accent-blue-600"> Email</label>
+							<label class="tw-flex tw-items-center tw-gap-1 tw-text-xs"><input type="checkbox" checked class="tw-accent-blue-600"> Push</label>
+						</div>
+					</div>
+					<div class="tw-flex tw-items-center tw-justify-between tw-py-2 tw-border-t">
+						<div>
+							<p class="tw-text-sm tw-font-medium second-color">Missing Assignments</p>
+							<p class="tw-text-xs tw-text-gray-400">Get notified when assignments are past due</p>
+						</div>
+						<div class="tw-flex tw-items-center tw-gap-4">
+							<label class="tw-flex tw-items-center tw-gap-1 tw-text-xs"><input type="checkbox" checked class="tw-accent-blue-600"> Email</label>
+							<label class="tw-flex tw-items-center tw-gap-1 tw-text-xs"><input type="checkbox" checked class="tw-accent-blue-600"> Push</label>
+						</div>
+					</div>
+					<div class="tw-flex tw-items-center tw-justify-between tw-py-2 tw-border-t">
+						<div>
+							<p class="tw-text-sm tw-font-medium second-color">Course Announcements</p>
+							<p class="tw-text-xs tw-text-gray-400">Announcements posted by teachers</p>
+						</div>
+						<div class="tw-flex tw-items-center tw-gap-4">
+							<label class="tw-flex tw-items-center tw-gap-1 tw-text-xs"><input type="checkbox" checked class="tw-accent-blue-600"> Email</label>
+							<label class="tw-flex tw-items-center tw-gap-1 tw-text-xs"><input type="checkbox" class="tw-accent-blue-600"> Push</label>
+						</div>
+					</div>
+					<div class="tw-flex tw-items-center tw-justify-between tw-py-2 tw-border-t">
+						<div>
+							<p class="tw-text-sm tw-font-medium second-color">Weekly Summary</p>
+							<p class="tw-text-xs tw-text-gray-400">Weekly digest of student activity and grades</p>
+						</div>
+						<div class="tw-flex tw-items-center tw-gap-4">
+							<label class="tw-flex tw-items-center tw-gap-1 tw-text-xs"><input type="checkbox" checked class="tw-accent-blue-600"> Email</label>
+							<label class="tw-flex tw-items-center tw-gap-1 tw-text-xs"><input type="checkbox" class="tw-accent-blue-600"> Push</label>
+						</div>
+					</div>
+				</div>
+				<button class="shadcn-btn shadcn-btn-primary tw-text-sm tw-mt-4">Save Preferences</button>
+			</div>
+		</main>
+	</div>
+	<script src="js/sidebar.js"></script>
+<script src="js/router.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/api.js"></script>
+<script src="js/render.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

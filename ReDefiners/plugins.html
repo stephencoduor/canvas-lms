@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	<title>ReDefiners - Plugin Management</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+	<script src="https://cdn.tailwindcss.com"></script>
+	<script src="css/tailwind-config.js?v=3"></script>
+	<script src="https://kit.fontawesome.com/7a13c96681.js" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/tokens.css?v=3">
+	<link rel="stylesheet" type="text/css" href="css/shadcn.css?v=3">
+	<link rel="stylesheet" type="text/css" href="styles.css?v=3">
+</head>
+<body>
+	<div class="tw-flex tw-min-h-screen tw-font-poppins">
+		<aside class="left-sidebar tw-fixed tw-inset-y-0 tw-left-0 tw-w-[240px] tw-z-50 tw--translate-x-full lg:tw-translate-x-0 tw-transition-transform tw-duration-300 tw-overflow-y-auto shadcn-scrollbar">
+			<div class="menu-bar">
+				<section class="logo-section">
+					<i class="fa fa-times theme-color menu-hide"></i>
+					<img src="Images/logo.PNG" class="res-hide" alt="logo">
+					<div class="nav-input res-show-flex tw-mt-5">
+						<button class="tw-border tw-border-primary-400 tw-border-r-0 tw-bg-transparent tw-px-2"><i class="fa fa-search"></i></button>
+						<input class="tw-border tw-border-primary-400 tw-border-l-0 tw-w-[85%] tw-bg-transparent tw-px-2 tw-py-1 tw-outline-none" type="text" name="search" placeholder="Search">
+					</div>
+				</section>
+				<section class="menu-links">
+					<div class="menu-link"><a href="dashboard.html"><i class="fa fa-th-large"></i><span> Dashboard</span></a></div>
+					<div class="menu-link"><a href="courses.html"><i class="fa fa-clipboard-list"></i><span> Courses</span></a></div>
+					<div class="menu-link"><a href="calendar.html"><i class="fa fa-calendar-alt"></i><span> Calendar</span></a></div>
+					<div class="menu-link"><a href="announcement.html"><i class="fa fa-bullhorn"></i><span> Announcements</span></a></div>
+					<div class="menu-link"><a href="inbox.html"><i class="fa fa-comments"></i><span> Messages</span></a></div>
+					<div class="menu-link"><a href="assignments.html"><i class="fa fa-file-lines"></i><span> Assignments</span></a></div>
+					<div class="menu-link"><a href="grades.html"><i class="fa fa-chart-bar"></i><span> Grades</span></a></div>
+					<div class="menu-link"><a href="modules.html"><i class="fa fa-layer-group"></i><span> Modules</span></a></div>
+					<div class="menu-link"><a href="discussions.html"><i class="fa fa-comments-alt"></i><span> Discussions</span></a></div>
+					<div class="menu-link"><a href="quizzes.html"><i class="fa fa-question-circle"></i><span> Quizzes</span></a></div>
+					<div class="menu-link"><a href="pages.html"><i class="fa fa-file-alt"></i><span> Pages</span></a></div>
+					<div class="menu-link"><a href="files.html"><i class="fa fa-folder"></i><span> Files</span></a></div>
+					<div class="menu-link"><a href="people.html"><i class="fa fa-users"></i><span> People</span></a></div>
+					<div class="menu-link"><a href="outcomes.html"><i class="fa fa-bullseye"></i><span> Outcomes</span></a></div>
+					<div class="menu-link"><a href="rubrics.html"><i class="fa fa-th"></i><span> Rubrics</span></a></div>
+					<div class="menu-link"><a href="groups.html"><i class="fa fa-user-friends"></i><span> Groups</span></a></div>
+					<div class="menu-link"><a href="conferences.html"><i class="fa fa-video"></i><span> Conferences</span></a></div>
+					<div class="menu-link"><a href="collaborations.html"><i class="fa fa-handshake"></i><span> Collaborations</span></a></div>
+					<div class="menu-link"><a href="account-settings.html" class="active-menu"><i class="fa fa-cog"></i><span> Settings</span></a></div>
+				</section>
+			</div>
+		</aside>
+		<div class="sidebar-overlay" id="sidebarOverlay"></div>
+		<main class="middle-part tw-flex-1 lg:tw-ml-[240px] tw-min-h-screen tw-px-4 md:tw-px-6 lg:tw-px-10 tw-pb-8">
+			<div class="tw-flex tw-items-center tw-justify-between tw-py-4 tw-gap-3 tw-flex-wrap">
+				<div class="tw-flex tw-items-center tw-gap-3">
+					<i class="fa fa-bars tw-text-primary-400 tw-cursor-pointer tw-text-xl lg:tw-hidden menu-icon" id="menuToggle"></i>
+					<div class="shadcn-search tw-hidden sm:tw-flex tw-w-64"><i class="fa fa-search"></i><input type="text" placeholder="Search courses, assignments..."></div>
+				</div>
+				<div class="tw-flex tw-items-center tw-gap-3">
+					<button class="shadcn-btn shadcn-btn-ghost shadcn-btn-icon tw-relative"><i class="fa fa-bell tw-text-primary-400"></i></button>
+					<div class="shadcn-avatar shadcn-avatar-md tw-cursor-pointer profile-click"><img src="Images/profile.png" alt="Profile"></div>
+				</div>
+			</div>
+
+			<!-- Header -->
+			<div class="tw-flex tw-flex-col sm:tw-flex-row tw-items-start sm:tw-items-center tw-justify-between tw-py-6 tw-gap-4">
+				<div>
+					<nav class="tw-text-sm tw-text-gray-500 tw-mb-2">
+						<a href="admin-dashboard.html" class="theme-color tw-no-underline">Admin</a>
+						<i class="fa fa-chevron-right tw-text-xs tw-mx-1"></i>
+						<span class="tw-text-gray-400">Plugins</span>
+					</nav>
+					<h3 class="second-color">Plugin Management</h3>
+					<p class="tw-text-gray-500 tw-text-sm tw-mt-1">Install, configure, and manage Canvas LMS plugins</p>
+				</div>
+				<div class="tw-flex tw-gap-2">
+					<button class="shadcn-btn shadcn-btn-outline tw-text-sm"><i class="fa fa-sync-alt tw-mr-1"></i> Check Updates</button>
+					<button class="shadcn-btn shadcn-btn-primary tw-text-sm"><i class="fa fa-plus tw-mr-1"></i> Install Plugin</button>
+				</div>
+			</div>
+
+			<!-- Summary -->
+			<div class="tw-grid tw-grid-cols-2 lg:tw-grid-cols-4 tw-gap-4 tw-mb-6">
+				<div class="shadcn-card tw-p-4 tw-text-center">
+					<p class="tw-text-2xl tw-font-bold second-color">9</p>
+					<p class="tw-text-xs tw-text-gray-500">Total Plugins</p>
+				</div>
+				<div class="shadcn-card tw-p-4 tw-text-center">
+					<p class="tw-text-2xl tw-font-bold tw-text-green-600">7</p>
+					<p class="tw-text-xs tw-text-gray-500">Enabled</p>
+				</div>
+				<div class="shadcn-card tw-p-4 tw-text-center">
+					<p class="tw-text-2xl tw-font-bold tw-text-gray-400">2</p>
+					<p class="tw-text-xs tw-text-gray-500">Disabled</p>
+				</div>
+				<div class="shadcn-card tw-p-4 tw-text-center">
+					<p class="tw-text-2xl tw-font-bold tw-text-orange-500">3</p>
+					<p class="tw-text-xs tw-text-gray-500">Updates Available</p>
+				</div>
+			</div>
+
+			<!-- Plugins List -->
+			<div class="tw-space-y-3">
+				<!-- Plugin 1 - With Update -->
+				<div class="shadcn-card tw-p-4">
+					<div class="tw-flex tw-flex-wrap tw-items-center tw-justify-between tw-gap-3">
+						<div class="tw-flex tw-items-center tw-gap-3 tw-flex-1 tw-min-w-[250px]">
+							<div class="tw-w-10 tw-h-10 tw-rounded-lg tw-bg-blue-100 tw-flex tw-items-center tw-justify-center tw-flex-shrink-0">
+								<i class="fa fa-pencil-alt tw-text-blue-600"></i>
+							</div>
+							<div>
+								<div class="tw-flex tw-items-center tw-gap-2">
+									<h6 class="second-color tw-font-semibold">Turnitin Plagiarism Framework</h6>
+									<span class="tw-bg-orange-100 tw-text-orange-700 tw-px-2 tw-py-0.5 tw-rounded-full tw-text-[10px] tw-font-medium">Update Available</span>
+								</div>
+								<p class="tw-text-xs tw-text-gray-400">Originality checking and plagiarism detection for submissions</p>
+							</div>
+						</div>
+						<div class="tw-flex tw-items-center tw-gap-4">
+							<div class="tw-text-right tw-hidden sm:tw-block">
+								<p class="tw-text-xs tw-text-gray-500">v2.4.1 <i class="fa fa-arrow-right tw-text-[10px] tw-mx-1"></i> <span class="tw-text-orange-600 tw-font-medium">v2.5.0</span></p>
+								<p class="tw-text-[10px] tw-text-gray-400">Installed: Jan 15, 2025</p>
+							</div>
+							<div class="tw-flex tw-items-center tw-gap-2">
+								<span class="tw-bg-green-100 tw-text-green-700 tw-px-2 tw-py-0.5 tw-rounded-full tw-text-xs">Enabled</span>
+								<button class="shadcn-btn shadcn-btn-outline tw-text-xs"><i class="fa fa-arrow-up tw-mr-1"></i> Update</button>
+								<button class="shadcn-btn shadcn-btn-ghost tw-text-xs"><i class="fa fa-cog"></i></button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Plugin 2 -->
+				<div class="shadcn-card tw-p-4">
+					<div class="tw-flex tw-flex-wrap tw-items-center tw-justify-between tw-gap-3">
+						<div class="tw-flex tw-items-center tw-gap-3 tw-flex-1 tw-min-w-[250px]">
+							<div class="tw-w-10 tw-h-10 tw-rounded-lg tw-bg-green-100 tw-flex tw-items-center tw-justify-center tw-flex-shrink-0">
+								<i class="fa fa-chart-bar tw-text-green-600"></i>
+							</div>
+							<div>
+								<h6 class="second-color tw-font-semibold">Analytics Dashboard Pro</h6>
+								<p class="tw-text-xs tw-text-gray-400">Advanced course analytics and student engagement metrics</p>
+							</div>
+						</div>
+						<div class="tw-flex tw-items-center tw-gap-4">
+							<div class="tw-text-right tw-hidden sm:tw-block">
+								<p class="tw-text-xs tw-text-gray-500">v3.1.2</p>
+								<p class="tw-text-[10px] tw-text-gray-400">Installed: Sep 8, 2024</p>
+							</div>
+							<div class="tw-flex tw-items-center tw-gap-2">
+								<span class="tw-bg-green-100 tw-text-green-700 tw-px-2 tw-py-0.5 tw-rounded-full tw-text-xs">Enabled</span>
+								<button class="shadcn-btn shadcn-btn-ghost tw-text-xs"><i class="fa fa-cog"></i></button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Plugin 3 - With Update -->
+				<div class="shadcn-card tw-p-4">
+					<div class="tw-flex tw-flex-wrap tw-items-center tw-justify-between tw-gap-3">
+						<div class="tw-flex tw-items-center tw-gap-3 tw-flex-1 tw-min-w-[250px]">
+							<div class="tw-w-10 tw-h-10 tw-rounded-lg tw-bg-purple-100 tw-flex tw-items-center tw-justify-center tw-flex-shrink-0">
+								<i class="fa fa-universal-access tw-text-purple-600"></i>
+							</div>
+							<div>
+								<div class="tw-flex tw-items-center tw-gap-2">
+									<h6 class="second-color tw-font-semibold">Ally Accessibility Toolkit</h6>
+									<span class="tw-bg-orange-100 tw-text-orange-700 tw-px-2 tw-py-0.5 tw-rounded-full tw-text-[10px] tw-font-medium">Update Available</span>
+								</div>
+								<p class="tw-text-xs tw-text-gray-400">Content accessibility checking and alternative format generation</p>
+							</div>
+						</div>
+						<div class="tw-flex tw-items-center tw-gap-4">
+							<div class="tw-text-right tw-hidden sm:tw-block">
+								<p class="tw-text-xs tw-text-gray-500">v4.0.3 <i class="fa fa-arrow-right tw-text-[10px] tw-mx-1"></i> <span class="tw-text-orange-600 tw-font-medium">v4.1.0</span></p>
+								<p class="tw-text-[10px] tw-text-gray-400">Installed: Oct 20, 2024</p>
+							</div>
+							<div class="tw-flex tw-items-center tw-gap-2">
+								<span class="tw-bg-green-100 tw-text-green-700 tw-px-2 tw-py-0.5 tw-rounded-full tw-text-xs">Enabled</span>
+								<button class="shadcn-btn shadcn-btn-outline tw-text-xs"><i class="fa fa-arrow-up tw-mr-1"></i> Update</button>
+								<button class="shadcn-btn shadcn-btn-ghost tw-text-xs"><i class="fa fa-cog"></i></button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Plugin 4 -->
+				<div class="shadcn-card tw-p-4">
+					<div class="tw-flex tw-flex-wrap tw-items-center tw-justify-between tw-gap-3">
+						<div class="tw-flex tw-items-center tw-gap-3 tw-flex-1 tw-min-w-[250px]">
+							<div class="tw-w-10 tw-h-10 tw-rounded-lg tw-bg-red-100 tw-flex tw-items-center tw-justify-center tw-flex-shrink-0">
+								<i class="fa fa-video tw-text-red-600"></i>
+							</div>
+							<div>
+								<h6 class="second-color tw-font-semibold">Kaltura Media Integration</h6>
+								<p class="tw-text-xs tw-text-gray-400">Video hosting, recording, and media management platform</p>
+							</div>
+						</div>
+						<div class="tw-flex tw-items-center tw-gap-4">
+							<div class="tw-text-right tw-hidden sm:tw-block">
+								<p class="tw-text-xs tw-text-gray-500">v5.2.8</p>
+								<p class="tw-text-[10px] tw-text-gray-400">Installed: Aug 1, 2024</p>
+							</div>
+							<div class="tw-flex tw-items-center tw-gap-2">
+								<span class="tw-bg-green-100 tw-text-green-700 tw-px-2 tw-py-0.5 tw-rounded-full tw-text-xs">Enabled</span>
+								<button class="shadcn-btn shadcn-btn-ghost tw-text-xs"><i class="fa fa-cog"></i></button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Plugin 5 -->
+				<div class="shadcn-card tw-p-4">
+					<div class="tw-flex tw-flex-wrap tw-items-center tw-justify-between tw-gap-3">
+						<div class="tw-flex tw-items-center tw-gap-3 tw-flex-1 tw-min-w-[250px]">
+							<div class="tw-w-10 tw-h-10 tw-rounded-lg tw-bg-yellow-100 tw-flex tw-items-center tw-justify-center tw-flex-shrink-0">
+								<i class="fa fa-lock tw-text-yellow-600"></i>
+							</div>
+							<div>
+								<div class="tw-flex tw-items-center tw-gap-2">
+									<h6 class="second-color tw-font-semibold">Respondus LockDown Browser</h6>
+									<span class="tw-bg-orange-100 tw-text-orange-700 tw-px-2 tw-py-0.5 tw-rounded-full tw-text-[10px] tw-font-medium">Update Available</span>
+								</div>
+								<p class="tw-text-xs tw-text-gray-400">Secure exam browser with webcam proctoring capabilities</p>
+							</div>
+						</div>
+						<div class="tw-flex tw-items-center tw-gap-4">
+							<div class="tw-text-right tw-hidden sm:tw-block">
+								<p class="tw-text-xs tw-text-gray-500">v2.0.5 <i class="fa fa-arrow-right tw-text-[10px] tw-mx-1"></i> <span class="tw-text-orange-600 tw-font-medium">v2.1.0</span></p>
+								<p class="tw-text-[10px] tw-text-gray-400">Installed: Nov 12, 2024</p>
+							</div>
+							<div class="tw-flex tw-items-center tw-gap-2">
+								<span class="tw-bg-green-100 tw-text-green-700 tw-px-2 tw-py-0.5 tw-rounded-full tw-text-xs">Enabled</span>
+								<button class="shadcn-btn shadcn-btn-outline tw-text-xs"><i class="fa fa-arrow-up tw-mr-1"></i> Update</button>
+								<button class="shadcn-btn shadcn-btn-ghost tw-text-xs"><i class="fa fa-cog"></i></button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Plugin 6 -->
+				<div class="shadcn-card tw-p-4">
+					<div class="tw-flex tw-flex-wrap tw-items-center tw-justify-between tw-gap-3">
+						<div class="tw-flex tw-items-center tw-gap-3 tw-flex-1 tw-min-w-[250px]">
+							<div class="tw-w-10 tw-h-10 tw-rounded-lg tw-bg-teal-100 tw-flex tw-items-center tw-justify-center tw-flex-shrink-0">
+								<i class="fa fa-file-import tw-text-teal-600"></i>
+							</div>
+							<div>
+								<h6 class="second-color tw-font-semibold">SIS Import Framework</h6>
+								<p class="tw-text-xs tw-text-gray-400">Automated student information system data synchronization</p>
+							</div>
+						</div>
+						<div class="tw-flex tw-items-center tw-gap-4">
+							<div class="tw-text-right tw-hidden sm:tw-block">
+								<p class="tw-text-xs tw-text-gray-500">v1.8.4</p>
+								<p class="tw-text-[10px] tw-text-gray-400">Installed: Jul 15, 2024</p>
+							</div>
+							<div class="tw-flex tw-items-center tw-gap-2">
+								<span class="tw-bg-green-100 tw-text-green-700 tw-px-2 tw-py-0.5 tw-rounded-full tw-text-xs">Enabled</span>
+								<button class="shadcn-btn shadcn-btn-ghost tw-text-xs"><i class="fa fa-cog"></i></button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Plugin 7 -->
+				<div class="shadcn-card tw-p-4">
+					<div class="tw-flex tw-flex-wrap tw-items-center tw-justify-between tw-gap-3">
+						<div class="tw-flex tw-items-center tw-gap-3 tw-flex-1 tw-min-w-[250px]">
+							<div class="tw-w-10 tw-h-10 tw-rounded-lg tw-bg-indigo-100 tw-flex tw-items-center tw-justify-center tw-flex-shrink-0">
+								<i class="fa fa-robot tw-text-indigo-600"></i>
+							</div>
+							<div>
+								<h6 class="second-color tw-font-semibold">AI Writing Assistant</h6>
+								<p class="tw-text-xs tw-text-gray-400">AI-powered writing feedback and grammar suggestions for students</p>
+							</div>
+						</div>
+						<div class="tw-flex tw-items-center tw-gap-4">
+							<div class="tw-text-right tw-hidden sm:tw-block">
+								<p class="tw-text-xs tw-text-gray-500">v1.2.0</p>
+								<p class="tw-text-[10px] tw-text-gray-400">Installed: Feb 3, 2025</p>
+							</div>
+							<div class="tw-flex tw-items-center tw-gap-2">
+								<span class="tw-bg-green-100 tw-text-green-700 tw-px-2 tw-py-0.5 tw-rounded-full tw-text-xs">Enabled</span>
+								<button class="shadcn-btn shadcn-btn-ghost tw-text-xs"><i class="fa fa-cog"></i></button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Plugin 8 - Disabled -->
+				<div class="shadcn-card tw-p-4 tw-opacity-60">
+					<div class="tw-flex tw-flex-wrap tw-items-center tw-justify-between tw-gap-3">
+						<div class="tw-flex tw-items-center tw-gap-3 tw-flex-1 tw-min-w-[250px]">
+							<div class="tw-w-10 tw-h-10 tw-rounded-lg tw-bg-gray-200 tw-flex tw-items-center tw-justify-center tw-flex-shrink-0">
+								<i class="fa fa-poll tw-text-gray-500"></i>
+							</div>
+							<div>
+								<h6 class="second-color tw-font-semibold">Poll Everywhere</h6>
+								<p class="tw-text-xs tw-text-gray-400">Live polling and audience response for lectures</p>
+							</div>
+						</div>
+						<div class="tw-flex tw-items-center tw-gap-4">
+							<div class="tw-text-right tw-hidden sm:tw-block">
+								<p class="tw-text-xs tw-text-gray-500">v3.4.1</p>
+								<p class="tw-text-[10px] tw-text-gray-400">Disabled: Mar 1, 2025</p>
+							</div>
+							<div class="tw-flex tw-items-center tw-gap-2">
+								<span class="tw-bg-gray-200 tw-text-gray-500 tw-px-2 tw-py-0.5 tw-rounded-full tw-text-xs">Disabled</span>
+								<button class="shadcn-btn shadcn-btn-outline tw-text-xs"><i class="fa fa-play tw-mr-1"></i> Enable</button>
+								<button class="shadcn-btn shadcn-btn-ghost tw-text-xs"><i class="fa fa-cog"></i></button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Plugin 9 - Disabled -->
+				<div class="shadcn-card tw-p-4 tw-opacity-60">
+					<div class="tw-flex tw-flex-wrap tw-items-center tw-justify-between tw-gap-3">
+						<div class="tw-flex tw-items-center tw-gap-3 tw-flex-1 tw-min-w-[250px]">
+							<div class="tw-w-10 tw-h-10 tw-rounded-lg tw-bg-gray-200 tw-flex tw-items-center tw-justify-center tw-flex-shrink-0">
+								<i class="fa fa-graduation-cap tw-text-gray-500"></i>
+							</div>
+							<div>
+								<h6 class="second-color tw-font-semibold">Badging &amp; Achievements</h6>
+								<p class="tw-text-xs tw-text-gray-400">Digital badges and achievement tracking for gamified learning</p>
+							</div>
+						</div>
+						<div class="tw-flex tw-items-center tw-gap-4">
+							<div class="tw-text-right tw-hidden sm:tw-block">
+								<p class="tw-text-xs tw-text-gray-500">v1.0.3</p>
+								<p class="tw-text-[10px] tw-text-gray-400">Disabled: Feb 15, 2025</p>
+							</div>
+							<div class="tw-flex tw-items-center tw-gap-2">
+								<span class="tw-bg-gray-200 tw-text-gray-500 tw-px-2 tw-py-0.5 tw-rounded-full tw-text-xs">Disabled</span>
+								<button class="shadcn-btn shadcn-btn-outline tw-text-xs"><i class="fa fa-play tw-mr-1"></i> Enable</button>
+								<button class="shadcn-btn shadcn-btn-ghost tw-text-xs"><i class="fa fa-cog"></i></button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+	</div>
+	<script src="js/sidebar.js"></script>
+<script src="js/router.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/api.js"></script>
+<script src="js/render.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

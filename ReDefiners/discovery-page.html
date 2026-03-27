@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	<title>ReDefiners - Course Discovery</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+	<script src="https://cdn.tailwindcss.com"></script>
+	<script src="css/tailwind-config.js?v=3"></script>
+	<script src="https://kit.fontawesome.com/7a13c96681.js" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/tokens.css?v=3">
+	<link rel="stylesheet" type="text/css" href="css/shadcn.css?v=3">
+	<link rel="stylesheet" type="text/css" href="styles.css?v=3">
+</head>
+<body>
+	<div class="tw-flex tw-min-h-screen tw-font-poppins">
+		<aside class="left-sidebar tw-fixed tw-inset-y-0 tw-left-0 tw-w-[240px] tw-z-50 tw--translate-x-full lg:tw-translate-x-0 tw-transition-transform tw-duration-300 tw-overflow-y-auto shadcn-scrollbar">
+			<div class="menu-bar">
+				<section class="logo-section">
+					<i class="fa fa-times theme-color menu-hide"></i>
+					<img src="Images/logo.PNG" class="res-hide" alt="logo">
+					<div class="nav-input res-show-flex tw-mt-5">
+						<button class="tw-border tw-border-primary-400 tw-border-r-0 tw-bg-transparent tw-px-2"><i class="fa fa-search"></i></button>
+						<input class="tw-border tw-border-primary-400 tw-border-l-0 tw-w-[85%] tw-bg-transparent tw-px-2 tw-py-1 tw-outline-none" type="text" name="search" placeholder="Search">
+					</div>
+				</section>
+				<section class="menu-links">
+					<div class="menu-link"><a href="dashboard.html"><i class="fa fa-th-large"></i><span> Dashboard</span></a></div>
+					<div class="menu-link"><a href="courses.html" class="active-menu"><i class="fa fa-clipboard-list"></i><span> Courses</span></a></div>
+					<div class="menu-link"><a href="calendar.html"><i class="fa fa-calendar-alt"></i><span> Calendar</span></a></div>
+					<div class="menu-link"><a href="announcement.html"><i class="fa fa-bullhorn"></i><span> Announcements</span></a></div>
+					<div class="menu-link"><a href="inbox.html"><i class="fa fa-comments"></i><span> Messages</span></a></div>
+					<div class="menu-link"><a href="assignments.html"><i class="fa fa-file-lines"></i><span> Assignments</span></a></div>
+					<div class="menu-link"><a href="grades.html"><i class="fa fa-chart-bar"></i><span> Grades</span></a></div>
+					<div class="menu-link"><a href="modules.html"><i class="fa fa-layer-group"></i><span> Modules</span></a></div>
+					<div class="menu-link"><a href="discussions.html"><i class="fa fa-comments-alt"></i><span> Discussions</span></a></div>
+					<div class="menu-link"><a href="quizzes.html"><i class="fa fa-question-circle"></i><span> Quizzes</span></a></div>
+					<div class="menu-link"><a href="pages.html"><i class="fa fa-file-alt"></i><span> Pages</span></a></div>
+					<div class="menu-link"><a href="files.html"><i class="fa fa-folder"></i><span> Files</span></a></div>
+					<div class="menu-link"><a href="people.html"><i class="fa fa-users"></i><span> People</span></a></div>
+					<div class="menu-link"><a href="outcomes.html"><i class="fa fa-bullseye"></i><span> Outcomes</span></a></div>
+					<div class="menu-link"><a href="rubrics.html"><i class="fa fa-th"></i><span> Rubrics</span></a></div>
+					<div class="menu-link"><a href="groups.html"><i class="fa fa-user-friends"></i><span> Groups</span></a></div>
+					<div class="menu-link"><a href="conferences.html"><i class="fa fa-video"></i><span> Conferences</span></a></div>
+					<div class="menu-link"><a href="collaborations.html"><i class="fa fa-handshake"></i><span> Collaborations</span></a></div>
+					<div class="menu-link"><a href="account-settings.html"><i class="fa fa-cog"></i><span> Settings</span></a></div>
+				</section>
+			</div>
+		</aside>
+		<div class="sidebar-overlay" id="sidebarOverlay"></div>
+		<main class="middle-part tw-flex-1 lg:tw-ml-[240px] tw-min-h-screen tw-px-4 md:tw-px-6 lg:tw-px-10 tw-pb-8">
+			<div class="tw-flex tw-items-center tw-justify-between tw-py-4 tw-gap-3 tw-flex-wrap">
+				<div class="tw-flex tw-items-center tw-gap-3">
+					<i class="fa fa-bars tw-text-primary-400 tw-cursor-pointer tw-text-xl lg:tw-hidden menu-icon" id="menuToggle"></i>
+					<div class="shadcn-search tw-hidden sm:tw-flex tw-w-64"><i class="fa fa-search"></i><input type="text" placeholder="Search courses, assignments..."></div>
+				</div>
+				<div class="tw-flex tw-items-center tw-gap-3">
+					<button class="shadcn-btn shadcn-btn-ghost shadcn-btn-icon tw-relative"><i class="fa fa-bell tw-text-primary-400"></i></button>
+					<div class="shadcn-avatar shadcn-avatar-md tw-cursor-pointer profile-click"><img src="Images/profile.png" alt="Profile"></div>
+				</div>
+			</div>
+
+			<!-- Header -->
+			<div class="tw-py-6">
+				<h3 class="second-color">Course Catalog</h3>
+				<p class="tw-text-gray-500 tw-text-sm tw-mt-1">Discover and enroll in available courses for the upcoming semester</p>
+			</div>
+
+			<!-- Search Bar -->
+			<div class="shadcn-card tw-p-4 tw-mb-6">
+				<div class="tw-flex tw-flex-wrap tw-gap-3">
+					<div class="tw-flex-1 tw-min-w-[200px]">
+						<div class="tw-relative">
+							<i class="fa fa-search tw-absolute tw-left-3 tw-top-1/2 tw--translate-y-1/2 tw-text-gray-400"></i>
+							<input type="text" class="shadcn-input tw-w-full tw-pl-10 tw-text-sm" placeholder="Search courses by name, subject, or instructor...">
+						</div>
+					</div>
+					<select class="shadcn-input tw-w-40 tw-text-sm">
+						<option>All Terms</option>
+						<option selected>Fall 2025</option>
+						<option>Spring 2025</option>
+					</select>
+					<button class="shadcn-btn shadcn-btn-primary tw-text-sm"><i class="fa fa-search tw-mr-1"></i> Search</button>
+				</div>
+			</div>
+
+			<!-- Category Filters -->
+			<div class="tw-flex tw-flex-wrap tw-gap-2 tw-mb-6">
+				<button class="shadcn-btn shadcn-btn-primary tw-text-xs tw-rounded-full">All Categories</button>
+				<button class="shadcn-btn shadcn-btn-outline tw-text-xs tw-rounded-full"><i class="fa fa-atom tw-mr-1"></i> STEM</button>
+				<button class="shadcn-btn shadcn-btn-outline tw-text-xs tw-rounded-full"><i class="fa fa-palette tw-mr-1"></i> Arts</button>
+				<button class="shadcn-btn shadcn-btn-outline tw-text-xs tw-rounded-full"><i class="fa fa-briefcase tw-mr-1"></i> Business</button>
+				<button class="shadcn-btn shadcn-btn-outline tw-text-xs tw-rounded-full"><i class="fa fa-heartbeat tw-mr-1"></i> Health</button>
+				<button class="shadcn-btn shadcn-btn-outline tw-text-xs tw-rounded-full"><i class="fa fa-book tw-mr-1"></i> Humanities</button>
+				<button class="shadcn-btn shadcn-btn-outline tw-text-xs tw-rounded-full"><i class="fa fa-globe tw-mr-1"></i> Social Sciences</button>
+			</div>
+
+			<!-- Featured Courses Carousel -->
+			<div class="shadcn-card tw-p-5 tw-mb-6">
+				<div class="tw-flex tw-items-center tw-justify-between tw-mb-4">
+					<h5 class="second-color tw-font-semibold"><i class="fa fa-star tw-mr-2 tw-text-yellow-500"></i>Featured Courses</h5>
+					<div class="tw-flex tw-gap-2">
+						<button class="shadcn-btn shadcn-btn-outline shadcn-btn-icon tw-text-xs"><i class="fa fa-chevron-left"></i></button>
+						<button class="shadcn-btn shadcn-btn-outline shadcn-btn-icon tw-text-xs"><i class="fa fa-chevron-right"></i></button>
+					</div>
+				</div>
+				<div class="tw-grid tw-grid-cols-1 md:tw-grid-cols-3 tw-gap-4">
+					<div class="tw-border tw-rounded-xl tw-overflow-hidden tw-hover:tw-shadow-md tw-transition-shadow">
+						<div class="tw-h-32 tw-bg-gradient-to-r tw-from-blue-500 tw-to-blue-700 tw-flex tw-items-center tw-justify-center">
+							<i class="fa fa-brain tw-text-4xl tw-text-white tw-opacity-80"></i>
+						</div>
+						<div class="tw-p-4">
+							<span class="tw-bg-blue-100 tw-text-blue-700 tw-px-2 tw-py-0.5 tw-rounded-full tw-text-xs">STEM</span>
+							<h6 class="second-color tw-font-semibold tw-mt-2">Introduction to Artificial Intelligence</h6>
+							<p class="tw-text-xs tw-text-gray-500 tw-mt-1">Dr. Michael Torres &middot; CS-301</p>
+							<div class="tw-flex tw-items-center tw-gap-3 tw-mt-2 tw-text-xs tw-text-gray-400">
+								<span><i class="fa fa-star tw-text-yellow-400"></i> 4.8</span>
+								<span><i class="fa fa-users tw-mr-1"></i>156 enrolled</span>
+							</div>
+							<button class="shadcn-btn shadcn-btn-primary tw-text-xs tw-w-full tw-mt-3">Enroll Now</button>
+						</div>
+					</div>
+					<div class="tw-border tw-rounded-xl tw-overflow-hidden tw-hover:tw-shadow-md tw-transition-shadow">
+						<div class="tw-h-32 tw-bg-gradient-to-r tw-from-green-500 tw-to-teal-600 tw-flex tw-items-center tw-justify-center">
+							<i class="fa fa-leaf tw-text-4xl tw-text-white tw-opacity-80"></i>
+						</div>
+						<div class="tw-p-4">
+							<span class="tw-bg-green-100 tw-text-green-700 tw-px-2 tw-py-0.5 tw-rounded-full tw-text-xs">Health</span>
+							<h6 class="second-color tw-font-semibold tw-mt-2">Environmental Health Sciences</h6>
+							<p class="tw-text-xs tw-text-gray-500 tw-mt-1">Dr. Lisa Wang &middot; EHS-220</p>
+							<div class="tw-flex tw-items-center tw-gap-3 tw-mt-2 tw-text-xs tw-text-gray-400">
+								<span><i class="fa fa-star tw-text-yellow-400"></i> 4.6</span>
+								<span><i class="fa fa-users tw-mr-1"></i>89 enrolled</span>
+							</div>
+							<button class="shadcn-btn shadcn-btn-primary tw-text-xs tw-w-full tw-mt-3">Enroll Now</button>
+						</div>
+					</div>
+					<div class="tw-border tw-rounded-xl tw-overflow-hidden tw-hover:tw-shadow-md tw-transition-shadow">
+						<div class="tw-h-32 tw-bg-gradient-to-r tw-from-purple-500 tw-to-indigo-600 tw-flex tw-items-center tw-justify-center">
+							<i class="fa fa-chart-line tw-text-4xl tw-text-white tw-opacity-80"></i>
+						</div>
+						<div class="tw-p-4">
+							<span class="tw-bg-purple-100 tw-text-purple-700 tw-px-2 tw-py-0.5 tw-rounded-full tw-text-xs">Business</span>
+							<h6 class="second-color tw-font-semibold tw-mt-2">Financial Markets &amp; Investing</h6>
+							<p class="tw-text-xs tw-text-gray-500 tw-mt-1">Prof. James Carter &middot; FIN-310</p>
+							<div class="tw-flex tw-items-center tw-gap-3 tw-mt-2 tw-text-xs tw-text-gray-400">
+								<span><i class="fa fa-star tw-text-yellow-400"></i> 4.9</span>
+								<span><i class="fa fa-users tw-mr-1"></i>203 enrolled</span>
+							</div>
+							<button class="shadcn-btn shadcn-btn-primary tw-text-xs tw-w-full tw-mt-3">Enroll Now</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- All Courses Grid -->
+			<h5 class="second-color tw-font-semibold tw-mb-4">All Available Courses</h5>
+			<div class="tw-grid tw-grid-cols-1 sm:tw-grid-cols-2 lg:tw-grid-cols-3 tw-gap-4 tw-mb-6">
+				<div class="shadcn-card tw-p-4 tw-hover:tw-shadow-md tw-transition-shadow">
+					<div class="tw-flex tw-items-start tw-justify-between tw-mb-2">
+						<span class="tw-bg-blue-100 tw-text-blue-700 tw-px-2 tw-py-0.5 tw-rounded-full tw-text-xs">STEM</span>
+						<span class="tw-text-xs tw-text-gray-400">3 credits</span>
+					</div>
+					<h6 class="second-color tw-font-semibold">Organic Chemistry II</h6>
+					<p class="tw-text-xs tw-text-gray-500 tw-mt-1">Dr. Rachel Kim &middot; CHEM-202</p>
+					<div class="tw-flex tw-items-center tw-gap-3 tw-mt-2 tw-text-xs tw-text-gray-400">
+						<span><i class="fa fa-star tw-text-yellow-400"></i> 4.3</span>
+						<span><i class="fa fa-users"></i> 72</span>
+						<span><i class="fa fa-clock"></i> MWF 10:00 AM</span>
+					</div>
+					<button class="shadcn-btn shadcn-btn-outline tw-text-xs tw-w-full tw-mt-3">View Details</button>
+				</div>
+				<div class="shadcn-card tw-p-4 tw-hover:tw-shadow-md tw-transition-shadow">
+					<div class="tw-flex tw-items-start tw-justify-between tw-mb-2">
+						<span class="tw-bg-orange-100 tw-text-orange-700 tw-px-2 tw-py-0.5 tw-rounded-full tw-text-xs">Arts</span>
+						<span class="tw-text-xs tw-text-gray-400">3 credits</span>
+					</div>
+					<h6 class="second-color tw-font-semibold">Digital Photography Fundamentals</h6>
+					<p class="tw-text-xs tw-text-gray-500 tw-mt-1">Prof. Anna Lee &middot; ART-150</p>
+					<div class="tw-flex tw-items-center tw-gap-3 tw-mt-2 tw-text-xs tw-text-gray-400">
+						<span><i class="fa fa-star tw-text-yellow-400"></i> 4.7</span>
+						<span><i class="fa fa-users"></i> 35</span>
+						<span><i class="fa fa-clock"></i> TTh 2:00 PM</span>
+					</div>
+					<button class="shadcn-btn shadcn-btn-outline tw-text-xs tw-w-full tw-mt-3">View Details</button>
+				</div>
+				<div class="shadcn-card tw-p-4 tw-hover:tw-shadow-md tw-transition-shadow">
+					<div class="tw-flex tw-items-start tw-justify-between tw-mb-2">
+						<span class="tw-bg-red-100 tw-text-red-700 tw-px-2 tw-py-0.5 tw-rounded-full tw-text-xs">Humanities</span>
+						<span class="tw-text-xs tw-text-gray-400">3 credits</span>
+					</div>
+					<h6 class="second-color tw-font-semibold">World Literature: Modern Classics</h6>
+					<p class="tw-text-xs tw-text-gray-500 tw-mt-1">Dr. Samuel Hayes &middot; LIT-245</p>
+					<div class="tw-flex tw-items-center tw-gap-3 tw-mt-2 tw-text-xs tw-text-gray-400">
+						<span><i class="fa fa-star tw-text-yellow-400"></i> 4.5</span>
+						<span><i class="fa fa-users"></i> 48</span>
+						<span><i class="fa fa-clock"></i> MWF 1:00 PM</span>
+					</div>
+					<button class="shadcn-btn shadcn-btn-outline tw-text-xs tw-w-full tw-mt-3">View Details</button>
+				</div>
+				<div class="shadcn-card tw-p-4 tw-hover:tw-shadow-md tw-transition-shadow">
+					<div class="tw-flex tw-items-start tw-justify-between tw-mb-2">
+						<span class="tw-bg-teal-100 tw-text-teal-700 tw-px-2 tw-py-0.5 tw-rounded-full tw-text-xs">Social Sciences</span>
+						<span class="tw-text-xs tw-text-gray-400">4 credits</span>
+					</div>
+					<h6 class="second-color tw-font-semibold">Cognitive Psychology</h6>
+					<p class="tw-text-xs tw-text-gray-500 tw-mt-1">Dr. Karen White &middot; PSY-301</p>
+					<div class="tw-flex tw-items-center tw-gap-3 tw-mt-2 tw-text-xs tw-text-gray-400">
+						<span><i class="fa fa-star tw-text-yellow-400"></i> 4.4</span>
+						<span><i class="fa fa-users"></i> 92</span>
+						<span><i class="fa fa-clock"></i> TTh 11:00 AM</span>
+					</div>
+					<button class="shadcn-btn shadcn-btn-outline tw-text-xs tw-w-full tw-mt-3">View Details</button>
+				</div>
+				<div class="shadcn-card tw-p-4 tw-hover:tw-shadow-md tw-transition-shadow">
+					<div class="tw-flex tw-items-start tw-justify-between tw-mb-2">
+						<span class="tw-bg-green-100 tw-text-green-700 tw-px-2 tw-py-0.5 tw-rounded-full tw-text-xs">Health</span>
+						<span class="tw-text-xs tw-text-gray-400">3 credits</span>
+					</div>
+					<h6 class="second-color tw-font-semibold">Public Health Policy &amp; Ethics</h6>
+					<p class="tw-text-xs tw-text-gray-500 tw-mt-1">Dr. Nina Patel &middot; PH-280</p>
+					<div class="tw-flex tw-items-center tw-gap-3 tw-mt-2 tw-text-xs tw-text-gray-400">
+						<span><i class="fa fa-star tw-text-yellow-400"></i> 4.6</span>
+						<span><i class="fa fa-users"></i> 61</span>
+						<span><i class="fa fa-clock"></i> MWF 9:00 AM</span>
+					</div>
+					<button class="shadcn-btn shadcn-btn-outline tw-text-xs tw-w-full tw-mt-3">View Details</button>
+				</div>
+				<div class="shadcn-card tw-p-4 tw-hover:tw-shadow-md tw-transition-shadow">
+					<div class="tw-flex tw-items-start tw-justify-between tw-mb-2">
+						<span class="tw-bg-purple-100 tw-text-purple-700 tw-px-2 tw-py-0.5 tw-rounded-full tw-text-xs">Business</span>
+						<span class="tw-text-xs tw-text-gray-400">3 credits</span>
+					</div>
+					<h6 class="second-color tw-font-semibold">Entrepreneurship &amp; Innovation</h6>
+					<p class="tw-text-xs tw-text-gray-500 tw-mt-1">Prof. David Brooks &middot; BUS-350</p>
+					<div class="tw-flex tw-items-center tw-gap-3 tw-mt-2 tw-text-xs tw-text-gray-400">
+						<span><i class="fa fa-star tw-text-yellow-400"></i> 4.8</span>
+						<span><i class="fa fa-users"></i> 115</span>
+						<span><i class="fa fa-clock"></i> TTh 3:30 PM</span>
+					</div>
+					<button class="shadcn-btn shadcn-btn-outline tw-text-xs tw-w-full tw-mt-3">View Details</button>
+				</div>
+			</div>
+
+			<!-- Pagination -->
+			<div class="tw-flex tw-items-center tw-justify-center tw-gap-1">
+				<button class="shadcn-btn shadcn-btn-outline tw-text-xs tw-px-3" disabled>Previous</button>
+				<button class="shadcn-btn shadcn-btn-primary tw-text-xs tw-px-3">1</button>
+				<button class="shadcn-btn shadcn-btn-outline tw-text-xs tw-px-3">2</button>
+				<button class="shadcn-btn shadcn-btn-outline tw-text-xs tw-px-3">3</button>
+				<button class="shadcn-btn shadcn-btn-outline tw-text-xs tw-px-3">4</button>
+				<button class="shadcn-btn shadcn-btn-outline tw-text-xs tw-px-3">Next</button>
+			</div>
+		</main>
+	</div>
+	<script src="js/sidebar.js"></script>
+<script src="js/router.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/api.js"></script>
+<script src="js/render.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

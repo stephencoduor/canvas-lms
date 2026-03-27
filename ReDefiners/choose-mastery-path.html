@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	<title>ReDefiners - Choose Mastery Path</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+	<script src="https://cdn.tailwindcss.com"></script>
+	<script src="css/tailwind-config.js?v=3"></script>
+	<script src="https://kit.fontawesome.com/7a13c96681.js" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/tokens.css?v=3">
+	<link rel="stylesheet" type="text/css" href="css/shadcn.css?v=3">
+	<link rel="stylesheet" type="text/css" href="styles.css?v=3">
+</head>
+<body>
+	<div class="tw-flex tw-min-h-screen tw-font-poppins">
+		<aside class="left-sidebar tw-fixed tw-inset-y-0 tw-left-0 tw-w-[240px] tw-z-50 tw--translate-x-full lg:tw-translate-x-0 tw-transition-transform tw-duration-300 tw-overflow-y-auto shadcn-scrollbar">
+			<div class="menu-bar">
+				<section class="logo-section">
+					<i class="fa fa-times theme-color menu-hide"></i>
+					<img src="Images/logo.PNG" class="res-hide" alt="logo">
+					<div class="nav-input res-show-flex tw-mt-5">
+						<button class="tw-border tw-border-primary-400 tw-border-r-0 tw-bg-transparent tw-px-2"><i class="fa fa-search"></i></button>
+						<input class="tw-border tw-border-primary-400 tw-border-l-0 tw-w-[85%] tw-bg-transparent tw-px-2 tw-py-1 tw-outline-none" type="text" name="search" placeholder="Search">
+					</div>
+				</section>
+				<section class="menu-links">
+					<div class="menu-link"><a href="dashboard.html"><i class="fa fa-th-large"></i><span> Dashboard</span></a></div>
+					<div class="menu-link"><a href="courses.html"><i class="fa fa-clipboard-list"></i><span> Courses</span></a></div>
+					<div class="menu-link"><a href="calendar.html"><i class="fa fa-calendar-alt"></i><span> Calendar</span></a></div>
+					<div class="menu-link"><a href="announcement.html"><i class="fa fa-bullhorn"></i><span> Announcements</span></a></div>
+					<div class="menu-link"><a href="inbox.html"><i class="fa fa-comments"></i><span> Messages</span></a></div>
+					<div class="menu-link"><a href="assignments.html"><i class="fa fa-file-lines"></i><span> Assignments</span></a></div>
+					<div class="menu-link"><a href="grades.html"><i class="fa fa-chart-bar"></i><span> Grades</span></a></div>
+					<div class="menu-link"><a href="modules.html" class="active-menu"><i class="fa fa-layer-group"></i><span> Modules</span></a></div>
+					<div class="menu-link"><a href="discussions.html"><i class="fa fa-comments-alt"></i><span> Discussions</span></a></div>
+					<div class="menu-link"><a href="quizzes.html"><i class="fa fa-question-circle"></i><span> Quizzes</span></a></div>
+					<div class="menu-link"><a href="pages.html"><i class="fa fa-file-alt"></i><span> Pages</span></a></div>
+					<div class="menu-link"><a href="files.html"><i class="fa fa-folder"></i><span> Files</span></a></div>
+					<div class="menu-link"><a href="people.html"><i class="fa fa-users"></i><span> People</span></a></div>
+					<div class="menu-link"><a href="outcomes.html"><i class="fa fa-bullseye"></i><span> Outcomes</span></a></div>
+					<div class="menu-link"><a href="rubrics.html"><i class="fa fa-th"></i><span> Rubrics</span></a></div>
+					<div class="menu-link"><a href="groups.html"><i class="fa fa-user-friends"></i><span> Groups</span></a></div>
+					<div class="menu-link"><a href="conferences.html"><i class="fa fa-video"></i><span> Conferences</span></a></div>
+					<div class="menu-link"><a href="collaborations.html"><i class="fa fa-handshake"></i><span> Collaborations</span></a></div>
+					<div class="menu-link"><a href="account-settings.html"><i class="fa fa-cog"></i><span> Settings</span></a></div>
+				</section>
+			</div>
+		</aside>
+		<div class="sidebar-overlay" id="sidebarOverlay"></div>
+		<main class="middle-part tw-flex-1 lg:tw-ml-[240px] tw-min-h-screen tw-px-4 md:tw-px-6 lg:tw-px-10 tw-pb-8">
+			<div class="tw-flex tw-items-center tw-justify-between tw-py-4 tw-gap-3 tw-flex-wrap">
+				<div class="tw-flex tw-items-center tw-gap-3">
+					<i class="fa fa-bars tw-text-primary-400 tw-cursor-pointer tw-text-xl lg:tw-hidden menu-icon" id="menuToggle"></i>
+					<div class="shadcn-search tw-hidden sm:tw-flex tw-w-64">
+						<i class="fa fa-search"></i>
+						<input type="text" placeholder="Search courses, assignments...">
+					</div>
+				</div>
+				<div class="tw-flex tw-items-center tw-gap-3">
+					<button class="shadcn-btn shadcn-btn-ghost shadcn-btn-icon tw-relative"><i class="fa fa-bell tw-text-primary-400"></i></button>
+					<div class="shadcn-avatar shadcn-avatar-md tw-cursor-pointer profile-click"><img src="Images/profile.png" alt="Profile"></div>
+				</div>
+			</div>
+
+			<!-- Breadcrumb -->
+			<div class="tw-flex tw-items-center tw-gap-2 tw-text-sm tw-text-gray-500 tw-mb-6">
+				<a href="courses.html" class="theme-color tw-no-underline">Statistics 101</a>
+				<i class="fa fa-chevron-right tw-text-xs"></i>
+				<a href="modules.html" class="theme-color tw-no-underline">Module 3: Probability</a>
+				<i class="fa fa-chevron-right tw-text-xs"></i>
+				<span class="second-color">Choose Your Path</span>
+			</div>
+
+			<!-- Page Header -->
+			<div class="tw-text-center tw-mb-8">
+				<h4 class="second-color tw-font-semibold tw-mb-2">
+					<i class="fa fa-code-branch theme-color tw-mr-2"></i> Choose Your Mastery Path
+				</h4>
+				<p class="tw-text-gray-500">Based on your Quiz 3 results, select the learning path that best fits your needs.</p>
+			</div>
+
+			<!-- Quiz Score Result -->
+			<div class="shadcn-card tw-p-5 tw-mb-8 tw-max-w-md tw-mx-auto tw-text-center">
+				<p class="tw-text-sm tw-text-gray-500 tw-mb-1">Your Score on Quiz 3: Probability Basics</p>
+				<div class="tw-text-4xl tw-font-bold theme-color tw-mb-2">78%</div>
+				<p class="tw-text-sm tw-text-gray-500">You have unlocked <strong>Path B: Strengthen Foundations</strong> and <strong>Path C: Advanced Challenge</strong></p>
+			</div>
+
+			<!-- Branching Paths -->
+			<div class="tw-grid tw-grid-cols-1 md:tw-grid-cols-3 tw-gap-6 tw-mb-8">
+				<!-- Path A - Locked -->
+				<div class="shadcn-card tw-p-5 tw-opacity-50 tw-relative tw-overflow-hidden">
+					<div class="tw-absolute tw-top-0 tw-right-0 tw-bg-gray-500 tw-text-white tw-px-3 tw-py-1 tw-text-xs tw-rounded-bl-lg">
+						<i class="fa fa-lock tw-mr-1"></i> Locked
+					</div>
+					<div class="tw-text-center tw-mb-4">
+						<div class="tw-w-16 tw-h-16 tw-rounded-full tw-bg-red-100 tw-flex tw-items-center tw-justify-center tw-mx-auto tw-mb-3">
+							<i class="fa fa-redo tw-text-red-500 tw-text-2xl"></i>
+						</div>
+						<h5 class="second-color tw-font-bold">Path A: Review &amp; Rebuild</h5>
+						<p class="tw-text-xs tw-text-gray-400 tw-mt-1">Score range: 0% - 59%</p>
+					</div>
+					<div class="tw-space-y-2 tw-mb-4">
+						<div class="tw-flex tw-items-center tw-gap-2 tw-p-2 tw-bg-gray-50 tw-rounded">
+							<i class="fa fa-video tw-text-gray-400 tw-text-sm tw-w-5"></i>
+							<span class="tw-text-sm tw-text-gray-400">Probability Fundamentals Video</span>
+						</div>
+						<div class="tw-flex tw-items-center tw-gap-2 tw-p-2 tw-bg-gray-50 tw-rounded">
+							<i class="fa fa-file-alt tw-text-gray-400 tw-text-sm tw-w-5"></i>
+							<span class="tw-text-sm tw-text-gray-400">Guided Practice Worksheet</span>
+						</div>
+						<div class="tw-flex tw-items-center tw-gap-2 tw-p-2 tw-bg-gray-50 tw-rounded">
+							<i class="fa fa-users tw-text-gray-400 tw-text-sm tw-w-5"></i>
+							<span class="tw-text-sm tw-text-gray-400">Study Group Discussion</span>
+						</div>
+						<div class="tw-flex tw-items-center tw-gap-2 tw-p-2 tw-bg-gray-50 tw-rounded">
+							<i class="fa fa-question-circle tw-text-gray-400 tw-text-sm tw-w-5"></i>
+							<span class="tw-text-sm tw-text-gray-400">Retake: Quiz 3</span>
+						</div>
+					</div>
+					<button class="shadcn-btn shadcn-btn-outline tw-w-full" disabled>
+						<i class="fa fa-lock tw-mr-1"></i> Not Available
+					</button>
+				</div>
+
+				<!-- Path B - Unlocked -->
+				<div class="shadcn-card tw-p-5 tw-border-2 tw-border-green-400 tw-relative tw-overflow-hidden">
+					<div class="tw-absolute tw-top-0 tw-right-0 tw-bg-green-500 tw-text-white tw-px-3 tw-py-1 tw-text-xs tw-rounded-bl-lg">
+						<i class="fa fa-unlock tw-mr-1"></i> Recommended
+					</div>
+					<div class="tw-text-center tw-mb-4">
+						<div class="tw-w-16 tw-h-16 tw-rounded-full tw-bg-green-100 tw-flex tw-items-center tw-justify-center tw-mx-auto tw-mb-3">
+							<i class="fa fa-tools tw-text-green-500 tw-text-2xl"></i>
+						</div>
+						<h5 class="second-color tw-font-bold">Path B: Strengthen Foundations</h5>
+						<p class="tw-text-xs tw-text-green-600 tw-mt-1">Score range: 60% - 84%</p>
+					</div>
+					<div class="tw-space-y-2 tw-mb-4">
+						<div class="tw-flex tw-items-center tw-gap-2 tw-p-2 tw-bg-green-50 tw-rounded tw-border tw-border-green-200">
+							<i class="fa fa-video tw-text-green-500 tw-text-sm tw-w-5"></i>
+							<span class="tw-text-sm second-color">Conditional Probability Deep Dive</span>
+						</div>
+						<div class="tw-flex tw-items-center tw-gap-2 tw-p-2 tw-bg-green-50 tw-rounded tw-border tw-border-green-200">
+							<i class="fa fa-calculator tw-text-green-500 tw-text-sm tw-w-5"></i>
+							<span class="tw-text-sm second-color">Practice: Bayes' Theorem Problems</span>
+						</div>
+						<div class="tw-flex tw-items-center tw-gap-2 tw-p-2 tw-bg-green-50 tw-rounded tw-border tw-border-green-200">
+							<i class="fa fa-comments-alt tw-text-green-500 tw-text-sm tw-w-5"></i>
+							<span class="tw-text-sm second-color">Peer Discussion: Real-World Applications</span>
+						</div>
+						<div class="tw-flex tw-items-center tw-gap-2 tw-p-2 tw-bg-green-50 tw-rounded tw-border tw-border-green-200">
+							<i class="fa fa-file-lines tw-text-green-500 tw-text-sm tw-w-5"></i>
+							<span class="tw-text-sm second-color">Assignment: Probability Case Study</span>
+						</div>
+					</div>
+					<button class="shadcn-btn shadcn-btn-primary tw-w-full">
+						<i class="fa fa-arrow-right tw-mr-1"></i> Select This Path
+					</button>
+				</div>
+
+				<!-- Path C - Unlocked -->
+				<div class="shadcn-card tw-p-5 tw-border-2 tw-border-blue-300 tw-relative tw-overflow-hidden">
+					<div class="tw-absolute tw-top-0 tw-right-0 tw-bg-blue-500 tw-text-white tw-px-3 tw-py-1 tw-text-xs tw-rounded-bl-lg">
+						<i class="fa fa-unlock tw-mr-1"></i> Available
+					</div>
+					<div class="tw-text-center tw-mb-4">
+						<div class="tw-w-16 tw-h-16 tw-rounded-full tw-bg-blue-100 tw-flex tw-items-center tw-justify-center tw-mx-auto tw-mb-3">
+							<i class="fa fa-rocket tw-text-blue-500 tw-text-2xl"></i>
+						</div>
+						<h5 class="second-color tw-font-bold">Path C: Advanced Challenge</h5>
+						<p class="tw-text-xs tw-text-blue-600 tw-mt-1">Score range: 85% - 100%</p>
+					</div>
+					<div class="tw-space-y-2 tw-mb-4">
+						<div class="tw-flex tw-items-center tw-gap-2 tw-p-2 tw-bg-blue-50 tw-rounded tw-border tw-border-blue-200">
+							<i class="fa fa-book tw-text-blue-500 tw-text-sm tw-w-5"></i>
+							<span class="tw-text-sm second-color">Reading: Advanced Probability Theory</span>
+						</div>
+						<div class="tw-flex tw-items-center tw-gap-2 tw-p-2 tw-bg-blue-50 tw-rounded tw-border tw-border-blue-200">
+							<i class="fa fa-project-diagram tw-text-blue-500 tw-text-sm tw-w-5"></i>
+							<span class="tw-text-sm second-color">Mini-Project: Monte Carlo Simulation</span>
+						</div>
+						<div class="tw-flex tw-items-center tw-gap-2 tw-p-2 tw-bg-blue-50 tw-rounded tw-border tw-border-blue-200">
+							<i class="fa fa-brain tw-text-blue-500 tw-text-sm tw-w-5"></i>
+							<span class="tw-text-sm second-color">Challenge Problems Set</span>
+						</div>
+						<div class="tw-flex tw-items-center tw-gap-2 tw-p-2 tw-bg-blue-50 tw-rounded tw-border tw-border-blue-200">
+							<i class="fa fa-trophy tw-text-blue-500 tw-text-sm tw-w-5"></i>
+							<span class="tw-text-sm second-color">Bonus: Extra Credit Presentation</span>
+						</div>
+					</div>
+					<button class="shadcn-btn shadcn-btn-outline tw-w-full tw-border-blue-400 tw-text-blue-600">
+						<i class="fa fa-arrow-right tw-mr-1"></i> Select This Path
+					</button>
+				</div>
+			</div>
+
+			<!-- Flow Visualization -->
+			<div class="shadcn-card tw-p-6">
+				<h5 class="second-color tw-font-semibold tw-mb-4">
+					<i class="fa fa-project-diagram tw-mr-2 theme-color"></i> Module Progress Flow
+				</h5>
+				<div class="tw-flex tw-flex-col md:tw-flex-row tw-items-center tw-justify-center tw-gap-4 tw-text-center">
+					<!-- Step 1 -->
+					<div class="tw-flex tw-flex-col tw-items-center">
+						<div class="tw-w-14 tw-h-14 tw-rounded-full tw-bg-green-500 tw-text-white tw-flex tw-items-center tw-justify-center tw-text-xl">
+							<i class="fa fa-check"></i>
+						</div>
+						<p class="tw-text-xs tw-font-medium second-color tw-mt-2">Lesson 3.1</p>
+						<p class="tw-text-xs tw-text-gray-400">Completed</p>
+					</div>
+					<i class="fa fa-arrow-right tw-text-gray-300 tw-hidden md:tw-block"></i>
+					<i class="fa fa-arrow-down tw-text-gray-300 md:tw-hidden"></i>
+					<!-- Step 2 -->
+					<div class="tw-flex tw-flex-col tw-items-center">
+						<div class="tw-w-14 tw-h-14 tw-rounded-full tw-bg-green-500 tw-text-white tw-flex tw-items-center tw-justify-center tw-text-xl">
+							<i class="fa fa-check"></i>
+						</div>
+						<p class="tw-text-xs tw-font-medium second-color tw-mt-2">Quiz 3</p>
+						<p class="tw-text-xs tw-text-gray-400">Score: 78%</p>
+					</div>
+					<i class="fa fa-arrow-right tw-text-gray-300 tw-hidden md:tw-block"></i>
+					<i class="fa fa-arrow-down tw-text-gray-300 md:tw-hidden"></i>
+					<!-- Step 3 - Current -->
+					<div class="tw-flex tw-flex-col tw-items-center">
+						<div class="tw-w-14 tw-h-14 tw-rounded-full tw-border-2 tw-border-blue-500 tw-text-blue-500 tw-flex tw-items-center tw-justify-center tw-text-xl tw-animate-pulse">
+							<i class="fa fa-code-branch"></i>
+						</div>
+						<p class="tw-text-xs tw-font-medium tw-text-blue-600 tw-mt-2">Choose Path</p>
+						<p class="tw-text-xs tw-text-blue-400">Current Step</p>
+					</div>
+					<i class="fa fa-arrow-right tw-text-gray-300 tw-hidden md:tw-block"></i>
+					<i class="fa fa-arrow-down tw-text-gray-300 md:tw-hidden"></i>
+					<!-- Step 4 -->
+					<div class="tw-flex tw-flex-col tw-items-center">
+						<div class="tw-w-14 tw-h-14 tw-rounded-full tw-bg-gray-200 tw-text-gray-400 tw-flex tw-items-center tw-justify-center tw-text-xl">
+							<i class="fa fa-tasks"></i>
+						</div>
+						<p class="tw-text-xs tw-font-medium tw-text-gray-400 tw-mt-2">Path Activities</p>
+						<p class="tw-text-xs tw-text-gray-400">Locked</p>
+					</div>
+					<i class="fa fa-arrow-right tw-text-gray-300 tw-hidden md:tw-block"></i>
+					<i class="fa fa-arrow-down tw-text-gray-300 md:tw-hidden"></i>
+					<!-- Step 5 -->
+					<div class="tw-flex tw-flex-col tw-items-center">
+						<div class="tw-w-14 tw-h-14 tw-rounded-full tw-bg-gray-200 tw-text-gray-400 tw-flex tw-items-center tw-justify-center tw-text-xl">
+							<i class="fa fa-flag-checkered"></i>
+						</div>
+						<p class="tw-text-xs tw-font-medium tw-text-gray-400 tw-mt-2">Module Complete</p>
+						<p class="tw-text-xs tw-text-gray-400">Locked</p>
+					</div>
+				</div>
+			</div>
+		</main>
+	</div>
+	<script src="js/sidebar.js"></script>
+<script src="js/router.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/api.js"></script>
+<script src="js/render.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

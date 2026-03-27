@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	<title>ReDefiners</title>
+								<!-- --- Bootstrap 5 --- -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+								<!-- --- Tailwind CSS + Config --- -->
+	<script src="https://cdn.tailwindcss.com"></script>
+	<script src="css/tailwind-config.js?v=3"></script>
+								<!-- --- Font Awesome --- -->
+	<script src="https://kit.fontawesome.com/7a13c96681.js" crossorigin="anonymous"></script>
+								<!-- --- jQuery --- -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+								<!-- --- Text Font --- -->
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+								<!-- --- Custom Css --- -->
+	<link rel="stylesheet" type="text/css" href="css/tokens.css?v=3">
+	<link rel="stylesheet" type="text/css" href="css/shadcn.css?v=3">
+	<link rel="stylesheet" type="text/css" href="styles.css?v=3">
+	<style>
+		/* ── Module Icon Colors ── */
+		.module-icon { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; color: #fff; flex-shrink: 0; }
+		.module-icon.completed { background: #28a745; }
+		.module-icon.in-progress { background: #17a2b8; }
+		.module-icon.locked { background: #adb5bd; }
+		.module-completion.done { color: #28a745; }
+		.module-completion.progress { color: #17a2b8; }
+		.module-completion.lock { color: #adb5bd; }
+		/* ── Item Type Icons ── */
+		.item-type-icon { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; color: #fff; flex-shrink: 0; }
+		.item-type-icon.page { background: #17a2b8; }
+		.item-type-icon.assignment { background: #fd7e14; }
+		.item-type-icon.file { background: #6f42c1; }
+		.item-type-icon.quiz { background: #dc3545; }
+		.item-type-icon.external { background: #20c997; }
+		.item-type-icon.discussion { background: #0d6efd; }
+		/* ── Item Checkbox ── */
+		.item-checkbox { width: 22px; height: 22px; border-radius: 50%; border: 2px solid #ccc; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+		.item-checkbox.checked { border-color: #28a745; background: #28a745; color: #fff; font-size: 12px; }
+		/* ── Requirement Badges ── */
+		.req-badge { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; padding: 3px 10px; border-radius: 12px; font-weight: bold; white-space: nowrap; }
+		.req-badge.view { background: #e8f4fd; color: #17a2b8; }
+		.req-badge.submit { background: #fff3e0; color: #fd7e14; }
+		.req-badge.contribute { background: #e3f2fd; color: #0d6efd; }
+		.req-badge.score { background: #fff8e1; color: #f5a623; }
+		.points-badge { font-size: 12px; color: #668B91; background: #f0f6f7; padding: 3px 10px; border-radius: 12px; white-space: nowrap; }
+		.status-completed { color: #28a745; font-size: 13px; font-weight: bold; white-space: nowrap; }
+		.status-not-completed { color: #adb5bd; font-size: 13px; white-space: nowrap; }
+		/* ── Lock Overlay ── */
+		.locked-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(240,246,247,0.5); display: flex; align-items: center; justify-content: center; z-index: 2; border-radius: 0 0 20px 20px; }
+		.locked-overlay .lock-msg { background: #fff; padding: 12px 24px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); display: flex; align-items: center; gap: 10px; color: #adb5bd; font-size: 14px; }
+	</style>
+</head>
+<body>
+	<div class="tw-flex tw-min-h-screen tw-font-poppins">
+		<!-- Sidebar -->
+		<aside class="left-sidebar tw-fixed tw-inset-y-0 tw-left-0 tw-w-[240px] tw-z-50 tw--translate-x-full lg:tw-translate-x-0 tw-transition-transform tw-duration-300 tw-overflow-y-auto shadcn-scrollbar">
+			<div class="menu-bar">
+				<section class="logo-section">
+					<i class="fa fa-times theme-color menu-hide"></i>
+					<img src="Images/logo.PNG" class="res-hide" alt="logo">
+					<div class="nav-input res-show-flex tw-mt-5">
+						<button class="tw-border tw-border-primary-400 tw-border-r-0 tw-bg-transparent tw-px-2">
+							<i class="fa fa-search"></i>
+						</button>
+						<input class="tw-border tw-border-primary-400 tw-border-l-0 tw-w-[85%] tw-bg-transparent tw-px-2 tw-py-1 tw-outline-none" type="text" name="search" placeholder="Search">
+					</div>
+				</section>
+				<section class="menu-links">
+					<div class="menu-link"><a href="dashboard.html"><i class="fa fa-th-large"></i><span> Dashboard</span></a></div>
+					<div class="menu-link"><a href="courses.html"><i class="fa fa-clipboard-list"></i><span> Courses</span></a></div>
+					<div class="menu-link"><a href="calendar.html"><i class="fa fa-calendar-alt"></i><span> Calendar</span></a></div>
+					<div class="menu-link"><a href="announcement.html"><i class="fa fa-bullhorn"></i><span> Announcements</span></a></div>
+					<div class="menu-link"><a href="inbox.html"><i class="fa fa-comments"></i><span> Messages</span></a></div>
+					<div class="menu-link"><a href="assignments.html"><i class="fa fa-file-lines"></i><span> Assignments</span></a></div>
+					<div class="menu-link"><a href="grades.html"><i class="fa fa-chart-bar"></i><span> Grades</span></a></div>
+					<div class="menu-link"><a href="modules.html" class="active-menu"><i class="fa fa-layer-group"></i><span> Modules</span></a></div>
+					<div class="menu-link"><a href="discussions.html"><i class="fa fa-comments-alt"></i><span> Discussions</span></a></div>
+					<div class="menu-link"><a href="quizzes.html"><i class="fa fa-question-circle"></i><span> Quizzes</span></a></div>
+					<div class="menu-link"><a href="pages.html"><i class="fa fa-file-alt"></i><span> Pages</span></a></div>
+					<div class="menu-link"><a href="files.html"><i class="fa fa-folder"></i><span> Files</span></a></div>
+					<div class="menu-link"><a href="people.html"><i class="fa fa-users"></i><span> People</span></a></div>
+					<div class="menu-link"><a href="outcomes.html"><i class="fa fa-bullseye"></i><span> Outcomes</span></a></div>
+					<div class="menu-link"><a href="rubrics.html"><i class="fa fa-th"></i><span> Rubrics</span></a></div>
+					<div class="menu-link"><a href="groups.html"><i class="fa fa-user-friends"></i><span> Groups</span></a></div>
+					<div class="menu-link"><a href="conferences.html"><i class="fa fa-video"></i><span> Conferences</span></a></div>
+					<div class="menu-link"><a href="collaborations.html"><i class="fa fa-handshake"></i><span> Collaborations</span></a></div>
+					<div class="menu-link"><a href="account-settings.html"><i class="fa fa-cog"></i><span> Settings</span></a></div>
+				</section>
+			</div>
+		</aside>
+		<!-- Mobile overlay -->
+		<div class="sidebar-overlay" id="sidebarOverlay"></div>
+		<!-- Main content -->
+		<main class="middle-part tw-flex-1 lg:tw-ml-[240px] tw-min-h-screen tw-px-4 md:tw-px-6 lg:tw-px-10 tw-pb-8">
+			<!-- Nav Bar -->
+			<div class="tw-flex tw-items-center tw-justify-between tw-py-4 tw-gap-3 tw-flex-wrap">
+				<div class="tw-flex tw-items-center tw-gap-3">
+					<i class="fa fa-bars tw-text-primary-400 tw-cursor-pointer tw-text-xl lg:tw-hidden menu-icon" id="menuToggle"></i>
+					<div class="shadcn-search tw-hidden sm:tw-flex tw-w-64">
+						<i class="fa fa-search"></i>
+						<input type="text" placeholder="Search...">
+					</div>
+				</div>
+				<div class="tw-flex tw-items-center tw-gap-3">
+					<button class="shadcn-btn shadcn-btn-ghost shadcn-btn-icon"><i class="fa fa-bell tw-text-primary-400"></i></button>
+					<div class="shadcn-avatar shadcn-avatar-md tw-cursor-pointer profile-click"><img src="Images/profile.png" alt="Profile"></div>
+				</div>
+			</div>
+
+			<!-- Breadcrumbs -->
+			<div class="breadcrumbs tw-mt-2">
+				<a href="dashboard.html">Home</a>
+				<span class="breadcrumbs__separator">/</span>
+				<a href="courses.html">Spanish 101</a>
+				<span class="breadcrumbs__separator">/</span>
+				<span class="breadcrumbs__current">Modules</span>
+			</div>
+
+			<!-- Page Header -->
+			<div class="tw-flex tw-flex-col sm:tw-flex-row tw-items-start sm:tw-items-center tw-justify-between tw-gap-4 tw-my-6">
+				<h3 class="second-color tw-font-bold tw-mb-0">Modules</h3>
+				<div class="shadcn-card tw-p-6 tw-my-6 tw-flex tw-items-center tw-gap-3">
+					<span class="tw-text-body-sm tw-text-primary-900 tw-whitespace-nowrap">65% Complete</span>
+					<div class="tw-w-44 tw-h-2.5 tw-bg-surface-200 tw-rounded-full tw-overflow-hidden">
+						<div class="tw-h-full tw-rounded-full tw-bg-gradient-to-r tw-from-accent-cyan tw-to-green-400" style="width: 65%; background: linear-gradient(90deg, #16D2DD, #0fa);"></div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Module 1: Getting Started -->
+			<div class="shadcn-card tw-mb-4 tw-overflow-hidden" data-module="1">
+				<div class="module-header tw-flex tw-justify-between tw-items-center tw-p-4 tw-cursor-pointer hover:tw-bg-surface-50 tw-transition-colors tw-flex-wrap tw-gap-2.5" onclick="toggleModule(this)">
+					<div class="tw-flex tw-items-center tw-gap-3.5">
+						<div class="module-icon completed">
+							<i class="fa fa-check"></i>
+						</div>
+						<h5 class="tw-mb-0 second-color tw-text-base">Module 1: Getting Started</h5>
+					</div>
+					<div class="tw-flex tw-items-center tw-gap-4 tw-flex-wrap">
+						<span class="tw-text-caption tw-text-secondary">4 items</span>
+						<span class="module-completion done tw-text-caption tw-font-bold">100%</span>
+						<i class="fa fa-chevron-down tw-text-secondary tw-transition-transform tw-duration-300 module-toggle open"></i>
+					</div>
+				</div>
+				<div class="tw-px-6 tw-text-caption tw-text-secondary tw-pb-1 module-prereq">
+					<i class="fa fa-info-circle tw-mr-1"></i> Prerequisites: None
+				</div>
+				<div class="module-items tw-px-4 tw-pb-4">
+					<!-- Item 1 -->
+					<div class="tw-flex tw-items-center tw-gap-3 tw-p-3 tw-border-b tw-border-surface-100 tw-flex-wrap">
+						<div class="item-checkbox checked"><i class="fa fa-check"></i></div>
+						<div class="item-type-icon page"><i class="fa fa-file-alt"></i></div>
+						<div class="tw-flex-1 tw-min-w-0">
+							<p class="tw-mb-0 tw-text-body-sm tw-text-primary-900">Welcome &amp; Course Overview</p>
+						</div>
+						<div class="tw-flex tw-items-center tw-gap-2 tw-flex-wrap">
+							<span class="req-badge view"><i class="fa fa-eye"></i> View</span>
+						</div>
+						<span class="status-completed"><i class="fa fa-check-circle"></i> Completed</span>
+					</div>
+					<!-- Item 2 -->
+					<div class="tw-flex tw-items-center tw-gap-3 tw-p-3 tw-border-b tw-border-surface-100 tw-flex-wrap">
+						<div class="item-checkbox checked"><i class="fa fa-check"></i></div>
+						<div class="item-type-icon assignment"><i class="fa fa-file-lines"></i></div>
+						<div class="tw-flex-1 tw-min-w-0">
+							<p class="tw-mb-0 tw-text-body-sm tw-text-primary-900">Introduce Yourself Discussion</p>
+						</div>
+						<div class="tw-flex tw-items-center tw-gap-2 tw-flex-wrap">
+							<span class="req-badge contribute"><i class="fa fa-comment"></i> Contribute</span>
+						</div>
+						<span class="status-completed"><i class="fa fa-check-circle"></i> Completed</span>
+					</div>
+					<!-- Item 3 -->
+					<div class="tw-flex tw-items-center tw-gap-3 tw-p-3 tw-border-b tw-border-surface-100 tw-flex-wrap">
+						<div class="item-checkbox checked"><i class="fa fa-check"></i></div>
+						<div class="item-type-icon file"><i class="fa fa-file-pdf"></i></div>
+						<div class="tw-flex-1 tw-min-w-0">
+							<p class="tw-mb-0 tw-text-body-sm tw-text-primary-900">Syllabus (PDF)</p>
+						</div>
+						<div class="tw-flex tw-items-center tw-gap-2 tw-flex-wrap">
+							<span class="req-badge view"><i class="fa fa-eye"></i> View</span>
+						</div>
+						<span class="status-completed"><i class="fa fa-check-circle"></i> Completed</span>
+					</div>
+					<!-- Item 4 -->
+					<div class="tw-flex tw-items-center tw-gap-3 tw-p-3 tw-flex-wrap">
+						<div class="item-checkbox checked"><i class="fa fa-check"></i></div>
+						<div class="item-type-icon quiz"><i class="fa fa-question-circle"></i></div>
+						<div class="tw-flex-1 tw-min-w-0">
+							<p class="tw-mb-0 tw-text-body-sm tw-text-primary-900">Pre-Assessment Quiz</p>
+						</div>
+						<div class="tw-flex tw-items-center tw-gap-2 tw-flex-wrap">
+							<span class="req-badge submit"><i class="fa fa-paper-plane"></i> Submit</span>
+						</div>
+						<span class="status-completed"><i class="fa fa-check-circle"></i> Completed</span>
+					</div>
+				</div>
+			</div>
+
+			<!-- Module 2: Unit 1 - Basic Vocabulary -->
+			<div class="shadcn-card tw-mb-4 tw-overflow-hidden" data-module="2">
+				<div class="module-header tw-flex tw-justify-between tw-items-center tw-p-4 tw-cursor-pointer hover:tw-bg-surface-50 tw-transition-colors tw-flex-wrap tw-gap-2.5" onclick="toggleModule(this)">
+					<div class="tw-flex tw-items-center tw-gap-3.5">
+						<div class="module-icon in-progress">
+							<i class="fa fa-spinner"></i>
+						</div>
+						<h5 class="tw-mb-0 second-color tw-text-base">Module 2: Unit 1 - Basic Vocabulary</h5>
+					</div>
+					<div class="tw-flex tw-items-center tw-gap-4 tw-flex-wrap">
+						<span class="tw-text-caption tw-text-secondary">5 items</span>
+						<span class="module-completion progress tw-text-caption tw-font-bold">40%</span>
+						<i class="fa fa-chevron-down tw-text-secondary tw-transition-transform tw-duration-300 module-toggle open"></i>
+					</div>
+				</div>
+				<div class="tw-px-6 tw-text-caption tw-text-secondary tw-pb-1 module-prereq">
+					<i class="fa fa-info-circle tw-mr-1"></i> Prerequisites: Complete "Getting Started"
+				</div>
+				<div class="module-items tw-px-4 tw-pb-4">
+					<!-- Item 1 -->
+					<div class="tw-flex tw-items-center tw-gap-3 tw-p-3 tw-border-b tw-border-surface-100 tw-flex-wrap">
+						<div class="item-checkbox checked"><i class="fa fa-check"></i></div>
+						<div class="item-type-icon page"><i class="fa fa-file-alt"></i></div>
+						<div class="tw-flex-1 tw-min-w-0">
+							<p class="tw-mb-0 tw-text-body-sm tw-text-primary-900">Vocabulary List Ch 1-3</p>
+						</div>
+						<div class="tw-flex tw-items-center tw-gap-2 tw-flex-wrap">
+							<span class="req-badge view"><i class="fa fa-eye"></i> View</span>
+						</div>
+						<span class="status-completed"><i class="fa fa-check-circle"></i> Completed</span>
+					</div>
+					<!-- Item 2 -->
+					<div class="tw-flex tw-items-center tw-gap-3 tw-p-3 tw-border-b tw-border-surface-100 tw-flex-wrap">
+						<div class="item-checkbox checked"><i class="fa fa-check"></i></div>
+						<div class="item-type-icon external"><i class="fa fa-external-link-alt"></i></div>
+						<div class="tw-flex-1 tw-min-w-0">
+							<p class="tw-mb-0 tw-text-body-sm tw-text-primary-900">Practice on Duolingo</p>
+						</div>
+						<div class="tw-flex tw-items-center tw-gap-2 tw-flex-wrap">
+							<span class="req-badge view"><i class="fa fa-eye"></i> View</span>
+						</div>
+						<span class="status-completed"><i class="fa fa-check-circle"></i> Completed</span>
+					</div>
+					<!-- Item 3 -->
+					<div class="tw-flex tw-items-center tw-gap-3 tw-p-3 tw-border-b tw-border-surface-100 tw-flex-wrap">
+						<div class="item-checkbox"><i class="fa fa-check tw-invisible"></i></div>
+						<div class="item-type-icon assignment"><i class="fa fa-file-lines"></i></div>
+						<div class="tw-flex-1 tw-min-w-0">
+							<p class="tw-mb-0 tw-text-body-sm tw-text-primary-900">Vocab Worksheet</p>
+						</div>
+						<div class="tw-flex tw-items-center tw-gap-2 tw-flex-wrap">
+							<span class="req-badge submit"><i class="fa fa-paper-plane"></i> Submit</span>
+							<span class="points-badge">20 pts</span>
+						</div>
+						<span class="status-not-completed">Not completed</span>
+					</div>
+					<!-- Item 4 -->
+					<div class="tw-flex tw-items-center tw-gap-3 tw-p-3 tw-border-b tw-border-surface-100 tw-flex-wrap">
+						<div class="item-checkbox"><i class="fa fa-check tw-invisible"></i></div>
+						<div class="item-type-icon quiz"><i class="fa fa-question-circle"></i></div>
+						<div class="tw-flex-1 tw-min-w-0">
+							<p class="tw-mb-0 tw-text-body-sm tw-text-primary-900">Vocab Quiz Ch 1-3</p>
+						</div>
+						<div class="tw-flex tw-items-center tw-gap-2 tw-flex-wrap">
+							<span class="req-badge score"><i class="fa fa-star"></i> Score 70%</span>
+							<span class="points-badge">20 pts</span>
+						</div>
+						<span class="status-not-completed">Not completed</span>
+					</div>
+					<!-- Item 5 -->
+					<div class="tw-flex tw-items-center tw-gap-3 tw-p-3 tw-flex-wrap">
+						<div class="item-checkbox"><i class="fa fa-check tw-invisible"></i></div>
+						<div class="item-type-icon discussion"><i class="fa fa-comments"></i></div>
+						<div class="tw-flex-1 tw-min-w-0">
+							<p class="tw-mb-0 tw-text-body-sm tw-text-primary-900">Share Your Favorite Word</p>
+						</div>
+						<div class="tw-flex tw-items-center tw-gap-2 tw-flex-wrap">
+							<span class="req-badge contribute"><i class="fa fa-comment"></i> Contribute</span>
+						</div>
+						<span class="status-not-completed">Not completed</span>
+					</div>
+				</div>
+			</div>
+
+			<!-- Module 3: Unit 2 - Grammar Basics (Locked) -->
+			<div class="shadcn-card tw-mb-4 tw-overflow-hidden tw-opacity-60" data-module="3">
+				<div class="module-header tw-flex tw-justify-between tw-items-center tw-p-4 tw-cursor-pointer hover:tw-bg-surface-50 tw-transition-colors tw-flex-wrap tw-gap-2.5" onclick="toggleModule(this)">
+					<div class="tw-flex tw-items-center tw-gap-3.5">
+						<div class="module-icon locked">
+							<i class="fa fa-lock"></i>
+						</div>
+						<h5 class="tw-mb-0 second-color tw-text-base">Module 3: Unit 2 - Grammar Basics</h5>
+					</div>
+					<div class="tw-flex tw-items-center tw-gap-4 tw-flex-wrap">
+						<span class="tw-text-caption tw-text-secondary">4 items</span>
+						<span class="module-completion lock tw-text-caption tw-font-bold"><i class="fa fa-lock"></i> Locked</span>
+						<i class="fa fa-chevron-down tw-text-secondary tw-transition-transform tw-duration-300 module-toggle open"></i>
+					</div>
+				</div>
+				<div class="tw-px-6 tw-text-caption tw-text-secondary tw-pb-1 module-prereq">
+					<i class="fa fa-lock tw-text-[#adb5bd] tw-mr-1"></i> Prerequisites: Score at least 70% on "Vocab Quiz Ch 1-3"
+				</div>
+				<div class="module-items tw-px-4 tw-pb-4 tw-relative">
+					<div class="locked-overlay">
+						<div class="lock-msg">
+							<i class="fa fa-lock"></i> Complete prerequisites to unlock this module
+						</div>
+					</div>
+					<!-- Item 1 -->
+					<div class="tw-flex tw-items-center tw-gap-3 tw-p-3 tw-border-b tw-border-surface-100 tw-flex-wrap tw-pointer-events-none">
+						<div class="item-checkbox"><i class="fa fa-check tw-invisible"></i></div>
+						<div class="item-type-icon page"><i class="fa fa-file-alt"></i></div>
+						<div class="tw-flex-1 tw-min-w-0">
+							<p class="tw-mb-0 tw-text-body-sm tw-text-primary-900">Grammar Rules Overview</p>
+						</div>
+						<div class="tw-flex tw-items-center tw-gap-2 tw-flex-wrap"></div>
+						<span class="status-not-completed"></span>
+					</div>
+					<!-- Item 2 -->
+					<div class="tw-flex tw-items-center tw-gap-3 tw-p-3 tw-border-b tw-border-surface-100 tw-flex-wrap tw-pointer-events-none">
+						<div class="item-checkbox"><i class="fa fa-check tw-invisible"></i></div>
+						<div class="item-type-icon assignment"><i class="fa fa-file-lines"></i></div>
+						<div class="tw-flex-1 tw-min-w-0">
+							<p class="tw-mb-0 tw-text-body-sm tw-text-primary-900">Grammar Practice Exercises</p>
+						</div>
+						<div class="tw-flex tw-items-center tw-gap-2 tw-flex-wrap">
+							<span class="points-badge">50 pts</span>
+						</div>
+						<span class="status-not-completed"></span>
+					</div>
+					<!-- Item 3 -->
+					<div class="tw-flex tw-items-center tw-gap-3 tw-p-3 tw-border-b tw-border-surface-100 tw-flex-wrap tw-pointer-events-none">
+						<div class="item-checkbox"><i class="fa fa-check tw-invisible"></i></div>
+						<div class="item-type-icon quiz"><i class="fa fa-question-circle"></i></div>
+						<div class="tw-flex-1 tw-min-w-0">
+							<p class="tw-mb-0 tw-text-body-sm tw-text-primary-900">Grammar Quiz Ch 4-6</p>
+						</div>
+						<div class="tw-flex tw-items-center tw-gap-2 tw-flex-wrap">
+							<span class="points-badge">20 pts</span>
+						</div>
+						<span class="status-not-completed"></span>
+					</div>
+					<!-- Item 4 -->
+					<div class="tw-flex tw-items-center tw-gap-3 tw-p-3 tw-flex-wrap tw-pointer-events-none">
+						<div class="item-checkbox"><i class="fa fa-check tw-invisible"></i></div>
+						<div class="item-type-icon discussion"><i class="fa fa-comments"></i></div>
+						<div class="tw-flex-1 tw-min-w-0">
+							<p class="tw-mb-0 tw-text-body-sm tw-text-primary-900">Grammar Questions &amp; Answers</p>
+						</div>
+						<div class="tw-flex tw-items-center tw-gap-2 tw-flex-wrap"></div>
+						<span class="status-not-completed"></span>
+					</div>
+				</div>
+			</div>
+
+		</main>
+		<!-- Right sidebar -->
+		<aside class="tw-hidden lg:tw-block tw-w-[280px] tw-flex-shrink-0 tw-pt-4 tw-px-5">
+			<div class="real-rightmap">
+				<div class="right-top">
+					<div class="profile-click">
+					<img src="Images/profile.png">
+					<p class="second-color">
+						RadicalCode
+					</p>
+					</div>
+					<i class="fa fa-cog"></i>
+					<i class="fa fa-bell"></i>
+				</div>
+			</div>
+			<div class="right-popup">
+				<i class="fa fa-angle-left theme-color fa-2x close-profile tw-cursor-pointer"></i>
+				<div class="message-pro">
+					<img src="Images/profile-img.png">
+					<h5 class="second-color">
+						RacialCode
+					</h5>
+					<p class="theme-color">
+						@radialcode
+					</p>
+					<p class="theme-color tw-text-caption">
+						Ac massa ids gravida vestibulum alliquet diam prion.
+					</p>
+					<div class="pro-three tw-flex-col">
+						<a href="profile.html" class="tw-no-underline">
+							<div class="pro-three-inn tw-flex tw-items-center tw-mb-5 tw-cursor-pointer">
+								<i class="fa fa-user theme-color tw-mb-0"></i>
+								<h5 class="second-color tw-ml-2.5">
+									Profile
+								</h5>
+							</div>
+						</a>
+						<div class="pro-three-inn tw-flex tw-items-center tw-mb-5 tw-cursor-pointer">
+							<i class="fa fa-cog theme-color tw-mb-0"></i>
+							<h5 class="second-color tw-ml-2.5">
+								Settings
+							</h5>
+						</div>
+						<div class="pro-three-inn tw-flex tw-items-center tw-mb-5 tw-cursor-pointer">
+							<img src="Images/logout.png" class="tw-mb-0">
+							<h5 class="second-color tw-ml-2.5">
+								Logout
+							</h5>
+						</div>
+					</div>
+				</div>
+			</div>
+		</aside>
+	</div>
+
+<!-- Profile toggle scripts -->
+<script type="text/javascript">
+	$(".profile-click").click(function(){
+		$(".real-rightmap").css("display","none");
+		$(".right-popup").css("display","block");
+	})
+	$(".close-profile").click(function(){
+		$(".real-rightmap").css("display","block");
+		$(".right-popup").css("display","none");
+	})
+</script>
+
+<!-- Sidebar toggle scripts -->
+<script type="text/javascript">
+	$(".menu-icon, #menuToggle").click(function(){
+		$(".left-sidebar").removeClass("tw--translate-x-full").addClass("tw-translate-x-0");
+		$("#sidebarOverlay").addClass("active");
+		$("body").css("overflow","hidden");
+	});
+	$(".menu-hide, #sidebarOverlay").click(function(){
+		$(".left-sidebar").removeClass("tw-translate-x-0").addClass("tw--translate-x-full");
+		$("#sidebarOverlay").removeClass("active");
+		$("body").css("overflow","auto");
+	});
+</script>
+
+<!-- Module collapse/expand scripts -->
+<script type="text/javascript">
+	function toggleModule(header) {
+		var $header = $(header);
+		var $items = $header.closest('.shadcn-card').find('.module-items');
+		var $prereq = $header.closest('.shadcn-card').find('.module-prereq');
+		var $toggle = $header.find('.module-toggle');
+
+		$items.slideToggle(300);
+		$prereq.slideToggle(300);
+		$toggle.toggleClass('open');
+		$toggle.toggleClass('tw-rotate-180');
+	}
+</script>
+
+<!-- JS includes -->
+<script src="js/router.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/api.js"></script>
+<script src="js/render.js"></script>
+<script src="js/sidebar.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

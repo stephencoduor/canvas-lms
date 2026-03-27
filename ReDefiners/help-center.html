@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	<title>ReDefiners - Help Center</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+	<script src="https://cdn.tailwindcss.com"></script>
+	<script src="css/tailwind-config.js?v=3"></script>
+	<script src="https://kit.fontawesome.com/7a13c96681.js" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/tokens.css?v=3">
+	<link rel="stylesheet" type="text/css" href="css/shadcn.css?v=3">
+	<link rel="stylesheet" type="text/css" href="styles.css?v=3">
+</head>
+<body>
+<div class="main-container">
+	<div id="sidebar-root"></div>
+	<div class="main-right" id="main-right">
+		<div class="top-bar">
+			<div class="tw-flex tw-items-center tw-gap-3">
+				<button class="menu-toggle tw-text-gray-500" onclick="document.querySelector('.left-side')?.classList.toggle('mobile-open')"><i class="fa fa-bars"></i></button>
+				<div class="shadcn-search tw-max-w-md"><i class="fa fa-search"></i><input type="text" placeholder="Search..." class="shadcn-input" /></div>
+			</div>
+			<div class="tw-flex tw-items-center tw-gap-4">
+				<a href="notifications.html" class="tw-text-gray-500 hover:tw-text-primary-400"><i class="fa fa-bell"></i></a>
+				<a href="inbox.html" class="tw-text-gray-500 hover:tw-text-primary-400"><i class="fa fa-envelope"></i></a>
+				<a href="profile.html"><img src="Images/profile.PNG" class="tw-w-8 tw-h-8 tw-rounded-full tw-object-cover" /></a>
+			</div>
+		</div>
+		<div class="tw-p-6 tw-pb-0">
+			<h3 class="second-color tw-text-xl tw-font-semibold"><i class="fa fa-question-circle tw-mr-2"></i>Help & Support</h3>
+			<p class="tw-text-sm tw-text-gray-500 tw-mt-1">Get help and support</p>
+		</div>
+		<div class="tw-p-6 tw-pt-4"><div class="shadcn-card tw-p-5 tw-mb-4"><h4 class="tw-text-sm tw-font-semibold second-color tw-mb-4">Frequently Asked Questions</h4><div id="assign"></div></div><div class="shadcn-card tw-p-5 tw-mb-4"><h4 class="tw-text-sm tw-font-semibold second-color tw-mb-4">Contact Support</h4><div id="assign"></div></div></div>
+	</div>
+</div>
+<script src="js/router.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/api.js"></script>
+<script src="js/render.js"></script>
+<script src="js/sidebar.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

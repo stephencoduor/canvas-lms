@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	<title>ReDefiners - Edit Discussion</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+	<script src="https://cdn.tailwindcss.com"></script>
+	<script src="css/tailwind-config.js?v=3"></script>
+	<script src="https://kit.fontawesome.com/7a13c96681.js" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/tokens.css?v=3">
+	<link rel="stylesheet" type="text/css" href="css/shadcn.css?v=3">
+	<link rel="stylesheet" type="text/css" href="styles.css?v=3">
+</head>
+<body>
+	<div class="tw-flex tw-min-h-screen tw-font-poppins">
+		<!-- Sidebar -->
+		<aside class="left-sidebar tw-fixed tw-inset-y-0 tw-left-0 tw-w-[240px] tw-z-50 tw--translate-x-full lg:tw-translate-x-0 tw-transition-transform tw-duration-300 tw-overflow-y-auto shadcn-scrollbar">
+			<div class="menu-bar">
+				<section class="logo-section">
+					<i class="fa fa-times theme-color menu-hide"></i>
+					<img src="Images/logo.PNG" class="res-hide" alt="logo">
+					<div class="nav-input res-show-flex tw-mt-5">
+						<button class="tw-border tw-border-primary-400 tw-border-r-0 tw-bg-transparent tw-px-2">
+							<i class="fa fa-search"></i>
+						</button>
+						<input class="tw-border tw-border-primary-400 tw-border-l-0 tw-w-[85%] tw-bg-transparent tw-px-2 tw-py-1 tw-outline-none" type="text" name="search" placeholder="Search">
+					</div>
+				</section>
+				<section class="menu-links">
+					<div class="menu-link"><a href="dashboard.html"><i class="fa fa-th-large"></i><span> Dashboard</span></a></div>
+					<div class="menu-link"><a href="courses.html"><i class="fa fa-clipboard-list"></i><span> Courses</span></a></div>
+					<div class="menu-link"><a href="calendar.html"><i class="fa fa-calendar-alt"></i><span> Calendar</span></a></div>
+					<div class="menu-link"><a href="announcement.html"><i class="fa fa-bullhorn"></i><span> Announcements</span></a></div>
+					<div class="menu-link"><a href="inbox.html"><i class="fa fa-comments"></i><span> Messages</span></a></div>
+					<div class="menu-link"><a href="assignments.html"><i class="fa fa-file-lines"></i><span> Assignments</span></a></div>
+					<div class="menu-link"><a href="grades.html"><i class="fa fa-chart-bar"></i><span> Grades</span></a></div>
+					<div class="menu-link"><a href="modules.html"><i class="fa fa-layer-group"></i><span> Modules</span></a></div>
+					<div class="menu-link"><a href="discussions.html" class="active-menu"><i class="fa fa-comments-alt"></i><span> Discussions</span></a></div>
+					<div class="menu-link"><a href="quizzes.html"><i class="fa fa-question-circle"></i><span> Quizzes</span></a></div>
+					<div class="menu-link"><a href="pages.html"><i class="fa fa-file-alt"></i><span> Pages</span></a></div>
+					<div class="menu-link"><a href="files.html"><i class="fa fa-folder"></i><span> Files</span></a></div>
+					<div class="menu-link"><a href="people.html"><i class="fa fa-users"></i><span> People</span></a></div>
+					<div class="menu-link"><a href="outcomes.html"><i class="fa fa-bullseye"></i><span> Outcomes</span></a></div>
+					<div class="menu-link"><a href="rubrics.html"><i class="fa fa-th"></i><span> Rubrics</span></a></div>
+					<div class="menu-link"><a href="groups.html"><i class="fa fa-user-friends"></i><span> Groups</span></a></div>
+					<div class="menu-link"><a href="conferences.html"><i class="fa fa-video"></i><span> Conferences</span></a></div>
+					<div class="menu-link"><a href="collaborations.html"><i class="fa fa-handshake"></i><span> Collaborations</span></a></div>
+					<div class="menu-link"><a href="account-settings.html"><i class="fa fa-cog"></i><span> Settings</span></a></div>
+				</section>
+			</div>
+		</aside>
+		<!-- Mobile overlay -->
+		<div class="sidebar-overlay" id="sidebarOverlay"></div>
+		<!-- Main content -->
+		<main class="middle-part tw-flex-1 lg:tw-ml-[240px] tw-min-h-screen tw-px-4 md:tw-px-6 lg:tw-px-10 tw-pb-8">
+			<!-- Nav Bar -->
+			<div class="tw-flex tw-items-center tw-justify-between tw-py-4 tw-gap-3 tw-flex-wrap">
+				<div class="tw-flex tw-items-center tw-gap-3">
+					<i class="fa fa-bars tw-text-primary-400 tw-cursor-pointer tw-text-xl lg:tw-hidden menu-icon" id="menuToggle"></i>
+					<div class="shadcn-search tw-hidden sm:tw-flex tw-w-64">
+						<i class="fa fa-search"></i>
+						<input type="text" placeholder="Search courses, assignments...">
+					</div>
+				</div>
+				<div class="tw-flex tw-items-center tw-gap-3">
+					<button class="shadcn-btn shadcn-btn-ghost shadcn-btn-icon tw-relative">
+						<i class="fa fa-bell tw-text-primary-400"></i>
+					</button>
+					<div class="shadcn-avatar shadcn-avatar-md tw-cursor-pointer profile-click">
+						<img src="Images/profile.png" alt="Profile">
+					</div>
+				</div>
+			</div>
+
+			<!-- Breadcrumb -->
+			<div class="tw-flex tw-items-center tw-gap-2 tw-text-sm tw-text-gray-500 tw-mb-6">
+				<a href="courses.html" class="theme-color tw-no-underline">Introduction to Psychology</a>
+				<i class="fa fa-chevron-right tw-text-xs"></i>
+				<a href="discussions.html" class="theme-color tw-no-underline">Discussions</a>
+				<i class="fa fa-chevron-right tw-text-xs"></i>
+				<span class="second-color">Edit Discussion</span>
+			</div>
+
+			<!-- Page Header -->
+			<div class="tw-flex tw-flex-col sm:tw-flex-row tw-items-start sm:tw-items-center tw-justify-between tw-mb-6 tw-gap-4">
+				<h4 class="second-color tw-font-semibold">
+					<i class="fa fa-comments-alt theme-color tw-mr-2"></i> Edit Discussion Topic
+				</h4>
+				<div class="tw-flex tw-gap-2">
+					<button class="shadcn-btn shadcn-btn-outline tw-text-sm">
+						<i class="fa fa-eye tw-mr-1"></i> Preview
+					</button>
+					<button class="shadcn-btn shadcn-btn-primary tw-text-sm">
+						<i class="fa fa-save tw-mr-1"></i> Save &amp; Publish
+					</button>
+				</div>
+			</div>
+
+			<!-- Discussion Form -->
+			<div class="shadcn-card tw-p-6 tw-mb-6">
+				<div class="tw-mb-5">
+					<label class="tw-block tw-text-sm tw-font-medium second-color tw-mb-2">Topic Title</label>
+					<input type="text" class="shadcn-input tw-w-full" value="The Impact of Social Media on Adolescent Mental Health" placeholder="Enter discussion topic title">
+				</div>
+
+				<!-- Rich Text Editor -->
+				<div class="tw-mb-5">
+					<label class="tw-block tw-text-sm tw-font-medium second-color tw-mb-2">Description</label>
+					<div class="shadcn-card tw-border tw-rounded-lg">
+						<!-- Toolbar -->
+						<div class="tw-flex tw-flex-wrap tw-items-center tw-gap-1 tw-p-2 tw-border-b tw-bg-gray-50 tw-rounded-t-lg">
+							<button class="shadcn-btn shadcn-btn-ghost shadcn-btn-icon tw-h-8 tw-w-8"><i class="fa fa-bold"></i></button>
+							<button class="shadcn-btn shadcn-btn-ghost shadcn-btn-icon tw-h-8 tw-w-8"><i class="fa fa-italic"></i></button>
+							<button class="shadcn-btn shadcn-btn-ghost shadcn-btn-icon tw-h-8 tw-w-8"><i class="fa fa-underline"></i></button>
+							<span class="tw-w-px tw-h-5 tw-bg-gray-300 tw-mx-1"></span>
+							<button class="shadcn-btn shadcn-btn-ghost shadcn-btn-icon tw-h-8 tw-w-8"><i class="fa fa-list-ul"></i></button>
+							<button class="shadcn-btn shadcn-btn-ghost shadcn-btn-icon tw-h-8 tw-w-8"><i class="fa fa-list-ol"></i></button>
+							<span class="tw-w-px tw-h-5 tw-bg-gray-300 tw-mx-1"></span>
+							<button class="shadcn-btn shadcn-btn-ghost shadcn-btn-icon tw-h-8 tw-w-8"><i class="fa fa-link"></i></button>
+							<button class="shadcn-btn shadcn-btn-ghost shadcn-btn-icon tw-h-8 tw-w-8"><i class="fa fa-image"></i></button>
+							<button class="shadcn-btn shadcn-btn-ghost shadcn-btn-icon tw-h-8 tw-w-8"><i class="fa fa-video"></i></button>
+							<span class="tw-w-px tw-h-5 tw-bg-gray-300 tw-mx-1"></span>
+							<button class="shadcn-btn shadcn-btn-ghost shadcn-btn-icon tw-h-8 tw-w-8"><i class="fa fa-code"></i></button>
+							<button class="shadcn-btn shadcn-btn-ghost shadcn-btn-icon tw-h-8 tw-w-8"><i class="fa fa-quote-right"></i></button>
+						</div>
+						<!-- Editor Area -->
+						<div class="tw-p-4 tw-min-h-[200px]" contenteditable="true">
+							<p class="tw-text-sm tw-text-gray-700 tw-mb-3">In this discussion, we will explore the relationship between social media usage and mental health outcomes in adolescents aged 13-18. Consider the following research areas:</p>
+							<ul class="tw-text-sm tw-text-gray-700 tw-list-disc tw-pl-5 tw-space-y-1">
+								<li>How does daily screen time correlate with reported anxiety levels?</li>
+								<li>What role does cyberbullying play in depression among teenagers?</li>
+								<li>Are there positive aspects of social media on youth development?</li>
+							</ul>
+							<p class="tw-text-sm tw-text-gray-700 tw-mt-3">Please reference at least two peer-reviewed sources in your initial post (minimum 250 words) and respond substantively to at least two classmates.</p>
+						</div>
+					</div>
+				</div>
+
+				<!-- Attachments -->
+				<div class="tw-mb-5">
+					<label class="tw-block tw-text-sm tw-font-medium second-color tw-mb-2">Attachments</label>
+					<div class="tw-border-2 tw-border-dashed tw-border-gray-300 tw-rounded-lg tw-p-6 tw-text-center">
+						<i class="fa fa-cloud-upload-alt tw-text-3xl tw-text-gray-400 tw-mb-2"></i>
+						<p class="tw-text-sm tw-text-gray-500">Drag and drop files here or <span class="theme-color tw-cursor-pointer">browse</span></p>
+						<p class="tw-text-xs tw-text-gray-400 tw-mt-1">Supported formats: PDF, DOC, DOCX, JPG, PNG (Max 50MB)</p>
+					</div>
+					<div class="tw-flex tw-items-center tw-gap-3 tw-mt-3 tw-p-2 tw-bg-gray-50 tw-rounded">
+						<i class="fa fa-file-pdf tw-text-red-500"></i>
+						<span class="tw-text-sm tw-flex-1">Discussion_Guidelines.pdf</span>
+						<span class="tw-text-xs tw-text-gray-400">245 KB</span>
+						<button class="tw-text-gray-400 hover:tw-text-red-500"><i class="fa fa-times"></i></button>
+					</div>
+				</div>
+			</div>
+
+			<!-- Discussion Options -->
+			<div class="shadcn-card tw-p-6 tw-mb-6">
+				<h5 class="second-color tw-font-semibold tw-mb-4">
+					<i class="fa fa-cog tw-mr-2 theme-color"></i> Discussion Options
+				</h5>
+
+				<div class="tw-grid tw-grid-cols-1 md:tw-grid-cols-2 tw-gap-6">
+					<!-- Discussion Type -->
+					<div>
+						<label class="tw-block tw-text-sm tw-font-medium second-color tw-mb-2">Discussion Type</label>
+						<select class="shadcn-input tw-w-full">
+							<option selected>Threaded Discussion</option>
+							<option>Focused Discussion</option>
+						</select>
+						<p class="tw-text-xs tw-text-gray-400 tw-mt-1">Threaded allows nested replies; Focused keeps a flat structure</p>
+					</div>
+
+					<!-- Section -->
+					<div>
+						<label class="tw-block tw-text-sm tw-font-medium second-color tw-mb-2">Post to Section</label>
+						<select class="shadcn-input tw-w-full">
+							<option selected>All Sections</option>
+							<option>Section A - Morning</option>
+							<option>Section B - Afternoon</option>
+							<option>Section C - Evening</option>
+						</select>
+					</div>
+
+					<!-- Graded Checkbox -->
+					<div>
+						<label class="tw-flex tw-items-center tw-gap-2 tw-cursor-pointer">
+							<input type="checkbox" class="tw-w-4 tw-h-4 tw-accent-blue-600" checked>
+							<span class="tw-text-sm tw-font-medium second-color">This is a Graded Discussion</span>
+						</label>
+						<div class="tw-mt-3 tw-pl-6">
+							<label class="tw-block tw-text-sm tw-text-gray-500 tw-mb-1">Points Possible</label>
+							<input type="number" class="shadcn-input tw-w-32" value="25">
+						</div>
+					</div>
+
+					<!-- Assignment Group -->
+					<div>
+						<label class="tw-block tw-text-sm tw-font-medium second-color tw-mb-2">Assignment Group</label>
+						<select class="shadcn-input tw-w-full">
+							<option selected>Discussions (15%)</option>
+							<option>Participation (10%)</option>
+							<option>Assignments (40%)</option>
+						</select>
+					</div>
+				</div>
+
+				<!-- Additional Options -->
+				<div class="tw-mt-6 tw-space-y-3">
+					<label class="tw-flex tw-items-center tw-gap-2 tw-cursor-pointer">
+						<input type="checkbox" class="tw-w-4 tw-h-4 tw-accent-blue-600" checked>
+						<span class="tw-text-sm second-color">Allow liking</span>
+					</label>
+					<label class="tw-flex tw-items-center tw-gap-2 tw-cursor-pointer">
+						<input type="checkbox" class="tw-w-4 tw-h-4 tw-accent-blue-600">
+						<span class="tw-text-sm second-color">Users must post before seeing replies</span>
+					</label>
+					<label class="tw-flex tw-items-center tw-gap-2 tw-cursor-pointer">
+						<input type="checkbox" class="tw-w-4 tw-h-4 tw-accent-blue-600">
+						<span class="tw-text-sm second-color">Enable podcast feed</span>
+					</label>
+					<label class="tw-flex tw-items-center tw-gap-2 tw-cursor-pointer">
+						<input type="checkbox" class="tw-w-4 tw-h-4 tw-accent-blue-600" checked>
+						<span class="tw-text-sm second-color">Allow attachments</span>
+					</label>
+				</div>
+			</div>
+
+			<!-- Availability & Due Dates -->
+			<div class="shadcn-card tw-p-6 tw-mb-6">
+				<h5 class="second-color tw-font-semibold tw-mb-4">
+					<i class="fa fa-calendar-alt tw-mr-2 theme-color"></i> Availability &amp; Due Dates
+				</h5>
+				<div class="tw-grid tw-grid-cols-1 md:tw-grid-cols-3 tw-gap-4">
+					<div>
+						<label class="tw-block tw-text-sm tw-font-medium second-color tw-mb-2">Due Date</label>
+						<input type="datetime-local" class="shadcn-input tw-w-full" value="2026-04-15T23:59">
+					</div>
+					<div>
+						<label class="tw-block tw-text-sm tw-font-medium second-color tw-mb-2">Available From</label>
+						<input type="datetime-local" class="shadcn-input tw-w-full" value="2026-04-01T08:00">
+					</div>
+					<div>
+						<label class="tw-block tw-text-sm tw-font-medium second-color tw-mb-2">Available Until</label>
+						<input type="datetime-local" class="shadcn-input tw-w-full" value="2026-04-22T23:59">
+					</div>
+				</div>
+			</div>
+
+			<!-- Peer Review -->
+			<div class="shadcn-card tw-p-6 tw-mb-6">
+				<h5 class="second-color tw-font-semibold tw-mb-4">
+					<i class="fa fa-user-check tw-mr-2 theme-color"></i> Peer Review
+				</h5>
+				<label class="tw-flex tw-items-center tw-gap-2 tw-cursor-pointer tw-mb-4">
+					<input type="checkbox" class="tw-w-4 tw-h-4 tw-accent-blue-600" checked>
+					<span class="tw-text-sm tw-font-medium second-color">Require Peer Reviews</span>
+				</label>
+				<div class="tw-grid tw-grid-cols-1 md:tw-grid-cols-2 tw-gap-4 tw-pl-6">
+					<div>
+						<label class="tw-block tw-text-sm tw-text-gray-500 tw-mb-1">Reviews Per Student</label>
+						<input type="number" class="shadcn-input tw-w-32" value="2">
+					</div>
+					<div>
+						<label class="tw-block tw-text-sm tw-text-gray-500 tw-mb-1">Assign Reviews</label>
+						<select class="shadcn-input tw-w-full">
+							<option selected>Automatically</option>
+							<option>Manually</option>
+						</select>
+					</div>
+					<div>
+						<label class="tw-block tw-text-sm tw-text-gray-500 tw-mb-1">Peer Review Due Date</label>
+						<input type="datetime-local" class="shadcn-input tw-w-full" value="2026-04-20T23:59">
+					</div>
+				</div>
+			</div>
+
+			<!-- Group Discussion -->
+			<div class="shadcn-card tw-p-6 tw-mb-6">
+				<h5 class="second-color tw-font-semibold tw-mb-4">
+					<i class="fa fa-users tw-mr-2 theme-color"></i> Group Discussion
+				</h5>
+				<label class="tw-flex tw-items-center tw-gap-2 tw-cursor-pointer tw-mb-4">
+					<input type="checkbox" class="tw-w-4 tw-h-4 tw-accent-blue-600">
+					<span class="tw-text-sm tw-font-medium second-color">This is a Group Discussion</span>
+				</label>
+				<div class="tw-pl-6">
+					<label class="tw-block tw-text-sm tw-text-gray-500 tw-mb-1">Group Set</label>
+					<select class="shadcn-input tw-w-full md:tw-w-1/2">
+						<option selected>Select a Group Set</option>
+						<option>Project Teams (4-5 students)</option>
+						<option>Study Groups (3 students)</option>
+						<option>Lab Partners (2 students)</option>
+					</select>
+				</div>
+			</div>
+
+			<!-- Action Buttons -->
+			<div class="tw-flex tw-flex-col sm:tw-flex-row tw-justify-between tw-gap-3 tw-mt-6">
+				<button class="shadcn-btn shadcn-btn-outline tw-text-red-500 tw-border-red-300">
+					<i class="fa fa-trash tw-mr-1"></i> Delete Discussion
+				</button>
+				<div class="tw-flex tw-gap-2">
+					<button class="shadcn-btn shadcn-btn-outline">
+						<i class="fa fa-save tw-mr-1"></i> Save Draft
+					</button>
+					<button class="shadcn-btn shadcn-btn-primary">
+						<i class="fa fa-paper-plane tw-mr-1"></i> Save &amp; Publish
+					</button>
+				</div>
+			</div>
+		</main>
+	</div>
+	<script src="js/sidebar.js"></script>
+<script src="js/router.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/api.js"></script>
+<script src="js/render.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

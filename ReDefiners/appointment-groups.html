@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	<title>ReDefiners - Appointment Groups</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+	<script src="https://cdn.tailwindcss.com"></script>
+	<script src="css/tailwind-config.js?v=3"></script>
+	<script src="https://kit.fontawesome.com/7a13c96681.js" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/tokens.css?v=3">
+	<link rel="stylesheet" type="text/css" href="css/shadcn.css?v=3">
+	<link rel="stylesheet" type="text/css" href="styles.css?v=3">
+</head>
+<body>
+	<div class="tw-flex tw-min-h-screen tw-font-poppins">
+		<aside class="left-sidebar tw-fixed tw-inset-y-0 tw-left-0 tw-w-[240px] tw-z-50 tw--translate-x-full lg:tw-translate-x-0 tw-transition-transform tw-duration-300 tw-overflow-y-auto shadcn-scrollbar">
+			<div class="menu-bar">
+				<section class="logo-section">
+					<i class="fa fa-times theme-color menu-hide"></i>
+					<img src="Images/logo.PNG" class="res-hide" alt="logo">
+					<div class="nav-input res-show-flex tw-mt-5">
+						<button class="tw-border tw-border-primary-400 tw-border-r-0 tw-bg-transparent tw-px-2"><i class="fa fa-search"></i></button>
+						<input class="tw-border tw-border-primary-400 tw-border-l-0 tw-w-[85%] tw-bg-transparent tw-px-2 tw-py-1 tw-outline-none" type="text" name="search" placeholder="Search">
+					</div>
+				</section>
+				<section class="menu-links">
+					<div class="menu-link"><a href="dashboard.html"><i class="fa fa-th-large"></i><span> Dashboard</span></a></div>
+					<div class="menu-link"><a href="courses.html"><i class="fa fa-clipboard-list"></i><span> Courses</span></a></div>
+					<div class="menu-link"><a href="calendar.html" class="active-menu"><i class="fa fa-calendar-alt"></i><span> Calendar</span></a></div>
+					<div class="menu-link"><a href="announcement.html"><i class="fa fa-bullhorn"></i><span> Announcements</span></a></div>
+					<div class="menu-link"><a href="inbox.html"><i class="fa fa-comments"></i><span> Messages</span></a></div>
+					<div class="menu-link"><a href="assignments.html"><i class="fa fa-file-lines"></i><span> Assignments</span></a></div>
+					<div class="menu-link"><a href="grades.html"><i class="fa fa-chart-bar"></i><span> Grades</span></a></div>
+					<div class="menu-link"><a href="modules.html"><i class="fa fa-layer-group"></i><span> Modules</span></a></div>
+					<div class="menu-link"><a href="discussions.html"><i class="fa fa-comments-alt"></i><span> Discussions</span></a></div>
+					<div class="menu-link"><a href="quizzes.html"><i class="fa fa-question-circle"></i><span> Quizzes</span></a></div>
+					<div class="menu-link"><a href="pages.html"><i class="fa fa-file-alt"></i><span> Pages</span></a></div>
+					<div class="menu-link"><a href="files.html"><i class="fa fa-folder"></i><span> Files</span></a></div>
+					<div class="menu-link"><a href="people.html"><i class="fa fa-users"></i><span> People</span></a></div>
+					<div class="menu-link"><a href="outcomes.html"><i class="fa fa-bullseye"></i><span> Outcomes</span></a></div>
+					<div class="menu-link"><a href="rubrics.html"><i class="fa fa-th"></i><span> Rubrics</span></a></div>
+					<div class="menu-link"><a href="groups.html"><i class="fa fa-user-friends"></i><span> Groups</span></a></div>
+					<div class="menu-link"><a href="conferences.html"><i class="fa fa-video"></i><span> Conferences</span></a></div>
+					<div class="menu-link"><a href="collaborations.html"><i class="fa fa-handshake"></i><span> Collaborations</span></a></div>
+					<div class="menu-link"><a href="account-settings.html"><i class="fa fa-cog"></i><span> Settings</span></a></div>
+				</section>
+			</div>
+		</aside>
+		<div class="sidebar-overlay" id="sidebarOverlay"></div>
+		<main class="middle-part tw-flex-1 lg:tw-ml-[240px] tw-min-h-screen tw-px-4 md:tw-px-6 lg:tw-px-10 tw-pb-8">
+			<div class="tw-flex tw-items-center tw-justify-between tw-py-4 tw-gap-3 tw-flex-wrap">
+				<div class="tw-flex tw-items-center tw-gap-3">
+					<i class="fa fa-bars tw-text-primary-400 tw-cursor-pointer tw-text-xl lg:tw-hidden menu-icon" id="menuToggle"></i>
+					<div class="shadcn-search tw-hidden sm:tw-flex tw-w-64">
+						<i class="fa fa-search"></i>
+						<input type="text" placeholder="Search courses, assignments...">
+					</div>
+				</div>
+				<div class="tw-flex tw-items-center tw-gap-3">
+					<button class="shadcn-btn shadcn-btn-ghost shadcn-btn-icon tw-relative"><i class="fa fa-bell tw-text-primary-400"></i></button>
+					<div class="shadcn-avatar shadcn-avatar-md tw-cursor-pointer profile-click"><img src="Images/profile.png" alt="Profile"></div>
+				</div>
+			</div>
+
+			<!-- Page Header -->
+			<div class="tw-flex tw-flex-col sm:tw-flex-row tw-items-start sm:tw-items-center tw-justify-between tw-py-6 tw-gap-4">
+				<div>
+					<h3 class="second-color"><i class="fa fa-calendar-plus tw-mr-2"></i>Appointment Group Editor</h3>
+					<p class="tw-text-sm tw-text-gray-500 tw-mt-1">Create and manage time slots for office hours and meetings</p>
+				</div>
+				<nav class="tw-text-sm tw-text-gray-500">
+					<a href="dashboard.html" class="theme-color">Dashboard</a>
+					<span class="tw-mx-2">/</span>
+					<a href="calendar.html" class="theme-color">Calendar</a>
+					<span class="tw-mx-2">/</span>
+					<span>Appointment Groups</span>
+				</nav>
+			</div>
+
+			<div class="tw-grid tw-grid-cols-1 lg:tw-grid-cols-3 tw-gap-6">
+				<!-- Left: Appointment Details -->
+				<div class="lg:tw-col-span-1">
+					<div class="shadcn-card tw-p-6 tw-mb-6">
+						<h5 class="second-color tw-mb-4"><i class="fa fa-info-circle tw-mr-2 theme-color"></i>Appointment Details</h5>
+						<div class="tw-space-y-4">
+							<div>
+								<label class="tw-text-sm tw-font-medium tw-text-gray-700 tw-mb-1 tw-block">Title</label>
+								<input type="text" class="shadcn-input tw-w-full" value="Office Hours - Dr. Chen">
+							</div>
+							<div>
+								<label class="tw-text-sm tw-font-medium tw-text-gray-700 tw-mb-1 tw-block">Location</label>
+								<input type="text" class="shadcn-input tw-w-full" value="Room 204, Science Building">
+							</div>
+							<div>
+								<label class="tw-text-sm tw-font-medium tw-text-gray-700 tw-mb-1 tw-block">Details</label>
+								<textarea class="shadcn-input tw-w-full" rows="3">Sign up for a 30-minute slot to discuss coursework, assignments, or research questions. Please bring your notes and any relevant materials.</textarea>
+							</div>
+							<div>
+								<label class="tw-text-sm tw-font-medium tw-text-gray-700 tw-mb-1 tw-block">Group Category</label>
+								<select class="shadcn-input tw-w-full">
+									<option selected>All enrolled students</option>
+									<option>Biology 101 - Section A</option>
+									<option>Biology 101 - Section B</option>
+									<option>Lab Groups</option>
+								</select>
+							</div>
+							<div>
+								<label class="tw-text-sm tw-font-medium tw-text-gray-700 tw-mb-1 tw-block">Max Participants per Slot</label>
+								<input type="number" class="shadcn-input tw-w-full" value="1" min="1" max="20">
+							</div>
+							<div class="tw-flex tw-items-center tw-justify-between tw-p-3 tw-bg-gray-50 tw-rounded-lg">
+								<div>
+									<p class="tw-text-sm tw-font-medium tw-mb-0">Allow Visibility</p>
+									<p class="tw-text-xs tw-text-gray-500 tw-mb-0">Students can see who signed up</p>
+								</div>
+								<label class="tw-relative tw-inline-flex tw-items-center tw-cursor-pointer">
+									<input type="checkbox" class="tw-sr-only tw-peer">
+									<div class="tw-w-11 tw-h-6 tw-bg-gray-200 tw-rounded-full tw-peer peer-checked:tw-bg-green-500 after:tw-content-[''] after:tw-absolute after:tw-top-[2px] after:tw-left-[2px] after:tw-bg-white after:tw-rounded-full after:tw-h-5 after:tw-w-5 after:tw-transition-all peer-checked:after:tw-translate-x-full"></div>
+								</label>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Right: Time Slot Grid -->
+				<div class="lg:tw-col-span-2">
+					<div class="shadcn-card tw-p-6 tw-mb-6">
+						<div class="tw-flex tw-items-center tw-justify-between tw-mb-4">
+							<h5 class="second-color tw-mb-0"><i class="fa fa-clock tw-mr-2 theme-color"></i>Time Slots</h5>
+							<button class="shadcn-btn shadcn-btn-primary tw-text-sm"><i class="fa fa-plus tw-mr-1"></i> Add Time Range</button>
+						</div>
+
+						<!-- Date Range 1 -->
+						<div class="tw-border tw-rounded-lg tw-p-4 tw-mb-4">
+							<div class="tw-flex tw-items-center tw-justify-between tw-mb-3">
+								<h6 class="tw-font-medium tw-mb-0">Monday, March 17, 2025</h6>
+								<button class="shadcn-btn shadcn-btn-ghost tw-text-red-500 tw-text-xs"><i class="fa fa-trash tw-mr-1"></i> Remove</button>
+							</div>
+							<div class="tw-flex tw-flex-wrap tw-gap-2 tw-mb-3">
+								<div class="tw-flex tw-items-center tw-gap-2">
+									<label class="tw-text-xs tw-text-gray-500">From</label>
+									<input type="time" class="shadcn-input tw-text-sm" value="09:00">
+								</div>
+								<div class="tw-flex tw-items-center tw-gap-2">
+									<label class="tw-text-xs tw-text-gray-500">To</label>
+									<input type="time" class="shadcn-input tw-text-sm" value="12:00">
+								</div>
+								<div class="tw-flex tw-items-center tw-gap-2">
+									<label class="tw-text-xs tw-text-gray-500">Slot Duration</label>
+									<select class="shadcn-input tw-text-sm">
+										<option>15 min</option>
+										<option selected>30 min</option>
+										<option>45 min</option>
+										<option>60 min</option>
+									</select>
+								</div>
+							</div>
+							<div class="tw-grid tw-grid-cols-2 sm:tw-grid-cols-3 md:tw-grid-cols-6 tw-gap-2">
+								<div class="tw-border tw-rounded tw-p-2 tw-text-center tw-bg-green-50 tw-border-green-300">
+									<p class="tw-text-xs tw-font-medium tw-mb-0">9:00 AM</p>
+									<p class="tw-text-xs tw-text-green-600 tw-mb-0"><i class="fa fa-check tw-mr-1"></i>Open</p>
+								</div>
+								<div class="tw-border tw-rounded tw-p-2 tw-text-center tw-bg-blue-50 tw-border-blue-300">
+									<p class="tw-text-xs tw-font-medium tw-mb-0">9:30 AM</p>
+									<p class="tw-text-xs tw-text-blue-600 tw-mb-0"><i class="fa fa-user tw-mr-1"></i>Booked</p>
+								</div>
+								<div class="tw-border tw-rounded tw-p-2 tw-text-center tw-bg-green-50 tw-border-green-300">
+									<p class="tw-text-xs tw-font-medium tw-mb-0">10:00 AM</p>
+									<p class="tw-text-xs tw-text-green-600 tw-mb-0"><i class="fa fa-check tw-mr-1"></i>Open</p>
+								</div>
+								<div class="tw-border tw-rounded tw-p-2 tw-text-center tw-bg-green-50 tw-border-green-300">
+									<p class="tw-text-xs tw-font-medium tw-mb-0">10:30 AM</p>
+									<p class="tw-text-xs tw-text-green-600 tw-mb-0"><i class="fa fa-check tw-mr-1"></i>Open</p>
+								</div>
+								<div class="tw-border tw-rounded tw-p-2 tw-text-center tw-bg-blue-50 tw-border-blue-300">
+									<p class="tw-text-xs tw-font-medium tw-mb-0">11:00 AM</p>
+									<p class="tw-text-xs tw-text-blue-600 tw-mb-0"><i class="fa fa-user tw-mr-1"></i>Booked</p>
+								</div>
+								<div class="tw-border tw-rounded tw-p-2 tw-text-center tw-bg-green-50 tw-border-green-300">
+									<p class="tw-text-xs tw-font-medium tw-mb-0">11:30 AM</p>
+									<p class="tw-text-xs tw-text-green-600 tw-mb-0"><i class="fa fa-check tw-mr-1"></i>Open</p>
+								</div>
+							</div>
+						</div>
+
+						<!-- Date Range 2 -->
+						<div class="tw-border tw-rounded-lg tw-p-4 tw-mb-4">
+							<div class="tw-flex tw-items-center tw-justify-between tw-mb-3">
+								<h6 class="tw-font-medium tw-mb-0">Wednesday, March 19, 2025</h6>
+								<button class="shadcn-btn shadcn-btn-ghost tw-text-red-500 tw-text-xs"><i class="fa fa-trash tw-mr-1"></i> Remove</button>
+							</div>
+							<div class="tw-flex tw-flex-wrap tw-gap-2 tw-mb-3">
+								<div class="tw-flex tw-items-center tw-gap-2">
+									<label class="tw-text-xs tw-text-gray-500">From</label>
+									<input type="time" class="shadcn-input tw-text-sm" value="14:00">
+								</div>
+								<div class="tw-flex tw-items-center tw-gap-2">
+									<label class="tw-text-xs tw-text-gray-500">To</label>
+									<input type="time" class="shadcn-input tw-text-sm" value="16:00">
+								</div>
+								<div class="tw-flex tw-items-center tw-gap-2">
+									<label class="tw-text-xs tw-text-gray-500">Slot Duration</label>
+									<select class="shadcn-input tw-text-sm">
+										<option>15 min</option>
+										<option selected>30 min</option>
+										<option>45 min</option>
+										<option>60 min</option>
+									</select>
+								</div>
+							</div>
+							<div class="tw-grid tw-grid-cols-2 sm:tw-grid-cols-3 md:tw-grid-cols-4 tw-gap-2">
+								<div class="tw-border tw-rounded tw-p-2 tw-text-center tw-bg-green-50 tw-border-green-300">
+									<p class="tw-text-xs tw-font-medium tw-mb-0">2:00 PM</p>
+									<p class="tw-text-xs tw-text-green-600 tw-mb-0"><i class="fa fa-check tw-mr-1"></i>Open</p>
+								</div>
+								<div class="tw-border tw-rounded tw-p-2 tw-text-center tw-bg-green-50 tw-border-green-300">
+									<p class="tw-text-xs tw-font-medium tw-mb-0">2:30 PM</p>
+									<p class="tw-text-xs tw-text-green-600 tw-mb-0"><i class="fa fa-check tw-mr-1"></i>Open</p>
+								</div>
+								<div class="tw-border tw-rounded tw-p-2 tw-text-center tw-bg-green-50 tw-border-green-300">
+									<p class="tw-text-xs tw-font-medium tw-mb-0">3:00 PM</p>
+									<p class="tw-text-xs tw-text-green-600 tw-mb-0"><i class="fa fa-check tw-mr-1"></i>Open</p>
+								</div>
+								<div class="tw-border tw-rounded tw-p-2 tw-text-center tw-bg-green-50 tw-border-green-300">
+									<p class="tw-text-xs tw-font-medium tw-mb-0">3:30 PM</p>
+									<p class="tw-text-xs tw-text-green-600 tw-mb-0"><i class="fa fa-check tw-mr-1"></i>Open</p>
+								</div>
+							</div>
+						</div>
+
+						<!-- Booking Summary -->
+						<div class="tw-flex tw-items-center tw-gap-4 tw-p-3 tw-bg-gray-50 tw-rounded-lg">
+							<div class="tw-flex tw-items-center tw-gap-2">
+								<div class="tw-w-3 tw-h-3 tw-rounded tw-bg-green-400"></div>
+								<span class="tw-text-xs tw-text-gray-600">Open (8)</span>
+							</div>
+							<div class="tw-flex tw-items-center tw-gap-2">
+								<div class="tw-w-3 tw-h-3 tw-rounded tw-bg-blue-400"></div>
+								<span class="tw-text-xs tw-text-gray-600">Booked (2)</span>
+							</div>
+							<div class="tw-flex tw-items-center tw-gap-2">
+								<div class="tw-w-3 tw-h-3 tw-rounded tw-bg-gray-300"></div>
+								<span class="tw-text-xs tw-text-gray-600">Unavailable (0)</span>
+							</div>
+						</div>
+					</div>
+
+					<!-- Action Buttons -->
+					<div class="tw-flex tw-justify-end tw-gap-3">
+						<button class="shadcn-btn shadcn-btn-outline">Cancel</button>
+						<button class="shadcn-btn shadcn-btn-outline"><i class="fa fa-eye tw-mr-1"></i> Preview</button>
+						<button class="shadcn-btn shadcn-btn-primary"><i class="fa fa-save tw-mr-1"></i> Save Appointment Group</button>
+					</div>
+				</div>
+			</div>
+		</main>
+	</div>
+<script src="js/sidebar.js"></script>
+<script src="js/router.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/api.js"></script>
+<script src="js/render.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

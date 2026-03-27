@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	<title>ReDefiners - Page Not Found</title>
+								<!-- --- Bootstrap 5 --- -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+								<!-- --- Font Awesome --- -->
+	<script src="https://kit.fontawesome.com/7a13c96681.js" crossorigin="anonymous"></script>
+								<!-- --- jQuery --- -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+								<!-- --- Text Font --- -->
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+								<!-- --- Tailwind CSS (CDN + config) --- -->
+	<script src="https://cdn.tailwindcss.com"></script>
+	<script src="css/tailwind-config.js?v=3"></script>
+								<!-- --- Custom Css --- -->
+	<link rel="stylesheet" type="text/css" href="css/tokens.css?v=3">
+	<link rel="stylesheet" type="text/css" href="css/shadcn.css?v=3">
+	<link rel="stylesheet" type="text/css" href="styles.css?v=3">
+</head>
+<body class="tw-font-poppins">
+	<div class="tw-flex tw-flex-col tw-items-center tw-justify-center tw-min-h-screen tw-px-6 tw-py-12" style="background: #D4EFE6;">
+		<!-- Logo -->
+		<img src="Images/logo.png" class="tw-mb-10 tw-h-10">
+
+		<!-- 404 Display -->
+		<h1 class="tw-font-bold tw-text-primary-200 tw-mb-2" style="font-size: 120px; line-height: 1;">
+			404
+		</h1>
+
+		<h2 class="tw-text-display tw-font-bold tw-text-primary-900 tw-mb-3 tw-text-center">
+			Page Not Found
+		</h2>
+
+		<p class="tw-text-body tw-text-primary-400 tw-text-center tw-max-w-md tw-mb-8">
+			The page you are looking for may have been moved, renamed, or is temporarily unavailable. Try searching for your course or resource below.
+		</p>
+
+		<!-- Search Input -->
+		<div class="tw-w-full tw-max-w-md tw-mb-6">
+			<div class="shadcn-search">
+				<i class="fas fa-search"></i>
+				<input type="text" placeholder="Search for courses, assignments, or pages...">
+			</div>
+		</div>
+
+		<!-- Action Buttons -->
+		<div class="tw-flex tw-flex-col sm:tw-flex-row tw-gap-3 tw-items-center">
+			<a href="dashboard.html" class="shadcn-btn shadcn-btn-primary tw-h-11 tw-px-8 tw-font-semibold tw-text-body" style="text-decoration:none;">
+				<i class="fas fa-home tw-mr-2"></i> Return to Dashboard
+			</a>
+			<a href="mailto:support@redefiners.org" class="shadcn-btn shadcn-btn-secondary tw-h-11 tw-px-8 tw-font-semibold tw-text-body" style="text-decoration:none;">
+				<i class="fas fa-envelope tw-mr-2"></i> Contact Support
+			</a>
+		</div>
+
+		<!-- Helpful Links -->
+		<div class="tw-mt-10 tw-text-center">
+			<p class="tw-text-caption tw-text-primary-400 tw-mb-3">Helpful links</p>
+			<div class="tw-flex tw-flex-wrap tw-justify-center tw-gap-4">
+				<a href="courses.html" class="tw-text-body-sm tw-text-primary-900 tw-font-medium hover:tw-underline">My Courses</a>
+				<span class="tw-text-primary-200">|</span>
+				<a href="calendar.html" class="tw-text-body-sm tw-text-primary-900 tw-font-medium hover:tw-underline">Calendar</a>
+				<span class="tw-text-primary-200">|</span>
+				<a href="grades.html" class="tw-text-body-sm tw-text-primary-900 tw-font-medium hover:tw-underline">Grades</a>
+				<span class="tw-text-primary-200">|</span>
+				<a href="discussions.html" class="tw-text-body-sm tw-text-primary-900 tw-font-medium hover:tw-underline">Discussions</a>
+			</div>
+		</div>
+	</div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+	<script>
+		$(".button-collapse").sideNav();
+	</script>
+	<script src="js/router.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/api.js"></script>
+	<script src="js/render.js"></script>
+	<script src="js/sidebar.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

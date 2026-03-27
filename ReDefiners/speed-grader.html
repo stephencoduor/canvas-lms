@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	<title>ReDefiners - Speed Grader</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+	<script src="https://cdn.tailwindcss.com"></script>
+	<script src="css/tailwind-config.js?v=3"></script>
+	<script src="https://kit.fontawesome.com/7a13c96681.js" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/tokens.css?v=3">
+	<link rel="stylesheet" type="text/css" href="css/shadcn.css?v=3">
+	<link rel="stylesheet" type="text/css" href="styles.css?v=3">
+	<style>
+		.sg-topbar {
+			background: var(--color-primary-800);
+			color: white;
+			padding: 10px 20px;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			flex-wrap: wrap;
+			gap: 10px;
+			border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+		}
+		.sg-student-nav {
+			display: flex;
+			align-items: center;
+			gap: 8px;
+		}
+		.sg-student-nav button {
+			background: rgba(255,255,255,0.15);
+			border: none;
+			color: white;
+			width: 32px;
+			height: 32px;
+			border-radius: var(--radius-full);
+			cursor: pointer;
+			display: grid;
+			place-items: center;
+			transition: background var(--transition-default);
+		}
+		.sg-student-nav button:hover {
+			background: rgba(255,255,255,0.25);
+		}
+		.sg-student-select {
+			background: rgba(255,255,255,0.1);
+			border: 1px solid rgba(255,255,255,0.2);
+			color: white;
+			padding: 4px 12px;
+			border-radius: var(--radius-md);
+			font-size: 13px;
+			font-family: var(--font-family);
+		}
+		.sg-student-select option { color: #333; }
+		.sg-split {
+			display: flex;
+			min-height: calc(100vh - 200px);
+			border: 1px solid var(--color-neutral-200);
+			border-top: none;
+			border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+			overflow: hidden;
+		}
+		.sg-preview {
+			flex: 6;
+			background: var(--color-neutral-50);
+			border-right: 1px solid var(--color-neutral-200);
+			padding: 20px;
+			overflow-y: auto;
+		}
+		.sg-grading {
+			flex: 4;
+			background: white;
+			padding: 20px;
+			overflow-y: auto;
+		}
+		.annotation-toolbar {
+			display: flex;
+			gap: 6px;
+			padding: 8px 12px;
+			background: white;
+			border: 1px solid var(--color-neutral-200);
+			border-radius: var(--radius-md);
+			margin-bottom: 16px;
+		}
+		.annotation-toolbar button {
+			background: none;
+			border: 1px solid var(--color-neutral-200);
+			border-radius: var(--radius-sm);
+			padding: 6px 10px;
+			cursor: pointer;
+			font-size: 13px;
+			color: var(--text-secondary);
+			transition: all var(--transition-default);
+		}
+		.annotation-toolbar button:hover {
+			background: var(--color-neutral-100);
+			border-color: var(--color-neutral-300);
+		}
+		.annotation-toolbar button.active {
+			background: var(--color-primary-700);
+			color: white;
+			border-color: var(--color-primary-700);
+		}
+		.rubric-criterion {
+			border: 1px solid var(--color-neutral-200);
+			border-radius: var(--radius-md);
+			padding: 12px;
+			margin-bottom: 10px;
+		}
+		.rubric-criterion-header {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			margin-bottom: 8px;
+		}
+		.rating-option {
+			display: inline-block;
+			padding: 4px 10px;
+			border: 1px solid var(--color-neutral-200);
+			border-radius: var(--radius-sm);
+			font-size: 11px;
+			cursor: pointer;
+			margin-right: 4px;
+			margin-bottom: 4px;
+			transition: all var(--transition-default);
+		}
+		.rating-option:hover, .rating-option.selected {
+			background: var(--color-accent-green-light);
+			border-color: var(--color-accent-green);
+			color: #065F46;
+		}
+		.comment-bubble {
+			background: var(--color-neutral-50);
+			border-radius: var(--radius-md);
+			padding: 10px 14px;
+			margin-bottom: 8px;
+			font-size: 13px;
+		}
+	</style>
+</head>
+<body>
+<div class="tw-flex tw-min-h-screen tw-font-poppins">
+	<aside class="left-sidebar tw-fixed tw-inset-y-0 tw-left-0 tw-w-[240px] tw-z-50 tw--translate-x-full lg:tw-translate-x-0 tw-transition-transform tw-duration-300 tw-overflow-y-auto shadcn-scrollbar">
+		<div class="menu-bar">
+			<section class="logo-section">
+				<i class="fa fa-times theme-color menu-hide"></i>
+				<img src="Images/logo.PNG" class="res-hide" alt="logo">
+			</section>
+			<section class="menu-links">
+				<div class="menu-link"><a href="dashboard.html"><i class="fa fa-th-large"></i><span> Dashboard</span></a></div>
+				<div class="menu-link"><a href="courses.html"><i class="fa fa-clipboard-list"></i><span> Courses</span></a></div>
+				<div class="menu-link"><a href="calendar.html"><i class="fa fa-calendar-alt"></i><span> Calendar</span></a></div>
+				<div class="menu-link"><a href="announcement.html"><i class="fa fa-bullhorn"></i><span> Announcements</span></a></div>
+				<div class="menu-link"><a href="inbox.html"><i class="fa fa-comments"></i><span> Messages</span></a></div>
+				<div class="menu-link active-menu"><a href="assignments.html"><i class="fa fa-file-lines"></i><span> Assignments</span></a></div>
+				<div class="menu-link"><a href="grades.html"><i class="fa fa-chart-bar"></i><span> Grades</span></a></div>
+				<div class="menu-link"><a href="modules.html"><i class="fa fa-layer-group"></i><span> Modules</span></a></div>
+				<div class="menu-link"><a href="discussions.html"><i class="fa fa-comments-alt"></i><span> Discussions</span></a></div>
+				<div class="menu-link"><a href="quizzes.html"><i class="fa fa-question-circle"></i><span> Quizzes</span></a></div>
+				<div class="menu-link"><a href="pages.html"><i class="fa fa-file-alt"></i><span> Pages</span></a></div>
+				<div class="menu-link"><a href="files.html"><i class="fa fa-folder"></i><span> Files</span></a></div>
+				<div class="menu-link"><a href="people.html"><i class="fa fa-users"></i><span> People</span></a></div>
+				<div class="menu-link"><a href="outcomes.html"><i class="fa fa-bullseye"></i><span> Outcomes</span></a></div>
+				<div class="menu-link"><a href="rubrics.html"><i class="fa fa-th"></i><span> Rubrics</span></a></div>
+				<div class="menu-link"><a href="groups.html"><i class="fa fa-user-friends"></i><span> Groups</span></a></div>
+				<div class="menu-link"><a href="conferences.html"><i class="fa fa-video"></i><span> Conferences</span></a></div>
+				<div class="menu-link"><a href="collaborations.html"><i class="fa fa-handshake"></i><span> Collaborations</span></a></div>
+				<div class="menu-link"><a href="account-settings.html"><i class="fa fa-cog"></i><span> Settings</span></a></div>
+			</section>
+		</div>
+	</aside>
+	<div class="sidebar-overlay" id="sidebarOverlay"></div>
+	<main class="middle-part tw-flex-1 lg:tw-ml-[240px] tw-min-h-screen tw-px-4 md:tw-px-6 lg:tw-px-10 tw-pb-8">
+		<div class="tw-flex tw-items-center tw-justify-between tw-py-4 tw-gap-3 tw-flex-wrap">
+			<div class="tw-flex tw-items-center tw-gap-3">
+				<i class="fa fa-bars tw-text-primary-400 tw-cursor-pointer tw-text-xl lg:tw-hidden menu-icon" id="menuToggle"></i>
+				<div class="shadcn-search tw-hidden sm:tw-flex tw-w-64">
+					<i class="fa fa-search"></i>
+					<input type="text" placeholder="Search courses, assignments...">
+				</div>
+			</div>
+			<div class="tw-flex tw-items-center tw-gap-3">
+				<button class="shadcn-btn shadcn-btn-ghost shadcn-btn-icon tw-relative">
+					<i class="fa fa-bell tw-text-primary-400"></i>
+				</button>
+				<div class="shadcn-avatar shadcn-avatar-md tw-cursor-pointer">
+					<img src="Images/profile.png" alt="Profile">
+				</div>
+			</div>
+		</div>
+
+		<!-- Speed Grader Top Bar -->
+		<div class="sg-topbar">
+			<div class="tw-flex tw-items-center tw-gap-3">
+				<a href="assignments.html" class="tw-text-white tw-text-sm hover:tw-underline">
+					<i class="fa fa-arrow-left tw-mr-1"></i>
+				</a>
+				<div>
+					<div class="tw-font-semibold">Essay: Mi Familia</div>
+					<div class="tw-text-xs tw-opacity-70">Spanish 101 &middot; 100 pts</div>
+				</div>
+			</div>
+			<div class="sg-student-nav">
+				<button title="Previous student"><i class="fa fa-chevron-left"></i></button>
+				<select class="sg-student-select">
+					<option>Adams, Sarah</option>
+					<option selected>Chen, Brian</option>
+					<option>Flores, Diana</option>
+					<option>Garcia, James</option>
+					<option>Johnson, Aisha</option>
+				</select>
+				<button title="Next student"><i class="fa fa-chevron-right"></i></button>
+				<span class="tw-text-xs tw-opacity-60 tw-ml-2">2 of 28</span>
+			</div>
+			<div class="tw-flex tw-items-center tw-gap-2">
+				<span class="shadcn-badge shadcn-badge-success">Submitted</span>
+				<span class="tw-text-xs tw-opacity-70">Mar 25, 2026 3:42 PM</span>
+			</div>
+		</div>
+
+		<!-- Split Layout -->
+		<div class="sg-split">
+			<!-- Left: Submission Preview -->
+			<div class="sg-preview">
+				<!-- Annotation Toolbar -->
+				<div class="annotation-toolbar">
+					<button class="active" title="Select"><i class="fa fa-mouse-pointer"></i></button>
+					<button title="Highlight"><i class="fa fa-highlighter"></i></button>
+					<button title="Comment"><i class="fa fa-comment"></i></button>
+					<button title="Strikethrough"><i class="fa fa-strikethrough"></i></button>
+					<button title="Draw"><i class="fa fa-pen"></i></button>
+					<button title="Text box"><i class="fa fa-font"></i></button>
+					<div style="flex:1"></div>
+					<button title="Zoom in"><i class="fa fa-search-plus"></i></button>
+					<button title="Zoom out"><i class="fa fa-search-minus"></i></button>
+				</div>
+
+				<!-- Submission History -->
+				<div class="tw-flex tw-items-center tw-gap-2 tw-mb-4">
+					<span class="tw-text-xs tw-text-gray-500">Attempt:</span>
+					<button class="shadcn-btn shadcn-btn-primary shadcn-btn-sm" style="padding: 2px 10px; height: 24px; font-size: 11px;">1</button>
+				</div>
+
+				<!-- Document Preview Placeholder -->
+				<div class="tw-bg-white tw-rounded-lg tw-border tw-border-gray-200 tw-p-8 tw-min-h-[500px]">
+					<div class="tw-text-center tw-mb-8">
+						<h3 class="tw-text-lg tw-font-bold tw-text-gray-800">Mi Familia</h3>
+						<p class="tw-text-sm tw-text-gray-500">Brian Chen - Spanish 101</p>
+					</div>
+					<div class="tw-text-sm tw-text-gray-700 tw-leading-relaxed tw-space-y-4">
+						<p>Mi familia es grande y muy especial para mi. Vivimos en una casa bonita en el centro de la ciudad. Somos cinco personas en total: mis padres, mi hermana mayor, mi hermano menor y yo.</p>
+						<p>Mi padre se llama David. El es alto y tiene pelo negro. Es muy inteligente y trabajador. Tiene cuarenta y cinco anos y trabaja como ingeniero. Mi padre es paciente y siempre nos ayuda con la tarea.</p>
+						<p>Mi madre se llama Linda. Ella es bonita y tiene ojos marrones. Es muy amable y generosa. Mi madre es profesora de matematicas en una escuela secundaria. Ella tiene cuarenta y dos anos.</p>
+						<p>Mi hermana mayor se llama Jessica. Ella tiene veinte anos y estudia medicina en la universidad. Jessica es muy seria y estudiosa, pero tambien es divertida cuando esta con la familia. Ella es alta como mi padre.</p>
+						<p>Mi hermano menor se llama Kevin. El tiene doce anos y es muy activo y atletico. Le gusta jugar al futbol y al basquetbol. Kevin es bajo pero muy fuerte para su edad. El es comico y siempre nos hace reir.</p>
+						<p>Me encanta mi familia porque somos muy unidos. Los fines de semana, nosotros cocinamos juntos y jugamos juegos de mesa. Mi familia es lo mas importante en mi vida.</p>
+					</div>
+				</div>
+			</div>
+
+			<!-- Right: Grading Sidebar -->
+			<div class="sg-grading">
+				<!-- Grade Input -->
+				<div class="tw-mb-5">
+					<label class="tw-block tw-text-sm tw-font-semibold tw-text-primary-800 tw-mb-2">Grade</label>
+					<div class="tw-flex tw-items-center tw-gap-2">
+						<input type="number" class="shadcn-input tw-w-24 tw-text-center tw-text-lg tw-font-bold" value="87" max="100" min="0">
+						<span class="tw-text-gray-500 tw-text-sm">/ 100 pts</span>
+					</div>
+				</div>
+
+				<div class="shadcn-separator"></div>
+
+				<!-- Rubric Assessment -->
+				<div class="tw-mb-5">
+					<h3 class="tw-text-sm tw-font-semibold tw-text-primary-800 tw-mb-3">
+						<i class="fa fa-th tw-mr-1 tw-text-accent-purple"></i> Rubric Assessment
+					</h3>
+
+					<div class="rubric-criterion">
+						<div class="rubric-criterion-header">
+							<span class="tw-text-sm tw-font-medium">Content & Detail</span>
+							<span class="tw-text-sm tw-font-bold tw-text-primary-700">18/20</span>
+						</div>
+						<div>
+							<span class="rating-option">1</span>
+							<span class="rating-option">2</span>
+							<span class="rating-option">3</span>
+							<span class="rating-option selected">4</span>
+							<span class="rating-option">5</span>
+						</div>
+					</div>
+
+					<div class="rubric-criterion">
+						<div class="rubric-criterion-header">
+							<span class="tw-text-sm tw-font-medium">Grammar & Accuracy</span>
+							<span class="tw-text-sm tw-font-bold tw-text-primary-700">24/30</span>
+						</div>
+						<div>
+							<span class="rating-option">1</span>
+							<span class="rating-option">2</span>
+							<span class="rating-option">3</span>
+							<span class="rating-option selected">4</span>
+							<span class="rating-option">5</span>
+						</div>
+					</div>
+
+					<div class="rubric-criterion">
+						<div class="rubric-criterion-header">
+							<span class="tw-text-sm tw-font-medium">Vocabulary Usage</span>
+							<span class="tw-text-sm tw-font-bold tw-text-primary-700">22/25</span>
+						</div>
+						<div>
+							<span class="rating-option">1</span>
+							<span class="rating-option">2</span>
+							<span class="rating-option">3</span>
+							<span class="rating-option selected">4</span>
+							<span class="rating-option">5</span>
+						</div>
+					</div>
+
+					<div class="rubric-criterion">
+						<div class="rubric-criterion-header">
+							<span class="tw-text-sm tw-font-medium">Organization & Flow</span>
+							<span class="tw-text-sm tw-font-bold tw-text-primary-700">13/15</span>
+						</div>
+						<div>
+							<span class="rating-option">1</span>
+							<span class="rating-option">2</span>
+							<span class="rating-option">3</span>
+							<span class="rating-option selected">4</span>
+							<span class="rating-option">5</span>
+						</div>
+					</div>
+
+					<div class="rubric-criterion">
+						<div class="rubric-criterion-header">
+							<span class="tw-text-sm tw-font-medium">Formatting</span>
+							<span class="tw-text-sm tw-font-bold tw-text-primary-700">10/10</span>
+						</div>
+						<div>
+							<span class="rating-option">1</span>
+							<span class="rating-option">2</span>
+							<span class="rating-option">3</span>
+							<span class="rating-option">4</span>
+							<span class="rating-option selected">5</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="shadcn-separator"></div>
+
+				<!-- Comment Box -->
+				<div class="tw-mb-5">
+					<label class="tw-block tw-text-sm tw-font-semibold tw-text-primary-800 tw-mb-2">Add Comment</label>
+					<textarea class="shadcn-textarea" rows="4" placeholder="Leave feedback for the student..."></textarea>
+					<div class="tw-flex tw-items-center tw-justify-between tw-mt-2">
+						<div class="tw-flex tw-gap-2">
+							<button class="shadcn-btn shadcn-btn-ghost shadcn-btn-sm" title="Attach file"><i class="fa fa-paperclip"></i></button>
+							<button class="shadcn-btn shadcn-btn-ghost shadcn-btn-sm" title="Audio comment"><i class="fa fa-microphone"></i></button>
+							<button class="shadcn-btn shadcn-btn-ghost shadcn-btn-sm" title="Video comment"><i class="fa fa-video"></i></button>
+						</div>
+						<button class="shadcn-btn shadcn-btn-primary shadcn-btn-sm">Submit</button>
+					</div>
+				</div>
+
+				<div class="shadcn-separator"></div>
+
+				<!-- Previous Comments -->
+				<div>
+					<h3 class="tw-text-sm tw-font-semibold tw-text-primary-800 tw-mb-3">Previous Comments</h3>
+					<div class="comment-bubble">
+						<div class="tw-flex tw-items-center tw-gap-2 tw-mb-1">
+							<span class="tw-text-xs tw-font-semibold tw-text-primary-800">Prof. Martinez</span>
+							<span class="tw-text-xs tw-text-gray-400">Mar 27, 9:15 AM</span>
+						</div>
+						<p class="tw-text-gray-700">Great work on your essay! Your descriptions of your family members were vivid and engaging. Watch out for some ser/estar confusion in the second paragraph.</p>
+					</div>
+				</div>
+
+				<!-- API Reference -->
+				<div class="tw-mt-6 tw-text-xs tw-text-gray-400">
+					API: GET /api/v1/courses/:id/assignments/:id/submissions
+				</div>
+			</div>
+		</div>
+
+</main></div><script src="js/router.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/api.js"></script>
+<script src="js/render.js"></script>
+<script src="js/sidebar.js"></script>
+<script src="js/app.js"></script></body></html>

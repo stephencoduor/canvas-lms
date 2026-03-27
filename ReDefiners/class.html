@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	<title>ReDefiners</title>
+								<!-- --- Bootstrap 5 --- -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+								<!-- --- Tailwind CSS + Config --- -->
+	<script src="https://cdn.tailwindcss.com"></script>
+	<script src="css/tailwind-config.js?v=3"></script>
+								<!-- --- Font Awesome --- -->
+	<script src="https://kit.fontawesome.com/7a13c96681.js" crossorigin="anonymous"></script>
+								<!-- --- jQuery --- -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+								<!-- --- Text Font --- -->
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+								<!-- --- Custom Css --- -->
+	<link rel="stylesheet" type="text/css" href="css/tokens.css?v=3">
+	<link rel="stylesheet" type="text/css" href="css/shadcn.css?v=3">
+	<link rel="stylesheet" type="text/css" href="styles.css?v=3">
+</head>
+<body>
+	<div class="tw-flex tw-min-h-screen tw-font-poppins">
+		<!-- Sidebar -->
+		<aside class="left-sidebar tw-fixed tw-inset-y-0 tw-left-0 tw-w-[240px] tw-z-50 tw--translate-x-full lg:tw-translate-x-0 tw-transition-transform tw-duration-300 tw-overflow-y-auto shadcn-scrollbar">
+			<div class="menu-bar">
+				<section class="logo-section">
+					<i class="fa fa-times theme-color menu-hide"></i>
+					<img src="Images/logo.PNG" class="res-hide" alt="logo">
+					<div class="nav-input res-show-flex tw-mt-5">
+						<button class="tw-border tw-border-primary-400 tw-border-r-0 tw-bg-transparent tw-px-2">
+							<i class="fa fa-search"></i>
+						</button>
+						<input class="tw-border tw-border-primary-400 tw-border-l-0 tw-w-[85%] tw-bg-transparent tw-px-2 tw-py-1 tw-outline-none" type="text" name="search" placeholder="Search">
+					</div>
+				</section>
+				<section class="menu-links">
+					<div class="menu-link"><a href="dashboard.html"><i class="fa fa-th-large"></i><span> Dashboard</span></a></div>
+					<div class="menu-link"><a href="courses.html" class="active-menu"><i class="fa fa-clipboard-list"></i><span> Courses</span></a></div>
+					<div class="menu-link"><a href="calendar.html"><i class="fa fa-calendar-alt"></i><span> Calendar</span></a></div>
+					<div class="menu-link"><a href="announcement.html"><i class="fa fa-bullhorn"></i><span> Announcements</span></a></div>
+					<div class="menu-link"><a href="inbox.html"><i class="fa fa-comments"></i><span> Messages</span></a></div>
+					<div class="menu-link"><a href="assignments.html"><i class="fa fa-file-lines"></i><span> Assignments</span></a></div>
+					<div class="menu-link"><a href="grades.html"><i class="fa fa-chart-bar"></i><span> Grades</span></a></div>
+					<div class="menu-link"><a href="modules.html"><i class="fa fa-layer-group"></i><span> Modules</span></a></div>
+					<div class="menu-link"><a href="discussions.html"><i class="fa fa-comments-alt"></i><span> Discussions</span></a></div>
+					<div class="menu-link"><a href="quizzes.html"><i class="fa fa-question-circle"></i><span> Quizzes</span></a></div>
+					<div class="menu-link"><a href="pages.html"><i class="fa fa-file-alt"></i><span> Pages</span></a></div>
+					<div class="menu-link"><a href="files.html"><i class="fa fa-folder"></i><span> Files</span></a></div>
+					<div class="menu-link"><a href="people.html"><i class="fa fa-users"></i><span> People</span></a></div>
+					<div class="menu-link"><a href="outcomes.html"><i class="fa fa-bullseye"></i><span> Outcomes</span></a></div>
+					<div class="menu-link"><a href="rubrics.html"><i class="fa fa-th"></i><span> Rubrics</span></a></div>
+					<div class="menu-link"><a href="groups.html"><i class="fa fa-user-friends"></i><span> Groups</span></a></div>
+					<div class="menu-link"><a href="conferences.html"><i class="fa fa-video"></i><span> Conferences</span></a></div>
+					<div class="menu-link"><a href="collaborations.html"><i class="fa fa-handshake"></i><span> Collaborations</span></a></div>
+					<div class="menu-link"><a href="account-settings.html"><i class="fa fa-cog"></i><span> Settings</span></a></div>
+				</section>
+			</div>
+		</aside>
+		<!-- Mobile overlay -->
+		<div class="sidebar-overlay" id="sidebarOverlay"></div>
+		<!-- Main content -->
+		<main class="middle-part tw-flex-1 lg:tw-ml-[240px] tw-min-h-screen tw-px-4 md:tw-px-6 lg:tw-px-10 tw-pb-8">
+			<!-- Nav Bar -->
+			<div class="tw-flex tw-items-center tw-justify-between tw-py-4 tw-gap-3 tw-flex-wrap">
+				<div class="tw-flex tw-items-center tw-gap-3">
+					<i class="fa fa-bars tw-text-primary-400 tw-cursor-pointer tw-text-xl lg:tw-hidden menu-icon" id="menuToggle"></i>
+					<div class="shadcn-search tw-hidden sm:tw-flex tw-w-64">
+						<i class="fa fa-search"></i>
+						<input type="text" placeholder="Search...">
+					</div>
+				</div>
+				<div class="tw-flex tw-items-center tw-gap-3">
+					<button class="shadcn-btn shadcn-btn-ghost shadcn-btn-icon"><i class="fa fa-bell tw-text-primary-400"></i></button>
+					<div class="shadcn-avatar shadcn-avatar-md tw-cursor-pointer"><img src="Images/profile.png" alt="Profile"></div>
+				</div>
+			</div>
+			<!-- Course Detail Card -->
+			<div class="shadcn-card tw-p-6 tw-my-6">
+				<div class="class-inn-p">
+					<!-- Video Section -->
+					<div class="tw-w-full tw-aspect-video tw-rounded-token-md tw-overflow-hidden tw-mb-4">
+						<a href="class.html" class="tw-no-underline">
+							<div class="video-btn tw-w-full tw-h-full">
+							</div>
+						</a>
+					</div>
+					<div class="video-end">
+						<div class="video-last">
+							<img src="Images/video-pro.png">
+							<div>
+								<h5 class="second-color">
+									Let's learn somthing new
+								</h5>
+								<p class="theme-color">
+									Miss Martha Jones
+								</p>
+							</div>
+						</div>
+						<div class="video-no">
+							<img src="Images/image1.png">
+							<img src="Images/image2.png">
+							<img src="Images/image3.png">
+							<img src="Images/image5.png">
+							<img src="Images/image6.png">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-8">
+							<p class="theme-color tw-text-[13px]">
+								Aliquam enim, aenean tincidunt lectus porta facilisis nullum. Gravida velit pretium.Aliquam enim, aenean tincidunt lectus porta facilisis nullum. Gravida velit pretium.
+								<br>
+								Aliquam enim, aenean tincidunt lectus porta facilisis nullum. Gravida velit pretium.Aliquam enim, aenean tincidunt lectus porta facilisis nullum. Gravida velit pretium.
+							</p>
+							<div class="class-boxes">
+								<div>
+									<i class="fa fa-comments theme-color fa-2x"></i>
+									<h5 class="second-color tw-font-normal tw-text-[13px] tw-mb-0">
+										Message
+									</h5>
+								</div>
+								<div>
+									<img src="Images/syllabus.png">
+									<h5 class="second-color tw-font-normal tw-text-[13px] tw-mb-0">
+										Syllabus
+									</h5>
+								</div>
+								<div>
+									<i class="fa fa-bullhorn theme-color fa-2x"></i>
+									<h5 class="second-color tw-font-normal tw-text-[13px] tw-mb-0">
+										Announce
+									</h5>
+								</div>
+								<div>
+									<img src="Images/work.png">
+									<h5 class="second-color tw-font-normal tw-text-[13px] tw-mb-0">
+										Work
+									</h5>
+								</div>
+								<div>
+									<img src="Images/download.png">
+									<h5 class="second-color tw-font-normal tw-text-[13px] tw-mb-0">
+										Download
+									</h5>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="prev-classes">
+						<h3 class="second-color">
+							Previous Classes
+						</h3>
+						<div class="tw-flex tw-gap-5 tw-overflow-x-auto tw-snap-x tw-pb-4 shadcn-scrollbar">
+							<div class="tw-flex-shrink-0 tw-w-48">
+								<img src="Images/video-btn.png">
+								<h5 class="second-color">
+			    		 			Counting from 1 to 100
+			    		 		</h5>
+			    		 		<p class="theme-color">
+			    		 			radialcode
+			    		 		</p>
+							</div>
+							<div class="tw-flex-shrink-0 tw-w-48">
+								<img src="Images/video-btn.png">
+								<h5 class="second-color">
+			    		 			Counting from 1 to 100
+			    		 		</h5>
+			    		 		<p class="theme-color">
+			    		 			radialcode
+			    		 		</p>
+							</div>
+							<div class="tw-flex-shrink-0 tw-w-48">
+								<img src="Images/video-btn.png">
+								<h5 class="second-color">
+			    		 			Counting from 1 to 100
+			    		 		</h5>
+			    		 		<p class="theme-color">
+			    		 			radialcode
+			    		 		</p>
+							</div>
+							<div class="tw-flex-shrink-0 tw-w-48">
+								<img src="Images/video-btn.png">
+								<h5 class="second-color">
+			    		 			Counting from 1 to 100
+			    		 		</h5>
+			    		 		<p class="theme-color">
+			    		 			radialcode
+			    		 		</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Comments Section -->
+			<div class="shadcn-card tw-p-6 tw-my-6">
+				<h5 class="second-color tw-text-[15px] tw-font-bold">
+					Comments
+				</h5>
+				<div class="mess-field tw-flex tw-items-center tw-gap-2 tw-my-3">
+					<div class="mess-field-icon tw-bg-transparent">
+						<img src="Images/image1.png">
+					</div>
+					<input class="shadcn-input tw-flex-1" type="text" name="" placeholder="Write a Comment">
+					<div class="mess-field-send">
+						<img src="Images/enter.png">
+					</div>
+				</div>
+				<div class="tw-flex tw-items-start tw-gap-3 tw-mb-4">
+					<img src="Images/image1.png">
+					<div>
+						<h5 class="second-color">
+							James
+						</h5>
+						<p class="second-color">
+							Aliquam enim, aenean tincidunt lectus porta facilisis nullum. Gravida velit pretium.Aliquam enim, aenean tincidunt lectus porta facilisis nullum. Gravida velit pretium.
+						</p>
+					</div>
+				</div>
+				<div class="tw-flex tw-items-start tw-gap-3 tw-mb-4">
+					<img src="Images/image2.png">
+					<div>
+						<h5 class="second-color">
+							Reena
+						</h5>
+						<p class="second-color">
+							Aliquam enim, aenean tincidunt lectus porta facilisis nullum. Gravida velit pretium.Aliquam enim, aenean tincidunt lectus porta facilisis nullum. Gravida velit pretium.
+						</p>
+					</div>
+				</div>
+				<div class="tw-flex tw-items-start tw-gap-3 tw-mb-4">
+					<img src="Images/image3.png">
+					<div>
+						<h5 class="second-color">
+							jake
+						</h5>
+						<p class="second-color">
+							Aliquam enim, aenean tincidunt lectus porta facilisis nullum. Gravida velit pretium.Aliquam enim, aenean tincidunt lectus porta facilisis nullum. Gravida velit pretium.
+						</p>
+					</div>
+				</div>
+			</div>
+		</main>
+		<!-- Right sidebar -->
+		<aside class="tw-hidden lg:tw-block tw-w-[280px] tw-flex-shrink-0 tw-pt-4 tw-px-5">
+			<div class="right-top">
+				<div class="profile-click">
+				<img src="Images/profile.png">
+				<p class="second-color">
+					RadicalCode
+				</p>
+				</div>
+				<i class="fa fa-cog"></i>
+				<i class="fa fa-bell"></i>
+			</div>
+			<h5 class="second-color tw-text-[13px] tw-font-bold tw-mt-5">
+				Live Chat
+			</h5>
+			<div class="real-mess row tw-bg-surface-200 tw-max-h-full tw-py-5">
+				<div class="col-md-12 tw-my-px">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="real-mess-inn">
+								<img src="Images/image-inn.png">
+								<div class="mess-body tw-bg-white tw-text-xs tw-px-2.5 tw-py-1.5">
+									<span class="tw-font-bold">temmy</span>
+									<br>
+									Good Morniing
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-12 tw-my-px">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="real-mess-inn tw-mb-2.5">
+								<img src="Images/image-inn.png">
+								<div class="mess-body tw-bg-white tw-text-xs tw-px-2.5 tw-py-1.5">
+									<span class="tw-font-bold">temmy</span>
+									<br>
+									Good Morniing
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-12 tw-my-px">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="real-mess-inn tw-mb-2.5">
+								<img src="Images/image-inn.png">
+								<div class="mess-body tw-bg-white tw-text-xs tw-px-2.5 tw-py-1.5">
+									<span class="tw-font-bold">temmy</span>
+									<br>
+									Good Morniing
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-12 tw-my-px">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="real-mess-inn tw-mb-2.5">
+								<img src="Images/image-inn.png">
+								<div class="mess-body tw-bg-white tw-text-xs tw-px-2.5 tw-py-1.5">
+									<span class="tw-font-bold">temmy</span>
+									<br>
+									Good Morniing
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-12 tw-my-px">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="real-mess-inn tw-mb-2.5">
+								<img src="Images/image-inn.png">
+								<div class="mess-body tw-bg-white tw-text-xs tw-px-2.5 tw-py-1.5">
+									<span class="tw-font-bold">temmy</span>
+									<br>
+									Good Morniing
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="mess-field tw-justify-center tw-bg-white tw-p-1.5 tw-m-0 tw-rounded-token-md">
+					<input type="text" name="">
+					<div class="mess-field-send">
+						<i class="fa fa-angle-right fa-2x tw-px-1.5 tw-py-px"></i>
+					</div>
+				</div>
+			</div>
+		</aside>
+	</div>
+<script type="text/javascript">
+	$(".menu-icon, #menuToggle").click(function(){
+		$(".left-sidebar").removeClass("tw--translate-x-full").addClass("tw-translate-x-0");
+		$("#sidebarOverlay").addClass("active");
+		$("body").css("overflow","hidden");
+	});
+	$(".menu-hide, #sidebarOverlay").click(function(){
+		$(".left-sidebar").removeClass("tw-translate-x-0").addClass("tw--translate-x-full");
+		$("#sidebarOverlay").removeClass("active");
+		$("body").css("overflow","auto");
+	});
+
+	$(".calendar-icon").click(function(){
+		$(".right-sidebar").css("display","block")
+		$("body").css("overflow","hidden");
+	});
+</script>
+<script src="js/router.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/api.js"></script>
+<script src="js/render.js"></script>
+<script src="js/sidebar.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

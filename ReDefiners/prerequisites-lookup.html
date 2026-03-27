@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	<title>Prerequisites Checker - ReDefiners</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+	<script src="https://cdn.tailwindcss.com"></script>
+	<script src="css/tailwind-config.js?v=3"></script>
+	<script src="https://kit.fontawesome.com/7a13c96681.js" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/tokens.css?v=3">
+	<link rel="stylesheet" type="text/css" href="css/shadcn.css?v=3">
+	<link rel="stylesheet" type="text/css" href="styles.css?v=3">
+</head>
+<body>
+	<div class="tw-flex tw-min-h-screen tw-font-poppins">
+		<aside class="left-sidebar tw-fixed tw-inset-y-0 tw-left-0 tw-w-[240px] tw-z-50 tw--translate-x-full lg:tw-translate-x-0 tw-transition-transform tw-duration-300 tw-overflow-y-auto shadcn-scrollbar">
+			<div class="menu-bar">
+				<section class="logo-section">
+					<i class="fa fa-times theme-color menu-hide"></i>
+					<img src="Images/logo.PNG" class="res-hide" alt="logo">
+					<div class="nav-input res-show-flex tw-mt-5">
+						<button class="tw-border tw-border-primary-400 tw-border-r-0 tw-bg-transparent tw-px-2"><i class="fa fa-search"></i></button>
+						<input class="tw-border tw-border-primary-400 tw-border-l-0 tw-w-[85%] tw-bg-transparent tw-px-2 tw-py-1 tw-outline-none" type="text" name="search" placeholder="Search">
+					</div>
+				</section>
+				<section class="menu-links">
+					<div class="menu-link"><a href="dashboard.html"><i class="fa fa-th-large"></i><span> Dashboard</span></a></div>
+					<div class="menu-link"><a href="courses.html" class="active-menu"><i class="fa fa-clipboard-list"></i><span> Courses</span></a></div>
+					<div class="menu-link"><a href="calendar.html"><i class="fa fa-calendar-alt"></i><span> Calendar</span></a></div>
+					<div class="menu-link"><a href="announcement.html"><i class="fa fa-bullhorn"></i><span> Announcements</span></a></div>
+					<div class="menu-link"><a href="inbox.html"><i class="fa fa-comments"></i><span> Messages</span></a></div>
+					<div class="menu-link"><a href="assignments.html"><i class="fa fa-file-lines"></i><span> Assignments</span></a></div>
+					<div class="menu-link"><a href="grades.html"><i class="fa fa-chart-bar"></i><span> Grades</span></a></div>
+					<div class="menu-link"><a href="modules.html"><i class="fa fa-layer-group"></i><span> Modules</span></a></div>
+					<div class="menu-link"><a href="discussions.html"><i class="fa fa-comments-alt"></i><span> Discussions</span></a></div>
+					<div class="menu-link"><a href="quizzes.html"><i class="fa fa-question-circle"></i><span> Quizzes</span></a></div>
+					<div class="menu-link"><a href="pages.html"><i class="fa fa-file-alt"></i><span> Pages</span></a></div>
+					<div class="menu-link"><a href="files.html"><i class="fa fa-folder"></i><span> Files</span></a></div>
+					<div class="menu-link"><a href="people.html"><i class="fa fa-users"></i><span> People</span></a></div>
+					<div class="menu-link"><a href="outcomes.html"><i class="fa fa-bullseye"></i><span> Outcomes</span></a></div>
+					<div class="menu-link"><a href="rubrics.html"><i class="fa fa-th"></i><span> Rubrics</span></a></div>
+					<div class="menu-link"><a href="groups.html"><i class="fa fa-user-friends"></i><span> Groups</span></a></div>
+					<div class="menu-link"><a href="conferences.html"><i class="fa fa-video"></i><span> Conferences</span></a></div>
+					<div class="menu-link"><a href="collaborations.html"><i class="fa fa-handshake"></i><span> Collaborations</span></a></div>
+					<div class="menu-link"><a href="account-settings.html"><i class="fa fa-cog"></i><span> Settings</span></a></div>
+				</section>
+			</div>
+		</aside>
+		<div class="sidebar-overlay" id="sidebarOverlay"></div>
+		<main class="middle-part tw-flex-1 lg:tw-ml-[240px] tw-min-h-screen tw-px-4 md:tw-px-6 lg:tw-px-10 tw-pb-8">
+			<div class="tw-flex tw-items-center tw-justify-between tw-py-4 tw-gap-3 tw-flex-wrap">
+				<div class="tw-flex tw-items-center tw-gap-3">
+					<i class="fa fa-bars tw-text-primary-400 tw-cursor-pointer tw-text-xl lg:tw-hidden menu-icon" id="menuToggle"></i>
+					<div class="shadcn-search tw-hidden sm:tw-flex tw-w-64">
+						<i class="fa fa-search"></i>
+						<input type="text" placeholder="Search courses, assignments...">
+					</div>
+				</div>
+				<div class="tw-flex tw-items-center tw-gap-3">
+					<button class="shadcn-btn shadcn-btn-ghost shadcn-btn-icon tw-relative"><i class="fa fa-bell tw-text-primary-400"></i></button>
+					<div class="shadcn-avatar shadcn-avatar-md tw-cursor-pointer profile-click"><img src="Images/profile.png" alt="Profile"></div>
+				</div>
+			</div>
+
+			<!-- Header -->
+			<div class="tw-py-6">
+				<nav class="tw-text-sm tw-text-gray-500 tw-mb-2">
+					<a href="courses.html" class="theme-color tw-no-underline">Courses</a>
+					<i class="fa fa-chevron-right tw-text-xs tw-mx-1"></i>
+					<span>Prerequisites Checker</span>
+				</nav>
+				<div>
+					<h3 class="second-color"><i class="fa fa-sitemap tw-mr-2 theme-color"></i>Prerequisites Checker</h3>
+					<p class="tw-text-sm tw-text-gray-500 tw-mt-1">Check your progress toward course prerequisites</p>
+				</div>
+			</div>
+
+			<!-- Target Course -->
+			<div class="shadcn-card tw-p-5 tw-mb-6 tw-border-l-4 tw-border-l-primary-700">
+				<div class="tw-flex tw-items-center tw-gap-4">
+					<div class="tw-w-12 tw-h-12 tw-rounded-lg tw-bg-primary-100 tw-flex tw-items-center tw-justify-center">
+						<i class="fa fa-graduation-cap tw-text-xl theme-color"></i>
+					</div>
+					<div>
+						<h5 class="second-color tw-font-semibold">Spanish 301: Advanced Conversation</h5>
+						<p class="tw-text-sm tw-text-gray-500">Fall 2026 - Requires completion of all prerequisites below</p>
+					</div>
+				</div>
+			</div>
+
+			<!-- Prerequisites Tree -->
+			<div class="tw-space-y-4">
+				<!-- Prerequisite 1 - Completed -->
+				<div class="shadcn-card tw-p-5">
+					<div class="tw-flex tw-items-start tw-gap-4">
+						<div class="tw-w-10 tw-h-10 tw-rounded-full tw-bg-green-100 tw-flex tw-items-center tw-justify-center tw-flex-shrink-0">
+							<i class="fa fa-check tw-text-green-600"></i>
+						</div>
+						<div class="tw-flex-1">
+							<div class="tw-flex tw-items-center tw-justify-between tw-mb-2">
+								<div>
+									<h6 class="second-color tw-font-semibold">Spanish 201: Intermediate Spanish</h6>
+									<span class="tw-text-xs tw-text-gray-500">Completed Spring 2026 - Grade: A-</span>
+								</div>
+								<span class="tw-bg-green-100 tw-text-green-700 tw-text-xs tw-font-semibold tw-px-3 tw-py-1 tw-rounded-full">Completed</span>
+							</div>
+							<div class="tw-w-full tw-bg-gray-200 tw-rounded-full tw-h-2">
+								<div class="tw-bg-green-500 tw-h-2 tw-rounded-full" style="width: 100%"></div>
+							</div>
+							<p class="tw-text-xs tw-text-gray-500 tw-mt-1">Unlock condition: Minimum grade C or higher</p>
+						</div>
+					</div>
+				</div>
+
+				<!-- Prerequisite 2 - In Progress -->
+				<div class="shadcn-card tw-p-5">
+					<div class="tw-flex tw-items-start tw-gap-4">
+						<div class="tw-w-10 tw-h-10 tw-rounded-full tw-bg-blue-100 tw-flex tw-items-center tw-justify-center tw-flex-shrink-0">
+							<i class="fa fa-spinner tw-text-blue-600"></i>
+						</div>
+						<div class="tw-flex-1">
+							<div class="tw-flex tw-items-center tw-justify-between tw-mb-2">
+								<div>
+									<h6 class="second-color tw-font-semibold">Spanish 202: Intermediate Writing</h6>
+									<span class="tw-text-xs tw-text-gray-500">Currently Enrolled - Current Grade: B+</span>
+								</div>
+								<span class="tw-bg-blue-100 tw-text-blue-700 tw-text-xs tw-font-semibold tw-px-3 tw-py-1 tw-rounded-full">In Progress</span>
+							</div>
+							<div class="tw-w-full tw-bg-gray-200 tw-rounded-full tw-h-2">
+								<div class="tw-bg-blue-500 tw-h-2 tw-rounded-full" style="width: 72%"></div>
+							</div>
+							<p class="tw-text-xs tw-text-gray-500 tw-mt-1">72% complete - Unlock condition: Minimum grade C or higher</p>
+						</div>
+					</div>
+					<!-- Sub-prerequisites -->
+					<div class="tw-ml-14 tw-mt-4 tw-pl-4 tw-border-l-2 tw-border-gray-200 tw-space-y-3">
+						<div class="tw-flex tw-items-center tw-gap-3">
+							<i class="fa fa-check-circle tw-text-green-500"></i>
+							<div>
+								<p class="tw-text-sm second-color">Module 1-5: Grammar Foundations</p>
+								<span class="tw-text-xs tw-text-gray-500">Completed Mar 10, 2026</span>
+							</div>
+						</div>
+						<div class="tw-flex tw-items-center tw-gap-3">
+							<i class="fa fa-check-circle tw-text-green-500"></i>
+							<div>
+								<p class="tw-text-sm second-color">Midterm Essay Submission</p>
+								<span class="tw-text-xs tw-text-gray-500">Score: 88/100</span>
+							</div>
+						</div>
+						<div class="tw-flex tw-items-center tw-gap-3">
+							<i class="fa fa-circle tw-text-gray-300"></i>
+							<div>
+								<p class="tw-text-sm second-color">Module 6-10: Advanced Composition</p>
+								<span class="tw-text-xs tw-text-gray-500">Not yet started</span>
+							</div>
+						</div>
+						<div class="tw-flex tw-items-center tw-gap-3">
+							<i class="fa fa-circle tw-text-gray-300"></i>
+							<div>
+								<p class="tw-text-sm second-color">Final Portfolio</p>
+								<span class="tw-text-xs tw-text-gray-500">Due May 15, 2026</span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Prerequisite 3 - Not Started -->
+				<div class="shadcn-card tw-p-5">
+					<div class="tw-flex tw-items-start tw-gap-4">
+						<div class="tw-w-10 tw-h-10 tw-rounded-full tw-bg-yellow-100 tw-flex tw-items-center tw-justify-center tw-flex-shrink-0">
+							<i class="fa fa-exclamation tw-text-yellow-600"></i>
+						</div>
+						<div class="tw-flex-1">
+							<div class="tw-flex tw-items-center tw-justify-between tw-mb-2">
+								<div>
+									<h6 class="second-color tw-font-semibold">Placement Test: Spanish Proficiency</h6>
+									<span class="tw-text-xs tw-text-gray-500">Must be completed before enrollment</span>
+								</div>
+								<span class="tw-bg-yellow-100 tw-text-yellow-700 tw-text-xs tw-font-semibold tw-px-3 tw-py-1 tw-rounded-full">Not Started</span>
+							</div>
+							<div class="tw-w-full tw-bg-gray-200 tw-rounded-full tw-h-2">
+								<div class="tw-bg-yellow-500 tw-h-2 tw-rounded-full" style="width: 0%"></div>
+							</div>
+							<p class="tw-text-xs tw-text-gray-500 tw-mt-1">Unlock condition: Score 70% or higher on placement test</p>
+							<a href="#" class="shadcn-btn shadcn-btn-secondary tw-text-xs tw-mt-3"><i class="fa fa-play tw-mr-1"></i> Take Placement Test</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</main>
+	</div>
+	<script src="js/sidebar.js"></script>
+<script src="js/router.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/api.js"></script>
+<script src="js/render.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	<title>ReDefiners</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+	<script src="https://cdn.tailwindcss.com"></script>
+	<script src="css/tailwind-config.js?v=3"></script>
+	<script src="https://kit.fontawesome.com/7a13c96681.js" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/tokens.css?v=3">
+	<link rel="stylesheet" type="text/css" href="css/shadcn.css?v=3">
+	<link rel="stylesheet" type="text/css" href="styles.css?v=3">
+	<style>
+		.status-badge { font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 20px; }
+		.status-success { background: #f0fdf4; color: #16a34a; }
+		.status-pending { background: #fff3e0; color: #FF6B35; }
+		.status-locked { background: #eff6ff; color: #3B82F6; }
+		.status-unlocked { background: var(--color-neutral-100, #f3f4f6); color: #668B91; }
+		.assoc-course { display: flex; align-items: center; gap: 12px; padding: 12px 14px; border-radius: 10px; border: 1px solid var(--color-neutral-200, #e5e7eb); margin-bottom: 8px; transition: all 0.15s; }
+		.assoc-course:hover { border-color: var(--color-primary-400); background: #f8fdfb; }
+		.lock-toggle { width: 36px; height: 20px; border-radius: 10px; position: relative; cursor: pointer; transition: background 0.2s; }
+		.lock-toggle.locked { background: #3B82F6; }
+		.lock-toggle.unlocked { background: var(--color-neutral-300, #d1d5db); }
+		.lock-toggle-dot { width: 16px; height: 16px; background: #fff; border-radius: 50%; position: absolute; top: 2px; transition: left 0.2s; }
+		.lock-toggle.locked .lock-toggle-dot { left: 18px; }
+		.lock-toggle.unlocked .lock-toggle-dot { left: 2px; }
+		.locked-table { width: 100%; border-collapse: separate; border-spacing: 0; }
+		.locked-table th { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: #668B91; padding: 10px 14px; border-bottom: 1px solid var(--color-neutral-200, #e5e7eb); text-align: left; }
+		.locked-table td { font-size: 13px; padding: 12px 14px; border-bottom: 1px solid var(--color-neutral-100, #f3f4f6); color: var(--color-primary-700); }
+		.locked-table tr:last-child td { border-bottom: none; }
+		.locked-table tr:hover td { background: #f8fdfb; }
+		.sync-entry { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--color-neutral-100, #f3f4f6); }
+		.sync-entry:last-child { border-bottom: none; }
+	</style>
+</head>
+<body>
+<div class="tw-flex tw-min-h-screen tw-font-poppins">
+	<aside class="left-sidebar tw-fixed tw-inset-y-0 tw-left-0 tw-w-[240px] tw-z-50 tw--translate-x-full lg:tw-translate-x-0 tw-transition-transform tw-duration-300 tw-overflow-y-auto shadcn-scrollbar">
+		<div class="menu-bar">
+			<section class="logo-section">
+				<i class="fa fa-times theme-color menu-hide"></i>
+				<img src="Images/logo.PNG" class="res-hide" alt="logo">
+				<div class="nav-input res-show-flex tw-mt-5">
+					<button class="tw-border tw-border-primary-400 tw-border-r-0 tw-bg-transparent tw-px-2"><i class="fa fa-search"></i></button>
+					<input class="tw-border tw-border-primary-400 tw-border-l-0 tw-w-[85%] tw-bg-transparent tw-px-2 tw-py-1 tw-outline-none" type="text" name="search" placeholder="Search">
+				</div>
+			</section>
+			<section class="menu-links">
+				<div class="menu-link"><a href="dashboard.html"><i class="fa fa-th-large"></i><span> Dashboard</span></a></div>
+				<div class="menu-link"><a href="courses.html" class="active-menu"><i class="fa fa-clipboard-list"></i><span> Courses</span></a></div>
+				<div class="menu-link"><a href="calendar.html"><i class="fa fa-calendar-alt"></i><span> Calendar</span></a></div>
+				<div class="menu-link"><a href="announcement.html"><i class="fa fa-bullhorn"></i><span> Announcements</span></a></div>
+				<div class="menu-link"><a href="inbox.html"><i class="fa fa-comments"></i><span> Messages</span></a></div>
+				<div class="menu-link"><a href="assignments.html"><i class="fa fa-file-lines"></i><span> Assignments</span></a></div>
+				<div class="menu-link"><a href="grades.html"><i class="fa fa-chart-bar"></i><span> Grades</span></a></div>
+				<div class="menu-link"><a href="modules.html"><i class="fa fa-layer-group"></i><span> Modules</span></a></div>
+				<div class="menu-link"><a href="discussions.html"><i class="fa fa-comments-alt"></i><span> Discussions</span></a></div>
+				<div class="menu-link"><a href="quizzes.html"><i class="fa fa-question-circle"></i><span> Quizzes</span></a></div>
+				<div class="menu-link"><a href="pages.html"><i class="fa fa-file-alt"></i><span> Pages</span></a></div>
+				<div class="menu-link"><a href="files.html"><i class="fa fa-folder"></i><span> Files</span></a></div>
+				<div class="menu-link"><a href="people.html"><i class="fa fa-users"></i><span> People</span></a></div>
+				<div class="menu-link"><a href="outcomes.html"><i class="fa fa-bullseye"></i><span> Outcomes</span></a></div>
+				<div class="menu-link"><a href="rubrics.html"><i class="fa fa-th"></i><span> Rubrics</span></a></div>
+				<div class="menu-link"><a href="groups.html"><i class="fa fa-user-friends"></i><span> Groups</span></a></div>
+				<div class="menu-link"><a href="conferences.html"><i class="fa fa-video"></i><span> Conferences</span></a></div>
+				<div class="menu-link"><a href="collaborations.html"><i class="fa fa-handshake"></i><span> Collaborations</span></a></div>
+				<div class="menu-link"><a href="account-settings.html"><i class="fa fa-cog"></i><span> Settings</span></a></div>
+			</section>
+		</div>
+	</aside>
+	<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+	<main class="middle-part tw-flex-1 lg:tw-ml-[240px] tw-min-h-screen tw-px-4 md:tw-px-6 lg:tw-px-10 tw-pb-8">
+		<!-- Nav Bar -->
+		<div class="tw-flex tw-items-center tw-justify-between tw-py-4 tw-gap-3 tw-flex-wrap">
+			<div class="tw-flex tw-items-center tw-gap-3">
+				<i class="fa fa-bars tw-text-primary-400 tw-cursor-pointer tw-text-xl lg:tw-hidden menu-icon" id="menuToggle"></i>
+				<div class="shadcn-search tw-hidden sm:tw-flex tw-w-64">
+					<i class="fa fa-search"></i>
+					<input type="text" placeholder="Search courses, assignments...">
+				</div>
+			</div>
+			<div class="tw-flex tw-items-center tw-gap-3">
+				<button class="shadcn-btn shadcn-btn-ghost shadcn-btn-icon tw-relative">
+					<i class="fa fa-bell tw-text-primary-400"></i>
+				</button>
+				<div class="shadcn-avatar shadcn-avatar-md tw-cursor-pointer profile-click">
+					<img src="Images/profile.png" alt="Profile">
+				</div>
+			</div>
+		</div>
+
+		<!-- Breadcrumbs -->
+		<div class="breadcrumbs tw-mt-2">
+			<a href="dashboard.html">Home</a>
+			<span class="breadcrumbs__separator">/</span>
+			<a href="courses.html">Courses</a>
+			<span class="breadcrumbs__separator">/</span>
+			<span class="breadcrumbs__current">Blueprint Course</span>
+		</div>
+
+		<!-- Page Header -->
+		<div class="tw-flex tw-flex-col sm:tw-flex-row tw-items-start sm:tw-items-center tw-justify-between tw-gap-4 tw-my-6">
+			<div>
+				<h3 class="second-color tw-font-bold tw-mb-1">
+					<i class="fa fa-layer-group tw-mr-2" style="color: #3B82F6;"></i>Blueprint Course Management
+				</h3>
+				<p class="tw-text-sm tw-mb-0" style="color: #668B91;">Manage master course content and sync locked objects to associated courses</p>
+			</div>
+			<button class="shadcn-btn shadcn-btn-primary">
+				<i class="fa fa-sync-alt tw-mr-2"></i> Sync Changes
+			</button>
+		</div>
+
+		<!-- Master Course Info -->
+		<div class="shadcn-card tw-p-5 tw-mb-6">
+			<div class="tw-flex tw-flex-col md:tw-flex-row tw-items-start md:tw-items-center tw-gap-4">
+				<div style="width:56px;height:56px;border-radius:14px;background:linear-gradient(135deg,#3B82F6,#1d4ed8);color:#fff;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;">
+					<i class="fa fa-crown"></i>
+				</div>
+				<div class="tw-flex-1">
+					<h4 class="tw-font-bold tw-mb-1" style="color: var(--color-primary-700);">Spanish Language Program - Master Template</h4>
+					<p class="tw-text-sm tw-mb-0" style="color: #668B91;">Blueprint master course for all Spanish language sections &middot; Spring 2026</p>
+				</div>
+				<div class="tw-flex tw-gap-3 tw-flex-wrap">
+					<div class="tw-text-center tw-px-4 tw-py-2 tw-rounded-lg" style="background: #D4EFE6;">
+						<div class="tw-text-lg tw-font-bold" style="color: var(--color-primary-700);">5</div>
+						<div class="tw-text-xs" style="color: #668B91;">Associated</div>
+					</div>
+					<div class="tw-text-center tw-px-4 tw-py-2 tw-rounded-lg" style="background: #eff6ff;">
+						<div class="tw-text-lg tw-font-bold" style="color: #3B82F6;">12</div>
+						<div class="tw-text-xs" style="color: #668B91;">Locked Items</div>
+					</div>
+					<div class="tw-text-center tw-px-4 tw-py-2 tw-rounded-lg" style="background: #f0fdf4;">
+						<div class="tw-text-lg tw-font-bold" style="color: #16a34a;">3</div>
+						<div class="tw-text-xs" style="color: #668B91;">Pending Changes</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="tw-grid tw-grid-cols-1 lg:tw-grid-cols-3 tw-gap-6">
+
+			<!-- LEFT: Associated Courses & Locked Objects -->
+			<div class="lg:tw-col-span-2">
+				<!-- Associated Courses -->
+				<div class="shadcn-card tw-p-6 tw-mb-6">
+					<div class="tw-flex tw-items-center tw-justify-between tw-mb-4">
+						<h5 class="tw-font-bold" style="color: var(--color-primary-700);">
+							<i class="fa fa-link tw-mr-2" style="color: #2DB88A;"></i>Associated Courses
+						</h5>
+						<button class="shadcn-btn shadcn-btn-outline tw-text-sm tw-px-3 tw-py-1.5">
+							<i class="fa fa-plus tw-mr-1"></i> Add Course
+						</button>
+					</div>
+
+					<div class="assoc-course">
+						<div style="width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,#2DB88A,#1a7a5a);color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;">
+							<i class="fa fa-language"></i>
+						</div>
+						<div class="tw-flex-1">
+							<span class="tw-text-sm tw-font-semibold tw-block" style="color: var(--color-primary-700);">Spanish 201 - Section A</span>
+							<span class="tw-text-xs" style="color: #668B91;">Prof. Garcia &middot; 28 students &middot; MWF 9:00 AM</span>
+						</div>
+						<span class="status-badge status-success">Synced</span>
+					</div>
+					<div class="assoc-course">
+						<div style="width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,#FF6B35,#c44d1f);color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;">
+							<i class="fa fa-language"></i>
+						</div>
+						<div class="tw-flex-1">
+							<span class="tw-text-sm tw-font-semibold tw-block" style="color: var(--color-primary-700);">Spanish 201 - Section B</span>
+							<span class="tw-text-xs" style="color: #668B91;">Prof. Rodriguez &middot; 25 students &middot; TTh 10:30 AM</span>
+						</div>
+						<span class="status-badge status-success">Synced</span>
+					</div>
+					<div class="assoc-course">
+						<div style="width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,#8B5CF6,#6d28d9);color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;">
+							<i class="fa fa-language"></i>
+						</div>
+						<div class="tw-flex-1">
+							<span class="tw-text-sm tw-font-semibold tw-block" style="color: var(--color-primary-700);">Spanish 201 - Section C</span>
+							<span class="tw-text-xs" style="color: #668B91;">Prof. Morales &middot; 22 students &middot; MWF 1:00 PM</span>
+						</div>
+						<span class="status-badge status-pending">3 changes pending</span>
+					</div>
+					<div class="assoc-course">
+						<div style="width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,#06B6D4,#0891b2);color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;">
+							<i class="fa fa-language"></i>
+						</div>
+						<div class="tw-flex-1">
+							<span class="tw-text-sm tw-font-semibold tw-block" style="color: var(--color-primary-700);">Spanish 201 - Section D (Online)</span>
+							<span class="tw-text-xs" style="color: #668B91;">Prof. Alvarez &middot; 35 students &middot; Asynchronous</span>
+						</div>
+						<span class="status-badge status-pending">3 changes pending</span>
+					</div>
+					<div class="assoc-course">
+						<div style="width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,#F59E0B,#d97706);color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;">
+							<i class="fa fa-language"></i>
+						</div>
+						<div class="tw-flex-1">
+							<span class="tw-text-sm tw-font-semibold tw-block" style="color: var(--color-primary-700);">Spanish 201 - Section E (Evening)</span>
+							<span class="tw-text-xs" style="color: #668B91;">Prof. Navarro &middot; 18 students &middot; MW 6:00 PM</span>
+						</div>
+						<span class="status-badge status-success">Synced</span>
+					</div>
+				</div>
+
+				<!-- Locked Objects Table -->
+				<div class="shadcn-card tw-p-6">
+					<div class="tw-flex tw-items-center tw-justify-between tw-mb-4">
+						<h5 class="tw-font-bold" style="color: var(--color-primary-700);">
+							<i class="fa fa-lock tw-mr-2" style="color: #3B82F6;"></i>Locked Objects
+						</h5>
+						<span class="tw-text-xs tw-font-medium tw-px-2 tw-py-1 tw-rounded" style="background: #eff6ff; color: #3B82F6;">12 items locked</span>
+					</div>
+					<p class="tw-text-sm tw-mb-4" style="color: #668B91;">Locked objects cannot be edited in associated courses. Changes must be made in this master course and synced.</p>
+
+					<div class="tw-overflow-x-auto">
+						<table class="locked-table">
+							<thead>
+								<tr>
+									<th>Object</th>
+									<th>Type</th>
+									<th>Content</th>
+									<th>Points</th>
+									<th>Dates</th>
+									<th>Availability</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="tw-font-medium">Midterm Exam</td>
+									<td><span class="tw-text-xs tw-px-2 tw-py-0.5 tw-rounded" style="background:#fef3c7;color:#92400e;"><i class="fa fa-file-lines tw-mr-1"></i>Assignment</span></td>
+									<td><div class="lock-toggle locked"><div class="lock-toggle-dot"></div></div></td>
+									<td><div class="lock-toggle locked"><div class="lock-toggle-dot"></div></div></td>
+									<td><div class="lock-toggle unlocked"><div class="lock-toggle-dot"></div></div></td>
+									<td><div class="lock-toggle locked"><div class="lock-toggle-dot"></div></div></td>
+								</tr>
+								<tr>
+									<td class="tw-font-medium">Final Exam</td>
+									<td><span class="tw-text-xs tw-px-2 tw-py-0.5 tw-rounded" style="background:#fef3c7;color:#92400e;"><i class="fa fa-file-lines tw-mr-1"></i>Assignment</span></td>
+									<td><div class="lock-toggle locked"><div class="lock-toggle-dot"></div></div></td>
+									<td><div class="lock-toggle locked"><div class="lock-toggle-dot"></div></div></td>
+									<td><div class="lock-toggle unlocked"><div class="lock-toggle-dot"></div></div></td>
+									<td><div class="lock-toggle locked"><div class="lock-toggle-dot"></div></div></td>
+								</tr>
+								<tr>
+									<td class="tw-font-medium">Syllabus</td>
+									<td><span class="tw-text-xs tw-px-2 tw-py-0.5 tw-rounded" style="background:#dbeafe;color:#1e40af;"><i class="fa fa-file-alt tw-mr-1"></i>Page</span></td>
+									<td><div class="lock-toggle locked"><div class="lock-toggle-dot"></div></div></td>
+									<td><span class="tw-text-xs" style="color:#adb5bd;">&mdash;</span></td>
+									<td><span class="tw-text-xs" style="color:#adb5bd;">&mdash;</span></td>
+									<td><div class="lock-toggle locked"><div class="lock-toggle-dot"></div></div></td>
+								</tr>
+								<tr>
+									<td class="tw-font-medium">Course Policies</td>
+									<td><span class="tw-text-xs tw-px-2 tw-py-0.5 tw-rounded" style="background:#dbeafe;color:#1e40af;"><i class="fa fa-file-alt tw-mr-1"></i>Page</span></td>
+									<td><div class="lock-toggle locked"><div class="lock-toggle-dot"></div></div></td>
+									<td><span class="tw-text-xs" style="color:#adb5bd;">&mdash;</span></td>
+									<td><span class="tw-text-xs" style="color:#adb5bd;">&mdash;</span></td>
+									<td><div class="lock-toggle locked"><div class="lock-toggle-dot"></div></div></td>
+								</tr>
+								<tr>
+									<td class="tw-font-medium">Vocabulary Quiz - Unit 1</td>
+									<td><span class="tw-text-xs tw-px-2 tw-py-0.5 tw-rounded" style="background:#f3e8ff;color:#6b21a8;"><i class="fa fa-question-circle tw-mr-1"></i>Quiz</span></td>
+									<td><div class="lock-toggle locked"><div class="lock-toggle-dot"></div></div></td>
+									<td><div class="lock-toggle locked"><div class="lock-toggle-dot"></div></div></td>
+									<td><div class="lock-toggle unlocked"><div class="lock-toggle-dot"></div></div></td>
+									<td><div class="lock-toggle unlocked"><div class="lock-toggle-dot"></div></div></td>
+								</tr>
+								<tr>
+									<td class="tw-font-medium">Vocabulary Quiz - Unit 2</td>
+									<td><span class="tw-text-xs tw-px-2 tw-py-0.5 tw-rounded" style="background:#f3e8ff;color:#6b21a8;"><i class="fa fa-question-circle tw-mr-1"></i>Quiz</span></td>
+									<td><div class="lock-toggle locked"><div class="lock-toggle-dot"></div></div></td>
+									<td><div class="lock-toggle locked"><div class="lock-toggle-dot"></div></div></td>
+									<td><div class="lock-toggle unlocked"><div class="lock-toggle-dot"></div></div></td>
+									<td><div class="lock-toggle unlocked"><div class="lock-toggle-dot"></div></div></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+
+			<!-- RIGHT: Sync Status & History -->
+			<div>
+				<!-- Sync Status -->
+				<div class="shadcn-card tw-p-6 tw-mb-6">
+					<h5 class="tw-font-bold tw-mb-4" style="color: var(--color-primary-700);">
+						<i class="fa fa-sync-alt tw-mr-2" style="color: #FF6B35;"></i>Sync Status
+					</h5>
+
+					<div class="tw-p-4 tw-rounded-lg tw-mb-4" style="background: #FFF7ED; border: 1px solid #FFEDD5;">
+						<div class="tw-flex tw-items-center tw-gap-2 tw-mb-2">
+							<i class="fa fa-exclamation-circle" style="color: #FF6B35;"></i>
+							<span class="tw-text-sm tw-font-semibold" style="color: #9A3412;">3 Unsynced Changes</span>
+						</div>
+						<p class="tw-text-xs tw-mb-0" style="color: #9A3412;">Changes made in the master course have not been pushed to 2 associated courses.</p>
+					</div>
+
+					<div class="tw-space-y-3 tw-mb-4">
+						<div class="tw-flex tw-items-center tw-gap-3 tw-p-3 tw-rounded-lg" style="background: var(--color-neutral-50, #f8fafb);">
+							<i class="fa fa-pen tw-text-xs" style="color: #FF6B35;"></i>
+							<div class="tw-flex-1">
+								<span class="tw-text-xs tw-font-medium tw-block" style="color: var(--color-primary-700);">Midterm Exam updated</span>
+								<span class="tw-text-xs" style="color: #668B91;">Instructions revised &middot; 2 hours ago</span>
+							</div>
+						</div>
+						<div class="tw-flex tw-items-center tw-gap-3 tw-p-3 tw-rounded-lg" style="background: var(--color-neutral-50, #f8fafb);">
+							<i class="fa fa-plus tw-text-xs" style="color: #2DB88A;"></i>
+							<div class="tw-flex-1">
+								<span class="tw-text-xs tw-font-medium tw-block" style="color: var(--color-primary-700);">New page: Study Guide Ch. 5</span>
+								<span class="tw-text-xs" style="color: #668B91;">Added to Module 5 &middot; 5 hours ago</span>
+							</div>
+						</div>
+						<div class="tw-flex tw-items-center tw-gap-3 tw-p-3 tw-rounded-lg" style="background: var(--color-neutral-50, #f8fafb);">
+							<i class="fa fa-pen tw-text-xs" style="color: #FF6B35;"></i>
+							<div class="tw-flex-1">
+								<span class="tw-text-xs tw-font-medium tw-block" style="color: var(--color-primary-700);">Quiz - Unit 2 questions edited</span>
+								<span class="tw-text-xs" style="color: #668B91;">3 questions updated &middot; Yesterday</span>
+							</div>
+						</div>
+					</div>
+
+					<button class="shadcn-btn shadcn-btn-primary tw-w-full tw-mb-2">
+						<i class="fa fa-sync-alt tw-mr-2"></i> Sync All Changes
+					</button>
+					<p class="tw-text-xs tw-text-center tw-mb-0" style="color: #668B91;">Last synced: Mar 23, 2026 at 4:30 PM</p>
+				</div>
+
+				<!-- Sync History -->
+				<div class="shadcn-card tw-p-6">
+					<h5 class="tw-font-bold tw-mb-4" style="color: var(--color-primary-700);">
+						<i class="fa fa-history tw-mr-2" style="color: #8B5CF6;"></i>Sync History
+					</h5>
+
+					<div class="sync-entry">
+						<div style="width:32px;height:32px;border-radius:8px;background:#f0fdf4;color:#2DB88A;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;">
+							<i class="fa fa-check"></i>
+						</div>
+						<div class="tw-flex-1">
+							<span class="tw-text-sm tw-font-medium tw-block" style="color: var(--color-primary-700);">Full Sync Completed</span>
+							<span class="tw-text-xs tw-block" style="color: #668B91;">Mar 23, 2026 at 4:30 PM</span>
+							<span class="tw-text-xs" style="color: #2DB88A;">5 courses updated &middot; 8 objects synced</span>
+						</div>
+					</div>
+					<div class="sync-entry">
+						<div style="width:32px;height:32px;border-radius:8px;background:#f0fdf4;color:#2DB88A;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;">
+							<i class="fa fa-check"></i>
+						</div>
+						<div class="tw-flex-1">
+							<span class="tw-text-sm tw-font-medium tw-block" style="color: var(--color-primary-700);">Content Update Sync</span>
+							<span class="tw-text-xs tw-block" style="color: #668B91;">Mar 18, 2026 at 10:15 AM</span>
+							<span class="tw-text-xs" style="color: #2DB88A;">5 courses updated &middot; 2 pages synced</span>
+						</div>
+					</div>
+					<div class="sync-entry">
+						<div style="width:32px;height:32px;border-radius:8px;background:#fff3e0;color:#FF6B35;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;">
+							<i class="fa fa-exclamation"></i>
+						</div>
+						<div class="tw-flex-1">
+							<span class="tw-text-sm tw-font-medium tw-block" style="color: var(--color-primary-700);">Partial Sync</span>
+							<span class="tw-text-xs tw-block" style="color: #668B91;">Mar 10, 2026 at 2:00 PM</span>
+							<span class="tw-text-xs" style="color: #FF6B35;">4 of 5 courses updated &middot; Section D had conflicts</span>
+						</div>
+					</div>
+					<div class="sync-entry">
+						<div style="width:32px;height:32px;border-radius:8px;background:#f0fdf4;color:#2DB88A;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;">
+							<i class="fa fa-check"></i>
+						</div>
+						<div class="tw-flex-1">
+							<span class="tw-text-sm tw-font-medium tw-block" style="color: var(--color-primary-700);">Initial Blueprint Setup</span>
+							<span class="tw-text-xs tw-block" style="color: #668B91;">Mar 1, 2026 at 9:00 AM</span>
+							<span class="tw-text-xs" style="color: #2DB88A;">5 courses associated &middot; 10 objects locked</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="tw-mt-6 tw-text-xs" style="color: #adb5bd;">
+			API: GET /api/v1/courses/:id/blueprint_templates | PUT /api/v1/courses/:id/blueprint_templates/:template_id/migrate
+		</div>
+
+	</main>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+<script>$(".button-collapse").sideNav();</script>
+<script src="js/router.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/api.js"></script>
+<script src="js/render.js"></script>
+<script src="js/sidebar.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

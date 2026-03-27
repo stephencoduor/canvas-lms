@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	<title>ReDefiners - Discussion Thread</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+	<script src="https://cdn.tailwindcss.com"></script>
+	<script src="css/tailwind-config.js?v=3"></script>
+	<script src="https://kit.fontawesome.com/7a13c96681.js" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/tokens.css?v=3">
+	<link rel="stylesheet" type="text/css" href="css/shadcn.css?v=3">
+	<link rel="stylesheet" type="text/css" href="styles.css?v=3">
+	<style>
+		.reply-card {
+			border-left: 3px solid var(--color-neutral-200);
+			padding-left: 16px;
+		}
+		.reply-card.nested {
+			margin-left: 48px;
+			border-left-color: var(--color-accent-blue-light);
+		}
+		.like-btn {
+			display: inline-flex;
+			align-items: center;
+			gap: 4px;
+			font-size: 13px;
+			color: var(--text-secondary);
+			cursor: pointer;
+			padding: 4px 10px;
+			border-radius: var(--radius-sm);
+			border: none;
+			background: none;
+			transition: all 0.2s;
+		}
+		.like-btn:hover {
+			color: var(--color-accent-blue);
+			background: var(--color-accent-blue-light);
+		}
+		.like-btn.liked {
+			color: var(--color-accent-blue);
+		}
+		.reply-btn {
+			display: inline-flex;
+			align-items: center;
+			gap: 4px;
+			font-size: 13px;
+			color: var(--text-secondary);
+			cursor: pointer;
+			padding: 4px 10px;
+			border-radius: var(--radius-sm);
+			border: none;
+			background: none;
+			transition: all 0.2s;
+		}
+		.reply-btn:hover {
+			color: var(--color-accent-green);
+			background: var(--color-accent-green-light);
+		}
+		.detail-label {
+			font-size: 12px;
+			color: var(--text-secondary);
+			font-weight: 600;
+			text-transform: uppercase;
+			letter-spacing: 0.5px;
+		}
+	</style>
+</head>
+<body>
+<div class="tw-flex tw-min-h-screen tw-font-poppins">
+	<aside class="left-sidebar tw-fixed tw-inset-y-0 tw-left-0 tw-w-[240px] tw-z-50 tw--translate-x-full lg:tw-translate-x-0 tw-transition-transform tw-duration-300 tw-overflow-y-auto shadcn-scrollbar">
+		<div class="menu-bar">
+			<section class="logo-section">
+				<i class="fa fa-times theme-color menu-hide"></i>
+				<img src="Images/logo.PNG" class="res-hide" alt="logo">
+			</section>
+			<section class="menu-links">
+				<div class="menu-link"><a href="dashboard.html"><i class="fa fa-th-large"></i><span> Dashboard</span></a></div>
+				<div class="menu-link"><a href="courses.html"><i class="fa fa-clipboard-list"></i><span> Courses</span></a></div>
+				<div class="menu-link"><a href="calendar.html"><i class="fa fa-calendar-alt"></i><span> Calendar</span></a></div>
+				<div class="menu-link"><a href="announcement.html"><i class="fa fa-bullhorn"></i><span> Announcements</span></a></div>
+				<div class="menu-link"><a href="inbox.html"><i class="fa fa-comments"></i><span> Messages</span></a></div>
+				<div class="menu-link"><a href="assignments.html"><i class="fa fa-file-lines"></i><span> Assignments</span></a></div>
+				<div class="menu-link"><a href="grades.html"><i class="fa fa-chart-bar"></i><span> Grades</span></a></div>
+				<div class="menu-link"><a href="modules.html"><i class="fa fa-layer-group"></i><span> Modules</span></a></div>
+				<div class="menu-link"><a href="discussions.html" class="active-menu"><i class="fa fa-comments-alt"></i><span> Discussions</span></a></div>
+				<div class="menu-link"><a href="quizzes.html"><i class="fa fa-question-circle"></i><span> Quizzes</span></a></div>
+				<div class="menu-link"><a href="pages.html"><i class="fa fa-file-alt"></i><span> Pages</span></a></div>
+				<div class="menu-link"><a href="files.html"><i class="fa fa-folder"></i><span> Files</span></a></div>
+				<div class="menu-link"><a href="people.html"><i class="fa fa-users"></i><span> People</span></a></div>
+				<div class="menu-link"><a href="outcomes.html"><i class="fa fa-bullseye"></i><span> Outcomes</span></a></div>
+				<div class="menu-link"><a href="rubrics.html"><i class="fa fa-th"></i><span> Rubrics</span></a></div>
+				<div class="menu-link"><a href="groups.html"><i class="fa fa-user-friends"></i><span> Groups</span></a></div>
+				<div class="menu-link"><a href="conferences.html"><i class="fa fa-video"></i><span> Conferences</span></a></div>
+				<div class="menu-link"><a href="collaborations.html"><i class="fa fa-handshake"></i><span> Collaborations</span></a></div>
+				<div class="menu-link"><a href="account-settings.html"><i class="fa fa-cog"></i><span> Settings</span></a></div>
+			</section>
+		</div>
+	</aside>
+	<div class="sidebar-overlay" id="sidebarOverlay"></div>
+	<main class="middle-part tw-flex-1 lg:tw-ml-[240px] tw-min-h-screen tw-px-4 md:tw-px-6 lg:tw-px-10 tw-pb-8">
+		<!-- Nav Bar -->
+		<div class="tw-flex tw-items-center tw-justify-between tw-py-4 tw-gap-3 tw-flex-wrap">
+			<div class="tw-flex tw-items-center tw-gap-3">
+				<i class="fa fa-bars tw-text-primary-400 tw-cursor-pointer tw-text-xl lg:tw-hidden menu-icon" id="menuToggle"></i>
+				<div class="shadcn-search tw-hidden sm:tw-flex tw-w-64">
+					<i class="fa fa-search"></i>
+					<input type="text" placeholder="Search courses, assignments...">
+				</div>
+			</div>
+			<div class="tw-flex tw-items-center tw-gap-3">
+				<button class="shadcn-btn shadcn-btn-ghost shadcn-btn-icon tw-relative">
+					<i class="fa fa-bell tw-text-primary-400"></i>
+				</button>
+				<div class="shadcn-avatar shadcn-avatar-md tw-cursor-pointer">
+					<img src="Images/profile.png" alt="Profile">
+				</div>
+			</div>
+		</div>
+
+		<!-- Breadcrumbs -->
+		<div class="breadcrumbs tw-mt-2">
+			<a href="dashboard.html">Home</a>
+			<span class="breadcrumbs__separator">/</span>
+			<a href="courses.html">Spanish 101</a>
+			<span class="breadcrumbs__separator">/</span>
+			<a href="discussions.html">Discussions</a>
+			<span class="breadcrumbs__separator">/</span>
+			<span class="breadcrumbs__current">Week 5: Subjunctive Mood</span>
+		</div>
+
+		<!-- Content Area -->
+		<div class="tw-grid tw-grid-cols-1 lg:tw-grid-cols-[1fr_280px] tw-gap-6 tw-mt-6">
+
+			<!-- Main Thread Column -->
+			<div class="tw-flex tw-flex-col tw-gap-4">
+
+				<!-- Thread Header -->
+				<div class="shadcn-card tw-p-6">
+					<h1 class="tw-text-xl tw-font-bold tw-text-[#0F2922] tw-mb-3">Week 5: Subjunctive Mood - When do you use it?</h1>
+					<div class="tw-flex tw-items-center tw-gap-3 tw-text-sm tw-text-[#6B7280] tw-mb-4">
+						<div class="tw-flex tw-items-center tw-gap-2">
+							<div class="shadcn-avatar shadcn-avatar-sm"><img src="Images/profile.png" alt="Prof. Martinez"></div>
+							<span class="tw-font-medium tw-text-[#0F2922]">Prof. Martinez</span>
+						</div>
+						<span>&middot;</span>
+						<span>Posted Mar 18, 2026</span>
+						<span>&middot;</span>
+						<span><i class="fa fa-reply tw-mr-1"></i>18 replies</span>
+					</div>
+
+					<!-- Original Post Content -->
+					<div class="tw-text-sm tw-text-[#1B1B1B] tw-leading-relaxed">
+						<p class="tw-mb-3">This week we are diving into one of the most challenging aspects of Spanish grammar: the subjunctive mood. Many English speakers find this concept difficult because English rarely uses a distinct subjunctive form.</p>
+						<p class="tw-mb-3">The subjunctive is used in Spanish to express wishes, doubts, emotions, recommendations, and hypothetical situations. For example, compare these two sentences:</p>
+						<ul class="tw-list-disc tw-pl-6 tw-mb-3">
+							<li class="tw-mb-1"><strong>Indicative:</strong> "Ella habla espanol." (She speaks Spanish - a fact)</li>
+							<li class="tw-mb-1"><strong>Subjunctive:</strong> "Espero que ella hable espanol." (I hope she speaks Spanish - a wish/desire)</li>
+						</ul>
+						<p>For this discussion, please share at least two original sentences using the subjunctive mood. Explain why the subjunctive is required in each case. Then, respond to at least one classmate's sentences with feedback or questions.</p>
+					</div>
+				</div>
+
+				<!-- Replies Section -->
+				<h2 class="tw-text-lg tw-font-semibold tw-text-[#0F2922]">Replies</h2>
+
+				<!-- Reply 1 -->
+				<div class="shadcn-card tw-p-4">
+					<div class="tw-flex tw-items-start tw-gap-3">
+						<div class="shadcn-avatar shadcn-avatar-sm tw-flex-shrink-0"><img src="Images/profile.png" alt="Maria Santos"></div>
+						<div class="tw-flex-1">
+							<div class="tw-flex tw-items-center tw-gap-2 tw-mb-1">
+								<span class="tw-font-semibold tw-text-sm tw-text-[#0F2922]">Maria Santos</span>
+								<span class="tw-text-xs tw-text-[#9CA3AF]">Mar 19, 2026 at 10:23 AM</span>
+							</div>
+							<p class="tw-text-sm tw-text-[#1B1B1B] tw-mb-3 tw-leading-relaxed">Great topic! Here are my sentences:</p>
+							<ol class="tw-text-sm tw-text-[#1B1B1B] tw-list-decimal tw-pl-5 tw-mb-3">
+								<li class="tw-mb-1">"Quiero que mis padres <strong>vengan</strong> a la fiesta." - Subjunctive because it expresses a desire (quiero que).</li>
+								<li>"Es importante que nosotros <strong>estudiemos</strong> todos los dias." - Subjunctive because it follows an impersonal expression of importance.</li>
+							</ol>
+							<div class="tw-flex tw-items-center tw-gap-2">
+								<button class="like-btn liked"><i class="fa fa-thumbs-up"></i> 6</button>
+								<button class="reply-btn"><i class="fa fa-reply"></i> Reply</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Nested Reply to Reply 1 -->
+				<div class="shadcn-card tw-p-4 reply-card nested">
+					<div class="tw-flex tw-items-start tw-gap-3">
+						<div class="shadcn-avatar shadcn-avatar-sm tw-flex-shrink-0"><img src="Images/profile.png" alt="Carlos Rivera"></div>
+						<div class="tw-flex-1">
+							<div class="tw-flex tw-items-center tw-gap-2 tw-mb-1">
+								<span class="tw-font-semibold tw-text-sm tw-text-[#0F2922]">Carlos Rivera</span>
+								<span class="tw-text-xs tw-text-[#9CA3AF]">Mar 19, 2026 at 2:45 PM</span>
+							</div>
+							<p class="tw-text-sm tw-text-[#1B1B1B] tw-mb-3 tw-leading-relaxed">Nice examples, Maria! Your second one reminded me of a similar pattern. Can you also use "es necesario que" the same way? For example: "Es necesario que tu <strong>hagas</strong> la tarea."</p>
+							<div class="tw-flex tw-items-center tw-gap-2">
+								<button class="like-btn"><i class="fa fa-thumbs-up"></i> 3</button>
+								<button class="reply-btn"><i class="fa fa-reply"></i> Reply</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Reply 2 -->
+				<div class="shadcn-card tw-p-4">
+					<div class="tw-flex tw-items-start tw-gap-3">
+						<div class="shadcn-avatar shadcn-avatar-sm tw-flex-shrink-0"><img src="Images/profile.png" alt="James Chen"></div>
+						<div class="tw-flex-1">
+							<div class="tw-flex tw-items-center tw-gap-2 tw-mb-1">
+								<span class="tw-font-semibold tw-text-sm tw-text-[#0F2922]">James Chen</span>
+								<span class="tw-text-xs tw-text-[#9CA3AF]">Mar 20, 2026 at 9:15 AM</span>
+							</div>
+							<p class="tw-text-sm tw-text-[#1B1B1B] tw-mb-3 tw-leading-relaxed">I found it helpful to remember the acronym WEIRDO for subjunctive triggers: Wishes, Emotions, Impersonal expressions, Recommendations, Doubt, and Ojala. Here are my attempts:</p>
+							<ol class="tw-text-sm tw-text-[#1B1B1B] tw-list-decimal tw-pl-5 tw-mb-3">
+								<li class="tw-mb-1">"Dudo que el examen <strong>sea</strong> facil." - Doubt triggers subjunctive.</li>
+								<li>"Mi madre recomienda que yo <strong>coma</strong> mas verduras." - Recommendation triggers subjunctive.</li>
+							</ol>
+							<div class="tw-flex tw-items-center tw-gap-2">
+								<button class="like-btn liked"><i class="fa fa-thumbs-up"></i> 8</button>
+								<button class="reply-btn"><i class="fa fa-reply"></i> Reply</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Reply 3 -->
+				<div class="shadcn-card tw-p-4">
+					<div class="tw-flex tw-items-start tw-gap-3">
+						<div class="shadcn-avatar shadcn-avatar-sm tw-flex-shrink-0"><img src="Images/profile.png" alt="Ana Lopez"></div>
+						<div class="tw-flex-1">
+							<div class="tw-flex tw-items-center tw-gap-2 tw-mb-1">
+								<span class="tw-font-semibold tw-text-sm tw-text-[#0F2922]">Ana Lopez</span>
+								<span class="tw-text-xs tw-text-[#9CA3AF]">Mar 20, 2026 at 3:30 PM</span>
+							</div>
+							<p class="tw-text-sm tw-text-[#1B1B1B] tw-mb-3 tw-leading-relaxed">James, the WEIRDO acronym is super helpful! I always get confused between when to use indicative vs subjunctive with "creer." Is it true that "no creo que" uses subjunctive but "creo que" uses indicative?</p>
+							<div class="tw-flex tw-items-center tw-gap-2">
+								<button class="like-btn"><i class="fa fa-thumbs-up"></i> 4</button>
+								<button class="reply-btn"><i class="fa fa-reply"></i> Reply</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Nested Reply to Reply 3 -->
+				<div class="shadcn-card tw-p-4 reply-card nested">
+					<div class="tw-flex tw-items-start tw-gap-3">
+						<div class="shadcn-avatar shadcn-avatar-sm tw-flex-shrink-0"><img src="Images/profile.png" alt="Prof. Martinez"></div>
+						<div class="tw-flex-1">
+							<div class="tw-flex tw-items-center tw-gap-2 tw-mb-1">
+								<span class="tw-font-semibold tw-text-sm tw-text-[#0F2922]">Prof. Martinez</span>
+								<span class="tw-text-xs tw-text-[#9CA3AF]">Mar 21, 2026 at 11:00 AM</span>
+							</div>
+							<p class="tw-text-sm tw-text-[#1B1B1B] tw-mb-3 tw-leading-relaxed">Excellent question, Ana! Yes, that is exactly correct. When you negate "creer" (to believe), you introduce doubt, which triggers the subjunctive. Compare: "Creo que <strong>es</strong> verdad" (indicative) vs. "No creo que <strong>sea</strong> verdad" (subjunctive). Great observation!</p>
+							<div class="tw-flex tw-items-center tw-gap-2">
+								<button class="like-btn liked"><i class="fa fa-thumbs-up"></i> 12</button>
+								<button class="reply-btn"><i class="fa fa-reply"></i> Reply</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Reply Box -->
+				<div class="shadcn-card tw-p-4">
+					<h3 class="tw-text-sm tw-font-semibold tw-text-[#0F2922] tw-mb-3">Post a Reply</h3>
+					<textarea class="shadcn-input tw-w-full tw-min-h-[120px] tw-mb-3 tw-resize-y" placeholder="Write your reply here..."></textarea>
+					<div class="tw-flex tw-justify-end">
+						<button class="shadcn-btn shadcn-btn-primary">
+							<i class="fa fa-paper-plane tw-mr-2"></i> Post Reply
+						</button>
+					</div>
+				</div>
+
+			</div>
+
+			<!-- Right Sidebar - Discussion Details -->
+			<div class="tw-flex tw-flex-col tw-gap-4">
+				<div class="shadcn-card tw-p-5">
+					<h3 class="tw-text-sm tw-font-bold tw-text-[#0F2922] tw-mb-4">Discussion Details</h3>
+
+					<div class="tw-flex tw-flex-col tw-gap-3">
+						<div>
+							<div class="detail-label tw-mb-1">Points</div>
+							<div class="tw-text-sm tw-font-medium tw-text-[#1B1B1B]">10 points</div>
+						</div>
+						<div>
+							<div class="detail-label tw-mb-1">Due Date</div>
+							<div class="tw-text-sm tw-font-medium tw-text-[#1B1B1B]">Mar 25, 2026 at 11:59 PM</div>
+						</div>
+						<div>
+							<div class="detail-label tw-mb-1">Available</div>
+							<div class="tw-text-sm tw-font-medium tw-text-[#1B1B1B]">Mar 18 - Mar 25, 2026</div>
+						</div>
+						<div>
+							<div class="detail-label tw-mb-1">Group</div>
+							<div class="tw-text-sm tw-font-medium tw-text-[#1B1B1B]">Week 5 Discussions</div>
+						</div>
+						<div>
+							<div class="detail-label tw-mb-1">Replies Required</div>
+							<div class="tw-text-sm tw-font-medium tw-text-[#1B1B1B]">1 original post + 2 replies</div>
+						</div>
+					</div>
+
+					<hr class="tw-my-4 tw-border-[#E5E7EB]">
+
+					<h3 class="tw-text-sm tw-font-bold tw-text-[#0F2922] tw-mb-3">Your Progress</h3>
+					<div class="tw-flex tw-flex-col tw-gap-2">
+						<div class="tw-flex tw-items-center tw-gap-2 tw-text-sm">
+							<i class="fa fa-check-circle tw-text-[#2DB88A]"></i>
+							<span>Original post submitted</span>
+						</div>
+						<div class="tw-flex tw-items-center tw-gap-2 tw-text-sm">
+							<i class="fa fa-check-circle tw-text-[#2DB88A]"></i>
+							<span>1 of 2 replies completed</span>
+						</div>
+						<div class="tw-flex tw-items-center tw-gap-2 tw-text-sm tw-text-[#9CA3AF]">
+							<i class="fa fa-circle"></i>
+							<span>1 reply remaining</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="shadcn-card tw-p-5">
+					<h3 class="tw-text-sm tw-font-bold tw-text-[#0F2922] tw-mb-3">Participants</h3>
+					<div class="tw-flex tw-flex-col tw-gap-2">
+						<div class="tw-flex tw-items-center tw-gap-2 tw-text-sm">
+							<div class="shadcn-avatar shadcn-avatar-sm"><img src="Images/profile.png" alt=""></div>
+							<span>Prof. Martinez</span>
+						</div>
+						<div class="tw-flex tw-items-center tw-gap-2 tw-text-sm">
+							<div class="shadcn-avatar shadcn-avatar-sm"><img src="Images/profile.png" alt=""></div>
+							<span>Maria Santos</span>
+						</div>
+						<div class="tw-flex tw-items-center tw-gap-2 tw-text-sm">
+							<div class="shadcn-avatar shadcn-avatar-sm"><img src="Images/profile.png" alt=""></div>
+							<span>Carlos Rivera</span>
+						</div>
+						<div class="tw-flex tw-items-center tw-gap-2 tw-text-sm">
+							<div class="shadcn-avatar shadcn-avatar-sm"><img src="Images/profile.png" alt=""></div>
+							<span>James Chen</span>
+						</div>
+						<div class="tw-flex tw-items-center tw-gap-2 tw-text-sm">
+							<div class="shadcn-avatar shadcn-avatar-sm"><img src="Images/profile.png" alt=""></div>
+							<span>Ana Lopez</span>
+						</div>
+						<div class="tw-text-xs tw-text-[#9CA3AF] tw-mt-1">+ 13 more participants</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		<!-- API Reference -->
+		<!-- GET /api/v1/courses/:id/discussion_topics/:id/view -->
+
+	</main>
+</div>
+<script src="js/router.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/api.js"></script>
+<script src="js/render.js"></script>
+<script src="js/sidebar.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

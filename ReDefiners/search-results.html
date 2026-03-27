@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	<title>ReDefiners - Search Results</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+	<script src="https://cdn.tailwindcss.com"></script>
+	<script src="css/tailwind-config.js?v=3"></script>
+	<script src="https://kit.fontawesome.com/7a13c96681.js" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/tokens.css?v=3">
+	<link rel="stylesheet" type="text/css" href="css/shadcn.css?v=3">
+	<link rel="stylesheet" type="text/css" href="styles.css?v=3">
+	<style>
+		.search-hero { background: linear-gradient(135deg, #0F2922 0%, #1E4D42 100%); border-radius: 16px; padding: 32px; margin-bottom: 24px; }
+		.search-hero-input { width: 100%; padding: 14px 20px 14px 48px; font-size: 16px; border: 2px solid rgba(255,255,255,0.2); border-radius: 12px; background: rgba(255,255,255,0.1); color: #fff; outline: none; transition: border-color 0.2s; }
+		.search-hero-input::placeholder { color: rgba(255,255,255,0.5); }
+		.search-hero-input:focus { border-color: #2DB88A; background: rgba(255,255,255,0.15); }
+		.search-hero-icon { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: rgba(255,255,255,0.5); font-size: 16px; }
+		.filter-tab { padding: 8px 18px; font-size: 13px; font-weight: 600; border: none; background: transparent; color: #668B91; cursor: pointer; border-radius: 8px; transition: all 0.15s; }
+		.filter-tab:hover { background: var(--color-neutral-50, #f8fafb); color: var(--color-primary-700); }
+		.filter-tab.active { background: var(--color-primary-700); color: #fff; }
+		.result-item { padding: 16px 20px; border-bottom: 1px solid var(--color-neutral-200, #e5e7eb); transition: background 0.15s; }
+		.result-item:last-child { border-bottom: none; }
+		.result-item:hover { background: var(--color-neutral-50, #f8fafb); }
+		.result-type-icon { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
+		.type-course { background: #e0f5f5; color: #0e7490; }
+		.type-assignment { background: #fff3e0; color: #FF6B35; }
+		.type-discussion { background: #f3e8ff; color: #8B5CF6; }
+		.type-page { background: #e8f4fd; color: #3B82F6; }
+		.type-person { background: #f0fdf4; color: #2DB88A; }
+		.type-file { background: #fef3c7; color: #d97706; }
+		.pagination-btn { width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--color-neutral-200, #e5e7eb); border-radius: 8px; background: #fff; color: #668B91; cursor: pointer; font-size: 13px; font-weight: 600; transition: all 0.15s; }
+		.pagination-btn:hover { border-color: var(--color-primary-400); color: var(--color-primary-700); }
+		.pagination-btn.active { background: var(--color-primary-700); color: #fff; border-color: var(--color-primary-700); }
+	</style>
+</head>
+<body>
+<div class="tw-flex tw-min-h-screen tw-font-poppins">
+	<aside class="left-sidebar tw-fixed tw-inset-y-0 tw-left-0 tw-w-[240px] tw-z-50 tw--translate-x-full lg:tw-translate-x-0 tw-transition-transform tw-duration-300 tw-overflow-y-auto shadcn-scrollbar">
+		<div class="menu-bar">
+			<section class="logo-section">
+				<i class="fa fa-times theme-color menu-hide"></i>
+				<img src="Images/logo.PNG" class="res-hide" alt="logo">
+				<div class="nav-input res-show-flex tw-mt-5">
+					<button class="tw-border tw-border-primary-400 tw-border-r-0 tw-bg-transparent tw-px-2"><i class="fa fa-search"></i></button>
+					<input class="tw-border tw-border-primary-400 tw-border-l-0 tw-w-[85%] tw-bg-transparent tw-px-2 tw-py-1 tw-outline-none" type="text" name="search" placeholder="Search">
+				</div>
+			</section>
+			<section class="menu-links">
+				<div class="menu-link"><a href="dashboard.html" class="active-menu"><i class="fa fa-th-large"></i><span> Dashboard</span></a></div>
+				<div class="menu-link"><a href="courses.html"><i class="fa fa-clipboard-list"></i><span> Courses</span></a></div>
+				<div class="menu-link"><a href="calendar.html"><i class="fa fa-calendar-alt"></i><span> Calendar</span></a></div>
+				<div class="menu-link"><a href="announcement.html"><i class="fa fa-bullhorn"></i><span> Announcements</span></a></div>
+				<div class="menu-link"><a href="inbox.html"><i class="fa fa-comments"></i><span> Messages</span></a></div>
+				<div class="menu-link"><a href="assignments.html"><i class="fa fa-file-lines"></i><span> Assignments</span></a></div>
+				<div class="menu-link"><a href="grades.html"><i class="fa fa-chart-bar"></i><span> Grades</span></a></div>
+				<div class="menu-link"><a href="modules.html"><i class="fa fa-layer-group"></i><span> Modules</span></a></div>
+				<div class="menu-link"><a href="discussions.html"><i class="fa fa-comments-alt"></i><span> Discussions</span></a></div>
+				<div class="menu-link"><a href="quizzes.html"><i class="fa fa-question-circle"></i><span> Quizzes</span></a></div>
+				<div class="menu-link"><a href="pages.html"><i class="fa fa-file-alt"></i><span> Pages</span></a></div>
+				<div class="menu-link"><a href="files.html"><i class="fa fa-folder"></i><span> Files</span></a></div>
+				<div class="menu-link"><a href="people.html"><i class="fa fa-users"></i><span> People</span></a></div>
+				<div class="menu-link"><a href="outcomes.html"><i class="fa fa-bullseye"></i><span> Outcomes</span></a></div>
+				<div class="menu-link"><a href="rubrics.html"><i class="fa fa-th"></i><span> Rubrics</span></a></div>
+				<div class="menu-link"><a href="groups.html"><i class="fa fa-user-friends"></i><span> Groups</span></a></div>
+				<div class="menu-link"><a href="conferences.html"><i class="fa fa-video"></i><span> Conferences</span></a></div>
+				<div class="menu-link"><a href="collaborations.html"><i class="fa fa-handshake"></i><span> Collaborations</span></a></div>
+				<div class="menu-link"><a href="account-settings.html"><i class="fa fa-cog"></i><span> Settings</span></a></div>
+			</section>
+		</div>
+	</aside>
+	<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+	<main class="middle-part tw-flex-1 lg:tw-ml-[240px] tw-min-h-screen tw-px-4 md:tw-px-6 lg:tw-px-10 tw-pb-8">
+		<!-- Nav Bar -->
+		<div class="tw-flex tw-items-center tw-justify-between tw-py-4 tw-gap-3 tw-flex-wrap">
+			<div class="tw-flex tw-items-center tw-gap-3">
+				<i class="fa fa-bars tw-text-primary-400 tw-cursor-pointer tw-text-xl lg:tw-hidden menu-icon" id="menuToggle"></i>
+				<div class="shadcn-search tw-hidden sm:tw-flex tw-w-64">
+					<i class="fa fa-search"></i>
+					<input type="text" placeholder="Search courses, assignments...">
+				</div>
+			</div>
+			<div class="tw-flex tw-items-center tw-gap-3">
+				<div class="tw-hidden sm:tw-flex tw-items-center tw-gap-2 tw-bg-accent-orange tw-text-white tw-rounded-token-md tw-px-3 tw-py-1.5 tw-text-caption-sm">
+					<i class="fa fa-bullhorn tw-text-xs"></i>
+					<span>New announcements available</span>
+				</div>
+				<button class="shadcn-btn shadcn-btn-ghost shadcn-btn-icon tw-relative">
+					<i class="fa fa-bell tw-text-primary-400"></i>
+				</button>
+				<div class="shadcn-avatar shadcn-avatar-md tw-cursor-pointer profile-click">
+					<img src="Images/profile.png" alt="Profile">
+				</div>
+			</div>
+		</div>
+
+		<!-- Search Hero -->
+		<div class="search-hero tw-mt-2">
+			<h3 class="tw-text-white tw-font-bold tw-mb-4">Search ReDefiners</h3>
+			<div class="tw-relative">
+				<i class="fa fa-search search-hero-icon"></i>
+				<input type="text" class="search-hero-input" value="verb conjugation" placeholder="Search courses, people, assignments, discussions...">
+			</div>
+			<p class="tw-text-white/60 tw-text-sm tw-mt-3 tw-mb-0">Showing 24 results for "verb conjugation"</p>
+		</div>
+
+		<!-- Filter Tabs -->
+		<div class="tw-flex tw-items-center tw-gap-2 tw-mb-6 tw-flex-wrap">
+			<button class="filter-tab active">All (24)</button>
+			<button class="filter-tab">Courses (3)</button>
+			<button class="filter-tab">People (2)</button>
+			<button class="filter-tab">Assignments (6)</button>
+			<button class="filter-tab">Discussions (4)</button>
+			<button class="filter-tab">Pages (5)</button>
+			<button class="filter-tab">Files (4)</button>
+		</div>
+
+		<!-- Results List -->
+		<div class="shadcn-card tw-overflow-hidden">
+
+			<!-- Result 1: Course -->
+			<div class="result-item">
+				<div class="tw-flex tw-items-start tw-gap-3">
+					<div class="result-type-icon type-course"><i class="fa fa-clipboard-list"></i></div>
+					<div class="tw-flex-1">
+						<a href="course-home.html" class="tw-font-semibold tw-text-sm tw-no-underline tw-block tw-mb-1" style="color: var(--color-primary-700);">Spanish 201: Intermediate Conversation</a>
+						<p class="tw-text-xs tw-mb-1" style="color: #668B91;">Comprehensive intermediate Spanish course covering <strong>verb conjugation</strong> patterns, subjunctive mood, and conversational fluency for real-world settings.</p>
+						<div class="tw-flex tw-items-center tw-gap-3">
+							<span class="tw-text-xs" style="color: #adb5bd;"><i class="fa fa-clipboard-list tw-mr-1"></i>Course</span>
+							<span class="tw-text-xs" style="color: #adb5bd;">Prof. Maria Garcia</span>
+							<span class="tw-text-xs" style="color: #adb5bd;">Spring 2026</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Result 2: Page -->
+			<div class="result-item">
+				<div class="tw-flex tw-items-start tw-gap-3">
+					<div class="result-type-icon type-page"><i class="fa fa-file-alt"></i></div>
+					<div class="tw-flex-1">
+						<a href="page-view.html" class="tw-font-semibold tw-text-sm tw-no-underline tw-block tw-mb-1" style="color: var(--color-primary-700);">Grammar Guide: Verb Conjugations</a>
+						<p class="tw-text-xs tw-mb-1" style="color: #668B91;">Complete reference for regular and irregular <strong>verb conjugation</strong> patterns in present, preterite, and imperfect tenses with practice exercises.</p>
+						<div class="tw-flex tw-items-center tw-gap-3">
+							<span class="tw-text-xs" style="color: #adb5bd;"><i class="fa fa-file-alt tw-mr-1"></i>Page</span>
+							<span class="tw-text-xs" style="color: #adb5bd;">Spanish 201 &gt; Pages</span>
+							<span class="tw-text-xs" style="color: #adb5bd;">Mar 18, 2026</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Result 3: Assignment -->
+			<div class="result-item">
+				<div class="tw-flex tw-items-start tw-gap-3">
+					<div class="result-type-icon type-assignment"><i class="fa fa-file-lines"></i></div>
+					<div class="tw-flex-1">
+						<a href="assignment-detail.html" class="tw-font-semibold tw-text-sm tw-no-underline tw-block tw-mb-1" style="color: var(--color-primary-700);">Chapter 6 Verb Conjugation Worksheet</a>
+						<p class="tw-text-xs tw-mb-1" style="color: #668B91;">Practice worksheet focusing on preterite and imperfect <strong>verb conjugation</strong> for regular -ar, -er, and -ir verbs. Includes 40 fill-in-the-blank exercises.</p>
+						<div class="tw-flex tw-items-center tw-gap-3">
+							<span class="tw-text-xs" style="color: #adb5bd;"><i class="fa fa-file-lines tw-mr-1"></i>Assignment</span>
+							<span class="tw-text-xs" style="color: #adb5bd;">Spanish 201 &gt; Assignments</span>
+							<span class="tw-text-xs" style="color: #adb5bd;">Due Mar 14, 2026</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Result 4: Discussion -->
+			<div class="result-item">
+				<div class="tw-flex tw-items-start tw-gap-3">
+					<div class="result-type-icon type-discussion"><i class="fa fa-comments-alt"></i></div>
+					<div class="tw-flex-1">
+						<a href="discussion-thread.html" class="tw-font-semibold tw-text-sm tw-no-underline tw-block tw-mb-1" style="color: var(--color-primary-700);">Tips for Memorizing Irregular Verb Conjugations</a>
+						<p class="tw-text-xs tw-mb-1" style="color: #668B91;">Student discussion sharing memorization strategies and mnemonic devices for mastering irregular <strong>verb conjugation</strong> patterns in Spanish.</p>
+						<div class="tw-flex tw-items-center tw-gap-3">
+							<span class="tw-text-xs" style="color: #adb5bd;"><i class="fa fa-comments-alt tw-mr-1"></i>Discussion</span>
+							<span class="tw-text-xs" style="color: #adb5bd;">Spanish 201 &gt; Discussions</span>
+							<span class="tw-text-xs" style="color: #adb5bd;">18 replies &middot; Mar 12, 2026</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Result 5: Person -->
+			<div class="result-item">
+				<div class="tw-flex tw-items-start tw-gap-3">
+					<div class="result-type-icon type-person"><i class="fa fa-users"></i></div>
+					<div class="tw-flex-1">
+						<a href="profile.html" class="tw-font-semibold tw-text-sm tw-no-underline tw-block tw-mb-1" style="color: var(--color-primary-700);">Prof. Maria Garcia</a>
+						<p class="tw-text-xs tw-mb-1" style="color: #668B91;">Instructor for Spanish 201 and Spanish 101. Specializes in <strong>verb conjugation</strong> pedagogy and conversational teaching methods.</p>
+						<div class="tw-flex tw-items-center tw-gap-3">
+							<span class="tw-text-xs" style="color: #adb5bd;"><i class="fa fa-users tw-mr-1"></i>Person</span>
+							<span class="tw-text-xs" style="color: #adb5bd;">Language Arts Department</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Result 6: File -->
+			<div class="result-item">
+				<div class="tw-flex tw-items-start tw-gap-3">
+					<div class="result-type-icon type-file"><i class="fa fa-folder"></i></div>
+					<div class="tw-flex-1">
+						<a href="files.html" class="tw-font-semibold tw-text-sm tw-no-underline tw-block tw-mb-1" style="color: var(--color-primary-700);">verb-conjugation-chart.pdf</a>
+						<p class="tw-text-xs tw-mb-1" style="color: #668B91;">Downloadable reference chart with all regular and irregular <strong>verb conjugation</strong> forms organized by tense and mood. Two-page printable format.</p>
+						<div class="tw-flex tw-items-center tw-gap-3">
+							<span class="tw-text-xs" style="color: #adb5bd;"><i class="fa fa-folder tw-mr-1"></i>File (PDF, 1.2 MB)</span>
+							<span class="tw-text-xs" style="color: #adb5bd;">Spanish 201 &gt; Files &gt; Resources</span>
+							<span class="tw-text-xs" style="color: #adb5bd;">Feb 20, 2026</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Result 7: Assignment -->
+			<div class="result-item">
+				<div class="tw-flex tw-items-start tw-gap-3">
+					<div class="result-type-icon type-assignment"><i class="fa fa-file-lines"></i></div>
+					<div class="tw-flex-1">
+						<a href="assignment-detail.html" class="tw-font-semibold tw-text-sm tw-no-underline tw-block tw-mb-1" style="color: var(--color-primary-700);">Midterm Exam: Grammar and Conjugation Review</a>
+						<p class="tw-text-xs tw-mb-1" style="color: #668B91;">Comprehensive midterm covering chapters 1-8 with emphasis on <strong>verb conjugation</strong> accuracy, vocabulary, and reading comprehension.</p>
+						<div class="tw-flex tw-items-center tw-gap-3">
+							<span class="tw-text-xs" style="color: #adb5bd;"><i class="fa fa-file-lines tw-mr-1"></i>Assignment</span>
+							<span class="tw-text-xs" style="color: #adb5bd;">Spanish 201 &gt; Assignments</span>
+							<span class="tw-text-xs" style="color: #adb5bd;">Mar 7, 2026</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Result 8: Course -->
+			<div class="result-item">
+				<div class="tw-flex tw-items-start tw-gap-3">
+					<div class="result-type-icon type-course"><i class="fa fa-clipboard-list"></i></div>
+					<div class="tw-flex-1">
+						<a href="course-home.html" class="tw-font-semibold tw-text-sm tw-no-underline tw-block tw-mb-1" style="color: var(--color-primary-700);">French 101: Beginning French</a>
+						<p class="tw-text-xs tw-mb-1" style="color: #668B91;">Introductory French course including foundational <strong>verb conjugation</strong> for present tense regular verbs, greetings, and basic sentence construction.</p>
+						<div class="tw-flex tw-items-center tw-gap-3">
+							<span class="tw-text-xs" style="color: #adb5bd;"><i class="fa fa-clipboard-list tw-mr-1"></i>Course</span>
+							<span class="tw-text-xs" style="color: #adb5bd;">Prof. Claire Dupont</span>
+							<span class="tw-text-xs" style="color: #adb5bd;">Spring 2026</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Result 9: Page -->
+			<div class="result-item">
+				<div class="tw-flex tw-items-start tw-gap-3">
+					<div class="result-type-icon type-page"><i class="fa fa-file-alt"></i></div>
+					<div class="tw-flex-1">
+						<a href="page-view.html" class="tw-font-semibold tw-text-sm tw-no-underline tw-block tw-mb-1" style="color: var(--color-primary-700);">Study Tips for Language Learners</a>
+						<p class="tw-text-xs tw-mb-1" style="color: #668B91;">Effective study strategies for mastering <strong>verb conjugation</strong>, building vocabulary, and developing listening skills across all language courses.</p>
+						<div class="tw-flex tw-items-center tw-gap-3">
+							<span class="tw-text-xs" style="color: #adb5bd;"><i class="fa fa-file-alt tw-mr-1"></i>Page</span>
+							<span class="tw-text-xs" style="color: #adb5bd;">Spanish 201 &gt; Pages</span>
+							<span class="tw-text-xs" style="color: #adb5bd;">Mar 8, 2026</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		<!-- Pagination -->
+		<div class="tw-flex tw-items-center tw-justify-center tw-gap-2 tw-mt-6">
+			<button class="pagination-btn"><i class="fa fa-chevron-left tw-text-xs"></i></button>
+			<button class="pagination-btn active">1</button>
+			<button class="pagination-btn">2</button>
+			<button class="pagination-btn">3</button>
+			<button class="pagination-btn"><i class="fa fa-chevron-right tw-text-xs"></i></button>
+		</div>
+
+		<!-- API Reference -->
+		<div class="tw-mt-6 tw-text-xs" style="color: #adb5bd;">
+			API: GET /api/v1/search/all_courses | GET /api/v1/search/recipients
+		</div>
+
+	</main>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+<script>$(".button-collapse").sideNav();</script>
+<script src="js/router.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/api.js"></script>
+<script src="js/render.js"></script>
+<script src="js/sidebar.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

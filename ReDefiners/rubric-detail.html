@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	<title>Rubric Detail - ReDefiners</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+	<script src="https://cdn.tailwindcss.com"></script>
+	<script src="css/tailwind-config.js?v=3"></script>
+	<script src="https://kit.fontawesome.com/7a13c96681.js" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/tokens.css?v=3">
+	<link rel="stylesheet" type="text/css" href="css/shadcn.css?v=3">
+	<link rel="stylesheet" type="text/css" href="styles.css?v=3">
+</head>
+<body>
+	<div class="tw-flex tw-min-h-screen tw-font-poppins">
+		<aside class="left-sidebar tw-fixed tw-inset-y-0 tw-left-0 tw-w-[240px] tw-z-50 tw--translate-x-full lg:tw-translate-x-0 tw-transition-transform tw-duration-300 tw-overflow-y-auto shadcn-scrollbar">
+			<div class="menu-bar">
+				<section class="logo-section">
+					<i class="fa fa-times theme-color menu-hide"></i>
+					<img src="Images/logo.PNG" class="res-hide" alt="logo">
+					<div class="nav-input res-show-flex tw-mt-5">
+						<button class="tw-border tw-border-primary-400 tw-border-r-0 tw-bg-transparent tw-px-2"><i class="fa fa-search"></i></button>
+						<input class="tw-border tw-border-primary-400 tw-border-l-0 tw-w-[85%] tw-bg-transparent tw-px-2 tw-py-1 tw-outline-none" type="text" name="search" placeholder="Search">
+					</div>
+				</section>
+				<section class="menu-links">
+					<div class="menu-link"><a href="dashboard.html"><i class="fa fa-th-large"></i><span> Dashboard</span></a></div>
+					<div class="menu-link"><a href="courses.html"><i class="fa fa-clipboard-list"></i><span> Courses</span></a></div>
+					<div class="menu-link"><a href="calendar.html"><i class="fa fa-calendar-alt"></i><span> Calendar</span></a></div>
+					<div class="menu-link"><a href="announcement.html"><i class="fa fa-bullhorn"></i><span> Announcements</span></a></div>
+					<div class="menu-link"><a href="inbox.html"><i class="fa fa-comments"></i><span> Messages</span></a></div>
+					<div class="menu-link"><a href="assignments.html"><i class="fa fa-file-lines"></i><span> Assignments</span></a></div>
+					<div class="menu-link"><a href="grades.html"><i class="fa fa-chart-bar"></i><span> Grades</span></a></div>
+					<div class="menu-link"><a href="modules.html"><i class="fa fa-layer-group"></i><span> Modules</span></a></div>
+					<div class="menu-link"><a href="discussions.html"><i class="fa fa-comments-alt"></i><span> Discussions</span></a></div>
+					<div class="menu-link"><a href="quizzes.html"><i class="fa fa-question-circle"></i><span> Quizzes</span></a></div>
+					<div class="menu-link"><a href="pages.html"><i class="fa fa-file-alt"></i><span> Pages</span></a></div>
+					<div class="menu-link"><a href="files.html"><i class="fa fa-folder"></i><span> Files</span></a></div>
+					<div class="menu-link"><a href="people.html"><i class="fa fa-users"></i><span> People</span></a></div>
+					<div class="menu-link"><a href="outcomes.html"><i class="fa fa-bullseye"></i><span> Outcomes</span></a></div>
+					<div class="menu-link"><a href="rubrics.html" class="active-menu"><i class="fa fa-th"></i><span> Rubrics</span></a></div>
+					<div class="menu-link"><a href="groups.html"><i class="fa fa-user-friends"></i><span> Groups</span></a></div>
+					<div class="menu-link"><a href="conferences.html"><i class="fa fa-video"></i><span> Conferences</span></a></div>
+					<div class="menu-link"><a href="collaborations.html"><i class="fa fa-handshake"></i><span> Collaborations</span></a></div>
+					<div class="menu-link"><a href="account-settings.html"><i class="fa fa-cog"></i><span> Settings</span></a></div>
+				</section>
+			</div>
+		</aside>
+		<div class="sidebar-overlay" id="sidebarOverlay"></div>
+		<main class="middle-part tw-flex-1 lg:tw-ml-[240px] tw-min-h-screen tw-px-4 md:tw-px-6 lg:tw-px-10 tw-pb-8">
+			<div class="tw-flex tw-items-center tw-justify-between tw-py-4 tw-gap-3 tw-flex-wrap">
+				<div class="tw-flex tw-items-center tw-gap-3">
+					<i class="fa fa-bars tw-text-primary-400 tw-cursor-pointer tw-text-xl lg:tw-hidden menu-icon" id="menuToggle"></i>
+					<div class="shadcn-search tw-hidden sm:tw-flex tw-w-64">
+						<i class="fa fa-search"></i>
+						<input type="text" placeholder="Search courses, assignments...">
+					</div>
+				</div>
+				<div class="tw-flex tw-items-center tw-gap-3">
+					<button class="shadcn-btn shadcn-btn-ghost shadcn-btn-icon tw-relative"><i class="fa fa-bell tw-text-primary-400"></i></button>
+					<div class="shadcn-avatar shadcn-avatar-md tw-cursor-pointer profile-click"><img src="Images/profile.png" alt="Profile"></div>
+				</div>
+			</div>
+
+			<!-- Breadcrumb & Header -->
+			<div class="tw-py-6">
+				<nav class="tw-text-sm tw-text-gray-500 tw-mb-2">
+					<a href="rubrics.html" class="theme-color tw-no-underline">Rubrics</a>
+					<i class="fa fa-chevron-right tw-text-xs tw-mx-1"></i>
+					<span>Oral Presentation Rubric</span>
+				</nav>
+				<div class="tw-flex tw-flex-col sm:tw-flex-row tw-items-start sm:tw-items-center tw-justify-between tw-gap-4">
+					<div>
+						<h3 class="second-color"><i class="fa fa-th tw-mr-2 theme-color"></i>Oral Presentation Rubric</h3>
+						<p class="tw-text-sm tw-text-gray-500 tw-mt-1">Evaluates student oral communication skills across four performance levels</p>
+					</div>
+					<div class="tw-flex tw-gap-2">
+						<button class="shadcn-btn shadcn-btn-ghost tw-text-sm"><i class="fa fa-copy tw-mr-1"></i> Duplicate</button>
+						<button class="shadcn-btn shadcn-btn-primary tw-text-sm"><i class="fa fa-edit tw-mr-1"></i> Edit Rubric</button>
+					</div>
+				</div>
+			</div>
+
+			<!-- Rubric Info -->
+			<div class="shadcn-card tw-p-4 tw-mb-6">
+				<div class="tw-grid tw-grid-cols-1 sm:tw-grid-cols-4 tw-gap-4 tw-text-sm">
+					<div>
+						<span class="tw-text-gray-500">Total Points</span>
+						<p class="tw-font-semibold second-color tw-text-lg">16 pts</p>
+					</div>
+					<div>
+						<span class="tw-text-gray-500">Criteria Count</span>
+						<p class="tw-font-semibold second-color tw-text-lg">4 criteria</p>
+					</div>
+					<div>
+						<span class="tw-text-gray-500">Used In</span>
+						<p class="tw-font-semibold second-color tw-text-lg">3 assignments</p>
+					</div>
+					<div>
+						<span class="tw-text-gray-500">Last Updated</span>
+						<p class="tw-font-semibold second-color tw-text-lg">Mar 18, 2026</p>
+					</div>
+				</div>
+			</div>
+
+			<!-- Rubric Table -->
+			<div class="shadcn-card tw-overflow-hidden tw-mb-6">
+				<div class="tw-overflow-x-auto">
+					<table class="tw-w-full tw-text-sm">
+						<thead>
+							<tr class="tw-bg-gray-50">
+								<th class="tw-p-4 tw-text-left tw-font-semibold tw-w-[180px] second-color">Criteria</th>
+								<th class="tw-p-4 tw-text-center tw-font-semibold second-color">
+									<div class="tw-flex tw-flex-col tw-items-center">
+										<span class="tw-text-green-600">Exceptional</span>
+										<span class="tw-text-xs tw-text-gray-400 tw-mt-1">4 pts</span>
+									</div>
+								</th>
+								<th class="tw-p-4 tw-text-center tw-font-semibold second-color">
+									<div class="tw-flex tw-flex-col tw-items-center">
+										<span class="tw-text-blue-600">Proficient</span>
+										<span class="tw-text-xs tw-text-gray-400 tw-mt-1">3 pts</span>
+									</div>
+								</th>
+								<th class="tw-p-4 tw-text-center tw-font-semibold second-color">
+									<div class="tw-flex tw-flex-col tw-items-center">
+										<span class="tw-text-yellow-600">Developing</span>
+										<span class="tw-text-xs tw-text-gray-400 tw-mt-1">2 pts</span>
+									</div>
+								</th>
+								<th class="tw-p-4 tw-text-center tw-font-semibold second-color">
+									<div class="tw-flex tw-flex-col tw-items-center">
+										<span class="tw-text-red-600">Beginning</span>
+										<span class="tw-text-xs tw-text-gray-400 tw-mt-1">1 pt</span>
+									</div>
+								</th>
+								<th class="tw-p-4 tw-text-center tw-font-semibold second-color tw-w-[80px]">Pts</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr class="tw-border-t">
+								<td class="tw-p-4 tw-font-medium tw-align-top">
+									<div class="tw-font-semibold second-color">Content & Organization</div>
+									<p class="tw-text-xs tw-text-gray-400 tw-mt-1">Clarity and structure of the presentation</p>
+								</td>
+								<td class="tw-p-4 tw-text-xs tw-align-top tw-bg-green-50 tw-border-l">
+									Presents a clear thesis with compelling supporting evidence. Logical flow throughout with smooth transitions between key points.
+								</td>
+								<td class="tw-p-4 tw-text-xs tw-align-top tw-bg-blue-50 tw-border-l">
+									Thesis is clear with adequate support. Organization is logical with minor gaps in transitions between sections.
+								</td>
+								<td class="tw-p-4 tw-text-xs tw-align-top tw-bg-yellow-50 tw-border-l">
+									Thesis is present but underdeveloped. Some organizational issues make the presentation difficult to follow at times.
+								</td>
+								<td class="tw-p-4 tw-text-xs tw-align-top tw-bg-red-50 tw-border-l">
+									No clear thesis or organizational structure. Points are disconnected and lack supporting evidence.
+								</td>
+								<td class="tw-p-4 tw-text-center tw-align-top tw-font-semibold tw-border-l">4</td>
+							</tr>
+							<tr class="tw-border-t">
+								<td class="tw-p-4 tw-font-medium tw-align-top">
+									<div class="tw-font-semibold second-color">Delivery & Presence</div>
+									<p class="tw-text-xs tw-text-gray-400 tw-mt-1">Voice, pacing, and stage presence</p>
+								</td>
+								<td class="tw-p-4 tw-text-xs tw-align-top tw-bg-green-50 tw-border-l">
+									Speaks with confidence, appropriate volume, and varied intonation. Maintains natural eye contact and uses purposeful gestures.
+								</td>
+								<td class="tw-p-4 tw-text-xs tw-align-top tw-bg-blue-50 tw-border-l">
+									Generally speaks clearly with adequate volume. Makes eye contact most of the time with some effective gestures.
+								</td>
+								<td class="tw-p-4 tw-text-xs tw-align-top tw-bg-yellow-50 tw-border-l">
+									Speaks too quickly or quietly at times. Limited eye contact; reads from notes frequently. Few gestures used.
+								</td>
+								<td class="tw-p-4 tw-text-xs tw-align-top tw-bg-red-50 tw-border-l">
+									Mumbles or speaks inaudibly. Reads entirely from notes with no eye contact. No physical engagement with audience.
+								</td>
+								<td class="tw-p-4 tw-text-center tw-align-top tw-font-semibold tw-border-l">4</td>
+							</tr>
+							<tr class="tw-border-t">
+								<td class="tw-p-4 tw-font-medium tw-align-top">
+									<div class="tw-font-semibold second-color">Visual Aids</div>
+									<p class="tw-text-xs tw-text-gray-400 tw-mt-1">Use of slides, props, or multimedia</p>
+								</td>
+								<td class="tw-p-4 tw-text-xs tw-align-top tw-bg-green-50 tw-border-l">
+									Visual aids are professional, enhance understanding, and are seamlessly integrated into the presentation narrative.
+								</td>
+								<td class="tw-p-4 tw-text-xs tw-align-top tw-bg-blue-50 tw-border-l">
+									Visual aids support the presentation content. Design is clean with minor formatting inconsistencies.
+								</td>
+								<td class="tw-p-4 tw-text-xs tw-align-top tw-bg-yellow-50 tw-border-l">
+									Visual aids are present but add limited value. Text-heavy slides or poor design choices distract from content.
+								</td>
+								<td class="tw-p-4 tw-text-xs tw-align-top tw-bg-red-50 tw-border-l">
+									No visual aids used, or aids contain errors and detract from the presentation quality significantly.
+								</td>
+								<td class="tw-p-4 tw-text-center tw-align-top tw-font-semibold tw-border-l">4</td>
+							</tr>
+							<tr class="tw-border-t">
+								<td class="tw-p-4 tw-font-medium tw-align-top">
+									<div class="tw-font-semibold second-color">Audience Engagement</div>
+									<p class="tw-text-xs tw-text-gray-400 tw-mt-1">Interaction and Q&A handling</p>
+								</td>
+								<td class="tw-p-4 tw-text-xs tw-align-top tw-bg-green-50 tw-border-l">
+									Actively engages the audience through questions, activities, or discussion. Handles Q&A with thorough, thoughtful responses.
+								</td>
+								<td class="tw-p-4 tw-text-xs tw-align-top tw-bg-blue-50 tw-border-l">
+									Attempts audience engagement with some success. Answers most questions adequately with reasonable depth.
+								</td>
+								<td class="tw-p-4 tw-text-xs tw-align-top tw-bg-yellow-50 tw-border-l">
+									Limited audience interaction. Struggles with questions and provides incomplete or unsure responses to inquiries.
+								</td>
+								<td class="tw-p-4 tw-text-xs tw-align-top tw-bg-red-50 tw-border-l">
+									No attempt to engage the audience. Unable to answer questions or dismisses them without proper consideration.
+								</td>
+								<td class="tw-p-4 tw-text-center tw-align-top tw-font-semibold tw-border-l">4</td>
+							</tr>
+						</tbody>
+						<tfoot>
+							<tr class="tw-border-t tw-bg-gray-50">
+								<td colspan="5" class="tw-p-4 tw-text-right tw-font-semibold second-color">Total Points</td>
+								<td class="tw-p-4 tw-text-center tw-font-bold tw-text-lg theme-color">16</td>
+							</tr>
+						</tfoot>
+					</table>
+				</div>
+			</div>
+
+			<!-- Linked Assignments -->
+			<div class="shadcn-card tw-p-5">
+				<h5 class="second-color tw-mb-3"><i class="fa fa-link tw-mr-2 theme-color"></i>Linked Assignments</h5>
+				<div class="tw-space-y-2">
+					<div class="tw-flex tw-items-center tw-justify-between tw-p-3 tw-rounded tw-border tw-border-gray-100">
+						<div class="tw-flex tw-items-center tw-gap-3">
+							<i class="fa fa-file-lines theme-color"></i>
+							<div>
+								<p class="tw-font-medium tw-text-sm">Midterm Oral Presentation</p>
+								<span class="tw-text-xs tw-text-gray-500">Spanish 201 - Due Mar 28, 2026</span>
+							</div>
+						</div>
+						<a href="assignment-detail.html" class="tw-text-sm theme-color tw-no-underline">View</a>
+					</div>
+					<div class="tw-flex tw-items-center tw-justify-between tw-p-3 tw-rounded tw-border tw-border-gray-100">
+						<div class="tw-flex tw-items-center tw-gap-3">
+							<i class="fa fa-file-lines theme-color"></i>
+							<div>
+								<p class="tw-font-medium tw-text-sm">Cultural Research Presentation</p>
+								<span class="tw-text-xs tw-text-gray-500">French 301 - Due Apr 10, 2026</span>
+							</div>
+						</div>
+						<a href="assignment-detail.html" class="tw-text-sm theme-color tw-no-underline">View</a>
+					</div>
+					<div class="tw-flex tw-items-center tw-justify-between tw-p-3 tw-rounded tw-border tw-border-gray-100">
+						<div class="tw-flex tw-items-center tw-gap-3">
+							<i class="fa fa-file-lines theme-color"></i>
+							<div>
+								<p class="tw-font-medium tw-text-sm">Final Group Presentation</p>
+								<span class="tw-text-xs tw-text-gray-500">Mandarin 101 - Due May 5, 2026</span>
+							</div>
+						</div>
+						<a href="assignment-detail.html" class="tw-text-sm theme-color tw-no-underline">View</a>
+					</div>
+				</div>
+			</div>
+
+		</main>
+	</div>
+	<script src="js/sidebar.js"></script>
+<script src="js/router.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/api.js"></script>
+<script src="js/render.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	<title>ReDefiners - Quiz Statistics</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+	<script src="https://cdn.tailwindcss.com"></script>
+	<script src="css/tailwind-config.js?v=3"></script>
+	<script src="https://kit.fontawesome.com/7a13c96681.js" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/tokens.css?v=3">
+	<link rel="stylesheet" type="text/css" href="css/shadcn.css?v=3">
+	<link rel="stylesheet" type="text/css" href="styles.css?v=3">
+</head>
+<body>
+	<div class="tw-flex tw-min-h-screen tw-font-poppins">
+		<aside class="left-sidebar tw-fixed tw-inset-y-0 tw-left-0 tw-w-[240px] tw-z-50 tw--translate-x-full lg:tw-translate-x-0 tw-transition-transform tw-duration-300 tw-overflow-y-auto shadcn-scrollbar">
+			<div class="menu-bar">
+				<section class="logo-section">
+					<i class="fa fa-times theme-color menu-hide"></i>
+					<img src="Images/logo.PNG" class="res-hide" alt="logo">
+					<div class="nav-input res-show-flex tw-mt-5">
+						<button class="tw-border tw-border-primary-400 tw-border-r-0 tw-bg-transparent tw-px-2"><i class="fa fa-search"></i></button>
+						<input class="tw-border tw-border-primary-400 tw-border-l-0 tw-w-[85%] tw-bg-transparent tw-px-2 tw-py-1 tw-outline-none" type="text" name="search" placeholder="Search">
+					</div>
+				</section>
+				<section class="menu-links">
+					<div class="menu-link"><a href="dashboard.html"><i class="fa fa-th-large"></i><span> Dashboard</span></a></div>
+					<div class="menu-link"><a href="courses.html"><i class="fa fa-clipboard-list"></i><span> Courses</span></a></div>
+					<div class="menu-link"><a href="calendar.html"><i class="fa fa-calendar-alt"></i><span> Calendar</span></a></div>
+					<div class="menu-link"><a href="announcement.html"><i class="fa fa-bullhorn"></i><span> Announcements</span></a></div>
+					<div class="menu-link"><a href="inbox.html"><i class="fa fa-comments"></i><span> Messages</span></a></div>
+					<div class="menu-link"><a href="assignments.html"><i class="fa fa-file-lines"></i><span> Assignments</span></a></div>
+					<div class="menu-link"><a href="grades.html"><i class="fa fa-chart-bar"></i><span> Grades</span></a></div>
+					<div class="menu-link"><a href="modules.html"><i class="fa fa-layer-group"></i><span> Modules</span></a></div>
+					<div class="menu-link"><a href="discussions.html"><i class="fa fa-comments-alt"></i><span> Discussions</span></a></div>
+					<div class="menu-link"><a href="quizzes.html" class="active-menu"><i class="fa fa-question-circle"></i><span> Quizzes</span></a></div>
+					<div class="menu-link"><a href="pages.html"><i class="fa fa-file-alt"></i><span> Pages</span></a></div>
+					<div class="menu-link"><a href="files.html"><i class="fa fa-folder"></i><span> Files</span></a></div>
+					<div class="menu-link"><a href="people.html"><i class="fa fa-users"></i><span> People</span></a></div>
+					<div class="menu-link"><a href="outcomes.html"><i class="fa fa-bullseye"></i><span> Outcomes</span></a></div>
+					<div class="menu-link"><a href="rubrics.html"><i class="fa fa-th"></i><span> Rubrics</span></a></div>
+					<div class="menu-link"><a href="groups.html"><i class="fa fa-user-friends"></i><span> Groups</span></a></div>
+					<div class="menu-link"><a href="conferences.html"><i class="fa fa-video"></i><span> Conferences</span></a></div>
+					<div class="menu-link"><a href="collaborations.html"><i class="fa fa-handshake"></i><span> Collaborations</span></a></div>
+					<div class="menu-link"><a href="account-settings.html"><i class="fa fa-cog"></i><span> Settings</span></a></div>
+				</section>
+			</div>
+		</aside>
+		<div class="sidebar-overlay" id="sidebarOverlay"></div>
+		<main class="middle-part tw-flex-1 lg:tw-ml-[240px] tw-min-h-screen tw-px-4 md:tw-px-6 lg:tw-px-10 tw-pb-8">
+			<div class="tw-flex tw-items-center tw-justify-between tw-py-4 tw-gap-3 tw-flex-wrap">
+				<div class="tw-flex tw-items-center tw-gap-3">
+					<i class="fa fa-bars tw-text-primary-400 tw-cursor-pointer tw-text-xl lg:tw-hidden menu-icon" id="menuToggle"></i>
+					<div class="shadcn-search tw-hidden sm:tw-flex tw-w-64"><i class="fa fa-search"></i><input type="text" placeholder="Search courses, assignments..."></div>
+				</div>
+				<div class="tw-flex tw-items-center tw-gap-3">
+					<button class="shadcn-btn shadcn-btn-ghost shadcn-btn-icon tw-relative"><i class="fa fa-bell tw-text-primary-400"></i></button>
+					<div class="shadcn-avatar shadcn-avatar-md tw-cursor-pointer profile-click"><img src="Images/profile.png" alt="Profile"></div>
+				</div>
+			</div>
+
+			<!-- Header -->
+			<div class="tw-flex tw-flex-col sm:tw-flex-row tw-items-start sm:tw-items-center tw-justify-between tw-py-6 tw-gap-4">
+				<div>
+					<nav class="tw-text-sm tw-text-gray-500 tw-mb-2">
+						<a href="courses.html" class="theme-color tw-no-underline">Courses</a>
+						<i class="fa fa-chevron-right tw-text-xs tw-mx-1"></i>
+						<a href="quizzes.html" class="theme-color tw-no-underline">Quizzes</a>
+						<i class="fa fa-chevron-right tw-text-xs tw-mx-1"></i>
+						<span class="tw-text-gray-400">Statistics</span>
+					</nav>
+					<h3 class="second-color">Quiz Statistics: Midterm Exam - Biology 101</h3>
+					<p class="tw-text-gray-500 tw-text-sm tw-mt-1">Performance analytics and question-level breakdown</p>
+				</div>
+				<button class="shadcn-btn shadcn-btn-outline tw-text-sm"><i class="fa fa-download tw-mr-1"></i> Export CSV</button>
+			</div>
+
+			<!-- Summary Stats -->
+			<div class="tw-grid tw-grid-cols-2 lg:tw-grid-cols-5 tw-gap-4 tw-mb-6">
+				<div class="shadcn-card tw-p-4 tw-text-center">
+					<p class="tw-text-2xl tw-font-bold theme-color">78%</p>
+					<p class="tw-text-xs tw-text-gray-500">Average Score</p>
+				</div>
+				<div class="shadcn-card tw-p-4 tw-text-center">
+					<p class="tw-text-2xl tw-font-bold second-color">82%</p>
+					<p class="tw-text-xs tw-text-gray-500">Median Score</p>
+				</div>
+				<div class="shadcn-card tw-p-4 tw-text-center">
+					<p class="tw-text-2xl tw-font-bold second-color">12.4</p>
+					<p class="tw-text-xs tw-text-gray-500">Std Deviation</p>
+				</div>
+				<div class="shadcn-card tw-p-4 tw-text-center">
+					<p class="tw-text-2xl tw-font-bold second-color">96%</p>
+					<p class="tw-text-xs tw-text-gray-500">High Score</p>
+				</div>
+				<div class="shadcn-card tw-p-4 tw-text-center">
+					<p class="tw-text-2xl tw-font-bold second-color">45%</p>
+					<p class="tw-text-xs tw-text-gray-500">Low Score</p>
+				</div>
+			</div>
+
+			<!-- Score Distribution -->
+			<div class="shadcn-card tw-p-5 tw-mb-6">
+				<h5 class="second-color tw-font-semibold tw-mb-4"><i class="fa fa-chart-bar tw-mr-2"></i>Score Distribution</h5>
+				<div class="tw-flex tw-items-end tw-gap-2 tw-h-48 tw-px-4">
+					<div class="tw-flex tw-flex-col tw-items-center tw-flex-1">
+						<div class="tw-bg-red-400 tw-w-full tw-rounded-t" style="height: 15%"></div>
+						<span class="tw-text-xs tw-mt-1 tw-text-gray-500">0-20%</span>
+						<span class="tw-text-xs tw-text-gray-400">1</span>
+					</div>
+					<div class="tw-flex tw-flex-col tw-items-center tw-flex-1">
+						<div class="tw-bg-orange-400 tw-w-full tw-rounded-t" style="height: 10%"></div>
+						<span class="tw-text-xs tw-mt-1 tw-text-gray-500">21-40%</span>
+						<span class="tw-text-xs tw-text-gray-400">0</span>
+					</div>
+					<div class="tw-flex tw-flex-col tw-items-center tw-flex-1">
+						<div class="tw-bg-yellow-400 tw-w-full tw-rounded-t" style="height: 25%"></div>
+						<span class="tw-text-xs tw-mt-1 tw-text-gray-500">41-60%</span>
+						<span class="tw-text-xs tw-text-gray-400">5</span>
+					</div>
+					<div class="tw-flex tw-flex-col tw-items-center tw-flex-1">
+						<div class="tw-bg-blue-400 tw-w-full tw-rounded-t" style="height: 60%"></div>
+						<span class="tw-text-xs tw-mt-1 tw-text-gray-500">61-80%</span>
+						<span class="tw-text-xs tw-text-gray-400">14</span>
+					</div>
+					<div class="tw-flex tw-flex-col tw-items-center tw-flex-1">
+						<div class="tw-bg-green-500 tw-w-full tw-rounded-t" style="height: 90%"></div>
+						<span class="tw-text-xs tw-mt-1 tw-text-gray-500">81-100%</span>
+						<span class="tw-text-xs tw-text-gray-400">22</span>
+					</div>
+				</div>
+			</div>
+
+			<!-- Question-Level Analysis -->
+			<div class="shadcn-card tw-p-5 tw-mb-6">
+				<h5 class="second-color tw-font-semibold tw-mb-4"><i class="fa fa-list-ol tw-mr-2"></i>Question-Level Analysis</h5>
+				<div class="tw-space-y-4">
+					<!-- Q1 -->
+					<div class="tw-border tw-rounded-lg tw-p-4">
+						<div class="tw-flex tw-justify-between tw-items-center tw-mb-2">
+							<div>
+								<span class="tw-font-medium second-color">Q1: Cell Membrane Structure</span>
+								<span class="tw-text-xs tw-text-gray-400 tw-ml-2">Multiple Choice</span>
+							</div>
+							<div class="tw-text-right">
+								<span class="tw-text-sm tw-font-semibold tw-text-green-600">92% correct</span>
+								<span class="tw-text-xs tw-text-gray-400 tw-ml-2">Disc. Index: 0.45</span>
+							</div>
+						</div>
+						<div class="tw-w-full tw-bg-gray-200 tw-rounded-full tw-h-3">
+							<div class="tw-bg-green-500 tw-h-3 tw-rounded-full" style="width: 92%"></div>
+						</div>
+						<div class="tw-grid tw-grid-cols-4 tw-gap-2 tw-mt-3 tw-text-xs">
+							<div class="tw-bg-green-50 tw-border tw-border-green-200 tw-rounded tw-p-2 tw-text-center">
+								<p class="tw-font-semibold tw-text-green-700">A: Phospholipid bilayer</p>
+								<p class="tw-text-green-600">92% (38)</p>
+							</div>
+							<div class="tw-bg-gray-50 tw-rounded tw-p-2 tw-text-center">
+								<p class="tw-font-medium tw-text-gray-600">B: Single lipid layer</p>
+								<p class="tw-text-gray-500">5% (2)</p>
+							</div>
+							<div class="tw-bg-gray-50 tw-rounded tw-p-2 tw-text-center">
+								<p class="tw-font-medium tw-text-gray-600">C: Protein mesh</p>
+								<p class="tw-text-gray-500">3% (1)</p>
+							</div>
+							<div class="tw-bg-gray-50 tw-rounded tw-p-2 tw-text-center">
+								<p class="tw-font-medium tw-text-gray-600">D: Carbohydrate wall</p>
+								<p class="tw-text-gray-500">0% (0)</p>
+							</div>
+						</div>
+					</div>
+
+					<!-- Q2 -->
+					<div class="tw-border tw-rounded-lg tw-p-4">
+						<div class="tw-flex tw-justify-between tw-items-center tw-mb-2">
+							<div>
+								<span class="tw-font-medium second-color">Q2: Mitochondrial Function</span>
+								<span class="tw-text-xs tw-text-gray-400 tw-ml-2">Multiple Choice</span>
+							</div>
+							<div class="tw-text-right">
+								<span class="tw-text-sm tw-font-semibold tw-text-green-600">85% correct</span>
+								<span class="tw-text-xs tw-text-gray-400 tw-ml-2">Disc. Index: 0.38</span>
+							</div>
+						</div>
+						<div class="tw-w-full tw-bg-gray-200 tw-rounded-full tw-h-3">
+							<div class="tw-bg-green-500 tw-h-3 tw-rounded-full" style="width: 85%"></div>
+						</div>
+						<div class="tw-grid tw-grid-cols-4 tw-gap-2 tw-mt-3 tw-text-xs">
+							<div class="tw-bg-gray-50 tw-rounded tw-p-2 tw-text-center">
+								<p class="tw-font-medium tw-text-gray-600">A: Protein synthesis</p>
+								<p class="tw-text-gray-500">5% (2)</p>
+							</div>
+							<div class="tw-bg-green-50 tw-border tw-border-green-200 tw-rounded tw-p-2 tw-text-center">
+								<p class="tw-font-semibold tw-text-green-700">B: ATP production</p>
+								<p class="tw-text-green-600">85% (35)</p>
+							</div>
+							<div class="tw-bg-gray-50 tw-rounded tw-p-2 tw-text-center">
+								<p class="tw-font-medium tw-text-gray-600">C: DNA replication</p>
+								<p class="tw-text-gray-500">7% (3)</p>
+							</div>
+							<div class="tw-bg-gray-50 tw-rounded tw-p-2 tw-text-center">
+								<p class="tw-font-medium tw-text-gray-600">D: Lipid storage</p>
+								<p class="tw-text-gray-500">3% (1)</p>
+							</div>
+						</div>
+					</div>
+
+					<!-- Q3 -->
+					<div class="tw-border tw-rounded-lg tw-p-4">
+						<div class="tw-flex tw-justify-between tw-items-center tw-mb-2">
+							<div>
+								<span class="tw-font-medium second-color">Q3: Enzyme Inhibition Types</span>
+								<span class="tw-text-xs tw-text-gray-400 tw-ml-2">Multiple Select</span>
+							</div>
+							<div class="tw-text-right">
+								<span class="tw-text-sm tw-font-semibold tw-text-yellow-600">54% correct</span>
+								<span class="tw-text-xs tw-text-gray-400 tw-ml-2">Disc. Index: 0.62</span>
+							</div>
+						</div>
+						<div class="tw-w-full tw-bg-gray-200 tw-rounded-full tw-h-3">
+							<div class="tw-bg-yellow-500 tw-h-3 tw-rounded-full" style="width: 54%"></div>
+						</div>
+						<div class="tw-grid tw-grid-cols-4 tw-gap-2 tw-mt-3 tw-text-xs">
+							<div class="tw-bg-green-50 tw-border tw-border-green-200 tw-rounded tw-p-2 tw-text-center">
+								<p class="tw-font-semibold tw-text-green-700">A: Competitive</p>
+								<p class="tw-text-green-600">88% (36)</p>
+							</div>
+							<div class="tw-bg-green-50 tw-border tw-border-green-200 tw-rounded tw-p-2 tw-text-center">
+								<p class="tw-font-semibold tw-text-green-700">B: Non-competitive</p>
+								<p class="tw-text-green-600">71% (29)</p>
+							</div>
+							<div class="tw-bg-green-50 tw-border tw-border-green-200 tw-rounded tw-p-2 tw-text-center">
+								<p class="tw-font-semibold tw-text-green-700">C: Uncompetitive</p>
+								<p class="tw-text-green-600">54% (22)</p>
+							</div>
+							<div class="tw-bg-gray-50 tw-rounded tw-p-2 tw-text-center">
+								<p class="tw-font-medium tw-text-gray-600">D: Reactive</p>
+								<p class="tw-text-gray-500">15% (6)</p>
+							</div>
+						</div>
+					</div>
+
+					<!-- Q4 -->
+					<div class="tw-border tw-rounded-lg tw-p-4">
+						<div class="tw-flex tw-justify-between tw-items-center tw-mb-2">
+							<div>
+								<span class="tw-font-medium second-color">Q4: Krebs Cycle Products</span>
+								<span class="tw-text-xs tw-text-gray-400 tw-ml-2">Short Answer</span>
+							</div>
+							<div class="tw-text-right">
+								<span class="tw-text-sm tw-font-semibold tw-text-red-600">38% correct</span>
+								<span class="tw-text-xs tw-text-gray-400 tw-ml-2">Disc. Index: 0.71</span>
+							</div>
+						</div>
+						<div class="tw-w-full tw-bg-gray-200 tw-rounded-full tw-h-3">
+							<div class="tw-bg-red-500 tw-h-3 tw-rounded-full" style="width: 38%"></div>
+						</div>
+						<p class="tw-text-xs tw-text-gray-500 tw-mt-2"><i class="fa fa-info-circle tw-mr-1"></i>High discrimination index suggests this question effectively distinguishes high and low performers.</p>
+					</div>
+				</div>
+			</div>
+
+			<!-- Summary Table -->
+			<div class="shadcn-card tw-p-5">
+				<h5 class="second-color tw-font-semibold tw-mb-4"><i class="fa fa-table tw-mr-2"></i>Questions Summary</h5>
+				<div class="tw-overflow-x-auto">
+					<table class="tw-w-full tw-text-sm">
+						<thead class="tw-bg-gray-50">
+							<tr>
+								<th class="tw-px-4 tw-py-3 tw-text-left tw-font-medium tw-text-gray-600">#</th>
+								<th class="tw-px-4 tw-py-3 tw-text-left tw-font-medium tw-text-gray-600">Question</th>
+								<th class="tw-px-4 tw-py-3 tw-text-left tw-font-medium tw-text-gray-600">Type</th>
+								<th class="tw-px-4 tw-py-3 tw-text-left tw-font-medium tw-text-gray-600">Points</th>
+								<th class="tw-px-4 tw-py-3 tw-text-left tw-font-medium tw-text-gray-600">% Correct</th>
+								<th class="tw-px-4 tw-py-3 tw-text-left tw-font-medium tw-text-gray-600">Disc. Index</th>
+							</tr>
+						</thead>
+						<tbody class="tw-divide-y">
+							<tr><td class="tw-px-4 tw-py-2">1</td><td class="tw-px-4 tw-py-2">Cell Membrane Structure</td><td class="tw-px-4 tw-py-2">MC</td><td class="tw-px-4 tw-py-2">2</td><td class="tw-px-4 tw-py-2 tw-text-green-600 tw-font-medium">92%</td><td class="tw-px-4 tw-py-2">0.45</td></tr>
+							<tr><td class="tw-px-4 tw-py-2">2</td><td class="tw-px-4 tw-py-2">Mitochondrial Function</td><td class="tw-px-4 tw-py-2">MC</td><td class="tw-px-4 tw-py-2">2</td><td class="tw-px-4 tw-py-2 tw-text-green-600 tw-font-medium">85%</td><td class="tw-px-4 tw-py-2">0.38</td></tr>
+							<tr><td class="tw-px-4 tw-py-2">3</td><td class="tw-px-4 tw-py-2">Enzyme Inhibition Types</td><td class="tw-px-4 tw-py-2">MS</td><td class="tw-px-4 tw-py-2">3</td><td class="tw-px-4 tw-py-2 tw-text-yellow-600 tw-font-medium">54%</td><td class="tw-px-4 tw-py-2">0.62</td></tr>
+							<tr><td class="tw-px-4 tw-py-2">4</td><td class="tw-px-4 tw-py-2">Krebs Cycle Products</td><td class="tw-px-4 tw-py-2">SA</td><td class="tw-px-4 tw-py-2">4</td><td class="tw-px-4 tw-py-2 tw-text-red-600 tw-font-medium">38%</td><td class="tw-px-4 tw-py-2">0.71</td></tr>
+							<tr><td class="tw-px-4 tw-py-2">5</td><td class="tw-px-4 tw-py-2">Photosynthesis Equation</td><td class="tw-px-4 tw-py-2">MC</td><td class="tw-px-4 tw-py-2">2</td><td class="tw-px-4 tw-py-2 tw-text-green-600 tw-font-medium">88%</td><td class="tw-px-4 tw-py-2">0.33</td></tr>
+							<tr><td class="tw-px-4 tw-py-2">6</td><td class="tw-px-4 tw-py-2">DNA vs RNA Comparison</td><td class="tw-px-4 tw-py-2">Essay</td><td class="tw-px-4 tw-py-2">10</td><td class="tw-px-4 tw-py-2 tw-text-yellow-600 tw-font-medium">67%</td><td class="tw-px-4 tw-py-2">0.55</td></tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</main>
+	</div>
+	<script src="js/sidebar.js"></script>
+<script src="js/router.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/api.js"></script>
+<script src="js/render.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

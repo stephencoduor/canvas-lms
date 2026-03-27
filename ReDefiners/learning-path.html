@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	<title>ReDefiners - Learning Mastery</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+	<script src="https://cdn.tailwindcss.com"></script>
+	<script src="css/tailwind-config.js?v=3"></script>
+	<script src="https://kit.fontawesome.com/7a13c96681.js" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/tokens.css?v=3">
+	<link rel="stylesheet" type="text/css" href="css/shadcn.css?v=3">
+	<link rel="stylesheet" type="text/css" href="styles.css?v=3">
+	<style>
+		.mastery-scale { display: flex; gap: 16px; flex-wrap: wrap; }
+		.mastery-scale-item { display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 500; }
+		.mastery-dot { width: 12px; height: 12px; border-radius: 3px; }
+		.mastery-dot.exceeds { background: #163B32; }
+		.mastery-dot.meets { background: #2DB88A; }
+		.mastery-dot.near { background: #FFB800; }
+		.mastery-dot.below { background: #ef4444; }
+		.mastery-dot.none { background: #e5e7eb; }
+		.outcome-group { border: 1px solid #e5e7eb; border-radius: 12px; margin-bottom: 16px; overflow: hidden; }
+		.outcome-group-header { padding: 14px 20px; background: #f8fafb; cursor: pointer; display: flex; align-items: center; justify-content: space-between; transition: background 0.2s; }
+		.outcome-group-header:hover { background: #f0f4f3; }
+		.outcome-group-header .chevron { transition: transform 0.2s; font-size: 12px; color: #668B91; }
+		.outcome-group-header.collapsed .chevron { transform: rotate(-90deg); }
+		.outcome-group-body { border-top: 1px solid #e5e7eb; }
+		.outcome-item { padding: 14px 20px; border-bottom: 1px solid #f0f0f0; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; transition: background 0.15s; }
+		.outcome-item:last-child { border-bottom: none; }
+		.outcome-item:hover { background: #fafcfb; }
+		.mastery-bar { display: flex; height: 10px; border-radius: 5px; overflow: hidden; width: 120px; background: #e5e7eb; }
+		.mastery-bar .fill { height: 100%; }
+		.mastery-bar .fill.exceeds { background: #163B32; }
+		.mastery-bar .fill.meets { background: #2DB88A; }
+		.mastery-bar .fill.near { background: #FFB800; }
+		.mastery-bar .fill.below { background: #ef4444; }
+		.mastery-label { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 10px; white-space: nowrap; }
+		.mastery-label.exceeds { background: #163B32; color: white; }
+		.mastery-label.meets { background: #D4EFE6; color: #163B32; }
+		.mastery-label.near { background: #fff3e0; color: #b45309; }
+		.mastery-label.below { background: #fef2f2; color: #ef4444; }
+		.mastery-label.none { background: #f0f0f0; color: #6b7280; }
+		.artifact-count { font-size: 11px; color: #668B91; display: flex; align-items: center; gap: 4px; }
+	</style>
+</head>
+<body>
+<div class="tw-flex tw-min-h-screen tw-font-poppins">
+	<aside class="left-sidebar tw-fixed tw-inset-y-0 tw-left-0 tw-w-[240px] tw-z-50 tw--translate-x-full lg:tw-translate-x-0 tw-transition-transform tw-duration-300 tw-overflow-y-auto shadcn-scrollbar">
+		<div class="menu-bar">
+			<section class="logo-section">
+				<i class="fa fa-times theme-color menu-hide"></i>
+				<img src="Images/logo.PNG" class="res-hide" alt="logo">
+				<div class="nav-input res-show-flex tw-mt-5">
+					<button class="tw-border tw-border-primary-400 tw-border-r-0 tw-bg-transparent tw-px-2"><i class="fa fa-search"></i></button>
+					<input class="tw-border tw-border-primary-400 tw-border-l-0 tw-w-[85%] tw-bg-transparent tw-px-2 tw-py-1 tw-outline-none" type="text" name="search" placeholder="Search">
+				</div>
+			</section>
+			<section class="menu-links">
+				<div class="menu-link"><a href="dashboard.html"><i class="fa fa-th-large"></i><span> Dashboard</span></a></div>
+				<div class="menu-link"><a href="courses.html"><i class="fa fa-clipboard-list"></i><span> Courses</span></a></div>
+				<div class="menu-link"><a href="calendar.html"><i class="fa fa-calendar-alt"></i><span> Calendar</span></a></div>
+				<div class="menu-link"><a href="announcement.html"><i class="fa fa-bullhorn"></i><span> Announcements</span></a></div>
+				<div class="menu-link"><a href="inbox.html"><i class="fa fa-comments"></i><span> Messages</span></a></div>
+				<div class="menu-link"><a href="assignments.html"><i class="fa fa-file-lines"></i><span> Assignments</span></a></div>
+				<div class="menu-link"><a href="grades.html"><i class="fa fa-chart-bar"></i><span> Grades</span></a></div>
+				<div class="menu-link"><a href="modules.html"><i class="fa fa-layer-group"></i><span> Modules</span></a></div>
+				<div class="menu-link"><a href="discussions.html"><i class="fa fa-comments-alt"></i><span> Discussions</span></a></div>
+				<div class="menu-link"><a href="quizzes.html"><i class="fa fa-question-circle"></i><span> Quizzes</span></a></div>
+				<div class="menu-link"><a href="pages.html"><i class="fa fa-file-alt"></i><span> Pages</span></a></div>
+				<div class="menu-link"><a href="files.html"><i class="fa fa-folder"></i><span> Files</span></a></div>
+				<div class="menu-link"><a href="people.html"><i class="fa fa-users"></i><span> People</span></a></div>
+				<div class="menu-link"><a href="outcomes.html" class="active-menu"><i class="fa fa-bullseye"></i><span> Outcomes</span></a></div>
+				<div class="menu-link"><a href="rubrics.html"><i class="fa fa-th"></i><span> Rubrics</span></a></div>
+				<div class="menu-link"><a href="groups.html"><i class="fa fa-user-friends"></i><span> Groups</span></a></div>
+				<div class="menu-link"><a href="conferences.html"><i class="fa fa-video"></i><span> Conferences</span></a></div>
+				<div class="menu-link"><a href="collaborations.html"><i class="fa fa-handshake"></i><span> Collaborations</span></a></div>
+				<div class="menu-link"><a href="account-settings.html"><i class="fa fa-cog"></i><span> Settings</span></a></div>
+			</section>
+		</div>
+	</aside>
+	<div class="sidebar-overlay" id="sidebarOverlay"></div>
+	<main class="middle-part tw-flex-1 lg:tw-ml-[240px] tw-min-h-screen tw-px-4 md:tw-px-6 lg:tw-px-10 tw-pb-8">
+		<!-- Nav Bar -->
+		<div class="tw-flex tw-items-center tw-justify-between tw-py-4 tw-gap-3 tw-flex-wrap">
+			<div class="tw-flex tw-items-center tw-gap-3">
+				<i class="fa fa-bars tw-text-primary-400 tw-cursor-pointer tw-text-xl lg:tw-hidden menu-icon" id="menuToggle"></i>
+				<div class="shadcn-search tw-hidden sm:tw-flex tw-w-64">
+					<i class="fa fa-search"></i>
+					<input type="text" placeholder="Search courses, assignments...">
+				</div>
+			</div>
+			<div class="tw-flex tw-items-center tw-gap-3">
+				<div class="tw-hidden sm:tw-flex tw-items-center tw-gap-2 tw-bg-accent-orange tw-text-white tw-rounded-token-md tw-px-3 tw-py-1.5 tw-text-caption-sm">
+					<i class="fa fa-bullhorn tw-text-xs"></i>
+					<span>New announcements available</span>
+				</div>
+				<button class="shadcn-btn shadcn-btn-ghost shadcn-btn-icon tw-relative">
+					<i class="fa fa-bell tw-text-primary-400"></i>
+				</button>
+				<div class="shadcn-avatar shadcn-avatar-md tw-cursor-pointer profile-click">
+					<img src="Images/profile.png" alt="Profile">
+				</div>
+			</div>
+		</div>
+
+		<!-- Page Header -->
+		<div class="tw-flex tw-flex-col sm:tw-flex-row tw-items-start sm:tw-items-center tw-justify-between tw-py-6 tw-gap-4">
+			<div>
+				<h3 class="second-color">Learning Mastery</h3>
+				<p class="tw-text-sm tw-text-gray-500 tw-mt-1">Track your progress toward language proficiency outcomes</p>
+			</div>
+		</div>
+
+		<!-- Mastery Scale Legend -->
+		<div class="shadcn-card tw-p-4 tw-mb-5">
+			<div class="tw-flex tw-items-center tw-justify-between tw-flex-wrap tw-gap-3">
+				<div class="mastery-scale">
+					<div class="mastery-scale-item"><div class="mastery-dot exceeds"></div> Exceeds Mastery (4)</div>
+					<div class="mastery-scale-item"><div class="mastery-dot meets"></div> Meets Mastery (3)</div>
+					<div class="mastery-scale-item"><div class="mastery-dot near"></div> Near Mastery (2)</div>
+					<div class="mastery-scale-item"><div class="mastery-dot below"></div> Below Mastery (1)</div>
+					<div class="mastery-scale-item"><div class="mastery-dot none"></div> Not Assessed (0)</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Student Mastery Overview -->
+		<div class="tw-grid tw-grid-cols-1 sm:tw-grid-cols-3 tw-gap-4 tw-mb-5">
+			<div class="shadcn-card tw-p-5 tw-text-center">
+				<div class="tw-text-3xl tw-font-bold theme-color">74%</div>
+				<div class="tw-text-sm tw-text-gray-500 tw-mt-1">Overall Mastery</div>
+				<progress class="progress-field progress-field1 tw-mt-2" value="74" min="0" max="100" style="width:100%;height:8px;"></progress>
+			</div>
+			<div class="shadcn-card tw-p-5 tw-text-center">
+				<div class="tw-text-3xl tw-font-bold" style="color:#FF6B35;">12</div>
+				<div class="tw-text-sm tw-text-gray-500 tw-mt-1">Day Learning Streak</div>
+				<div class="tw-text-xs tw-text-gray-400 tw-mt-1">3 more days for bonus points</div>
+			</div>
+			<div class="shadcn-card tw-p-5 tw-text-center">
+				<div class="tw-text-3xl tw-font-bold" style="color:#3B82F6;">16</div>
+				<div class="tw-text-sm tw-text-gray-500 tw-mt-1">Outcomes Assessed</div>
+				<div class="tw-text-xs tw-text-gray-400 tw-mt-1">out of 22 total outcomes</div>
+			</div>
+		</div>
+
+		<!-- Outcome Groups -->
+		<!-- Reading Comprehension -->
+		<div class="outcome-group">
+			<div class="outcome-group-header" onclick="this.classList.toggle('collapsed');this.nextElementSibling.style.display=this.classList.contains('collapsed')?'none':'block';">
+				<div class="tw-flex tw-items-center tw-gap-3">
+					<i class="fa fa-book tw-text-primary-400"></i>
+					<span class="tw-font-semibold second-color">Reading Comprehension</span>
+					<span class="tw-text-xs tw-text-gray-400">5 outcomes</span>
+				</div>
+				<i class="fa fa-chevron-down chevron"></i>
+			</div>
+			<div class="outcome-group-body">
+				<div class="outcome-item">
+					<div class="tw-flex-1">
+						<div class="tw-text-sm tw-font-medium second-color">Identify main ideas in authentic texts</div>
+					</div>
+					<div class="tw-flex tw-items-center tw-gap-4">
+						<div class="mastery-bar"><div class="fill exceeds" style="width:100%"></div></div>
+						<span class="mastery-label exceeds">Exceeds</span>
+						<span class="tw-text-sm tw-font-semibold second-color tw-w-8 tw-text-right">4.0</span>
+						<span class="artifact-count"><i class="fa fa-file-alt"></i> 5</span>
+					</div>
+				</div>
+				<div class="outcome-item">
+					<div class="tw-flex-1">
+						<div class="tw-text-sm tw-font-medium second-color">Interpret vocabulary from context clues</div>
+					</div>
+					<div class="tw-flex tw-items-center tw-gap-4">
+						<div class="mastery-bar"><div class="fill meets" style="width:75%"></div></div>
+						<span class="mastery-label meets">Meets</span>
+						<span class="tw-text-sm tw-font-semibold second-color tw-w-8 tw-text-right">3.0</span>
+						<span class="artifact-count"><i class="fa fa-file-alt"></i> 4</span>
+					</div>
+				</div>
+				<div class="outcome-item">
+					<div class="tw-flex-1">
+						<div class="tw-text-sm tw-font-medium second-color">Analyze literary devices in Spanish prose</div>
+					</div>
+					<div class="tw-flex tw-items-center tw-gap-4">
+						<div class="mastery-bar"><div class="fill near" style="width:50%"></div></div>
+						<span class="mastery-label near">Near</span>
+						<span class="tw-text-sm tw-font-semibold second-color tw-w-8 tw-text-right">2.0</span>
+						<span class="artifact-count"><i class="fa fa-file-alt"></i> 3</span>
+					</div>
+				</div>
+				<div class="outcome-item">
+					<div class="tw-flex-1">
+						<div class="tw-text-sm tw-font-medium second-color">Summarize news articles in target language</div>
+					</div>
+					<div class="tw-flex tw-items-center tw-gap-4">
+						<div class="mastery-bar"><div class="fill meets" style="width:75%"></div></div>
+						<span class="mastery-label meets">Meets</span>
+						<span class="tw-text-sm tw-font-semibold second-color tw-w-8 tw-text-right">3.0</span>
+						<span class="artifact-count"><i class="fa fa-file-alt"></i> 2</span>
+					</div>
+				</div>
+				<div class="outcome-item">
+					<div class="tw-flex-1">
+						<div class="tw-text-sm tw-font-medium second-color">Compare perspectives across multiple texts</div>
+					</div>
+					<div class="tw-flex tw-items-center tw-gap-4">
+						<div class="mastery-bar"><div class="fill below" style="width:25%"></div></div>
+						<span class="mastery-label below">Below</span>
+						<span class="tw-text-sm tw-font-semibold second-color tw-w-8 tw-text-right">1.0</span>
+						<span class="artifact-count"><i class="fa fa-file-alt"></i> 1</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Speaking & Pronunciation -->
+		<div class="outcome-group">
+			<div class="outcome-group-header" onclick="this.classList.toggle('collapsed');this.nextElementSibling.style.display=this.classList.contains('collapsed')?'none':'block';">
+				<div class="tw-flex tw-items-center tw-gap-3">
+					<i class="fa fa-microphone tw-text-primary-400"></i>
+					<span class="tw-font-semibold second-color">Speaking & Pronunciation</span>
+					<span class="tw-text-xs tw-text-gray-400">4 outcomes</span>
+				</div>
+				<i class="fa fa-chevron-down chevron"></i>
+			</div>
+			<div class="outcome-group-body">
+				<div class="outcome-item">
+					<div class="tw-flex-1">
+						<div class="tw-text-sm tw-font-medium second-color">Produce accurate vowel and consonant sounds</div>
+					</div>
+					<div class="tw-flex tw-items-center tw-gap-4">
+						<div class="mastery-bar"><div class="fill meets" style="width:75%"></div></div>
+						<span class="mastery-label meets">Meets</span>
+						<span class="tw-text-sm tw-font-semibold second-color tw-w-8 tw-text-right">3.0</span>
+						<span class="artifact-count"><i class="fa fa-file-alt"></i> 6</span>
+					</div>
+				</div>
+				<div class="outcome-item">
+					<div class="tw-flex-1">
+						<div class="tw-text-sm tw-font-medium second-color">Use appropriate intonation patterns</div>
+					</div>
+					<div class="tw-flex tw-items-center tw-gap-4">
+						<div class="mastery-bar"><div class="fill near" style="width:50%"></div></div>
+						<span class="mastery-label near">Near</span>
+						<span class="tw-text-sm tw-font-semibold second-color tw-w-8 tw-text-right">2.5</span>
+						<span class="artifact-count"><i class="fa fa-file-alt"></i> 3</span>
+					</div>
+				</div>
+				<div class="outcome-item">
+					<div class="tw-flex-1">
+						<div class="tw-text-sm tw-font-medium second-color">Engage in spontaneous conversation on familiar topics</div>
+					</div>
+					<div class="tw-flex tw-items-center tw-gap-4">
+						<div class="mastery-bar"><div class="fill exceeds" style="width:100%"></div></div>
+						<span class="mastery-label exceeds">Exceeds</span>
+						<span class="tw-text-sm tw-font-semibold second-color tw-w-8 tw-text-right">4.0</span>
+						<span class="artifact-count"><i class="fa fa-file-alt"></i> 4</span>
+					</div>
+				</div>
+				<div class="outcome-item">
+					<div class="tw-flex-1">
+						<div class="tw-text-sm tw-font-medium second-color">Deliver structured oral presentations</div>
+					</div>
+					<div class="tw-flex tw-items-center tw-gap-4">
+						<div class="mastery-bar"><div class="fill meets" style="width:75%"></div></div>
+						<span class="mastery-label meets">Meets</span>
+						<span class="tw-text-sm tw-font-semibold second-color tw-w-8 tw-text-right">3.0</span>
+						<span class="artifact-count"><i class="fa fa-file-alt"></i> 2</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Grammar & Syntax -->
+		<div class="outcome-group">
+			<div class="outcome-group-header" onclick="this.classList.toggle('collapsed');this.nextElementSibling.style.display=this.classList.contains('collapsed')?'none':'block';">
+				<div class="tw-flex tw-items-center tw-gap-3">
+					<i class="fa fa-spell-check tw-text-primary-400"></i>
+					<span class="tw-font-semibold second-color">Grammar & Syntax</span>
+					<span class="tw-text-xs tw-text-gray-400">4 outcomes</span>
+				</div>
+				<i class="fa fa-chevron-down chevron"></i>
+			</div>
+			<div class="outcome-group-body">
+				<div class="outcome-item">
+					<div class="tw-flex-1">
+						<div class="tw-text-sm tw-font-medium second-color">Apply correct verb conjugations in present, past, and future tenses</div>
+					</div>
+					<div class="tw-flex tw-items-center tw-gap-4">
+						<div class="mastery-bar"><div class="fill meets" style="width:75%"></div></div>
+						<span class="mastery-label meets">Meets</span>
+						<span class="tw-text-sm tw-font-semibold second-color tw-w-8 tw-text-right">3.0</span>
+						<span class="artifact-count"><i class="fa fa-file-alt"></i> 8</span>
+					</div>
+				</div>
+				<div class="outcome-item">
+					<div class="tw-flex-1">
+						<div class="tw-text-sm tw-font-medium second-color">Use subjunctive mood appropriately</div>
+					</div>
+					<div class="tw-flex tw-items-center tw-gap-4">
+						<div class="mastery-bar"><div class="fill near" style="width:50%"></div></div>
+						<span class="mastery-label near">Near</span>
+						<span class="tw-text-sm tw-font-semibold second-color tw-w-8 tw-text-right">2.0</span>
+						<span class="artifact-count"><i class="fa fa-file-alt"></i> 5</span>
+					</div>
+				</div>
+				<div class="outcome-item">
+					<div class="tw-flex-1">
+						<div class="tw-text-sm tw-font-medium second-color">Construct compound and complex sentences</div>
+					</div>
+					<div class="tw-flex tw-items-center tw-gap-4">
+						<div class="mastery-bar"><div class="fill exceeds" style="width:100%"></div></div>
+						<span class="mastery-label exceeds">Exceeds</span>
+						<span class="tw-text-sm tw-font-semibold second-color tw-w-8 tw-text-right">4.0</span>
+						<span class="artifact-count"><i class="fa fa-file-alt"></i> 6</span>
+					</div>
+				</div>
+				<div class="outcome-item">
+					<div class="tw-flex-1">
+						<div class="tw-text-sm tw-font-medium second-color">Demonstrate proper use of pronouns and prepositions</div>
+					</div>
+					<div class="tw-flex tw-items-center tw-gap-4">
+						<div class="mastery-bar"><div class="fill none" style="width:0%"></div></div>
+						<span class="mastery-label none">Not Assessed</span>
+						<span class="tw-text-sm tw-font-semibold second-color tw-w-8 tw-text-right">--</span>
+						<span class="artifact-count"><i class="fa fa-file-alt"></i> 0</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Cultural Awareness -->
+		<div class="outcome-group">
+			<div class="outcome-group-header" onclick="this.classList.toggle('collapsed');this.nextElementSibling.style.display=this.classList.contains('collapsed')?'none':'block';">
+				<div class="tw-flex tw-items-center tw-gap-3">
+					<i class="fa fa-globe-americas tw-text-primary-400"></i>
+					<span class="tw-font-semibold second-color">Cultural Awareness</span>
+					<span class="tw-text-xs tw-text-gray-400">3 outcomes</span>
+				</div>
+				<i class="fa fa-chevron-down chevron"></i>
+			</div>
+			<div class="outcome-group-body">
+				<div class="outcome-item">
+					<div class="tw-flex-1">
+						<div class="tw-text-sm tw-font-medium second-color">Identify cultural practices and traditions of Spanish-speaking countries</div>
+					</div>
+					<div class="tw-flex tw-items-center tw-gap-4">
+						<div class="mastery-bar"><div class="fill exceeds" style="width:100%"></div></div>
+						<span class="mastery-label exceeds">Exceeds</span>
+						<span class="tw-text-sm tw-font-semibold second-color tw-w-8 tw-text-right">4.0</span>
+						<span class="artifact-count"><i class="fa fa-file-alt"></i> 3</span>
+					</div>
+				</div>
+				<div class="outcome-item">
+					<div class="tw-flex-1">
+						<div class="tw-text-sm tw-font-medium second-color">Compare and contrast cultural perspectives across regions</div>
+					</div>
+					<div class="tw-flex tw-items-center tw-gap-4">
+						<div class="mastery-bar"><div class="fill meets" style="width:75%"></div></div>
+						<span class="mastery-label meets">Meets</span>
+						<span class="tw-text-sm tw-font-semibold second-color tw-w-8 tw-text-right">3.0</span>
+						<span class="artifact-count"><i class="fa fa-file-alt"></i> 2</span>
+					</div>
+				</div>
+				<div class="outcome-item">
+					<div class="tw-flex-1">
+						<div class="tw-text-sm tw-font-medium second-color">Demonstrate appropriate social etiquette in target language contexts</div>
+					</div>
+					<div class="tw-flex tw-items-center tw-gap-4">
+						<div class="mastery-bar"><div class="fill near" style="width:50%"></div></div>
+						<span class="mastery-label near">Near</span>
+						<span class="tw-text-sm tw-font-semibold second-color tw-w-8 tw-text-right">2.0</span>
+						<span class="artifact-count"><i class="fa fa-file-alt"></i> 1</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+<script>$(".button-collapse").sideNav();</script>
+<script src="js/router.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/api.js"></script>
+<script src="js/render.js"></script>
+<script src="js/sidebar.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

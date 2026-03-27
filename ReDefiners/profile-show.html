@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	<title>Profile - ReDefiners</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+	<script src="https://cdn.tailwindcss.com"></script>
+	<script src="css/tailwind-config.js?v=3"></script>
+	<script src="https://kit.fontawesome.com/7a13c96681.js" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/tokens.css?v=3">
+	<link rel="stylesheet" type="text/css" href="css/shadcn.css?v=3">
+	<link rel="stylesheet" type="text/css" href="styles.css?v=3">
+</head>
+<body>
+	<div class="tw-flex tw-min-h-screen tw-font-poppins">
+		<aside class="left-sidebar tw-fixed tw-inset-y-0 tw-left-0 tw-w-[240px] tw-z-50 tw--translate-x-full lg:tw-translate-x-0 tw-transition-transform tw-duration-300 tw-overflow-y-auto shadcn-scrollbar">
+			<div class="menu-bar">
+				<section class="logo-section">
+					<i class="fa fa-times theme-color menu-hide"></i>
+					<img src="Images/logo.PNG" class="res-hide" alt="logo">
+					<div class="nav-input res-show-flex tw-mt-5">
+						<button class="tw-border tw-border-primary-400 tw-border-r-0 tw-bg-transparent tw-px-2"><i class="fa fa-search"></i></button>
+						<input class="tw-border tw-border-primary-400 tw-border-l-0 tw-w-[85%] tw-bg-transparent tw-px-2 tw-py-1 tw-outline-none" type="text" name="search" placeholder="Search">
+					</div>
+				</section>
+				<section class="menu-links">
+					<div class="menu-link"><a href="dashboard.html"><i class="fa fa-th-large"></i><span> Dashboard</span></a></div>
+					<div class="menu-link"><a href="courses.html"><i class="fa fa-clipboard-list"></i><span> Courses</span></a></div>
+					<div class="menu-link"><a href="calendar.html"><i class="fa fa-calendar-alt"></i><span> Calendar</span></a></div>
+					<div class="menu-link"><a href="announcement.html"><i class="fa fa-bullhorn"></i><span> Announcements</span></a></div>
+					<div class="menu-link"><a href="inbox.html"><i class="fa fa-comments"></i><span> Messages</span></a></div>
+					<div class="menu-link"><a href="assignments.html"><i class="fa fa-file-lines"></i><span> Assignments</span></a></div>
+					<div class="menu-link"><a href="grades.html"><i class="fa fa-chart-bar"></i><span> Grades</span></a></div>
+					<div class="menu-link"><a href="modules.html"><i class="fa fa-layer-group"></i><span> Modules</span></a></div>
+					<div class="menu-link"><a href="discussions.html"><i class="fa fa-comments-alt"></i><span> Discussions</span></a></div>
+					<div class="menu-link"><a href="quizzes.html"><i class="fa fa-question-circle"></i><span> Quizzes</span></a></div>
+					<div class="menu-link"><a href="pages.html"><i class="fa fa-file-alt"></i><span> Pages</span></a></div>
+					<div class="menu-link"><a href="files.html"><i class="fa fa-folder"></i><span> Files</span></a></div>
+					<div class="menu-link"><a href="people.html"><i class="fa fa-users"></i><span> People</span></a></div>
+					<div class="menu-link"><a href="outcomes.html"><i class="fa fa-bullseye"></i><span> Outcomes</span></a></div>
+					<div class="menu-link"><a href="rubrics.html"><i class="fa fa-th"></i><span> Rubrics</span></a></div>
+					<div class="menu-link"><a href="groups.html"><i class="fa fa-user-friends"></i><span> Groups</span></a></div>
+					<div class="menu-link"><a href="conferences.html"><i class="fa fa-video"></i><span> Conferences</span></a></div>
+					<div class="menu-link"><a href="collaborations.html"><i class="fa fa-handshake"></i><span> Collaborations</span></a></div>
+					<div class="menu-link"><a href="account-settings.html"><i class="fa fa-cog"></i><span> Settings</span></a></div>
+				</section>
+			</div>
+		</aside>
+		<div class="sidebar-overlay" id="sidebarOverlay"></div>
+		<main class="middle-part tw-flex-1 lg:tw-ml-[240px] tw-min-h-screen tw-px-4 md:tw-px-6 lg:tw-px-10 tw-pb-8">
+			<div class="tw-flex tw-items-center tw-justify-between tw-py-4 tw-gap-3 tw-flex-wrap">
+				<div class="tw-flex tw-items-center tw-gap-3">
+					<i class="fa fa-bars tw-text-primary-400 tw-cursor-pointer tw-text-xl lg:tw-hidden menu-icon" id="menuToggle"></i>
+					<div class="shadcn-search tw-hidden sm:tw-flex tw-w-64">
+						<i class="fa fa-search"></i>
+						<input type="text" placeholder="Search courses, assignments...">
+					</div>
+				</div>
+				<div class="tw-flex tw-items-center tw-gap-3">
+					<button class="shadcn-btn shadcn-btn-ghost shadcn-btn-icon tw-relative"><i class="fa fa-bell tw-text-primary-400"></i></button>
+					<div class="shadcn-avatar shadcn-avatar-md tw-cursor-pointer profile-click"><img src="Images/profile.png" alt="Profile"></div>
+				</div>
+			</div>
+
+			<!-- Profile Banner -->
+			<div class="tw-relative tw-rounded-xl tw-overflow-hidden tw-mb-6">
+				<div class="tw-h-48 tw-bg-gradient-to-r tw-from-primary-700 tw-to-primary-800"></div>
+				<div class="tw-absolute tw-bottom-0 tw-left-0 tw-right-0 tw-p-6 tw-flex tw-items-end tw-gap-5">
+					<div class="tw-w-24 tw-h-24 tw-rounded-full tw-border-4 tw-border-white tw-overflow-hidden tw-bg-white tw-flex-shrink-0" style="margin-bottom: -30px;">
+						<img src="Images/profile.png" alt="Avatar" class="tw-w-full tw-h-full tw-object-cover">
+					</div>
+					<div class="tw-pb-1">
+						<h3 class="tw-text-white tw-font-bold">Maria Santos</h3>
+						<p class="tw-text-primary-300 tw-text-sm">Student - Language Studies Program</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="tw-mt-10 tw-grid tw-grid-cols-1 lg:tw-grid-cols-3 tw-gap-6">
+				<!-- Left Column -->
+				<div class="tw-space-y-6">
+					<!-- Bio -->
+					<div class="shadcn-card tw-p-5">
+						<h5 class="second-color tw-font-semibold tw-mb-3"><i class="fa fa-user tw-mr-2 theme-color"></i>About</h5>
+						<p class="tw-text-sm tw-text-gray-600 tw-mb-4">Passionate language learner studying Spanish, French, and Mandarin. Aspiring translator with a love for cultural exchange and international communication.</p>
+						<div class="tw-space-y-2 tw-text-sm">
+							<div class="tw-flex tw-items-center tw-gap-2 tw-text-gray-500">
+								<i class="fa fa-map-marker-alt tw-w-4 tw-text-center theme-color"></i>
+								<span>Miami, Florida</span>
+							</div>
+							<div class="tw-flex tw-items-center tw-gap-2 tw-text-gray-500">
+								<i class="fa fa-envelope tw-w-4 tw-text-center theme-color"></i>
+								<span>maria.santos@redefiners.org</span>
+							</div>
+							<div class="tw-flex tw-items-center tw-gap-2 tw-text-gray-500">
+								<i class="fa fa-calendar tw-w-4 tw-text-center theme-color"></i>
+								<span>Joined September 2024</span>
+							</div>
+						</div>
+					</div>
+
+					<!-- Badges -->
+					<div class="shadcn-card tw-p-5">
+						<h5 class="second-color tw-font-semibold tw-mb-3"><i class="fa fa-award tw-mr-2 theme-color"></i>Badges</h5>
+						<div class="tw-grid tw-grid-cols-3 tw-gap-3">
+							<div class="tw-text-center">
+								<div class="tw-w-14 tw-h-14 tw-rounded-full tw-bg-yellow-100 tw-flex tw-items-center tw-justify-center tw-mx-auto tw-mb-1">
+									<i class="fa fa-star tw-text-yellow-500 tw-text-xl"></i>
+								</div>
+								<span class="tw-text-xs tw-text-gray-600">Honor Roll</span>
+							</div>
+							<div class="tw-text-center">
+								<div class="tw-w-14 tw-h-14 tw-rounded-full tw-bg-green-100 tw-flex tw-items-center tw-justify-center tw-mx-auto tw-mb-1">
+									<i class="fa fa-check-double tw-text-green-500 tw-text-xl"></i>
+								</div>
+								<span class="tw-text-xs tw-text-gray-600">Perfect Attendance</span>
+							</div>
+							<div class="tw-text-center">
+								<div class="tw-w-14 tw-h-14 tw-rounded-full tw-bg-blue-100 tw-flex tw-items-center tw-justify-center tw-mx-auto tw-mb-1">
+									<i class="fa fa-language tw-text-blue-500 tw-text-xl"></i>
+								</div>
+								<span class="tw-text-xs tw-text-gray-600">Bilingual</span>
+							</div>
+							<div class="tw-text-center">
+								<div class="tw-w-14 tw-h-14 tw-rounded-full tw-bg-purple-100 tw-flex tw-items-center tw-justify-center tw-mx-auto tw-mb-1">
+									<i class="fa fa-comments tw-text-purple-500 tw-text-xl"></i>
+								</div>
+								<span class="tw-text-xs tw-text-gray-600">Top Contributor</span>
+							</div>
+							<div class="tw-text-center">
+								<div class="tw-w-14 tw-h-14 tw-rounded-full tw-bg-red-100 tw-flex tw-items-center tw-justify-center tw-mx-auto tw-mb-1">
+									<i class="fa fa-fire tw-text-red-500 tw-text-xl"></i>
+								</div>
+								<span class="tw-text-xs tw-text-gray-600">30-Day Streak</span>
+							</div>
+							<div class="tw-text-center">
+								<div class="tw-w-14 tw-h-14 tw-rounded-full tw-bg-gray-100 tw-flex tw-items-center tw-justify-center tw-mx-auto tw-mb-1">
+									<i class="fa fa-globe tw-text-gray-400 tw-text-xl"></i>
+								</div>
+								<span class="tw-text-xs tw-text-gray-600">World Traveler</span>
+							</div>
+						</div>
+					</div>
+
+					<!-- Links -->
+					<div class="shadcn-card tw-p-5">
+						<h5 class="second-color tw-font-semibold tw-mb-3"><i class="fa fa-link tw-mr-2 theme-color"></i>Links & Portfolio</h5>
+						<div class="tw-space-y-2">
+							<a href="#" class="tw-flex tw-items-center tw-gap-3 tw-text-sm tw-text-gray-600 hover:tw-text-primary-700 tw-no-underline tw-p-2 tw-rounded hover:tw-bg-gray-50">
+								<i class="fa fa-globe tw-w-5 tw-text-center theme-color"></i>
+								<span>mariasantos.portfolio.com</span>
+							</a>
+							<a href="#" class="tw-flex tw-items-center tw-gap-3 tw-text-sm tw-text-gray-600 hover:tw-text-primary-700 tw-no-underline tw-p-2 tw-rounded hover:tw-bg-gray-50">
+								<i class="fab fa-linkedin tw-w-5 tw-text-center theme-color"></i>
+								<span>linkedin.com/in/mariasantos</span>
+							</a>
+							<a href="#" class="tw-flex tw-items-center tw-gap-3 tw-text-sm tw-text-gray-600 hover:tw-text-primary-700 tw-no-underline tw-p-2 tw-rounded hover:tw-bg-gray-50">
+								<i class="fab fa-github tw-w-5 tw-text-center theme-color"></i>
+								<span>github.com/mariasantos</span>
+							</a>
+						</div>
+					</div>
+				</div>
+
+				<!-- Right Column -->
+				<div class="lg:tw-col-span-2 tw-space-y-6">
+					<!-- Courses Enrolled -->
+					<div class="shadcn-card tw-p-5">
+						<h5 class="second-color tw-font-semibold tw-mb-3"><i class="fa fa-clipboard-list tw-mr-2 theme-color"></i>Courses Enrolled</h5>
+						<div class="tw-grid tw-grid-cols-1 sm:tw-grid-cols-2 tw-gap-3">
+							<div class="tw-p-3 tw-rounded tw-border tw-border-gray-100 hover:tw-shadow-sm tw-transition">
+								<div class="tw-flex tw-items-center tw-gap-3">
+									<div class="tw-w-10 tw-h-10 tw-rounded tw-bg-red-100 tw-flex tw-items-center tw-justify-center">
+										<i class="fa fa-language tw-text-red-500"></i>
+									</div>
+									<div>
+										<p class="tw-font-medium tw-text-sm second-color">Spanish 201</p>
+										<span class="tw-text-xs tw-text-gray-500">Intermediate Spanish</span>
+									</div>
+								</div>
+							</div>
+							<div class="tw-p-3 tw-rounded tw-border tw-border-gray-100 hover:tw-shadow-sm tw-transition">
+								<div class="tw-flex tw-items-center tw-gap-3">
+									<div class="tw-w-10 tw-h-10 tw-rounded tw-bg-blue-100 tw-flex tw-items-center tw-justify-center">
+										<i class="fa fa-language tw-text-blue-500"></i>
+									</div>
+									<div>
+										<p class="tw-font-medium tw-text-sm second-color">French 301</p>
+										<span class="tw-text-xs tw-text-gray-500">Advanced French</span>
+									</div>
+								</div>
+							</div>
+							<div class="tw-p-3 tw-rounded tw-border tw-border-gray-100 hover:tw-shadow-sm tw-transition">
+								<div class="tw-flex tw-items-center tw-gap-3">
+									<div class="tw-w-10 tw-h-10 tw-rounded tw-bg-green-100 tw-flex tw-items-center tw-justify-center">
+										<i class="fa fa-language tw-text-green-500"></i>
+									</div>
+									<div>
+										<p class="tw-font-medium tw-text-sm second-color">Mandarin 101</p>
+										<span class="tw-text-xs tw-text-gray-500">Beginner Mandarin</span>
+									</div>
+								</div>
+							</div>
+							<div class="tw-p-3 tw-rounded tw-border tw-border-gray-100 hover:tw-shadow-sm tw-transition">
+								<div class="tw-flex tw-items-center tw-gap-3">
+									<div class="tw-w-10 tw-h-10 tw-rounded tw-bg-purple-100 tw-flex tw-items-center tw-justify-center">
+										<i class="fa fa-globe tw-text-purple-500"></i>
+									</div>
+									<div>
+										<p class="tw-font-medium tw-text-sm second-color">Cultural Studies 210</p>
+										<span class="tw-text-xs tw-text-gray-500">Global Perspectives</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Recent Activity -->
+					<div class="shadcn-card tw-p-5">
+						<h5 class="second-color tw-font-semibold tw-mb-3"><i class="fa fa-clock tw-mr-2 theme-color"></i>Recent Activity</h5>
+						<div class="tw-space-y-3">
+							<div class="tw-flex tw-items-start tw-gap-3 tw-p-3 tw-rounded tw-border tw-border-gray-100">
+								<div class="tw-w-8 tw-h-8 tw-rounded-full tw-bg-green-100 tw-flex tw-items-center tw-justify-center tw-flex-shrink-0">
+									<i class="fa fa-check tw-text-green-600 tw-text-xs"></i>
+								</div>
+								<div>
+									<p class="tw-text-sm second-color">Submitted <span class="tw-font-semibold">Cultural Research Essay</span> in French 301</p>
+									<span class="tw-text-xs tw-text-gray-500">2 hours ago</span>
+								</div>
+							</div>
+							<div class="tw-flex tw-items-start tw-gap-3 tw-p-3 tw-rounded tw-border tw-border-gray-100">
+								<div class="tw-w-8 tw-h-8 tw-rounded-full tw-bg-blue-100 tw-flex tw-items-center tw-justify-center tw-flex-shrink-0">
+									<i class="fa fa-comment tw-text-blue-600 tw-text-xs"></i>
+								</div>
+								<div>
+									<p class="tw-text-sm second-color">Posted in discussion <span class="tw-font-semibold">Language Learning Strategies</span></p>
+									<span class="tw-text-xs tw-text-gray-500">Yesterday at 3:45 PM</span>
+								</div>
+							</div>
+							<div class="tw-flex tw-items-start tw-gap-3 tw-p-3 tw-rounded tw-border tw-border-gray-100">
+								<div class="tw-w-8 tw-h-8 tw-rounded-full tw-bg-purple-100 tw-flex tw-items-center tw-justify-center tw-flex-shrink-0">
+									<i class="fa fa-award tw-text-purple-600 tw-text-xs"></i>
+								</div>
+								<div>
+									<p class="tw-text-sm second-color">Earned badge <span class="tw-font-semibold">30-Day Streak</span></p>
+									<span class="tw-text-xs tw-text-gray-500">2 days ago</span>
+								</div>
+							</div>
+							<div class="tw-flex tw-items-start tw-gap-3 tw-p-3 tw-rounded tw-border tw-border-gray-100">
+								<div class="tw-w-8 tw-h-8 tw-rounded-full tw-bg-yellow-100 tw-flex tw-items-center tw-justify-center tw-flex-shrink-0">
+									<i class="fa fa-star tw-text-yellow-600 tw-text-xs"></i>
+								</div>
+								<div>
+									<p class="tw-text-sm second-color">Scored 95% on <span class="tw-font-semibold">Vocabulary Quiz - Chapter 8</span></p>
+									<span class="tw-text-xs tw-text-gray-500">3 days ago</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</main>
+	</div>
+	<script src="js/sidebar.js"></script>
+<script src="js/router.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/api.js"></script>
+<script src="js/render.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

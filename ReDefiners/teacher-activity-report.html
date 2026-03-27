@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	<title>ReDefiners - Teacher Activity Report</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+	<script src="https://cdn.tailwindcss.com"></script>
+	<script src="css/tailwind-config.js?v=3"></script>
+	<script src="https://kit.fontawesome.com/7a13c96681.js" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/tokens.css?v=3">
+	<link rel="stylesheet" type="text/css" href="css/shadcn.css?v=3">
+	<link rel="stylesheet" type="text/css" href="styles.css?v=3">
+</head>
+<body>
+	<div class="tw-flex tw-min-h-screen tw-font-poppins">
+		<aside class="left-sidebar tw-fixed tw-inset-y-0 tw-left-0 tw-w-[240px] tw-z-50 tw--translate-x-full lg:tw-translate-x-0 tw-transition-transform tw-duration-300 tw-overflow-y-auto shadcn-scrollbar">
+			<div class="menu-bar">
+				<section class="logo-section">
+					<i class="fa fa-times theme-color menu-hide"></i>
+					<img src="Images/logo.PNG" class="res-hide" alt="logo">
+					<div class="nav-input res-show-flex tw-mt-5">
+						<button class="tw-border tw-border-primary-400 tw-border-r-0 tw-bg-transparent tw-px-2"><i class="fa fa-search"></i></button>
+						<input class="tw-border tw-border-primary-400 tw-border-l-0 tw-w-[85%] tw-bg-transparent tw-px-2 tw-py-1 tw-outline-none" type="text" name="search" placeholder="Search">
+					</div>
+				</section>
+				<section class="menu-links">
+					<div class="menu-link"><a href="dashboard.html" class="active-menu"><i class="fa fa-th-large"></i><span> Dashboard</span></a></div>
+					<div class="menu-link"><a href="courses.html"><i class="fa fa-clipboard-list"></i><span> Courses</span></a></div>
+					<div class="menu-link"><a href="calendar.html"><i class="fa fa-calendar-alt"></i><span> Calendar</span></a></div>
+					<div class="menu-link"><a href="announcement.html"><i class="fa fa-bullhorn"></i><span> Announcements</span></a></div>
+					<div class="menu-link"><a href="inbox.html"><i class="fa fa-comments"></i><span> Messages</span></a></div>
+					<div class="menu-link"><a href="assignments.html"><i class="fa fa-file-lines"></i><span> Assignments</span></a></div>
+					<div class="menu-link"><a href="grades.html"><i class="fa fa-chart-bar"></i><span> Grades</span></a></div>
+					<div class="menu-link"><a href="modules.html"><i class="fa fa-layer-group"></i><span> Modules</span></a></div>
+					<div class="menu-link"><a href="discussions.html"><i class="fa fa-comments-alt"></i><span> Discussions</span></a></div>
+					<div class="menu-link"><a href="quizzes.html"><i class="fa fa-question-circle"></i><span> Quizzes</span></a></div>
+					<div class="menu-link"><a href="pages.html"><i class="fa fa-file-alt"></i><span> Pages</span></a></div>
+					<div class="menu-link"><a href="files.html"><i class="fa fa-folder"></i><span> Files</span></a></div>
+					<div class="menu-link"><a href="people.html"><i class="fa fa-users"></i><span> People</span></a></div>
+					<div class="menu-link"><a href="outcomes.html"><i class="fa fa-bullseye"></i><span> Outcomes</span></a></div>
+					<div class="menu-link"><a href="rubrics.html"><i class="fa fa-th"></i><span> Rubrics</span></a></div>
+					<div class="menu-link"><a href="groups.html"><i class="fa fa-user-friends"></i><span> Groups</span></a></div>
+					<div class="menu-link"><a href="conferences.html"><i class="fa fa-video"></i><span> Conferences</span></a></div>
+					<div class="menu-link"><a href="collaborations.html"><i class="fa fa-handshake"></i><span> Collaborations</span></a></div>
+					<div class="menu-link"><a href="account-settings.html"><i class="fa fa-cog"></i><span> Settings</span></a></div>
+				</section>
+			</div>
+		</aside>
+		<div class="sidebar-overlay" id="sidebarOverlay"></div>
+		<main class="middle-part tw-flex-1 lg:tw-ml-[240px] tw-min-h-screen tw-px-4 md:tw-px-6 lg:tw-px-10 tw-pb-8">
+			<div class="tw-flex tw-items-center tw-justify-between tw-py-4 tw-gap-3 tw-flex-wrap">
+				<div class="tw-flex tw-items-center tw-gap-3">
+					<i class="fa fa-bars tw-text-primary-400 tw-cursor-pointer tw-text-xl lg:tw-hidden menu-icon" id="menuToggle"></i>
+					<div class="shadcn-search tw-hidden sm:tw-flex tw-w-64"><i class="fa fa-search"></i><input type="text" placeholder="Search courses, assignments..."></div>
+				</div>
+				<div class="tw-flex tw-items-center tw-gap-3">
+					<button class="shadcn-btn shadcn-btn-ghost shadcn-btn-icon tw-relative"><i class="fa fa-bell tw-text-primary-400"></i></button>
+					<div class="shadcn-avatar shadcn-avatar-md tw-cursor-pointer profile-click"><img src="Images/profile.png" alt="Profile"></div>
+				</div>
+			</div>
+
+			<!-- Header -->
+			<div class="tw-flex tw-flex-col sm:tw-flex-row tw-items-start sm:tw-items-center tw-justify-between tw-py-6 tw-gap-4">
+				<div>
+					<nav class="tw-text-sm tw-text-gray-500 tw-mb-2">
+						<a href="admin-dashboard.html" class="theme-color tw-no-underline">Admin</a>
+						<i class="fa fa-chevron-right tw-text-xs tw-mx-1"></i>
+						<span class="tw-text-gray-400">Teacher Activity Report</span>
+					</nav>
+					<h3 class="second-color">Teacher Activity Report</h3>
+					<p class="tw-text-gray-500 tw-text-sm tw-mt-1">Performance summary for Dr. Sarah Mitchell &middot; Spring 2025 semester</p>
+				</div>
+				<div class="tw-flex tw-gap-2">
+					<select class="shadcn-input tw-text-sm tw-w-44">
+						<option>Spring 2025</option>
+						<option>Fall 2024</option>
+						<option>Summer 2024</option>
+					</select>
+					<button class="shadcn-btn shadcn-btn-outline tw-text-sm"><i class="fa fa-download tw-mr-1"></i> Export PDF</button>
+				</div>
+			</div>
+
+			<!-- Teacher Profile Card -->
+			<div class="shadcn-card tw-p-5 tw-mb-6">
+				<div class="tw-flex tw-flex-wrap tw-items-center tw-gap-5">
+					<div class="shadcn-avatar shadcn-avatar-lg">
+						<img src="Images/profile.png" alt="Teacher">
+					</div>
+					<div class="tw-flex-1">
+						<h4 class="second-color tw-font-semibold">Dr. Sarah Mitchell</h4>
+						<p class="tw-text-sm tw-text-gray-500">Department of Biological Sciences &middot; Associate Professor</p>
+						<p class="tw-text-xs tw-text-gray-400 tw-mt-1">Last login: Mar 24, 2025 at 9:15 AM &middot; Member since Aug 2019</p>
+					</div>
+					<button class="shadcn-btn shadcn-btn-outline tw-text-sm"><i class="fa fa-envelope tw-mr-1"></i> Message</button>
+				</div>
+			</div>
+
+			<!-- Key Metrics -->
+			<div class="tw-grid tw-grid-cols-2 lg:tw-grid-cols-5 tw-gap-4 tw-mb-6">
+				<div class="shadcn-card tw-p-4 tw-text-center">
+					<div class="tw-w-10 tw-h-10 tw-rounded-full tw-bg-blue-100 tw-flex tw-items-center tw-justify-center tw-mx-auto tw-mb-2">
+						<i class="fa fa-chalkboard-teacher tw-text-blue-600"></i>
+					</div>
+					<p class="tw-text-2xl tw-font-bold second-color">4</p>
+					<p class="tw-text-xs tw-text-gray-500">Courses Taught</p>
+				</div>
+				<div class="shadcn-card tw-p-4 tw-text-center">
+					<div class="tw-w-10 tw-h-10 tw-rounded-full tw-bg-green-100 tw-flex tw-items-center tw-justify-center tw-mx-auto tw-mb-2">
+						<i class="fa fa-user-graduate tw-text-green-600"></i>
+					</div>
+					<p class="tw-text-2xl tw-font-bold second-color">287</p>
+					<p class="tw-text-xs tw-text-gray-500">Total Students</p>
+				</div>
+				<div class="shadcn-card tw-p-4 tw-text-center">
+					<div class="tw-w-10 tw-h-10 tw-rounded-full tw-bg-purple-100 tw-flex tw-items-center tw-justify-center tw-mx-auto tw-mb-2">
+						<i class="fa fa-clock tw-text-purple-600"></i>
+					</div>
+					<p class="tw-text-2xl tw-font-bold second-color">2.3</p>
+					<p class="tw-text-xs tw-text-gray-500">Avg Grading Days</p>
+				</div>
+				<div class="shadcn-card tw-p-4 tw-text-center">
+					<div class="tw-w-10 tw-h-10 tw-rounded-full tw-bg-orange-100 tw-flex tw-items-center tw-justify-center tw-mx-auto tw-mb-2">
+						<i class="fa fa-exclamation-circle tw-text-orange-600"></i>
+					</div>
+					<p class="tw-text-2xl tw-font-bold tw-text-orange-600">12</p>
+					<p class="tw-text-xs tw-text-gray-500">Ungraded Submissions</p>
+				</div>
+				<div class="shadcn-card tw-p-4 tw-text-center">
+					<div class="tw-w-10 tw-h-10 tw-rounded-full tw-bg-teal-100 tw-flex tw-items-center tw-justify-center tw-mx-auto tw-mb-2">
+						<i class="fa fa-comments tw-text-teal-600"></i>
+					</div>
+					<p class="tw-text-2xl tw-font-bold second-color">156</p>
+					<p class="tw-text-xs tw-text-gray-500">Discussion Posts</p>
+				</div>
+			</div>
+
+			<!-- Courses Breakdown -->
+			<div class="shadcn-card tw-p-5 tw-mb-6">
+				<h5 class="second-color tw-font-semibold tw-mb-4"><i class="fa fa-clipboard-list tw-mr-2"></i>Courses Taught This Semester</h5>
+				<div class="tw-overflow-x-auto">
+					<table class="tw-w-full tw-text-sm">
+						<thead class="tw-bg-gray-50">
+							<tr>
+								<th class="tw-px-4 tw-py-3 tw-text-left tw-font-medium tw-text-gray-600">Course</th>
+								<th class="tw-px-4 tw-py-3 tw-text-left tw-font-medium tw-text-gray-600">Students</th>
+								<th class="tw-px-4 tw-py-3 tw-text-left tw-font-medium tw-text-gray-600">Assignments</th>
+								<th class="tw-px-4 tw-py-3 tw-text-left tw-font-medium tw-text-gray-600">Graded</th>
+								<th class="tw-px-4 tw-py-3 tw-text-left tw-font-medium tw-text-gray-600">Avg Turnaround</th>
+								<th class="tw-px-4 tw-py-3 tw-text-left tw-font-medium tw-text-gray-600">Class Avg</th>
+							</tr>
+						</thead>
+						<tbody class="tw-divide-y">
+							<tr>
+								<td class="tw-px-4 tw-py-3">
+									<p class="tw-font-medium second-color">Biology 101</p>
+									<p class="tw-text-xs tw-text-gray-400">BIO-101-A &middot; Intro to Biology</p>
+								</td>
+								<td class="tw-px-4 tw-py-3">86</td>
+								<td class="tw-px-4 tw-py-3">14</td>
+								<td class="tw-px-4 tw-py-3"><span class="tw-text-green-600">12/14</span></td>
+								<td class="tw-px-4 tw-py-3">1.8 days</td>
+								<td class="tw-px-4 tw-py-3 tw-font-medium theme-color">82%</td>
+							</tr>
+							<tr>
+								<td class="tw-px-4 tw-py-3">
+									<p class="tw-font-medium second-color">Biology 201</p>
+									<p class="tw-text-xs tw-text-gray-400">BIO-201-A &middot; Cell Biology</p>
+								</td>
+								<td class="tw-px-4 tw-py-3">64</td>
+								<td class="tw-px-4 tw-py-3">10</td>
+								<td class="tw-px-4 tw-py-3"><span class="tw-text-green-600">10/10</span></td>
+								<td class="tw-px-4 tw-py-3">2.1 days</td>
+								<td class="tw-px-4 tw-py-3 tw-font-medium theme-color">78%</td>
+							</tr>
+							<tr>
+								<td class="tw-px-4 tw-py-3">
+									<p class="tw-font-medium second-color">Biology 305</p>
+									<p class="tw-text-xs tw-text-gray-400">BIO-305-A &middot; Genetics</p>
+								</td>
+								<td class="tw-px-4 tw-py-3">72</td>
+								<td class="tw-px-4 tw-py-3">8</td>
+								<td class="tw-px-4 tw-py-3"><span class="tw-text-yellow-600">5/8</span></td>
+								<td class="tw-px-4 tw-py-3">2.9 days</td>
+								<td class="tw-px-4 tw-py-3 tw-font-medium theme-color">75%</td>
+							</tr>
+							<tr>
+								<td class="tw-px-4 tw-py-3">
+									<p class="tw-font-medium second-color">Biology 410</p>
+									<p class="tw-text-xs tw-text-gray-400">BIO-410-A &middot; Advanced Molecular Bio</p>
+								</td>
+								<td class="tw-px-4 tw-py-3">65</td>
+								<td class="tw-px-4 tw-py-3">6</td>
+								<td class="tw-px-4 tw-py-3"><span class="tw-text-green-600">6/6</span></td>
+								<td class="tw-px-4 tw-py-3">2.5 days</td>
+								<td class="tw-px-4 tw-py-3 tw-font-medium theme-color">81%</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+			<!-- Activity Timeline -->
+			<div class="shadcn-card tw-p-5 tw-mb-6">
+				<h5 class="second-color tw-font-semibold tw-mb-4"><i class="fa fa-stream tw-mr-2"></i>Recent Activity Timeline</h5>
+				<div class="tw-space-y-4">
+					<div class="tw-flex tw-gap-4">
+						<div class="tw-flex tw-flex-col tw-items-center">
+							<div class="tw-w-8 tw-h-8 tw-rounded-full tw-bg-green-100 tw-flex tw-items-center tw-justify-center tw-flex-shrink-0">
+								<i class="fa fa-check tw-text-green-600 tw-text-xs"></i>
+							</div>
+							<div class="tw-w-0.5 tw-flex-1 tw-bg-gray-200"></div>
+						</div>
+						<div class="tw-pb-4">
+							<p class="tw-text-sm tw-font-medium second-color">Graded 15 submissions for Biology 101 - Research Paper</p>
+							<p class="tw-text-xs tw-text-gray-400">Today at 9:30 AM &middot; Average grade: 85%</p>
+						</div>
+					</div>
+					<div class="tw-flex tw-gap-4">
+						<div class="tw-flex tw-flex-col tw-items-center">
+							<div class="tw-w-8 tw-h-8 tw-rounded-full tw-bg-blue-100 tw-flex tw-items-center tw-justify-center tw-flex-shrink-0">
+								<i class="fa fa-bullhorn tw-text-blue-600 tw-text-xs"></i>
+							</div>
+							<div class="tw-w-0.5 tw-flex-1 tw-bg-gray-200"></div>
+						</div>
+						<div class="tw-pb-4">
+							<p class="tw-text-sm tw-font-medium second-color">Posted announcement in Biology 305 - Midterm Review Session</p>
+							<p class="tw-text-xs tw-text-gray-400">Yesterday at 3:15 PM</p>
+						</div>
+					</div>
+					<div class="tw-flex tw-gap-4">
+						<div class="tw-flex tw-flex-col tw-items-center">
+							<div class="tw-w-8 tw-h-8 tw-rounded-full tw-bg-purple-100 tw-flex tw-items-center tw-justify-center tw-flex-shrink-0">
+								<i class="fa fa-file-alt tw-text-purple-600 tw-text-xs"></i>
+							</div>
+							<div class="tw-w-0.5 tw-flex-1 tw-bg-gray-200"></div>
+						</div>
+						<div class="tw-pb-4">
+							<p class="tw-text-sm tw-font-medium second-color">Updated course page: Chapter 8 - DNA Replication in Biology 201</p>
+							<p class="tw-text-xs tw-text-gray-400">Yesterday at 11:45 AM</p>
+						</div>
+					</div>
+					<div class="tw-flex tw-gap-4">
+						<div class="tw-flex tw-flex-col tw-items-center">
+							<div class="tw-w-8 tw-h-8 tw-rounded-full tw-bg-orange-100 tw-flex tw-items-center tw-justify-center tw-flex-shrink-0">
+								<i class="fa fa-comments tw-text-orange-600 tw-text-xs"></i>
+							</div>
+							<div class="tw-w-0.5 tw-flex-1 tw-bg-gray-200"></div>
+						</div>
+						<div class="tw-pb-4">
+							<p class="tw-text-sm tw-font-medium second-color">Replied to 8 discussion posts across Biology 101 and 201</p>
+							<p class="tw-text-xs tw-text-gray-400">Mar 22 at 4:00 PM</p>
+						</div>
+					</div>
+					<div class="tw-flex tw-gap-4">
+						<div class="tw-flex tw-flex-col tw-items-center">
+							<div class="tw-w-8 tw-h-8 tw-rounded-full tw-bg-teal-100 tw-flex tw-items-center tw-justify-center tw-flex-shrink-0">
+								<i class="fa fa-video tw-text-teal-600 tw-text-xs"></i>
+							</div>
+							<div class="tw-w-0.5 tw-flex-1 tw-bg-gray-200"></div>
+						</div>
+						<div class="tw-pb-4">
+							<p class="tw-text-sm tw-font-medium second-color">Hosted office hours conference - Biology 410 (45 min, 12 attendees)</p>
+							<p class="tw-text-xs tw-text-gray-400">Mar 21 at 2:00 PM</p>
+						</div>
+					</div>
+					<div class="tw-flex tw-gap-4">
+						<div class="tw-flex tw-flex-col tw-items-center">
+							<div class="tw-w-8 tw-h-8 tw-rounded-full tw-bg-green-100 tw-flex tw-items-center tw-justify-center tw-flex-shrink-0">
+								<i class="fa fa-plus tw-text-green-600 tw-text-xs"></i>
+							</div>
+						</div>
+						<div>
+							<p class="tw-text-sm tw-font-medium second-color">Created new quiz: Chapter 7 Assessment in Biology 305</p>
+							<p class="tw-text-xs tw-text-gray-400">Mar 20 at 10:30 AM</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Grading Turnaround Chart -->
+			<div class="shadcn-card tw-p-5">
+				<h5 class="second-color tw-font-semibold tw-mb-4"><i class="fa fa-chart-line tw-mr-2"></i>Grading Turnaround Trend (Last 8 Weeks)</h5>
+				<div class="tw-flex tw-items-end tw-gap-3 tw-h-40 tw-px-4">
+					<div class="tw-flex tw-flex-col tw-items-center tw-flex-1">
+						<div class="tw-bg-green-400 tw-w-full tw-rounded-t" style="height: 40%"></div>
+						<span class="tw-text-xs tw-mt-1 tw-text-gray-500">W1</span>
+						<span class="tw-text-xs tw-text-gray-400">1.5d</span>
+					</div>
+					<div class="tw-flex tw-flex-col tw-items-center tw-flex-1">
+						<div class="tw-bg-green-400 tw-w-full tw-rounded-t" style="height: 50%"></div>
+						<span class="tw-text-xs tw-mt-1 tw-text-gray-500">W2</span>
+						<span class="tw-text-xs tw-text-gray-400">1.9d</span>
+					</div>
+					<div class="tw-flex tw-flex-col tw-items-center tw-flex-1">
+						<div class="tw-bg-green-500 tw-w-full tw-rounded-t" style="height: 35%"></div>
+						<span class="tw-text-xs tw-mt-1 tw-text-gray-500">W3</span>
+						<span class="tw-text-xs tw-text-gray-400">1.2d</span>
+					</div>
+					<div class="tw-flex tw-flex-col tw-items-center tw-flex-1">
+						<div class="tw-bg-yellow-400 tw-w-full tw-rounded-t" style="height: 70%"></div>
+						<span class="tw-text-xs tw-mt-1 tw-text-gray-500">W4</span>
+						<span class="tw-text-xs tw-text-gray-400">2.8d</span>
+					</div>
+					<div class="tw-flex tw-flex-col tw-items-center tw-flex-1">
+						<div class="tw-bg-yellow-400 tw-w-full tw-rounded-t" style="height: 80%"></div>
+						<span class="tw-text-xs tw-mt-1 tw-text-gray-500">W5</span>
+						<span class="tw-text-xs tw-text-gray-400">3.1d</span>
+					</div>
+					<div class="tw-flex tw-flex-col tw-items-center tw-flex-1">
+						<div class="tw-bg-green-400 tw-w-full tw-rounded-t" style="height: 55%"></div>
+						<span class="tw-text-xs tw-mt-1 tw-text-gray-500">W6</span>
+						<span class="tw-text-xs tw-text-gray-400">2.1d</span>
+					</div>
+					<div class="tw-flex tw-flex-col tw-items-center tw-flex-1">
+						<div class="tw-bg-green-400 tw-w-full tw-rounded-t" style="height: 60%"></div>
+						<span class="tw-text-xs tw-mt-1 tw-text-gray-500">W7</span>
+						<span class="tw-text-xs tw-text-gray-400">2.3d</span>
+					</div>
+					<div class="tw-flex tw-flex-col tw-items-center tw-flex-1">
+						<div class="tw-bg-green-500 tw-w-full tw-rounded-t" style="height: 45%"></div>
+						<span class="tw-text-xs tw-mt-1 tw-text-gray-500">W8</span>
+						<span class="tw-text-xs tw-text-gray-400">1.7d</span>
+					</div>
+				</div>
+				<p class="tw-text-xs tw-text-gray-400 tw-text-center tw-mt-3">Average grading turnaround time in days per week</p>
+			</div>
+		</main>
+	</div>
+	<script src="js/sidebar.js"></script>
+<script src="js/router.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/api.js"></script>
+<script src="js/render.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

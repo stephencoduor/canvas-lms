@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	<title>ReDefiners - External Apps</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+	<script src="https://cdn.tailwindcss.com"></script>
+	<script src="css/tailwind-config.js?v=3"></script>
+	<script src="https://kit.fontawesome.com/7a13c96681.js" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/tokens.css?v=3">
+	<link rel="stylesheet" type="text/css" href="css/shadcn.css?v=3">
+	<link rel="stylesheet" type="text/css" href="styles.css?v=3">
+	<style>
+		.app-card { border-radius: 12px; border: 1px solid #e2e8f0; padding: 20px; transition: all 0.2s; cursor: pointer; }
+		.app-card:hover { border-color: #2DB88A; box-shadow: 0 4px 12px rgba(0,0,0,0.06); transform: translateY(-2px); }
+		.filter-chip { padding: 6px 16px; border-radius: 20px; border: 1px solid #e2e8f0; font-size: 13px; cursor: pointer; transition: all 0.2s; background: #fff; color: #668B91; }
+		.filter-chip:hover, .filter-chip.active { background: var(--color-primary-700); color: #fff; border-color: var(--color-primary-700); }
+		.tab-btn { padding: 10px 20px; font-weight: 600; font-size: 14px; border: none; background: transparent; color: #668B91; cursor: pointer; border-bottom: 3px solid transparent; transition: all 0.2s; }
+		.tab-btn.active { color: var(--color-primary-700); border-bottom-color: #FF6B35; }
+		.installed-badge { background: #d1fae5; color: #059669; font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 10px; }
+	</style>
+</head>
+<body>
+<div class="tw-flex tw-min-h-screen tw-font-poppins">
+	<aside class="left-sidebar tw-fixed tw-inset-y-0 tw-left-0 tw-w-[240px] tw-z-50 tw--translate-x-full lg:tw-translate-x-0 tw-transition-transform tw-duration-300 tw-overflow-y-auto shadcn-scrollbar">
+		<div class="menu-bar">
+			<section class="logo-section">
+				<i class="fa fa-times theme-color menu-hide"></i>
+				<img src="Images/logo.PNG" class="res-hide" alt="logo">
+				<div class="nav-input res-show-flex tw-mt-5">
+					<button class="tw-border tw-border-primary-400 tw-border-r-0 tw-bg-transparent tw-px-2"><i class="fa fa-search"></i></button>
+					<input class="tw-border tw-border-primary-400 tw-border-l-0 tw-w-[85%] tw-bg-transparent tw-px-2 tw-py-1 tw-outline-none" type="text" name="search" placeholder="Search">
+				</div>
+			</section>
+			<section class="menu-links">
+				<div class="menu-link"><a href="dashboard.html"><i class="fa fa-th-large"></i><span> Dashboard</span></a></div>
+				<div class="menu-link"><a href="courses.html"><i class="fa fa-clipboard-list"></i><span> Courses</span></a></div>
+				<div class="menu-link"><a href="calendar.html"><i class="fa fa-calendar-alt"></i><span> Calendar</span></a></div>
+				<div class="menu-link"><a href="announcement.html"><i class="fa fa-bullhorn"></i><span> Announcements</span></a></div>
+				<div class="menu-link"><a href="inbox.html"><i class="fa fa-comments"></i><span> Messages</span></a></div>
+				<div class="menu-link"><a href="assignments.html"><i class="fa fa-file-lines"></i><span> Assignments</span></a></div>
+				<div class="menu-link"><a href="grades.html"><i class="fa fa-chart-bar"></i><span> Grades</span></a></div>
+				<div class="menu-link"><a href="modules.html"><i class="fa fa-layer-group"></i><span> Modules</span></a></div>
+				<div class="menu-link"><a href="discussions.html"><i class="fa fa-comments-alt"></i><span> Discussions</span></a></div>
+				<div class="menu-link"><a href="quizzes.html"><i class="fa fa-question-circle"></i><span> Quizzes</span></a></div>
+				<div class="menu-link"><a href="pages.html"><i class="fa fa-file-alt"></i><span> Pages</span></a></div>
+				<div class="menu-link"><a href="files.html"><i class="fa fa-folder"></i><span> Files</span></a></div>
+				<div class="menu-link"><a href="people.html"><i class="fa fa-users"></i><span> People</span></a></div>
+				<div class="menu-link"><a href="outcomes.html"><i class="fa fa-bullseye"></i><span> Outcomes</span></a></div>
+				<div class="menu-link"><a href="rubrics.html"><i class="fa fa-th"></i><span> Rubrics</span></a></div>
+				<div class="menu-link"><a href="groups.html"><i class="fa fa-user-friends"></i><span> Groups</span></a></div>
+				<div class="menu-link"><a href="conferences.html"><i class="fa fa-video"></i><span> Conferences</span></a></div>
+				<div class="menu-link"><a href="collaborations.html"><i class="fa fa-handshake"></i><span> Collaborations</span></a></div>
+				<div class="menu-link"><a href="account-settings.html" class="active-menu"><i class="fa fa-cog"></i><span> Settings</span></a></div>
+			</section>
+		</div>
+	</aside>
+	<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+	<main class="middle-part tw-flex-1 lg:tw-ml-[240px] tw-min-h-screen tw-px-4 md:tw-px-6 lg:tw-px-10 tw-pb-8">
+		<div class="tw-flex tw-items-center tw-justify-between tw-py-4 tw-gap-3 tw-flex-wrap">
+			<div class="tw-flex tw-items-center tw-gap-3">
+				<i class="fa fa-bars tw-text-primary-400 tw-cursor-pointer tw-text-xl lg:tw-hidden menu-icon" id="menuToggle"></i>
+				<div class="shadcn-search tw-hidden sm:tw-flex tw-w-64">
+					<i class="fa fa-search"></i>
+					<input type="text" placeholder="Search courses, assignments...">
+				</div>
+			</div>
+			<div class="tw-flex tw-items-center tw-gap-3">
+				<button class="shadcn-btn shadcn-btn-ghost shadcn-btn-icon tw-relative">
+					<i class="fa fa-bell tw-text-primary-400"></i>
+				</button>
+				<div class="shadcn-avatar shadcn-avatar-md tw-cursor-pointer profile-click">
+					<img src="Images/profile.png" alt="Profile">
+				</div>
+			</div>
+		</div>
+
+		<div class="breadcrumbs tw-mt-2">
+			<a href="dashboard.html">Dashboard</a>
+			<span class="breadcrumbs__separator">/</span>
+			<a href="account-settings.html">Settings</a>
+			<span class="breadcrumbs__separator">/</span>
+			<span class="breadcrumbs__current">External Apps</span>
+		</div>
+
+		<div class="tw-flex tw-items-center tw-justify-between tw-mt-6 tw-flex-wrap tw-gap-3">
+			<div>
+				<h1 class="tw-text-2xl tw-font-bold" style="color: var(--color-primary-700);">External Apps</h1>
+				<p class="tw-text-sm tw-mt-1" style="color: #668B91;">Browse and install third-party tools and integrations</p>
+			</div>
+			<button class="shadcn-btn shadcn-btn-primary tw-gap-2">
+				<i class="fa fa-plus"></i> Add App Manually
+			</button>
+		</div>
+
+		<!-- Tabs -->
+		<div class="tw-flex tw-border-b tw-mt-6 tw-gap-1" style="border-color: #e2e8f0;">
+			<button class="tab-btn active" onclick="switchTab('browse')">App Center</button>
+			<button class="tab-btn" onclick="switchTab('installed')">Installed (4)</button>
+		</div>
+
+		<!-- Search & Filters -->
+		<div class="tw-mt-5 tw-flex tw-flex-col sm:tw-flex-row tw-gap-3">
+			<div class="shadcn-search tw-flex-1">
+				<i class="fa fa-search"></i>
+				<input type="text" placeholder="Search apps by name or keyword...">
+			</div>
+			<div class="tw-flex tw-gap-2 tw-flex-wrap">
+				<span class="filter-chip active">All</span>
+				<span class="filter-chip">LTI Tools</span>
+				<span class="filter-chip">Content</span>
+				<span class="filter-chip">Assessment</span>
+				<span class="filter-chip">Communication</span>
+			</div>
+		</div>
+
+		<!-- App Grid -->
+		<div class="tw-grid tw-grid-cols-1 md:tw-grid-cols-2 lg:tw-grid-cols-3 tw-gap-5 tw-mt-6">
+			<!-- App 1 -->
+			<div class="app-card">
+				<div class="tw-flex tw-items-start tw-justify-between tw-mb-3">
+					<div style="width:48px;height:48px;border-radius:12px;background:#dbeafe;color:#3B82F6;display:flex;align-items:center;justify-content:center;font-size:20px;">
+						<i class="fa fa-video"></i>
+					</div>
+					<span class="installed-badge">Installed</span>
+				</div>
+				<h4 class="tw-font-semibold tw-text-sm" style="color: var(--color-primary-700);">Zoom Meetings</h4>
+				<p class="tw-text-xs tw-mt-1 tw-mb-3" style="color: #668B91;">Schedule and join video meetings directly from Canvas courses</p>
+				<div class="tw-flex tw-items-center tw-gap-2">
+					<span class="tw-text-xs tw-px-2 tw-py-0.5 tw-rounded-full" style="background: #f1f5f9; color: #64748b;">LTI 1.3</span>
+					<span class="tw-text-xs" style="color: #94a3b8;">by Zoom Video</span>
+				</div>
+			</div>
+
+			<!-- App 2 -->
+			<div class="app-card">
+				<div class="tw-flex tw-items-start tw-justify-between tw-mb-3">
+					<div style="width:48px;height:48px;border-radius:12px;background:#fce7f3;color:#EC4899;display:flex;align-items:center;justify-content:center;font-size:20px;">
+						<i class="fa fa-chart-pie"></i>
+					</div>
+				</div>
+				<h4 class="tw-font-semibold tw-text-sm" style="color: var(--color-primary-700);">Turnitin</h4>
+				<p class="tw-text-xs tw-mt-1 tw-mb-3" style="color: #668B91;">Plagiarism detection and grading tool for academic integrity</p>
+				<div class="tw-flex tw-items-center tw-justify-between">
+					<div class="tw-flex tw-items-center tw-gap-2">
+						<span class="tw-text-xs tw-px-2 tw-py-0.5 tw-rounded-full" style="background: #f1f5f9; color: #64748b;">Assessment</span>
+					</div>
+					<button class="shadcn-btn shadcn-btn-primary tw-text-xs tw-px-3 tw-py-1">Install</button>
+				</div>
+			</div>
+
+			<!-- App 3 -->
+			<div class="app-card">
+				<div class="tw-flex tw-items-start tw-justify-between tw-mb-3">
+					<div style="width:48px;height:48px;border-radius:12px;background:#d1fae5;color:#10B981;display:flex;align-items:center;justify-content:center;font-size:20px;">
+						<i class="fa fa-book-reader"></i>
+					</div>
+					<span class="installed-badge">Installed</span>
+				</div>
+				<h4 class="tw-font-semibold tw-text-sm" style="color: var(--color-primary-700);">McGraw-Hill Connect</h4>
+				<p class="tw-text-xs tw-mt-1 tw-mb-3" style="color: #668B91;">Digital learning platform with adaptive assignments and eBooks</p>
+				<div class="tw-flex tw-items-center tw-gap-2">
+					<span class="tw-text-xs tw-px-2 tw-py-0.5 tw-rounded-full" style="background: #f1f5f9; color: #64748b;">Content</span>
+					<span class="tw-text-xs" style="color: #94a3b8;">by McGraw-Hill</span>
+				</div>
+			</div>
+
+			<!-- App 4 -->
+			<div class="app-card">
+				<div class="tw-flex tw-items-start tw-justify-between tw-mb-3">
+					<div style="width:48px;height:48px;border-radius:12px;background:#f3e8ff;color:#8B5CF6;display:flex;align-items:center;justify-content:center;font-size:20px;">
+						<i class="fa fa-poll"></i>
+					</div>
+				</div>
+				<h4 class="tw-font-semibold tw-text-sm" style="color: var(--color-primary-700);">Poll Everywhere</h4>
+				<p class="tw-text-xs tw-mt-1 tw-mb-3" style="color: #668B91;">Live polling and interactive activities for student engagement</p>
+				<div class="tw-flex tw-items-center tw-justify-between">
+					<span class="tw-text-xs tw-px-2 tw-py-0.5 tw-rounded-full" style="background: #f1f5f9; color: #64748b;">LTI 1.3</span>
+					<button class="shadcn-btn shadcn-btn-primary tw-text-xs tw-px-3 tw-py-1">Install</button>
+				</div>
+			</div>
+
+			<!-- App 5 -->
+			<div class="app-card">
+				<div class="tw-flex tw-items-start tw-justify-between tw-mb-3">
+					<div style="width:48px;height:48px;border-radius:12px;background:#fef3c7;color:#F59E0B;display:flex;align-items:center;justify-content:center;font-size:20px;">
+						<i class="fa fa-pen-fancy"></i>
+					</div>
+					<span class="installed-badge">Installed</span>
+				</div>
+				<h4 class="tw-font-semibold tw-text-sm" style="color: var(--color-primary-700);">Google Assignments</h4>
+				<p class="tw-text-xs tw-mt-1 tw-mb-3" style="color: #668B91;">Distribute, collect, and grade assignments with Google integration</p>
+				<div class="tw-flex tw-items-center tw-gap-2">
+					<span class="tw-text-xs tw-px-2 tw-py-0.5 tw-rounded-full" style="background: #f1f5f9; color: #64748b;">Assessment</span>
+					<span class="tw-text-xs" style="color: #94a3b8;">by Google</span>
+				</div>
+			</div>
+
+			<!-- App 6 -->
+			<div class="app-card">
+				<div class="tw-flex tw-items-start tw-justify-between tw-mb-3">
+					<div style="width:48px;height:48px;border-radius:12px;background:#e0e7ff;color:#6366F1;display:flex;align-items:center;justify-content:center;font-size:20px;">
+						<i class="fa fa-microscope"></i>
+					</div>
+				</div>
+				<h4 class="tw-font-semibold tw-text-sm" style="color: var(--color-primary-700);">Labster Virtual Labs</h4>
+				<p class="tw-text-xs tw-mt-1 tw-mb-3" style="color: #668B91;">Virtual lab simulations for science and engineering courses</p>
+				<div class="tw-flex tw-items-center tw-justify-between">
+					<span class="tw-text-xs tw-px-2 tw-py-0.5 tw-rounded-full" style="background: #f1f5f9; color: #64748b;">Content</span>
+					<button class="shadcn-btn shadcn-btn-primary tw-text-xs tw-px-3 tw-py-1">Install</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="tw-mt-6 tw-text-xs" style="color: #adb5bd;">
+			API: GET /api/v1/courses/:course_id/external_tools
+		</div>
+	</main>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+<script>$(".button-collapse").sideNav();</script>
+<script src="js/router.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/api.js"></script>
+<script src="js/render.js"></script>
+<script src="js/sidebar.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
