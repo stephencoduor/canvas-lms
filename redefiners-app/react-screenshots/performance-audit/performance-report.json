@@ -1,0 +1,639 @@
+[
+  {
+    "page": "Login Page",
+    "url": "/login",
+    "timing": {
+      "loadTime": 1728,
+      "ttfb": 1,
+      "fcp": 812,
+      "lcp": null,
+      "cls": 0,
+      "domInteractive": 223,
+      "domContentLoaded": 390
+    },
+    "network": {
+      "totalRequests": 70,
+      "js": 46,
+      "css": 4,
+      "img": 9,
+      "api": 5,
+      "totalKB": 0,
+      "jsKB": 0,
+      "cssKB": 0,
+      "imgKB": 0
+    },
+    "dom": {
+      "nodes": 577,
+      "depth": 12
+    },
+    "memory": {
+      "heapUsedMB": 21.9,
+      "heapTotalMB": 30
+    },
+    "slowest": [
+      {
+        "name": "todo",
+        "duration": 498,
+        "size": 0
+      },
+      {
+        "name": "courses?include%5B%5D=term&include%5B%5D=total_students&include%5B%5D=teachers&include%5B%5D=enrollments&per_page=50&enrollment_state=active&state%5B%5D=available",
+        "duration": 399,
+        "size": 0
+      },
+      {
+        "name": "conversations?scope=unread&per_page=50",
+        "duration": 270,
+        "size": 0
+      },
+      {
+        "name": "profile",
+        "duration": 246,
+        "size": 0
+      },
+      {
+        "name": "profile",
+        "duration": 245,
+        "size": 0
+      }
+    ],
+    "failedAPIs": [],
+    "screenshot": "AUDIT-01-login-page.png"
+  },
+  {
+    "page": "Dashboard",
+    "url": "/dashboard",
+    "timing": {
+      "loadTime": 2004,
+      "ttfb": 197,
+      "fcp": 532,
+      "lcp": null,
+      "cls": 0,
+      "domInteractive": 214,
+      "domContentLoaded": 230
+    },
+    "network": {
+      "totalRequests": 71,
+      "js": 46,
+      "css": 4,
+      "img": 9,
+      "api": 5,
+      "totalKB": 0,
+      "jsKB": 0,
+      "cssKB": 0,
+      "imgKB": 0
+    },
+    "dom": {
+      "nodes": 577,
+      "depth": 12
+    },
+    "memory": {
+      "heapUsedMB": 22,
+      "heapTotalMB": 35
+    },
+    "slowest": [
+      {
+        "name": "profile",
+        "duration": 481,
+        "size": 0
+      },
+      {
+        "name": "todo",
+        "duration": 440,
+        "size": 0
+      },
+      {
+        "name": "courses?include%5B%5D=term&include%5B%5D=total_students&include%5B%5D=teachers&include%5B%5D=enrollments&per_page=50&enrollment_state=active&state%5B%5D=available",
+        "duration": 387,
+        "size": 0
+      },
+      {
+        "name": "profile",
+        "duration": 252,
+        "size": 0
+      },
+      {
+        "name": "conversations?scope=unread&per_page=50",
+        "duration": 217,
+        "size": 0
+      }
+    ],
+    "failedAPIs": [],
+    "screenshot": "AUDIT-02-dashboard.png"
+  },
+  {
+    "page": "Courses List",
+    "url": "/courses",
+    "timing": {
+      "loadTime": 2009,
+      "ttfb": 194,
+      "fcp": 532,
+      "lcp": null,
+      "cls": 0,
+      "domInteractive": 204,
+      "domContentLoaded": 222
+    },
+    "network": {
+      "totalRequests": 70,
+      "js": 44,
+      "css": 4,
+      "img": 11,
+      "api": 4,
+      "totalKB": 0,
+      "jsKB": 0,
+      "cssKB": 0,
+      "imgKB": 0
+    },
+    "dom": {
+      "nodes": 471,
+      "depth": 10
+    },
+    "memory": {
+      "heapUsedMB": 23.3,
+      "heapTotalMB": 37.5
+    },
+    "slowest": [
+      {
+        "name": "conversations?scope=unread&per_page=50",
+        "duration": 438,
+        "size": 0
+      },
+      {
+        "name": "courses?include%5B%5D=term&include%5B%5D=total_students&include%5B%5D=teachers&include%5B%5D=enrollments&per_page=50&enrollment_state=active&state%5B%5D=available",
+        "duration": 413,
+        "size": 0
+      },
+      {
+        "name": "profile",
+        "duration": 250,
+        "size": 0
+      },
+      {
+        "name": "profile",
+        "duration": 245,
+        "size": 0
+      },
+      {
+        "name": "course-spanish.svg",
+        "duration": 203,
+        "size": 0
+      }
+    ],
+    "failedAPIs": [],
+    "screenshot": "AUDIT-03-courses-list.png"
+  },
+  {
+    "page": "Course Home",
+    "url": "/courses/1",
+    "timing": {
+      "loadTime": 1416,
+      "ttfb": 196,
+      "fcp": 532,
+      "lcp": null,
+      "cls": 0,
+      "domInteractive": 213,
+      "domContentLoaded": 229
+    },
+    "network": {
+      "totalRequests": 63,
+      "js": 43,
+      "css": 4,
+      "img": 1,
+      "api": 8,
+      "totalKB": 0,
+      "jsKB": 0,
+      "cssKB": 0,
+      "imgKB": 0
+    },
+    "dom": {
+      "nodes": 306,
+      "depth": 12
+    },
+    "memory": {
+      "heapUsedMB": 16.1,
+      "heapTotalMB": 37.8
+    },
+    "slowest": [
+      {
+        "name": "modules?include%5B%5D=items&per_page=50",
+        "duration": 620,
+        "size": 0
+      },
+      {
+        "name": "assignments?include%5B%5D=submission&order_by=due_at&per_page=50",
+        "duration": 520,
+        "size": 0
+      },
+      {
+        "name": "1?include%5B%5D=term&include%5B%5D=total_students&include%5B%5D=enrollments&include%5B%5D=syllabus_body",
+        "duration": 378,
+        "size": 0
+      },
+      {
+        "name": "profile",
+        "duration": 335,
+        "size": 0
+      },
+      {
+        "name": "assignments?include%5B%5D=submission&order_by=due_at&per_page=50",
+        "duration": 313,
+        "size": 0
+      }
+    ],
+    "failedAPIs": [
+      {
+        "url": "/api/v1/courses/1/assignments?include%5B%5D=submission&order_by=due_at&per_page=50",
+        "status": 500
+      },
+      {
+        "url": "/api/v1/courses/1/assignments?include%5B%5D=submission&order_by=due_at&per_page=50",
+        "status": 500
+      }
+    ],
+    "screenshot": "AUDIT-04-course-home.png"
+  },
+  {
+    "page": "Assignments",
+    "url": "/courses/1/assignments",
+    "timing": {
+      "loadTime": 1224,
+      "ttfb": 197,
+      "fcp": 508,
+      "lcp": null,
+      "cls": 0,
+      "domInteractive": 207,
+      "domContentLoaded": 222
+    },
+    "network": {
+      "totalRequests": 62,
+      "js": 45,
+      "css": 4,
+      "img": 1,
+      "api": 5,
+      "totalKB": 0,
+      "jsKB": 0,
+      "cssKB": 0,
+      "imgKB": 0
+    },
+    "dom": {
+      "nodes": 246,
+      "depth": 9
+    },
+    "memory": {
+      "heapUsedMB": 19.8,
+      "heapTotalMB": 37.8
+    },
+    "slowest": [
+      {
+        "name": "profile",
+        "duration": 376,
+        "size": 0
+      },
+      {
+        "name": "assignment_groups?include%5B%5D=assignments&include%5B%5D=submission&per_page=50",
+        "duration": 330,
+        "size": 0
+      },
+      {
+        "name": "assignment_groups?include%5B%5D=assignments&include%5B%5D=submission&per_page=50",
+        "duration": 319,
+        "size": 0
+      },
+      {
+        "name": "profile",
+        "duration": 240,
+        "size": 0
+      },
+      {
+        "name": "conversations?scope=unread&per_page=50",
+        "duration": 221,
+        "size": 0
+      }
+    ],
+    "failedAPIs": [
+      {
+        "url": "/api/v1/courses/1/assignment_groups?include%5B%5D=assignments&include%5B%5D=submission&per_page=50",
+        "status": 500
+      },
+      {
+        "url": "/api/v1/courses/1/assignment_groups?include%5B%5D=assignments&include%5B%5D=submission&per_page=50",
+        "status": 500
+      }
+    ],
+    "screenshot": "AUDIT-05-assignments.png"
+  },
+  {
+    "page": "Inbox",
+    "url": "/inbox",
+    "timing": {
+      "loadTime": 1659,
+      "ttfb": 196,
+      "fcp": 664,
+      "lcp": null,
+      "cls": 0,
+      "domInteractive": 212,
+      "domContentLoaded": 228
+    },
+    "network": {
+      "totalRequests": 62,
+      "js": 45,
+      "css": 4,
+      "img": 2,
+      "api": 4,
+      "totalKB": 0,
+      "jsKB": 0,
+      "cssKB": 0,
+      "imgKB": 0
+    },
+    "dom": {
+      "nodes": 428,
+      "depth": 13
+    },
+    "memory": {
+      "heapUsedMB": 17.6,
+      "heapTotalMB": 20.5
+    },
+    "slowest": [
+      {
+        "name": "vendor-sanitize-BkaQRF29.js",
+        "duration": 389,
+        "size": 0
+      },
+      {
+        "name": "profile",
+        "duration": 386,
+        "size": 0
+      },
+      {
+        "name": "profile",
+        "duration": 324,
+        "size": 0
+      },
+      {
+        "name": "conversations?scope=inbox&per_page=50",
+        "duration": 270,
+        "size": 0
+      },
+      {
+        "name": "conversations?scope=unread&per_page=50",
+        "duration": 223,
+        "size": 0
+      }
+    ],
+    "failedAPIs": [],
+    "screenshot": "AUDIT-06-inbox.png"
+  },
+  {
+    "page": "Calendar",
+    "url": "/calendar",
+    "timing": {
+      "loadTime": 1381,
+      "ttfb": 196,
+      "fcp": 528,
+      "lcp": null,
+      "cls": 0,
+      "domInteractive": 206,
+      "domContentLoaded": 223
+    },
+    "network": {
+      "totalRequests": 59,
+      "js": 43,
+      "css": 4,
+      "img": 1,
+      "api": 4,
+      "totalKB": 0,
+      "jsKB": 0,
+      "cssKB": 0,
+      "imgKB": 0
+    },
+    "dom": {
+      "nodes": 502,
+      "depth": 10
+    },
+    "memory": {
+      "heapUsedMB": 20.1,
+      "heapTotalMB": 24.5
+    },
+    "slowest": [
+      {
+        "name": "conversations?scope=unread&per_page=50",
+        "duration": 330,
+        "size": 0
+      },
+      {
+        "name": "calendar_events?start_date=2026-03-01&end_date=2026-03-31&all_events=true",
+        "duration": 304,
+        "size": 0
+      },
+      {
+        "name": "profile",
+        "duration": 247,
+        "size": 0
+      },
+      {
+        "name": "profile",
+        "duration": 242,
+        "size": 0
+      },
+      {
+        "name": "CalendarPage-wO1wNCfq.js",
+        "duration": 195,
+        "size": 0
+      }
+    ],
+    "failedAPIs": [],
+    "screenshot": "AUDIT-07-calendar.png"
+  },
+  {
+    "page": "Admin Dashboard",
+    "url": "/admin",
+    "timing": {
+      "loadTime": 2003,
+      "ttfb": 194,
+      "fcp": 536,
+      "lcp": null,
+      "cls": 0,
+      "domInteractive": 203,
+      "domContentLoaded": 224
+    },
+    "network": {
+      "totalRequests": 67,
+      "js": 47,
+      "css": 4,
+      "img": 1,
+      "api": 8,
+      "totalKB": 0,
+      "jsKB": 0,
+      "cssKB": 0,
+      "imgKB": 0
+    },
+    "dom": {
+      "nodes": 557,
+      "depth": 12
+    },
+    "memory": {
+      "heapUsedMB": 22.5,
+      "heapTotalMB": 27.8
+    },
+    "slowest": [
+      {
+        "name": "activity_stream?only_active_courses=true",
+        "duration": 548,
+        "size": 0
+      },
+      {
+        "name": "courses?include%5B%5D=term&include%5B%5D=total_students&include%5B%5D=teachers&include%5B%5D=enrollments&per_page=50&enrollment_state=active&state%5B%5D=available",
+        "duration": 496,
+        "size": 0
+      },
+      {
+        "name": "users?include%5B%5D=avatar_url&include%5B%5D=email",
+        "duration": 332,
+        "size": 0
+      },
+      {
+        "name": "users?include%5B%5D=avatar_url&include%5B%5D=email",
+        "duration": 325,
+        "size": 0
+      },
+      {
+        "name": "accounts",
+        "duration": 277,
+        "size": 0
+      }
+    ],
+    "failedAPIs": [],
+    "screenshot": "AUDIT-08-admin-dashboard.png"
+  },
+  {
+    "page": "Profile",
+    "url": "/profile",
+    "timing": {
+      "loadTime": 1499,
+      "ttfb": 196,
+      "fcp": 520,
+      "lcp": null,
+      "cls": 0,
+      "domInteractive": 216,
+      "domContentLoaded": 234
+    },
+    "network": {
+      "totalRequests": 60,
+      "js": 43,
+      "css": 4,
+      "img": 2,
+      "api": 4,
+      "totalKB": 0,
+      "jsKB": 0,
+      "cssKB": 0,
+      "imgKB": 0
+    },
+    "dom": {
+      "nodes": 459,
+      "depth": 12
+    },
+    "memory": {
+      "heapUsedMB": 23.9,
+      "heapTotalMB": 29.5
+    },
+    "slowest": [
+      {
+        "name": "conversations?scope=unread&per_page=50",
+        "duration": 417,
+        "size": 0
+      },
+      {
+        "name": "courses?include%5B%5D=term&include%5B%5D=total_students&include%5B%5D=teachers&include%5B%5D=enrollments&per_page=50&enrollment_state=active&state%5B%5D=available",
+        "duration": 401,
+        "size": 0
+      },
+      {
+        "name": "profile",
+        "duration": 243,
+        "size": 0
+      },
+      {
+        "name": "profile",
+        "duration": 234,
+        "size": 0
+      },
+      {
+        "name": "default-avatar.png",
+        "duration": 205,
+        "size": 0
+      }
+    ],
+    "failedAPIs": [],
+    "screenshot": "AUDIT-09-profile.png"
+  },
+  {
+    "page": "Gradebook",
+    "url": "/courses/1/gradebook",
+    "timing": {
+      "loadTime": 1943,
+      "ttfb": 194,
+      "fcp": 508,
+      "lcp": null,
+      "cls": 0,
+      "domInteractive": 207,
+      "domContentLoaded": 223
+    },
+    "network": {
+      "totalRequests": 61,
+      "js": 42,
+      "css": 4,
+      "img": 1,
+      "api": 7,
+      "totalKB": 0,
+      "jsKB": 0,
+      "cssKB": 0,
+      "imgKB": 0
+    },
+    "dom": {
+      "nodes": 249,
+      "depth": 9
+    },
+    "memory": {
+      "heapUsedMB": 26.1,
+      "heapTotalMB": 28.8
+    },
+    "slowest": [
+      {
+        "name": "profile",
+        "duration": 945,
+        "size": 0
+      },
+      {
+        "name": "conversations?scope=unread&per_page=50",
+        "duration": 944,
+        "size": 0
+      },
+      {
+        "name": "submissions?student_ids=all&per_page=100",
+        "duration": 941,
+        "size": 0
+      },
+      {
+        "name": "assignments?per_page=50&order_by=position",
+        "duration": 515,
+        "size": 0
+      },
+      {
+        "name": "users?enrollment_type=student&include%5B%5D=enrollments&include%5B%5D=avatar_url",
+        "duration": 514,
+        "size": 0
+      }
+    ],
+    "failedAPIs": [
+      {
+        "url": "/api/v1/courses/1/assignments?per_page=50&order_by=position",
+        "status": 500
+      },
+      {
+        "url": "/api/v1/courses/1/assignments?per_page=50&order_by=position",
+        "status": 500
+      }
+    ],
+    "screenshot": "AUDIT-10-gradebook.png"
+  }
+]

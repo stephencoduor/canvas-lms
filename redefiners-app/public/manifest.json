@@ -1,0 +1,13 @@
+{
+  "name": "ReDefiners LMS",
+  "short_name": "ReDefiners",
+  "description": "ReDefiners World Languages Learning Platform",
+  "start_url": "/dashboard",
+  "display": "standalone",
+  "background_color": "#0F2922",
+  "theme_color": "#163B32",
+  "icons": [
+    { "src": "/Images/logo.PNG", "sizes": "192x192", "type": "image/png" },
+    { "src": "/Images/logo.PNG", "sizes": "512x512", "type": "image/png" }
+  ]
+}

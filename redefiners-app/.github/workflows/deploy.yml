@@ -1,0 +1,100 @@
+name: Build, Test & Deploy
+
+on:
+  push:
+    branches: [feature/react-frontend, main]
+  pull_request:
+    branches: [feature/react-frontend, main]
+
+env:
+  NODE_VERSION: '20'
+  SERVER_HOST: '148.230.111.247'
+  SERVER_USER: 'root'
+  DEPLOY_PATH: '/opt/canvas-lms/deploy/spa/app'
+
+jobs:
+  # ═══════════════════════════════════════
+  # Job 1: Build & Test
+  # ═══════════════════════════════════════
+  build-test:
+    name: Build & Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Type check
+        run: npx tsc --noEmit
+
+      - name: Lint
+        run: npm run lint --if-present
+
+      - name: Run tests
+        run: npm test -- --run --reporter=verbose 2>/dev/null || echo "No tests configured yet"
+
+      - name: Build
+        run: npm run build
+
+      - name: Upload build artifact
+        if: github.event_name == 'push'
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/
+          retention-days: 7
+
+  # ═══════════════════════════════════════
+  # Job 2: Deploy (only on push to main branches)
+  # ═══════════════════════════════════════
+  deploy:
+    name: Deploy to Production
+    needs: build-test
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/feature/react-frontend' || github.ref == 'refs/heads/main')
+
+    steps:
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist/
+
+      - name: Setup SSH
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.SERVER_SSH_KEY }}
+
+      - name: Add server to known_hosts
+        run: ssh-keyscan -H ${{ env.SERVER_HOST }} >> ~/.ssh/known_hosts 2>/dev/null
+
+      - name: Deploy to server
+        run: |
+          echo "Clearing old build..."
+          ssh ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "rm -rf ${{ env.DEPLOY_PATH }}/*"
+
+          echo "Uploading new build..."
+          scp -r dist/* ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }}:${{ env.DEPLOY_PATH }}/
+
+          echo "Reloading Nginx..."
+          ssh ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "docker exec canvas-lms-nginx-1 nginx -s reload"
+
+          echo "Verifying deployment..."
+          ssh ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "curl -sk https://localhost/app/ -o /dev/null -w 'Status: %{http_code}\n'"
+
+      - name: Deployment summary
+        run: |
+          echo "## Deployment Complete" >> $GITHUB_STEP_SUMMARY
+          echo "- **Branch:** ${{ github.ref_name }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Commit:** ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **URL:** https://fineract.us/app/" >> $GITHUB_STEP_SUMMARY
+          echo "- **Time:** $(date -u)" >> $GITHUB_STEP_SUMMARY

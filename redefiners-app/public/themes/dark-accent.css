@@ -1,0 +1,26 @@
+[data-theme="dark-accent"] {
+  --sidebar-bg: linear-gradient(180deg, #163B32 0%, #0F2922 100%);
+  --sidebar-text: rgba(255,255,255,0.75);
+  --sidebar-active: linear-gradient(135deg, #2DB88A 0%, #25A07A 100%);
+  --sidebar-active-shadow: 0 4px 20px rgba(45,184,138,0.3);
+  --sidebar-section-header: rgba(124, 181, 164, 0.7);
+  --sidebar-logo-filter: none;
+  --color-page: #D4EFE6;
+  --color-page-alt: #C2E6DA;
+  --color-page-light: #E8F5F0;
+  --color-surface: #FFFFFF;
+  --color-surface-50: #F9FAFB;
+  --color-surface-100: #F3F4F6;
+  --color-surface-200: #E5E7EB;
+  --color-surface-300: #C4CDD5;
+  --color-primary-900: #0F2922;
+  --color-primary-800: #163B32;
+  --color-primary-700: #1E4D42;
+  --color-accent-green: #2DB88A;
+  --color-accent-orange: #FF6B35;
+  --topbar-bg: #FFFFFF;
+  --topbar-border: #E5E7EB;
+  --card-radius: 16px;
+  --card-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  --card-bg: #FFFFFF;
+}
